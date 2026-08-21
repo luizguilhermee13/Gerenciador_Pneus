@@ -1,9 +1,11 @@
 @import "assets/globais/global.css";
+@import "assets/globais/sidebar.css";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 body {
