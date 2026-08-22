@@ -1,0 +1,38 @@
+.sub-menu {
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  margin-top: 0.5rem;
+  background: var(--background);
+}
+
+.sub-menu ul {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  list-style-type: none;
+  width: max-content;
+  height: 100%;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.sub-menu ul li {
+  font-size: 1rem;
+  padding: 0.5rem;
+  color: var(--muted-foreground);
+  cursor: pointer;
+}
+
+.sub-menu-selecionado {
+  background: var(--ring);
+  color: #ffffff !important;
+  border-radius: 0.5rem;
+}
