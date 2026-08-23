@@ -70,13 +70,60 @@
   color: var(--muted-foreground);
   font-size: 1.5rem;
   width: max-content;
-  display: block;
+  display: flex;
   width: 100%;
   padding: 0.6rem 1rem;
   transition:
     background 0.2s,
     color 0.2s;
+  position: relative;
+  margin-left: 1rem;
 }
+
+.menu ul li a::before {
+  content: "";
+  background-size: contain;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  left: -12px;
+  top: 12px;
+  display: inline-block;
+  color: var(--muted-foreground);
+}
+
 li.active a {
   color: #ffffff !important;
+}
+
+.menu ul li:nth-child(1) a::before {
+  background: url("../img/icons/grip-vertical-solid-full.svg") no-repeat;
+}
+
+.menu ul li:nth-child(2) a::before {
+  background: url("../img/icons/circle-dot-regular-full.svg") no-repeat;
+}
+
+.menu ul li:nth-child(3) a::before {
+  background: url("../img/icons/truck-solid-full.svg") no-repeat;
+}
+
+.menu ul li:nth-child(4) a::before {
+  background: url("../img/icons/arrows-left-right-solid-full.svg") no-repeat;
+}
+
+.menu ul li:nth-child(5) a::before {
+  background: url("../img/icons/box-open-solid-full.svg") no-repeat;
+}
+
+.menu ul li:nth-child(6) a::before {
+  background: url("../img/icons/wrench-solid-full.svg") no-repeat;
+}
+
+.menu ul li:nth-child(7) a::before {
+  background: url("../img/icons/gauge-simple-solid-full.svg") no-repeat;
+}
+
+.menu ul li:nth-child(8) a::before {
+  background: url("../img/icons/trash-can-solid-full.svg") no-repeat;
 }

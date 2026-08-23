@@ -10,7 +10,7 @@
 
 .notification {
   grid-column: 2;
-  background: var(--accent);
+  background: var(--card);
 }
 
 .menu {

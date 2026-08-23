@@ -12,7 +12,22 @@
   </head>
   <body>
     <div id="container-layout" class="sidebar-open">
-      <header class="notification">a</header>
+      <header class="notification">
+        <div class="header-logo">
+          <img
+            src="assets/img/icons/grip-vertical-solid-full.svg"
+            alt="icongrip"
+          />
+          <p>Dashboard</p>
+          <span>Visão geral da frota</span>
+        </div>
+
+        <div class="header-buttons">
+          <button class="refresh">Atualizar</button
+          ><button class="notificationImg"></button>
+        </div>
+      </header>
+
       <nav class="menu" id="menu">
         <div class="logo">
           <i class="fa-solid fa-car" style="color: white"></i>
@@ -29,6 +44,7 @@
           <li><a href="assets/pages/sucateamento.html">Sucatas</a></li>
         </ul>
       </nav>
+
       <main class="containerPrincipal" id="containerPrincipal"></main>
     </div>
     <script src="assets/js_layout/navegacaoTab.js"></script>

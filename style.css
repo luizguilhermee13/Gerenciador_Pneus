@@ -1,6 +1,7 @@
 @import "assets/globais/global.css";
 @import "assets/globais/sidebar.css";
 @import "assets/globais/submenus.css";
+@import "assets/globais/header.css";
 
 * {
   margin: 0;
