@@ -38,3 +38,16 @@
   display: block !important;
   animation: show 0.5s forwards;
 }
+
+@media (max-width: 768px) {
+  #container-layout {
+    grid-template-columns: 1fr 8fr;
+  }
+  .notification {
+    background-color: #f0f0f0;
+  }
+
+  .containerPrincipal {
+    grid-column: 1 /3;
+  }
+}
