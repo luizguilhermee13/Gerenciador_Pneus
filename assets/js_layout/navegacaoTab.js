@@ -12,8 +12,9 @@ function selecionarTopico(item) {
   secaoSelecionada[item].classList.add("ativo");
 }
 
-if (submenu[0] == true) {
+if (submenu.length > 0 && secaoSelecionada.length > 0) {
   submenu[0].classList.add("sub-menu-selecionado");
+  selecionarTopico(0);
 }
 
 submenu.forEach((item, id) => {

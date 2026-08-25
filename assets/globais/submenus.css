@@ -36,3 +36,23 @@
   color: #ffffff !important;
   border-radius: 0.5rem;
 }
+
+.teste1 {
+  background: var(--secondary-foreground);
+}
+
+.teste2 {
+  background: var(--chart-4);
+}
+
+.teste3 {
+  background: var(--chart-3);
+}
+
+.teste4 {
+  background: var(--foreground);
+}
+
+.teste5 {
+  background: var(--chart-5);
+}
