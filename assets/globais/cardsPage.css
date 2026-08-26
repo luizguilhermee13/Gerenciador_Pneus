@@ -1,0 +1,26 @@
+.containerIndicadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.containerIndicadores .card {
+  background: var(--card);
+  padding: 1.2rem;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.containerIndicadores .card > p {
+  font-size: 1rem;
+}
+
+.containerIndicadores .card > span {
+  font-size: 2rem;
+}

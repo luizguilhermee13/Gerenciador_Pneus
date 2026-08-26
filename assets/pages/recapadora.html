@@ -24,6 +24,11 @@
           ><button class="notificationImg"></button>
         </div>
       </header>
+
+      <button id="btn-hamburguer" class="btn-hamburguer">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
       <nav class="menu" id="menu">
         <div class="logo">
           <i class="fa-solid fa-car" style="color: white"></i>
@@ -53,14 +58,22 @@
       </section>
 
       <main class="containerPrincipal" id="containerPrincipal">
-        <section class="teste1"></section>
-        <section class="teste2"></section>
-        <section class="teste3"></section>
-        <section class="teste4"></section>
-        <section class="teste5"></section>
-        <section class="teste6"></section>
+        <section class="cadastrarColeta"></section>
+        <section class="informarEntrega">
+          <div class="containerIndicadores" id="metricaEntrega"></div>
+        </section>
+        <section class="statusColeta">
+          <div class="containerIndicadores" id="metricaStatus"></div>
+        </section>
+        <section class="historicoColeta"></section>
+        <section class="indicadoresRecapagem">
+          <div class="containerIndicadores" id="indicadoresRecapagem"></div>
+        </section>
+        <section class="dadosRecapagem"></section>
       </main>
     </div>
     <script src="../js_layout/navegacaoTab.js"></script>
+    <script src="../js_layout/sidebar.js"></script>
+    <script src="../js_layout/cardsEstatisticos.js"></script>
   </body>
 </html>
