@@ -1,0 +1,31 @@
+.descriptionPage {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+.descriptionPage span {
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+/*cores da descrição da seção cadastro individual*/
+.cadastroIndividual .descriptionPage {
+  background: var(--bg-blue-50);
+  border: 1px solid var(--border-blue-200);
+}
+
+.cadastroIndividual .descriptionPage h5 {
+  color: var(--text-blue-700);
+}
+
+/*cores da descrição da seção cadastro por quantidade*/
+.cadastroQuantidade .descriptionPage {
+  background: var(--bg-orange-50);
+  border: 1px solid var(--border-orange-200);
+}
+
+.cadastroQuantidade h5 {
+  color: var(--text-orange-700);
+}

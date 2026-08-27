@@ -3,6 +3,7 @@
 @import "assets/globais/submenus.css";
 @import "assets/globais/header.css";
 @import "assets/globais/cardsPage.css";
+@import "assets/css/pneus/formularioPneus.css";
 
 * {
   margin: 0;
@@ -57,4 +58,10 @@ body {
   --sidebar-accent-foreground: #006666;
   --sidebar-border: #dde1e7;
   --sidebar-ring: #009999;
+  --text-blue-700: oklch(48.8% 0.243 264.376);
+  --bg-blue-50: oklch(97% 0.014 254.604);
+  --border-blue-200: oklch(88.2% 0.059 254.128);
+  --text-orange-700: oklch(55.3% 0.195 38.402);
+  --bg-orange-50: oklch(98% 0.016 73.684);
+  --border-orange-200: oklch(90.1% 0.076 70.697);
 }

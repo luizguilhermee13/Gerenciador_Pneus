@@ -1,3 +1,4 @@
+//dados temporarios e ficticios até implementar o banco de dados
 const dadosPneus = [
   { titulo: "Em carro", resultado: 24, cor: "#009999" },
   { titulo: "Borracharia", resultado: 2, cor: "#d97706" },
@@ -10,6 +11,12 @@ const dadosVeiculos = [
   { titulo: "São Francisco", resultado: 224, cor: "#009999" },
   { titulo: "Vitorino", resultado: 202, cor: "#dc2626" },
   { titulo: "Bandeirantes", resultado: 145, cor: "#2563eb" },
+];
+
+const dadosVeiculosGNS = [
+  { titulo: "São Francisco", resultado: 20, cor: "#009999" },
+  { titulo: "Vitorino", resultado: 15, cor: "#dc2626" },
+  { titulo: "Bandeirantes", resultado: 4, cor: "#2563eb" },
 ];
 
 const dadosMovimentacao = [
@@ -86,6 +93,8 @@ const dadosIndicadorSulco = [
   { titulo: "Sulco Médio Final", resultado: 3, cor: "#f59e0b" },
   { titulo: "Custo Estimado", resultado: 3, cor: "#9333ea" },
 ];
+
+// função para renderizar os cards metricos
 function renderizarCards(dados, containerPage) {
   const cards = document.querySelector(containerPage);
 
@@ -102,8 +111,11 @@ function renderizarCards(dados, containerPage) {
   });
 }
 
+//dados ficticios enquanto não estou mexendo com Banco de dados
+
 renderizarCards(dadosPneus, "#indicadoresPneus");
 renderizarCards(dadosVeiculos, "#metricaVeiculos");
+renderizarCards(dadosVeiculosGNS, "#metricaGns");
 renderizarCards(dadosMovimentacao, "#indicadoresMovimentacao");
 renderizarCards(dadosEstoque, "#metricaEstoqueF");
 renderizarCards(dadosEstoque, "#metricaEstoqueD");
