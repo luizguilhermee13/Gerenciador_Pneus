@@ -1,0 +1,83 @@
+.formulario {
+  background: var(--card);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode";
+  line-height: 1.5;
+  font-size: 0.8rem;
+}
+
+.formulario .form-header {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.formulario form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.formulario .form-input.image {
+  grid-column: span 3;
+}
+
+.formulario .form-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario .form-input input,
+.formulario .form-input select {
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.3rem;
+  border: 1px solid var(--border);
+  background: var(--background);
+  opacity: 1;
+  margin-top: 0.2rem;
+  font-size: 1rem;
+  color: black;
+}
+
+.formulario .form-input input::placeholder {
+  color: black;
+}
+
+.shadow {
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.form-header-button button {
+  padding: 0.4rem 1rem;
+  background: var(--ring);
+  color: var(--background);
+  border-radius: 0.5rem;
+  border: none;
+  line-height: calc(1.25 / 0.875);
+}
+
+@media (max-width: 970px) {
+  .formulario form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .formulario .form-input.image {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .formulario form {
+    grid-template-columns: 1fr;
+  }
+  .formulario .form-input.image {
+    grid-column: span 1;
+  }
+}

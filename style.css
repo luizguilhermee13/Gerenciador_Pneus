@@ -3,7 +3,8 @@
 @import "assets/globais/submenus.css";
 @import "assets/globais/header.css";
 @import "assets/globais/cardsPage.css";
-@import "assets/css/pneus/formularioPneus.css";
+@import "assets/css/pneus/pneusDesign.css";
+@import "assets/css/formulario/formularioPneus.css";
 
 * {
   margin: 0;

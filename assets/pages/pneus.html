@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard Pneus</title>
     <link rel="stylesheet" href="../../style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
   <body>
     <div id="container-layout" class="sidebar-open">
@@ -19,10 +16,7 @@
           <span>Visão geral da frota</span>
         </div>
 
-        <div class="header-buttons">
-          <button class="refresh">Atualizar</button
-          ><button class="notificationImg"></button>
-        </div>
+        <div class="header-buttons"><button class="refresh">Atualizar</button><button class="notificationImg"></button></div>
       </header>
 
       <button id="btn-hamburguer" class="btn-hamburguer">
@@ -55,36 +49,233 @@
       </section>
 
       <main class="containerPrincipal" id="containerPrincipal">
+        <!-- Pagina Catalago Pneus -->
         <section class="catalagoPneus">
           <div class="containerIndicadores" id="indicadoresPneus"></div>
         </section>
 
-        <section class="cadastroIndividual">
+        <!-- Pagina Cadastro Individual -->
+        <section class="cadastroIndividual" id="cadastroIndividual">
           <div class="descriptionPage">
             <h5>
-              <span>Cadastro Individual</span> — use para registrar
-              <span>1 único pneu</span> com código de fogo próprio, vinculação a
+              <span>Cadastro Individual</span> — use para registrar <span>1 único pneu</span> com código de fogo próprio, vinculação a
               veículo e dados completos.
             </h5>
           </div>
-          <form action="" method="post"></form>
+
+          <div class="formulario shadow">
+            <div class="form-header">
+              <div class="form-header-titulo">
+                <h2>Cadastrar Pneu Individual</h2>
+                <p>Registre a entrada de um pneu com todas as informações individuais</p>
+              </div>
+              <div class="form-header-button"><button>+ Cadastrar Pneu</button></div>
+            </div>
+
+            <form action="" method="post">
+              <div class="form-input">
+                <label for="nrFogo">Nr. Fogo / Código *</label><input type="text" placeholder="Numero Fogo" name="nrFogo" id="nrFogo" />
+              </div>
+              <div class="form-input">
+                <label for="marca">Marca *</label>
+                <select name="marca" id="marca">
+                  <option value="" disabled selected>Selecionar...</option>
+                  <option value="valor1">Goodyear</option>
+                  <option value="valor2">Michellin</option>
+                  <option value="valor3">Continental</option>
+                  <option value="valor3">Pirelli</option>
+                  <option value="valor3">Bridgestone</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="medida">Medida *</label
+                ><select name="medida" id="medida">
+                  <option value="" disabled selected>Selecione uma opção...</option>
+                  <option value="valor1">275/80R22.5</option>
+                  <option value="valor2">215/75R17.5</option>
+                  <option value="valor3">Outros</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="vida">Vida *</label>
+                <select name="vida" id="vida">
+                  <option value="" disabled selected>Vida Atual</option>
+                  <option value="valor1">N</option>
+                  <option value="valor2">R1</option>
+                  <option value="valor3">R2</option>
+                  <option value="valor3">R3</option>
+                  <option value="valor3">R4</option>
+                  <option value="valor3">R5</option>
+                  <option value="valor3">R6</option>
+                  <option value="valor3">R7</option>
+                  <option value="valor3">R8</option>
+                  <option value="valor3">R9</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="garagem">Garagem / Localização *</label>
+                <select name="garagem" id="garagem">
+                  <option value="" disabled selected>selecione a unidade</option>
+                  <option value="valor1">Itaquera</option>
+                  <option value="valor2">Limeira</option>
+                  <option value="valor3">Tatuapé</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="dot">Nr. DOT / Fabricação</label><input type="text" placeholder="Dot" name="dot" id="dot" />
+              </div>
+              <div class="form-input">
+                <label for="sulco">Sulco Atual (mm)</label><input type="number" placeholder="0" name="sulco" id="sulco" />
+              </div>
+              <div class="form-input">
+                <label for="kmRodado">Km Acumulado</label><input type="number" placeholder="..." name="kmRodado" id="kmRodado" />
+              </div>
+              <div class="form-input">
+                <label for="dateEntrada">Data de Entrada *</label
+                ><input type="date" placeholder="Cod. Numero" name="dateEntrada" id="dateEntrada" />
+              </div>
+              <div class="form-input">
+                <label for="veiculo">Veículo (se já montado)</label>
+                <select name="veiculo" id="veiculo">
+                  <option value="" disabled selected>se montado</option>
+                  <option value="valor1">001</option>
+                  <option value="valor2">002</option>
+                  <option value="valor3">003</option>
+                  <option value="valor3">...</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="posicao">Posição</label>
+                <select name="posicao" id="posicao">
+                  <option value="" disabled selected>se montado</option>
+                  <option value="valor1">DD</option>
+                  <option value="valor2">DE</option>
+                  <option value="valor3">TDE</option>
+                  <option value="valor3">TDI</option>
+                  <option value="valor3">TEE</option>
+                  <option value="valor3">TEI</option>
+                </select>
+              </div>
+
+              <div class="form-input">
+                <label for="responsavel">Responsavel pelo Lançamento </label
+                ><input type="text" placeholder="Responsavel" name="responsavel" id="responsavel" />
+              </div>
+
+              <div class="form-input image">
+                <label for="temp">Temporario</label><input type="text" placeholder="temp" name="temp" id="temp" />
+              </div>
+            </form>
+          </div>
         </section>
 
-        <section class="cadastroQuantidade">
+        <!-- Pagina Cadastro por Quantidade -->
+        <section class="cadastroQuantidade" id="cadastroQuantitativo">
           <div class="descriptionPage">
             <h5>
-              <span>Cadastro por Quantidade</span> — use para registrar um
-              <span>lote de pneus da mesma especificação.</span> Os códigos de
+              <span>Cadastro por Quantidade</span> — use para registrar um <span>lote de pneus da mesma especificação.</span> Os códigos de
               fogo serão gerados automaticamente com prefixo sequencial.
             </h5>
           </div>
-          <form action="" method="post"></form>
+
+          <div class="formulario shadow">
+            <div class="form-header">
+              <div class="form-header-titulo">
+                <h2>Cadastrar Lote de Pneus</h2>
+                <p>Informe as especificações e a quantidade — os Nr. Fogo são gerados automaticamente</p>
+              </div>
+              <div class="form-header-button"><button>+ Cadastrar Pneu</button></div>
+            </div>
+
+            <form action="" method="post">
+              <div class="form-input">
+                <label for="nrFogoLote">Nr. Fogo / Código *</label
+                ><input type="text" placeholder="Sequencia Fogo" name="nrFogoLote" id="nrFogoLote" />
+              </div>
+              <div class="form-input">
+                <label for="qtdPneus">Quantidade de Pneus *</label><input type="number" placeholder="0" name="qtdPneus" id="qtdPneus" />
+              </div>
+              <div class="form-input">
+                <label for="marcaLote">Marca *</label>
+                <select name="marcaLote" id="marcaLote">
+                  <option value="" disabled selected>Selecionar...</option>
+                  <option value="valor1">Goodyear</option>
+                  <option value="valor2">Michellin</option>
+                  <option value="valor3">Continental</option>
+                  <option value="valor3">Pirelli</option>
+                  <option value="valor3">Bridgestone</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="medidaLote">Medida *</label
+                ><select name="medidaLote" id="medidaLote">
+                  <option value="" disabled selected>Selecione uma opção...</option>
+                  <option value="valor1">275/80R22.5</option>
+                  <option value="valor2">215/75R17.5</option>
+                  <option value="valor3">Outros</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="vidaLote">Vida *</label>
+                <select name="vidaLote" id="vidaLote">
+                  <option value="" disabled selected>Vida Atual</option>
+                  <option value="valor1">N</option>
+                  <option value="valor2">R1</option>
+                  <option value="valor3">R2</option>
+                  <option value="valor3">R3</option>
+                  <option value="valor3">R4</option>
+                  <option value="valor3">R5</option>
+                  <option value="valor3">R6</option>
+                  <option value="valor3">R7</option>
+                  <option value="valor3">R8</option>
+                  <option value="valor3">R9</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="garagemLote">Garagem / Localização *</label>
+                <select name="garagemLote" id="garagemLote">
+                  <option value="" disabled selected>selecione a unidade</option>
+                  <option value="valor1">Itaquera</option>
+                  <option value="valor2">Limeira</option>
+                  <option value="valor3">Tatuapé</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="dotLote">Nr. DOT / Fabricação</label><input type="text" placeholder="Dot" name="dotLote" id="dotLote" />
+              </div>
+              <div class="form-input">
+                <label for="sulcoLote">Sulco Atual (mm)</label><input type="number" placeholder="0" name="sulcoLote" id="sulcoLote" />
+              </div>
+              <div class="form-input">
+                <label for="kmRodadoLote">Km Acumulado</label
+                ><input type="number" placeholder="..." name="kmRodadoLote" id="kmRodadoLote" />
+              </div>
+
+              <div class="form-input">
+                <label for="dateEntradaLote">Data de Entrada *</label
+                ><input type="date" placeholder="Cod. Numero" name="dateEntradaLote" id="dateEntradaLote" />
+              </div>
+
+              <div class="form-input">
+                <label for="responsavelLote">Responsavel pelo Lançamento </label
+                ><input type="text" placeholder="Responsavel" name="responsavelLote" id="responsavelLote" />
+              </div>
+
+              <div class="form-input">
+                <label for="fornecedorLote">Fornecedor</label
+                ><input type="text" placeholder="Fornecedor" name="fornecedorLote" id="fornecedorLote" />
+              </div>
+
+              <div class="form-input image">
+                <label for="tempLote">Temporario</label><input type="text" placeholder="temp" name="tempLote" id="tempLote" />
+              </div>
+            </form>
+          </div>
         </section>
       </main>
     </div>
     <script src="../js_layout/navegacaoTab.js"></script>
     <script src="../js_layout/sidebar.js"></script>
-    <script src="../js_layout/cardsEstatisticos.js"></script>
     <script src="../js_layout/cardsEstatisticos.js"></script>
   </body>
 </html>

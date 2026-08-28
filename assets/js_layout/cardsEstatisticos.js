@@ -1,4 +1,3 @@
-//dados temporarios e ficticios até implementar o banco de dados
 const dadosPneus = [
   { titulo: "Em carro", resultado: 24, cor: "#009999" },
   { titulo: "Borracharia", resultado: 2, cor: "#d97706" },
