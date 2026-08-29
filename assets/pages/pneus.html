@@ -52,6 +52,25 @@
         <!-- Pagina Catalago Pneus -->
         <section class="catalagoPneus">
           <div class="containerIndicadores" id="indicadoresPneus"></div>
+          <div class="catalagoPneus formulario">
+            <table id="catalagoPneus">
+              <thead>
+                <tr>
+                  <th scope="col">Nr. Fogo</th>
+                  <th scope="col">Medida</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Vida</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Garagem</th>
+                  <th scope="col">Posição</th>
+                  <th scope="col">Sulco</th>
+                  <th scope="col">Km</th>
+                </tr>
+              </thead>
+              <tbody id="conteudoCatalago"></tbody>
+            </table>
+            <div class="painelPneus" id="painel-lateral"></div>
+          </div>
         </section>
 
         <!-- Pagina Cadastro Individual -->
@@ -274,8 +293,9 @@
         </section>
       </main>
     </div>
-    <script src="../js_layout/navegacaoTab.js"></script>
-    <script src="../js_layout/sidebar.js"></script>
-    <script src="../js_layout/cardsEstatisticos.js"></script>
+    <script src="../js/js_layout/navegacaoTab.js"></script>
+    <script src="../js/js_layout/sidebar.js"></script>
+    <script src="../js/js_layout/cardsEstatisticos.js"></script>
+    <script src="../js/pneusJS/catalago.js"></script>
   </body>
 </html>

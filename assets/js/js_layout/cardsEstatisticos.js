@@ -1,9 +1,9 @@
 const dadosPneus = [
-  { titulo: "Em carro", resultado: 24, cor: "#009999" },
-  { titulo: "Borracharia", resultado: 2, cor: "#d97706" },
-  { titulo: "Almoxarifado", resultado: 1, cor: "#16a34a" },
-  { titulo: "Recapadora", resultado: 1, cor: "#2563eb" },
-  { titulo: "Sucata", resultado: 10, cor: "#dc2626" },
+  { titulo: "Em carro", resultado: 24, cor: "#009999", id: "emCarro" },
+  { titulo: "Borracharia", resultado: 2, cor: "#d97706", id: "borracharia" },
+  { titulo: "Almoxarifado", resultado: 1, cor: "#16a34a", id: "almoxarifado" },
+  { titulo: "Recapadora", resultado: 1, cor: "#2563eb", id: "recapadora" },
+  { titulo: "Sucata", resultado: 10, cor: "#dc2626", id: "sucata" },
 ];
 
 const dadosVeiculos = [
@@ -102,7 +102,7 @@ function renderizarCards(dados, containerPage) {
   cards.innerHTML = "";
 
   dados.forEach((item) => {
-    const cardHTML = `<div class="card" style="color: ${item.cor};">
+    const cardHTML = `<div class="card" id="${item.id}" style="color: ${item.cor}">
            <p>${item.titulo}</p>
            <span>${item.resultado}</span>
         </div>`;
