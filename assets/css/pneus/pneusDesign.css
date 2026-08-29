@@ -33,27 +33,37 @@
 
 /*Estilizano section catalago de pneus*/
 
-.catalagoPneus.formulario {
+.layout-catalogo {
   display: grid;
   grid-template-columns: 2.3fr 1fr;
   gap: 0.5rem;
   padding: 0.4rem;
 }
 
-.catalagoPneus.formulario thead {
+.layout-catalogo thead {
   background: var(--ring);
   color: #ffffff;
   border-radius: 0.2rem;
 }
-.catalagoPneus.formulario tbody {
+.layout-catalogo tbody {
   text-align: center;
 }
 
-.catalagoPneus.formulario tbody tr {
+.layout-catalogo tbody tr {
   cursor: pointer;
+  background: var(--card, #ffffff);
+  border-radius: 0.5rem;
 }
 
 /*Estilizano o painel do catalago de pneus*/
+
+.painelPneus {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
 
 .painelPneus .painel-header {
   display: flex;
