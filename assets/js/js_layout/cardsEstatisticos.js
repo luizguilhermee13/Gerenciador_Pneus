@@ -1,3 +1,11 @@
+const dadosDashboard = [
+  { titulo: "Total no Sistema", resultado: 4.935, cor: "#009999", id: "emCarro" },
+  { titulo: "Em Carros", resultado: 3.065, cor: "#16a34a", id: "borracharia" },
+  { titulo: "Na Recapagem", resultado: 691, cor: "#2563eb", id: "almoxarifado" },
+  { titulo: "Sucatas p/ Baixa", resultado: 171, cor: "#dc2626", id: "recapadora" },
+  { titulo: "Sulco Crítico ≤4mm", resultado: 88, cor: "#d97706", id: "sucata" },
+];
+
 const dadosPneus = [
   { titulo: "Em carro", resultado: 24, cor: "#009999", id: "emCarro" },
   { titulo: "Borracharia", resultado: 2, cor: "#d97706", id: "borracharia" },
@@ -112,6 +120,7 @@ function renderizarCards(dados, containerPage) {
 
 //dados ficticios enquanto não estou mexendo com Banco de dados
 
+renderizarCards(dadosDashboard, "#metricaDashBoard");
 renderizarCards(dadosPneus, "#indicadoresPneus");
 renderizarCards(dadosVeiculos, "#metricaVeiculos");
 renderizarCards(dadosVeiculosGNS, "#metricaGns");

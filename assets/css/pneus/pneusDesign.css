@@ -38,13 +38,30 @@
   grid-template-columns: 2.3fr 1fr;
   gap: 0.5rem;
   padding: 0.4rem;
+  overflow: hidden;
+}
+
+.layout-catalogo #catalagoPneus {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  background: var(--card, #ffffff);
 }
 
 .layout-catalogo thead {
   background: var(--ring);
   color: #ffffff;
-  border-radius: 0.2rem;
 }
+
 .layout-catalogo tbody {
   text-align: center;
 }
@@ -53,6 +70,17 @@
   cursor: pointer;
   background: var(--card, #ffffff);
   border-radius: 0.5rem;
+}
+
+.layout-catalogo tbody tr:nth-child(even) {
+  background: var(--bg-green-50);
+}
+
+.layout-catalogo tbody tr:hover {
+  background: var(--bg-orange-50);
+}
+.layout-catalogo tbody td {
+  padding: 0.5rem 0.2rem;
 }
 
 /*Estilizano o painel do catalago de pneus*/
@@ -93,4 +121,10 @@
   align-items: center;
   border-bottom: 1px solid var(--switch-background);
   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 1350px) {
+  .layout-catalogo {
+    grid-template-columns: 1fr;
+  }
 }

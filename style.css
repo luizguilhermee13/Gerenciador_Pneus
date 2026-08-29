@@ -65,4 +65,5 @@ body {
   --text-orange-700: oklch(55.3% 0.195 38.402);
   --bg-orange-50: oklch(98% 0.016 73.684);
   --border-orange-200: oklch(90.1% 0.076 70.697);
+  --bg-green-50: oklch(94.935% 0.02934 191.642 / 0.896);
 }
