@@ -128,3 +128,27 @@
     grid-template-columns: 1fr;
   }
 }
+
+/*Estilizano a barra de pesquisa dos pneus*/
+.searchPneus {
+  display: grid;
+  grid-template-columns: 10fr 2fr;
+  gap: 0.5rem;
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.searchSelect {
+  display: flex;
+  justify-content: space-around;
+}
+
+.searchPneus input,
+.searchPneus select {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--background);
+  font-size: large;
+}
