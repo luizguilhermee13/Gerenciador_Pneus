@@ -1,5 +1,5 @@
 //dados ficticios até a implementar o BD
-const listaPneus = [
+export const listaPneus = [
   {
     nrFogo: "MBR-1001",
     marca: "Bridgestone",
@@ -126,7 +126,8 @@ const tbody = document.getElementById("conteudoCatalago");
 const painel = document.getElementById("painel-lateral");
 
 //usando o id de cada objeto como parametro, pega o objeto todo e joga dentro do painel lateral
-function renderizarPainelDetalhes(pneu) {
+export function renderizarPainel(pneu) {
+  if (!painel) return;
   painel.innerHTML = `
     <div class="painel-card">
       <div class="painel-header">
@@ -171,29 +172,32 @@ function renderizarPainelDetalhes(pneu) {
 }
 
 //pegando os dados do objeto listaPneus -> criando os tr e td e jogando dentro do tbody/tela
-document.addEventListener("DOMContentLoaded", () => {
-  listaPneus.forEach((item) => {
-    const tr = document.createElement("tr");
-    tr.setAttribute("id", item.nrFogo);
+export function renderizarCatalago() {
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!tbody) return;
+    listaPneus.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.setAttribute("id", item.nrFogo);
 
-    tr.innerHTML = `
-      <td class="p-3 font-bold text-teal-600">${item.nrFogo}</td>
-      <td class="p-3 font-semibold text-amber-600">${item.medida}</td>
-      <td class="p-3">${item.marca}</td>
-      <td class="p-3">${item.vida}</td>
-      <td class="p-3">${item.status}</td>
-      <td class="p-3">${item.garagem}</td>
-      <td class="p-3">${item.posicao}</td>
-      <td class="p-3 font-semibold text-amber-600">${item.sulco}</td>
-      <td class="p-3">${item.km}</td>`;
+      tr.innerHTML = `
+      <td>${item.nrFogo}</td>
+      <td>${item.medida}</td>
+      <td>${item.marca}</td>
+      <td>${item.vida}</td>
+      <td>${item.status}</td>
+      <td>${item.garagem}</td>
+      <td>${item.posicao}</td>
+      <td>${item.sulco}</td>
+      <td>${item.km}</td>`;
 
-    tr.addEventListener("click", () => {
-      renderizarPainelDetalhes(item);
+      tr.addEventListener("click", () => {
+        renderizarPainel(item);
+      });
+
+      tbody.appendChild(tr);
     });
-
-    tbody.appendChild(tr);
   });
-});
+}
 
 //pegando o quantitativo de cada status para colocar no card - temporario
 let emCarro = 0;
@@ -202,36 +206,38 @@ let almoxarifado = 0;
 let recapadora = 0;
 let sucateado = 0;
 
-listaPneus.forEach((pneu) => {
-  if (pneu.status.toLowerCase() == "em carro") {
-    return emCarro++;
-  }
+export function contador(listaPneus) {
+  listaPneus.forEach((pneu) => {
+    if (pneu.status.toLowerCase() == "em carro") {
+      return emCarro++;
+    }
 
-  if (pneu.status.toLowerCase() == "borracharia") {
-    return borracharia++;
-  }
+    if (pneu.status.toLowerCase() == "borracharia") {
+      return borracharia++;
+    }
 
-  if (pneu.status.toLowerCase() == "almoxarifado") {
-    return almoxarifado++;
-  }
+    if (pneu.status.toLowerCase() == "almoxarifado") {
+      return almoxarifado++;
+    }
 
-  if (pneu.status.toLowerCase() == "recapadora") {
-    return recapadora++;
-  }
+    if (pneu.status.toLowerCase() == "recapadora") {
+      return recapadora++;
+    }
 
-  if (pneu.status.toLowerCase() == "sucata") {
-    return sucateado++;
-  }
-});
+    if (pneu.status.toLowerCase() == "sucata") {
+      return sucateado++;
+    }
+  });
 
-let metricaPneuCarro = document.querySelector("#emCarro span");
-let metricaPneuBorracharia = document.querySelector("#borracharia span");
-let metricaPneuAlmoxarifado = document.querySelector("#almoxarifado span");
-let metricaPneuRecapagem = document.querySelector("#recapadora span");
-let metricaPneuSucatado = document.querySelector("#sucata span");
+  let metricaPneuCarro = document.querySelector("#emCarro span");
+  let metricaPneuBorracharia = document.querySelector("#borracharia span");
+  let metricaPneuAlmoxarifado = document.querySelector("#almoxarifado span");
+  let metricaPneuRecapagem = document.querySelector("#recapadora span");
+  let metricaPneuSucatado = document.querySelector("#sucata span");
 
-metricaPneuCarro.innerHTML = emCarro;
-metricaPneuBorracharia.innerHTML = borracharia;
-metricaPneuAlmoxarifado.innerHTML = almoxarifado;
-metricaPneuRecapagem.innerHTML = recapadora;
-metricaPneuSucatado.innerHTML = sucateado;
+  metricaPneuCarro.innerHTML = emCarro;
+  metricaPneuBorracharia.innerHTML = borracharia;
+  metricaPneuAlmoxarifado.innerHTML = almoxarifado;
+  metricaPneuRecapagem.innerHTML = recapadora;
+  metricaPneuSucatado.innerHTML = sucateado;
+}
