@@ -52,17 +52,91 @@
       </section>
 
       <main class="containerPrincipal" id="containerPrincipal">
-        <section class="cadastrarColeta"></section>
+        <!-- Pagina Cadastrar Coletas -->
+        <section class="cadastrarColeta">
+          <form action="" method="post" class="formulario">
+            <fieldset class="form-header">
+              <div>
+                <h2>Cadastrar Coleta</h2>
+                <span>Registre os pneus coletados pela reformadora com foto da nota</span>
+              </div>
+              <button class="buttonColeta">+ Lançar Coleta</button>
+            </fieldset>
+            <fieldset class="form-body">
+              <div class="dadosColeta">
+                <div class="form-input">
+                  <label for="id_coleta">Numero da Coleta</label>
+                  <input type="number" placeholder="6 digitos" id="id_coleta" name="id_coleta" />
+                </div>
+                <div class="form-input">
+                  <label for="id_recapadora">Reformadora</label>
+                  <select name="id_recapadora" id="id_recapadora">
+                    <option value="" disabled selected>Selecionar Reformadora</option>
+                    <option value="">JBQ Pneus</option>
+                    <option value="">Jacar Pneus</option>
+                  </select>
+                </div>
+                <div class="form-input">
+                  <label for="id_dataColeta">Data da Coleta</label>
+                  <input type="date" placeholder="DD/MM/AAAA" id="id_dataColeta" name="id_dataColeta" />
+                </div>
+                <div class="form-input">
+                  <label for="id_garagemColeta">Garagem</label>
+                  <select name="id_garagemColeta" id="id_garagemColeta">
+                    <option value="" disabled selected>Selecionar Garagem</option>
+                    <option value="">Itaquera</option>
+                    <option value="">Limeira</option>
+                    <option value="">Juiz de Fora</option>
+                  </select>
+                </div>
+              </div>
+              <div class="imageColeta">
+                <label for="EnviarFoto">Enviar Foto</label>
+                <input type="file" name="EnviarFoto" id="EnviarFoto" placeholder="EnviarFoto" />
+              </div>
+            </fieldset>
+
+            <fieldset class="form-footer">
+              <table id="addPneu">
+                <thead>
+                  <tr>
+                    <th scope="col">Nr. Fogo</th>
+                    <th scope="col">Garagem</th>
+                    <th scope="col">Medida</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Vida</th>
+                    <th scope="col">Sulco</th>
+                    <th scope="col">Serviço</th>
+                    <th scope="col">Valor</th>
+                  </tr>
+                </thead>
+                <tbody id="addPneuList"></tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="8">
+                      <button id="addManualmente" type="button">Adicionar Pneus</button>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </fieldset>
+          </form>
+        </section>
+        <!-- Pagina informar Entrega de pneus coletados -->
         <section class="informarEntrega">
           <div class="containerIndicadores" id="metricaEntrega"></div>
         </section>
+        <!-- Pagina status reformadora x garagem -->
         <section class="statusColeta">
           <div class="containerIndicadores" id="metricaStatus"></div>
         </section>
+        <!-- Pagina historico de envio e recebimento dos Pneus -->
         <section class="historicoColeta"></section>
+        <!-- Pagina indicadores recapagem -->
         <section class="indicadoresRecapagem">
           <div class="containerIndicadores" id="indicadoresRecapagem"></div>
         </section>
+        <!-- Pagina sobre as reformadoras -->
         <section class="dadosRecapagem"></section>
       </main>
     </div>

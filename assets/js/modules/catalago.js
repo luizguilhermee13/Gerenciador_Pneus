@@ -235,6 +235,10 @@ export function contador(listaPneus) {
   let metricaPneuRecapagem = document.querySelector("#recapadora span");
   let metricaPneuSucatado = document.querySelector("#sucata span");
 
+  if (!metricaPneuCarro || !metricaPneuBorracharia || !metricaPneuAlmoxarifado || !metricaPneuRecapagem || !metricaPneuSucatado) {
+    return;
+  }
+
   metricaPneuCarro.innerHTML = emCarro;
   metricaPneuBorracharia.innerHTML = borracharia;
   metricaPneuAlmoxarifado.innerHTML = almoxarifado;

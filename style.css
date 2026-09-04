@@ -5,6 +5,7 @@
 @import "assets/globais/cardsPage.css";
 @import "assets/css/pneus/pneusDesign.css";
 @import "assets/css/formulario/formularioPneus.css";
+@import "assets/css/recapadora/cadastrarColeta.css";
 
 * {
   margin: 0;
