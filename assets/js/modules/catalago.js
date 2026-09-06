@@ -73,7 +73,7 @@ export const listaPneus = [
     status: "Almoxarifado",
     garagem: "Itaquera",
     posicao: "—",
-    sulco: 17.5,
+    sulco: 6,
     km: "0",
     medida: "295/80 R22.5",
     entrada: "20/02/2026",

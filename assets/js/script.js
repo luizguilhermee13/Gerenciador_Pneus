@@ -31,9 +31,19 @@ cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferire, "#conferirEs
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosSulcos, "#metricaSucateado");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosIndicadorSulco, "#indicadorSucateado");
 
-// 2. Renderiza os cards de Sulcos calculados dinamicamente com base na lista de pneus real
+//Renderizando os cards de Sulcos calculados dinamicamente com base no objeto listaPneus.
 const dadosSulcosDinamicos = cardsEstatisticos.calcularDadosSulcoDinamico(catalago.listaPneus);
 cardsEstatisticos.renderizarCards(dadosSulcosDinamicos, "#IndicadorSulco");
 
-// 3. Renderiza o gráfico de sulcos
-indicador.indicadorSulco(catalago.listaPneus);
+//para evitar erros estou deixando os nomes da garagem em minusculo para filtrar certo em pneu.garagem no objeto listaPneus
+
+const pneusItaquera = catalago.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase() === "itaquera");
+const pneusLimeira = catalago.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase() === "limeira");
+const pneusJuizDeFora = catalago.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase().includes("juiz"));
+
+indicador.criarGraficoPneus(pneusItaquera, ".graphSulGaragem-1", "sulco", "Sulcos - Itaquera");
+indicador.criarGraficoPneus(pneusLimeira, ".graphSulGaragem-2", "sulco", "Sulcos - Limeira");
+indicador.criarGraficoPneus(pneusJuizDeFora, ".graphSulGaragem-3", "sulco", "Sulcos - Juiz de Fora");
+
+indicador.criarGraficoPneus(catalago.listaPneus, ".graphSulcoTotal", "sulco", "Sulcos por Quantidade Total");
+indicador.criarGraficoPneus(catalago.listaPneus, ".graphSulcoVida", "status", "Quantidade de Pneus por Status");

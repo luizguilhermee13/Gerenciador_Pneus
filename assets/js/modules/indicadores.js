@@ -1,78 +1,111 @@
-export function indicadorSulco(listaPneus) {
-  const canvasElement = document.querySelector(".indicadorsulco-1");
+/*para criar o grafico é passado o objeto que futuramente vira do bd, o ID da tag canvas, 
+o que eu quero pegar do objeto,por exemplo, sulco,vida,medida etc... 
+e por fim o titulo que vou colocar no grafico*/
 
+export function criarGraficoPneus(listaPneus, identificador, tipoFiltro, tituloGrafico) {
+  const canvasElement = document.querySelector(identificador);
   if (!canvasElement) return;
 
   const ctx = canvasElement.getContext("2d");
 
-  if (!canvasElement) return;
-  const contagemSulcos = listaPneus.reduce((acumulador, item) => {
-    const sulco = Math.round(item.sulco); // Arredondando o sulco para ter numeros inteiros apenas
+  // logica de agrupamento genérica baseada no filtro passado por parâmetro - ex. pneu.garagem , pneu.sulco etc...
+  const contagemDados = listaPneus.reduce((acumulador, item) => {
+    let chave = item[tipoFiltro];
 
-    // usando o sulco como indice para adicionar +1 em cada um dos 18 indices que deve ter
-    acumulador[sulco] = (acumulador[sulco] || 0) + 1;
+    // Se o filtro for o sulco, arredondamos para inteiro
+    if (tipoFiltro === "sulco") {
+      chave = Math.round(chave);
+    }
 
+    // Se não tiver a informação, tratamos como "Outros"
+    if (!chave) chave = "Outros";
+
+    acumulador[chave] = (acumulador[chave] || 0) + 1;
     return acumulador;
-  }, {}); // utilizando objeto para transformar em um array
+  }, {});
 
-  const labelsGrafico = Array.from({ length: 18 }, (_, i) => i + 1);
+  // 2. Definimos os labels e os dados dinamicamente com base nas chaves encontradas ou num padrão
+  let labelsGrafico = Object.keys(contagemDados);
 
-  // Transformando em array para usar no grafico/data -> percorro pelo indices do objeto que criei acima é pego os valores, caso não exista = 0
-  const dadosGrafico = labelsGrafico.map((sulco) => {
-    return contagemSulcos[sulco] || 0;
+  // Se for sulco, garantimos que exiba de 1 a 18 igual ao seu original
+  if (tipoFiltro === "sulco") {
+    labelsGrafico = Array.from({ length: 18 }, (_, i) => i + 1);
+  }
+
+  const dadosGrafico = labelsGrafico.map((label) => {
+    return contagemDados[label] || 0;
   });
 
+  // padrozinando corres paras backgroud e border caso o grafico seja referente ao sulco
+  const coresBackgroundSulco = [
+    "rgba(220, 38, 38, 0.8)",
+    "rgba(220, 38, 38, 0.8)",
+    "rgba(220, 38, 38, 0.8)",
+    "rgba(220, 38, 38, 0.8)",
+    "rgba(234, 88, 12, 0.8)",
+    "rgba(234, 88, 12, 0.8)",
+    "rgba(234, 88, 12, 0.8)",
+    "rgba(22, 163, 74, 0.8)",
+    "rgba(22, 163, 74, 0.8)",
+    "rgba(22, 163, 74, 0.8)",
+    "rgba(0, 153, 153, 0.8)",
+    "rgba(0, 153, 153, 0.8)",
+    "rgba(0, 153, 153, 0.8)",
+    "rgba(0, 153, 153, 0.8)",
+    "rgba(0, 153, 153, 0.8)",
+    "rgba(0, 153, 153, 0.8)",
+    "rgba(0, 153, 153, 0.8)",
+    "rgba(0, 153, 153, 0.8)",
+  ];
+
+  const coresBorderSulco = [
+    "rgb(220, 38, 38)",
+    "rgb(220, 38, 38)",
+    "rgb(220, 38, 38)",
+    "rgb(220, 38, 38)",
+    "rgb(234, 88, 12)",
+    "rgb(234, 88, 12)",
+    "rgb(234, 88, 12)",
+    "rgb(22, 163, 74)",
+    "rgb(22, 163, 74)",
+    "rgb(22, 163, 74)",
+    "rgb(0, 153, 153)",
+    "rgb(0, 153, 153)",
+    "rgb(0, 153, 153)",
+    "rgb(0, 153, 153)",
+    "rgb(0, 153, 153)",
+    "rgb(0, 153, 153)",
+    "rgb(0, 153, 153)",
+    "rgb(0, 153, 153)",
+  ];
+
+  // padronizando cores parão para caso eu crie um grafico de barras que não seja referente ao sulco dos pneus
+  const backgroundColorFinal = tipoFiltro === "sulco" ? coresBackgroundSulco : "rgba(0, 153, 153, 0.8)";
+  const borderColorFinal = tipoFiltro === "sulco" ? coresBorderSulco : "rgb(0, 153, 153)";
+
+  // montagem do Gráfico com Chart.js - barras
   var chartGraph = new Chart(ctx, {
     type: "bar",
     data: {
       labels: labelsGrafico,
       datasets: [
         {
-          label: "Sulcos por Quantidade",
+          label: tituloGrafico,
           data: dadosGrafico,
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(201, 203, 207, 0.2)",
-            "rgba(205, 19, 132, 0.2)",
-            "rgba(115, 39, 14, 0.2)",
-            "rgba(05, 205, 86, 0.2)",
-            "rgba(275, 002, 252, 0.2)",
-            "rgba(0, 0, 235, 0.2)",
-            "rgba(153, 102, 0, 0.2)",
-            "rgba(0, 203, 0, 0.2)",
-            "rgba(075, 102, 112, 0.2)",
-            "rgba(0, 0, 0, 0.2)",
-            "rgba(255, 252, 0, 0.2)",
-            "rgba(05, 53, 50, 0.2)",
-          ],
-          borderColor: [
-            "rgb(255, 99, 132)",
-            "rgb(255, 159, 64)",
-            "rgb(255, 205, 86)",
-            "rgb(75, 192, 192)",
-            "rgb(54, 162, 235)",
-            "rgb(153, 102, 255)",
-            "rgb(201, 203, 207)",
-            "rgb(205, 19, 132)",
-            "rgb(115, 39, 14)",
-            "rgb(05, 205, 86)",
-            "rgb(275, 002, 252)",
-            "rgb(0, 0, 235)",
-            "rgb(153, 102, 0)",
-            "rgb(0, 203, 0)",
-            "rgb(075, 102, 112)",
-            "rgb(0, 0, 0)",
-            "rgb(255, 252, 0)",
-            "rgb(05, 53, 50)",
-          ],
+          backgroundColor: backgroundColorFinal,
+          borderColor: borderColorFinal,
           borderWidth: 1,
         },
       ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
     },
   });
 }

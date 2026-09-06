@@ -38,7 +38,6 @@
   grid-template-columns: 2.3fr 1fr;
   gap: 0.5rem;
   padding: 0.4rem;
-  overflow: hidden;
 }
 
 .layout-catalogo #catalagoPneus {
