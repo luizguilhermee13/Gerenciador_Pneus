@@ -3,9 +3,11 @@
 @import "assets/globais/submenus.css";
 @import "assets/globais/header.css";
 @import "assets/globais/cardsPage.css";
+@import "assets/globais/formulario.css";
+
 @import "assets/css/pneus/pneusDesign.css";
-@import "assets/css/formulario/formularioPneus.css";
 @import "assets/css/recapadora/cadastrarColeta.css";
+@import "assets/css/graficos/indicadores.css";
 
 * {
   margin: 0;

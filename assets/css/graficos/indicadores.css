@@ -1,0 +1,21 @@
+.indicadores-container {
+  background: var(--card);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode";
+  line-height: 1.5;
+  font-size: 0.8rem;
+}
+
+.indicadores-container .indicador-sulco-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.indicadores-container .indicador-sulco canvas {
+  width: 100%;
+}
