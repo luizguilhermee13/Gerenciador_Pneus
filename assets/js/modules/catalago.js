@@ -50,13 +50,12 @@ export function renderizarPainel(pneu) {
 //catalago de pneus no sistema
 //pegando os dados do objeto listaPneus -> criando os tr e td e jogando dentro do tbody/tela
 export function renderizarCatalago(listaPneus) {
-  document.addEventListener("DOMContentLoaded", () => {
-    if (!tbody) return;
-    listaPneus.forEach((item) => {
-      const tr = document.createElement("tr");
-      tr.setAttribute("id", item.nrFogo);
+  if (!tbody) return;
+  listaPneus.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.setAttribute("id", item.nrFogo);
 
-      tr.innerHTML = `
+    tr.innerHTML = `
       <td>${item.nrFogo}</td>
       <td>${item.medida}</td>
       <td>${item.marca}</td>
@@ -67,12 +66,11 @@ export function renderizarCatalago(listaPneus) {
       <td>${item.sulco}</td>
       <td>${item.km}</td>`;
 
-      tr.addEventListener("click", () => {
-        renderizarPainel(item);
-      });
-
-      tbody.appendChild(tr);
+    tr.addEventListener("click", () => {
+      renderizarPainel(item);
     });
+
+    tbody.appendChild(tr);
   });
 }
 
@@ -81,17 +79,16 @@ const tbodyCarros = document.getElementById("CatalagoCarros");
 const tbodyCarros2 = document.getElementById("CatalagoCarros2");
 
 export function renderizarCatalagoCarros(listaCarros) {
-  document.addEventListener("DOMContentLoaded", () => {
-    if (!tbodyCarros || !tbodyCarros2) return;
+  if (!tbodyCarros || !tbodyCarros2) return;
 
-    tbodyCarros.innerHTML = "";
-    tbodyCarros2.innerHTML = "";
+  tbodyCarros.innerHTML = "";
+  tbodyCarros2.innerHTML = "";
 
-    listaCarros.forEach((item) => {
-      const tr = document.createElement("tr");
-      tr.setAttribute("id", item.prefixo);
+  listaCarros.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.setAttribute("id", item.prefixo);
 
-      tr.innerHTML = `
+    tr.innerHTML = `
       <td>${item.prefixo}</td>
       <td>${item.garagem}</td>
       <td>${item.tamanho}</td>
@@ -100,15 +97,70 @@ export function renderizarCatalagoCarros(listaCarros) {
       <td>${item.posicao}</td>
       <td>${item.status}</td>`;
 
-      tr.addEventListener("click", () => {
-        alert("teste");
-      });
-
-      if (item.status == "ativo") {
-        tbodyCarros.appendChild(tr);
-      } else if (item.status == "gns") {
-        tbodyCarros2.appendChild(tr);
-      }
+    tr.addEventListener("click", () => {
+      alert("teste");
     });
+
+    if (item.status == "ativo") {
+      tbodyCarros.appendChild(tr);
+    } else if (item.status == "gns") {
+      tbodyCarros2.appendChild(tr);
+    }
+  });
+}
+
+//catalago de Sucateados no sistema
+const tbodySucatas = document.getElementById("catalagoSucatas");
+
+export function renderizarHistoricoSucatas(listaPneus) {
+  if (!tbodySucatas) return;
+
+  tbodySucatas.innerHTML = "";
+
+  listaPneus.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.setAttribute("id", item.nrFogo);
+
+    if (item.motivoRecusa != null)
+      tr.innerHTML = `
+       <td>${item.nrFogo}</td>
+      <td>${item.medida}</td>
+      <td>${item.marca}</td>
+      <td>${item.vida}</td>
+      <td>${item.motivoRecusa}</td>
+      <td>${item.garagem}</td>
+      <td>${item.posicao}</td>
+      <td>${item.dataRecusa}</td>`;
+
+    tr.addEventListener("click", () => {
+      alert("teste");
+    });
+
+    tbodySucatas.appendChild(tr);
+  });
+}
+
+const tbodyBaseSucatas = document.getElementById("catalagoSucatasB");
+
+export function renderizarCatalagoSucatas(baseRecusada) {
+  if (!tbodyBaseSucatas) return;
+
+  tbodyBaseSucatas.innerHTML = "";
+
+  baseRecusada.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.setAttribute("id", item.codigoRecusa);
+
+    tr.innerHTML = `
+       <td>${item.codigoRecusa}</td>
+       <td>${item.motivo}</td>
+       <td>${item.motivoSistema}</td>
+       <td>${item.local}</td>`;
+
+    tr.addEventListener("click", () => {
+      alert("teste");
+    });
+
+    tbodyBaseSucatas.appendChild(tr);
   });
 }

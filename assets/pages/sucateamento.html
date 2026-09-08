@@ -50,11 +50,73 @@
       </section>
 
       <main class="containerPrincipal" id="containerPrincipal">
+        <!-- Pagina Sucatas - historico das sucatas -->
         <section class="historicoSucatas">
           <div class="containerIndicadores" id="metricaSucateado"></div>
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h3>Histórico de Sucateamentos</h3>
+                <p>10 registros mais recentes</p>
+              </div>
+              <div class="form-titulo-button"><button>+ Novo Registro</button></div>
+            </div>
+
+            <div class="searchPneus grid-1">
+              <input type="text" placeholder="Buscar por Nr. Fogo ou motivo" />
+            </div>
+
+            <div class="table-container">
+              <table id="catalagoSucateados">
+                <thead>
+                  <tr>
+                    <th scope="col">Nr. Fogo</th>
+                    <th scope="col">Medida</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Vida</th>
+                    <th scope="col">Motivo</th>
+                    <th scope="col">Garagem</th>
+                    <th scope="col">Sulco</th>
+                    <th scope="col">Data</th>
+                  </tr>
+                </thead>
+                <tbody id="catalagoSucatas"></tbody>
+              </table>
+            </div>
+          </div>
         </section>
+
+        <!-- Pagina Sucatas - informar sucateamenteo -->
         <section class="infoSucateamento"></section>
-        <section class="baseMotivos"></section>
+
+        <!-- Pagina Sucatas - base motivo das sucatas -->
+        <section class="baseMotivos">
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h3>Base de Motivos de Sucata</h3>
+                <p>Códigos internos utilizados no registro de descarte</p>
+              </div>
+              <div class="form-titulo-button"><button>Adicionar Motivo</button></div>
+            </div>
+
+            <div class="table-container">
+              <table id="catalagoSucateados">
+                <thead>
+                  <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Grupo</th>
+                    <th scope="col">local</th>
+                  </tr>
+                </thead>
+                <tbody id="catalagoSucatasB"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Pagina Sucatas - indicadores das sucatas -->
         <section class="indicadoresSucata">
           <div class="containerIndicadores" id="indicadorSucateado"></div>
         </section>

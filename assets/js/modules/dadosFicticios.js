@@ -1,4 +1,76 @@
 //dados ficticios até a implementar o BD
+export const baseRecusada = [
+  {
+    codigoRecusa: "MBR 01",
+    local: "Banda de rodagem",
+    motivo: "Rodagem com baixa pressão ou vazia (degradação parcial e/ou total da carcaça)",
+    motivoSistema: "Rodou com baixa pressão",
+  },
+  {
+    codigoRecusa: "MBR 03",
+    local: "Banda de rodagem",
+    motivo: "Estouro da banda de rodagem por acidente",
+    motivoSistema: "Acidente na banda de rodagem",
+  },
+  {
+    codigoRecusa: "MBR 19",
+    local: "Banda de rodagem",
+    motivo: "Corte na banda de rodagem que atinge as cinturas",
+    motivoSistema: "Acidente no flanco",
+  },
+  {
+    codigoRecusa: "MBR 25",
+    local: "Banda de rodagem",
+    motivo: "Separação parcial da borracha na banda de rodagem",
+    motivoSistema: "Acidente na banda de rodagem",
+  },
+  {
+    codigoRecusa: "MF 01",
+    local: "Flanco",
+    motivo: "Saliências ou ondulações no flanco no sentido radial",
+    motivoSistema: "Acidente no flanco",
+  },
+  {
+    codigoRecusa: "MF 02",
+    local: "Flanco",
+    motivo: "Deslocamento/separação da borracha na lateral do pneu (região do flanco)",
+    motivoSistema: "Acidente no flanco",
+  },
+  {
+    codigoRecusa: "MF 03",
+    local: "Flanco",
+    motivo: "Abertura circunferencial da carcaça na região do flanco",
+    motivoSistema: "Acidente no flanco",
+  },
+  { codigoRecusa: "MF 04", local: "Flanco", motivo: "Corte no flanco e/ou avarias acidentais", motivoSistema: "Acidente no flanco" },
+  {
+    codigoRecusa: "MF 05",
+    local: "Flanco",
+    motivo: "Desgaste por raspagem circular na região do flanco",
+    motivoSistema: "Acidente no flanco",
+  },
+  {
+    codigoRecusa: "MF 06",
+    local: "Flanco",
+    motivo: "Avarias e cortes acidentais fora da especificação para conserto",
+    motivoSistema: "Acidente no flanco",
+  },
+  { codigoRecusa: "MF 07", local: "Flanco", motivo: "Rachadura e trincas na borracha do flanco", motivoSistema: "Rachadura" },
+  { codigoRecusa: "MIP 01", local: "Interior do Pneu", motivo: "Bolhas internas no liner", motivoSistema: "Inflitração de ar no liner" },
+  { codigoRecusa: "MO 02", local: "Outros", motivo: "DOT vencido e/ou excesso do número de reformas", motivoSistema: "Desgaste natural" },
+  {
+    codigoRecusa: "MT 01",
+    local: "Talão",
+    motivo: "Trinca circunferencial acima do cordão de centragem",
+    motivoSistema: "Desgaste natural",
+  },
+  { codigoRecusa: "MT 02", local: "Talão", motivo: "Ruptura das lonas da carcaça por impacto no talão", motivoSistema: "Acidente" },
+  { codigoRecusa: "MT 03", local: "Talão", motivo: "Talão queimado (baquelizado)", motivoSistema: "Deslocamento do Talão" },
+  { codigoRecusa: "MT 05", local: "Talão", motivo: "Talão deformado", motivoSistema: "Deslocamento do Talão" },
+  { codigoRecusa: "MT 06", local: "Avaria", motivo: "avarias acidentais", motivoSistema: "avarias no geral" },
+  { codigoRecusa: "CD 01", local: "Recuperado", motivo: "Pneu em condição de uso", motivoSistema: "Pneu avaliado e aprovado" },
+];
+
 export const listaPneus = [
   // --- ITAQUERA (Iniciam com 11...) ---
   {
@@ -13,6 +85,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "05/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110002",
@@ -26,6 +99,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "12/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110003",
@@ -39,6 +113,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "10/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110004",
@@ -52,6 +127,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "03/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110005",
@@ -65,6 +141,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "15/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110006",
@@ -78,6 +155,7 @@ export const listaPneus = [
     medida: "295/80 R22.5",
     entrada: "20/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110007",
@@ -90,7 +168,8 @@ export const listaPneus = [
     km: "105.000",
     medida: "275/80 R22.5",
     entrada: "22/02/2026",
-    motivoRecusa: "Banda de rodagem com descolamento estrutural e oxidação de cintas",
+    motivoRecusa: "Acidente na banda de rodagem",
+    dataRecusa: "28/02/2026",
   },
   {
     nrFogo: "110008",
@@ -104,6 +183,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "01/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110009",
@@ -117,6 +197,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "10/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110010",
@@ -130,6 +211,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "14/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110011",
@@ -143,6 +225,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "05/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110012",
@@ -156,6 +239,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "18/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110013",
@@ -169,6 +253,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "25/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110014",
@@ -181,7 +266,8 @@ export const listaPneus = [
     km: "135.000",
     medida: "275/80 R22.5",
     entrada: "28/02/2026",
-    motivoRecusa: "Ultrapassou o limite de reformas (3ª vida esgotada na carcaça)",
+    motivoRecusa: "Desgaste natural",
+    dataRecusa: "03/03/2026",
   },
   {
     nrFogo: "110015",
@@ -195,6 +281,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "02/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110016",
@@ -208,6 +295,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "12/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110017",
@@ -221,6 +309,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "20/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110018",
@@ -234,6 +323,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "08/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110019",
@@ -247,6 +337,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "15/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110020",
@@ -260,6 +351,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "04/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110021",
@@ -273,6 +365,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "26/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110022",
@@ -285,7 +378,8 @@ export const listaPneus = [
     km: "99.000",
     medida: "275/80 R22.5",
     entrada: "01/03/2026",
-    motivoRecusa: "Furo lateral profundo (conicidade comprometida na região do talão)",
+    motivoRecusa: "Deslocamento do Talão",
+    dataRecusa: "04/03/2026",
   },
   {
     nrFogo: "110023",
@@ -299,6 +393,7 @@ export const listaPneus = [
     medida: "295/80 R22.5",
     entrada: "03/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110024",
@@ -312,6 +407,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "19/10/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110025",
@@ -325,6 +421,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "11/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110026",
@@ -338,6 +435,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "20/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110027",
@@ -351,6 +449,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "07/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110028",
@@ -364,6 +463,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "05/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110029",
@@ -377,6 +477,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "27/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110030",
@@ -390,6 +491,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "18/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110031",
@@ -403,6 +505,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "02/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110032",
@@ -416,6 +519,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "22/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110033",
@@ -429,6 +533,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "10/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "110034",
@@ -441,7 +546,8 @@ export const listaPneus = [
     km: "92.000",
     medida: "275/80 R22.5",
     entrada: "28/02/2026",
-    motivoRecusa: "Deformação na carcaça por rodagem com baixa pressão (bolha interna)",
+    motivoRecusa: "Inflitração de ar no liner",
+    dataRecusa: "05/03/2026",
   },
   {
     nrFogo: "110035",
@@ -455,6 +561,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "15/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
 
   // --- JUIZ DE FORA (Iniciam com 32...) ---
@@ -470,6 +577,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "15/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320002",
@@ -483,6 +591,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "01/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320003",
@@ -496,6 +605,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "02/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320004",
@@ -509,6 +619,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "10/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320005",
@@ -522,6 +633,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "20/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320006",
@@ -535,6 +647,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "05/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320007",
@@ -548,6 +661,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "24/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320008",
@@ -560,7 +674,8 @@ export const listaPneus = [
     km: "112.000",
     medida: "275/80 R22.5",
     entrada: "26/02/2026",
-    motivoRecusa: "Talão danificado por ferramenta inadequada na desmontagem",
+    motivoRecusa: "avarias no geral",
+    dataRecusa: "02/03/2026",
   },
   {
     nrFogo: "320009",
@@ -574,6 +689,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "12/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320010",
@@ -587,6 +703,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "18/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320011",
@@ -600,6 +717,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "04/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320012",
@@ -613,6 +731,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "15/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320013",
@@ -626,6 +745,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "30/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320014",
@@ -639,6 +759,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "09/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320015",
@@ -652,6 +773,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "21/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320016",
@@ -664,7 +786,8 @@ export const listaPneus = [
     km: "98.000",
     medida: "275/80 R22.5",
     entrada: "25/02/2026",
-    motivoRecusa: "Invasão de umidade nos cabos de aço (corrosão interna avançada)",
+    motivoRecusa: "Acidente no flanco",
+    dataRecusa: "01/03/2026",
   },
   {
     nrFogo: "320017",
@@ -678,6 +801,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "11/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320018",
@@ -691,6 +815,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "14/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320019",
@@ -704,6 +829,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "19/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320020",
@@ -717,6 +843,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "05/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320021",
@@ -730,6 +857,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "02/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320022",
@@ -743,6 +871,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "08/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320023",
@@ -756,6 +885,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "22/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320024",
@@ -769,6 +899,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "20/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320025",
@@ -782,6 +913,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "28/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320026",
@@ -794,7 +926,8 @@ export const listaPneus = [
     km: "107.000",
     medida: "275/80 R22.5",
     entrada: "01/03/2026",
-    motivoRecusa: "Rachadura circunferencial grave na área de flexão do flanco",
+    motivoRecusa: "Rachadura",
+    dataRecusa: "05/03/2026",
   },
   {
     nrFogo: "320027",
@@ -808,6 +941,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "06/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320028",
@@ -821,6 +955,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "16/10/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320029",
@@ -834,6 +969,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "12/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320030",
@@ -847,6 +983,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "04/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320031",
@@ -860,6 +997,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "26/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320032",
@@ -873,6 +1011,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "03/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320033",
@@ -886,6 +1025,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "17/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320034",
@@ -899,6 +1039,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "29/10/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "320035",
@@ -912,6 +1053,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "01/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
 
   // --- LIMEIRA (Iniciam com 20...) ---
@@ -927,6 +1069,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "20/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200002",
@@ -940,6 +1083,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "08/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200003",
@@ -953,6 +1097,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "14/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200004",
@@ -966,6 +1111,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "21/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200005",
@@ -979,6 +1125,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "25/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200006",
@@ -992,6 +1139,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "02/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200007",
@@ -1004,7 +1152,8 @@ export const listaPneus = [
     km: "94.000",
     medida: "275/80 R22.5",
     entrada: "27/02/2026",
-    motivoRecusa: "Desgaste irregular acentuado (banda com calosidade excessiva)",
+    motivoRecusa: "Desgaste natural",
+    dataRecusa: "02/03/2026",
   },
   {
     nrFogo: "200008",
@@ -1018,6 +1167,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "11/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200009",
@@ -1031,6 +1181,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "10/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200010",
@@ -1044,6 +1195,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "05/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200011",
@@ -1057,6 +1209,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "19/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200012",
@@ -1070,6 +1223,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "06/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200013",
@@ -1083,6 +1237,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "23/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200014",
@@ -1095,7 +1250,8 @@ export const listaPneus = [
     km: "111.000",
     medida: "275/80 R22.5",
     entrada: "28/02/2026",
-    motivoRecusa: "Corte transversal profundo no ombro atingindo lonas de trabalho",
+    motivoRecusa: "Acidente no flanco",
+    dataRecusa: "04/03/2026",
   },
   {
     nrFogo: "200015",
@@ -1109,6 +1265,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "01/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200016",
@@ -1122,6 +1279,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "18/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200017",
@@ -1135,6 +1293,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "13/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200018",
@@ -1148,6 +1307,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "09/12/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200019",
@@ -1161,6 +1321,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "04/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200020",
@@ -1174,6 +1335,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "16/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200021",
@@ -1187,6 +1349,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "24/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200022",
@@ -1199,7 +1362,8 @@ export const listaPneus = [
     km: "101.000",
     medida: "275/80 R22.5",
     entrada: "02/03/2026",
-    motivoRecusa: "Reparo prévio mal executado com invasão de umidade na carcaça",
+    motivoRecusa: "Acidente no flanco",
+    dataRecusa: "05/03/2026",
   },
   {
     nrFogo: "200023",
@@ -1213,6 +1377,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "04/03/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200024",
@@ -1226,6 +1391,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "25/10/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200025",
@@ -1239,6 +1405,7 @@ export const listaPneus = [
     medida: "215/75 R17.5",
     entrada: "12/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200026",
@@ -1252,6 +1419,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "22/01/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200027",
@@ -1265,6 +1433,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "08/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200028",
@@ -1278,6 +1447,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "02/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200029",
@@ -1291,6 +1461,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "26/02/2026",
     motivoRecusa: null,
+    dataRecusa: null,
   },
   {
     nrFogo: "200030",
@@ -1304,6 +1475,7 @@ export const listaPneus = [
     medida: "275/80 R22.5",
     entrada: "30/11/2025",
     motivoRecusa: null,
+    dataRecusa: null,
   },
 ];
 

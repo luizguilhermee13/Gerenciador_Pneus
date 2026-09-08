@@ -56,6 +56,7 @@
 
 .layout-catalogo #catalagoPneus,
 #catalagoCarros,
+#catalagoSucateados,
 .table-container-contagemF,
 .table-container-contagemD {
   width: 100%;
@@ -67,6 +68,7 @@
 .table-container,
 .table-container-contagemF,
 .table-container-contagemD,
+#catalagoSucateados,
 #catalagoCarros {
   width: 100%;
   overflow-x: auto;
@@ -79,7 +81,8 @@
 .layout-catalogo thead,
 .table-container-contagemF thead,
 .table-container-contagemD thead,
-#catalagoCarros thead {
+#catalagoCarros thead,
+#catalagoSucateados thead {
   background: var(--ring);
   color: #ffffff;
 }
@@ -87,38 +90,43 @@
 .layout-catalogo tbody,
 .table-container-contagemF tbody,
 .table-container-contagemD tbody,
-#catalagoCarros tbody {
+#catalagoCarros tbody,
+#catalagoSucateados tbody {
   text-align: center;
 }
 
 .layout-catalogo tbody tr,
 .table-container-contagemF tbody tr,
 .table-container-contagemD tbody tr,
-#catalagoCarros tbody tr {
+#catalagoCarros tbody tr,
+#catalagoSucateados tbody tr {
   cursor: pointer;
   background: var(--card, #ffffff);
   border-radius: 0.5rem;
 }
 
+.layout-catalogo tbody td,
+.table-container-contagemF tbody td,
+.table-container-contagemD tbody td,
+#catalagoCarros tbody td,
+#catalagoSucateados tbody td {
+  padding: 0.5rem 0.2rem;
+}
+
 .layout-catalogo tbody tr:hover,
 .table-container-contagemF tbody tr:hover,
 .table-container-contagemD tbody tr:hover,
-#catalagoCarros tbody tr:hover {
+#catalagoCarros tbody tr:hover,
+#catalagoSucateados tbody tr:hover {
   background: var(--bg-orange-50);
 }
 
 .layout-catalogo tbody tr:nth-child(even),
 .table-container-contagemF tbody tr:nth-child(odd),
 .table-container-contagemD tbody tr:nth-child(even),
-#catalagoCarros tbody tr:nth-child(odd) {
+#catalagoCarros tbody tr:nth-child(odd),
+#catalagoSucateados tbody tr:nth-child(even) {
   background: var(--bg-green-50);
-}
-
-.layout-catalogo tbody td,
-.table-container-contagemF tbody td,
-.table-container-contagemD tbody td,
-#catalagoCarros tbody td {
-  padding: 0.5rem 0.2rem;
 }
 
 /*Estilizano o painel do catalago de pneus*/
@@ -170,11 +178,19 @@
 /*Estilizano a barra de pesquisa dos pneus*/
 .searchPneus {
   display: grid;
-  grid-template-columns: 10fr 2fr;
+  grid-template-columns: 1fr;
   gap: 0.5rem;
   background: var(--card);
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   border-radius: 0.5rem;
+}
+
+.grid-1 {
+  grid-template-columns: 1fr;
+}
+
+.grid-2 {
+  grid-template-columns: 10fr 2fr;
 }
 
 .searchSelect {
@@ -189,8 +205,4 @@
   border: none;
   background: var(--background);
   font-size: large;
-}
-
-.estoqueDigital .searchPneus {
-  grid-template-columns: 1fr;
 }

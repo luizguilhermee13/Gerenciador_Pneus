@@ -11,13 +11,16 @@ navegacaoTab.navegacaoTabs();
 sidebar.sidebar();
 sidebar.pageSelecionada();
 
+//renderizar catalagos
 catalago.renderizarCatalago(dados.listaPneus);
 catalago.renderizarPainel(dados.listaPneus[0]);
 catalago.renderizarCatalagoCarros(dados.listaCarros);
+catalago.renderizarHistoricoSucatas(dados.listaPneus);
+catalago.renderizarCatalagoSucatas(dados.baseRecusada);
 
 coleta.addPneuColeta(dados.listaPneus);
 estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);
-// 1. Renderiza os cards estáticos normais
+//Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
 
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosMovimentacao, "#indicadoresMovimentacao");
