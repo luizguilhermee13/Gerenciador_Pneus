@@ -6,14 +6,6 @@ export const dadosDashboard = [
   { titulo: "Sulco Crítico ≤4mm", resultado: 88, cor: "#d97706", id: "sucata" },
 ];
 
-export const dadosPneus = [
-  { titulo: "Em carro", resultado: 24, cor: "#009999", id: "emCarro" },
-  { titulo: "Borracharia", resultado: 2, cor: "#d97706", id: "borracharia" },
-  { titulo: "Almoxarifado", resultado: 1, cor: "#16a34a", id: "almoxarifado" },
-  { titulo: "Recapadora", resultado: 1, cor: "#2563eb", id: "recapadora" },
-  { titulo: "Sucata", resultado: 10, cor: "#dc2626", id: "sucata" },
-];
-
 export const dadosVeiculos = [
   { titulo: "São Francisco", resultado: 224, cor: "#009999" },
   { titulo: "Vitorino", resultado: 202, cor: "#dc2626" },
@@ -115,6 +107,46 @@ export function calcularDadosSulcoDinamico(listaPneus) {
     { titulo: "Sulco ≤ 4mm (Crítico)", resultado: critico, cor: "#dc2626" },
     { titulo: "Sulco 5–7mm (Alerta)", resultado: alerta, cor: "#ea580c" },
     { titulo: "Sulco ≥ 8mm (Bom)", resultado: bom, cor: "#009999" },
+  ];
+}
+
+//pegando o quantitativo de cada status para colocar no card - temporario
+
+export function contador(dados) {
+  let emCarro = 0;
+  let borracharia = 0;
+  let almoxarifado = 0;
+  let recapadora = 0;
+  let sucateado = 0;
+
+  dados.forEach((pneu) => {
+    if (pneu.status.toLowerCase() == "em carro") {
+      return emCarro++;
+    }
+
+    if (pneu.status.toLowerCase() == "borracharia") {
+      return borracharia++;
+    }
+
+    if (pneu.status.toLowerCase() == "almoxarifado") {
+      return almoxarifado++;
+    }
+
+    if (pneu.status.toLowerCase() == "recapadora") {
+      return recapadora++;
+    }
+
+    if (pneu.status.toLowerCase() == "sucata") {
+      return sucateado++;
+    }
+  });
+
+  return [
+    { titulo: "Em Carro", resultado: emCarro, cor: "#009999" },
+    { titulo: "Borracharia", resultado: borracharia, cor: "#d97706" },
+    { titulo: "Almoxarifado", resultado: almoxarifado, cor: "#16a34a" },
+    { titulo: "Recapadora", resultado: recapadora, cor: "#2563eb" },
+    { titulo: "Sucata", resultado: sucateado, cor: "#dc2626" },
   ];
 }
 

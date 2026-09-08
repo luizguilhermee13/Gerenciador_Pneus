@@ -13,12 +13,12 @@ sidebar.pageSelecionada();
 
 catalago.renderizarCatalago(dados.listaPneus);
 catalago.renderizarPainel(dados.listaPneus[0]);
-catalago.contador(dados.listaPneus);
+
 coleta.addPneuColeta(dados.listaPneus);
 estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);
 // 1. Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosPneus, "#indicadoresPneus");
+
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosVeiculos, "#metricaVeiculos");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosVeiculosGNS, "#metricaGns");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosMovimentacao, "#indicadoresMovimentacao");
@@ -36,6 +36,9 @@ cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosIndicadorSulco, "#indic
 //Renderizando os cards de Sulcos calculados dinamicamente com base no objeto listaPneus.
 const dadosSulcosDinamicos = cardsEstatisticos.calcularDadosSulcoDinamico(dados.listaPneus);
 cardsEstatisticos.renderizarCards(dadosSulcosDinamicos, "#IndicadorSulco");
+
+const dadosPneusDinamicos = cardsEstatisticos.contador(dados.listaPneus);
+cardsEstatisticos.renderizarCards(dadosPneusDinamicos, "#indicadoresPneus");
 
 //para evitar erros estou deixando os nomes da garagem em minusculo para filtrar certo em pneu.garagem no objeto listaPneus
 
