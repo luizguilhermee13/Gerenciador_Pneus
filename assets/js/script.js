@@ -13,6 +13,7 @@ sidebar.pageSelecionada();
 
 catalago.renderizarCatalago(dados.listaPneus);
 catalago.renderizarPainel(dados.listaPneus[0]);
+catalago.renderizarCatalagoCarros(dados.listaCarros);
 
 coleta.addPneuColeta(dados.listaPneus);
 estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);

@@ -40,6 +40,14 @@
   padding: 0.4rem;
 }
 
+.veiculoPage > .layout-catalogo,
+.veiculoGns > .layout-catalogo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  padding: 0.4rem;
+}
+
 .table-container-contagemD {
   display: grid;
   grid-template-columns: 1fr;
@@ -47,6 +55,7 @@
 }
 
 .layout-catalogo #catalagoPneus,
+#catalagoCarros,
 .table-container-contagemF,
 .table-container-contagemD {
   width: 100%;
@@ -57,7 +66,8 @@
 
 .table-container,
 .table-container-contagemF,
-.table-container-contagemD {
+.table-container-contagemD,
+#catalagoCarros {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -68,20 +78,23 @@
 
 .layout-catalogo thead,
 .table-container-contagemF thead,
-.table-container-contagemD thead {
+.table-container-contagemD thead,
+#catalagoCarros thead {
   background: var(--ring);
   color: #ffffff;
 }
 
 .layout-catalogo tbody,
 .table-container-contagemF tbody,
-.table-container-contagemD tbody {
+.table-container-contagemD tbody,
+#catalagoCarros tbody {
   text-align: center;
 }
 
 .layout-catalogo tbody tr,
 .table-container-contagemF tbody tr,
-.table-container-contagemD tbody tr {
+.table-container-contagemD tbody tr,
+#catalagoCarros tbody tr {
   cursor: pointer;
   background: var(--card, #ffffff);
   border-radius: 0.5rem;
@@ -89,19 +102,22 @@
 
 .layout-catalogo tbody tr:hover,
 .table-container-contagemF tbody tr:hover,
-.table-container-contagemD tbody tr:hover {
+.table-container-contagemD tbody tr:hover,
+#catalagoCarros tbody tr:hover {
   background: var(--bg-orange-50);
 }
 
 .layout-catalogo tbody tr:nth-child(even),
 .table-container-contagemF tbody tr:nth-child(odd),
-.table-container-contagemD tbody tr:nth-child(even) {
+.table-container-contagemD tbody tr:nth-child(even),
+#catalagoCarros tbody tr:nth-child(odd) {
   background: var(--bg-green-50);
 }
 
 .layout-catalogo tbody td,
 .table-container-contagemF tbody td,
-.table-container-contagemD tbody td {
+.table-container-contagemD tbody td,
+#catalagoCarros tbody td {
   padding: 0.5rem 0.2rem;
 }
 

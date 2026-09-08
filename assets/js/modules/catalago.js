@@ -47,6 +47,7 @@ export function renderizarPainel(pneu) {
   `;
 }
 
+//catalago de pneus no sistema
 //pegando os dados do objeto listaPneus -> criando os tr e td e jogando dentro do tbody/tela
 export function renderizarCatalago(listaPneus) {
   document.addEventListener("DOMContentLoaded", () => {
@@ -71,6 +72,43 @@ export function renderizarCatalago(listaPneus) {
       });
 
       tbody.appendChild(tr);
+    });
+  });
+}
+
+//catalago de carros no sistema
+const tbodyCarros = document.getElementById("CatalagoCarros");
+const tbodyCarros2 = document.getElementById("CatalagoCarros2");
+
+export function renderizarCatalagoCarros(listaCarros) {
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!tbodyCarros || !tbodyCarros2) return;
+
+    tbodyCarros.innerHTML = "";
+    tbodyCarros2.innerHTML = "";
+
+    listaCarros.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.setAttribute("id", item.prefixo);
+
+      tr.innerHTML = `
+      <td>${item.prefixo}</td>
+      <td>${item.garagem}</td>
+      <td>${item.tamanho}</td>
+      <td>${item.cor}</td>
+      <td>${item.ano}</td>
+      <td>${item.posicao}</td>
+      <td>${item.status}</td>`;
+
+      tr.addEventListener("click", () => {
+        alert("teste");
+      });
+
+      if (item.status == "ativo") {
+        tbodyCarros.appendChild(tr);
+      } else if (item.status == "gns") {
+        tbodyCarros2.appendChild(tr);
+      }
     });
   });
 }
