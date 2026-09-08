@@ -87,7 +87,9 @@ export const dadosIndicadorSulco = [
   { titulo: "Custo Estimado", resultado: 3, cor: "#9333ea" },
 ];
 
-export function calcularDadosSulcoDinamico(listaPneus) {
+//pegando o quantitativo para colocar no card - temporario
+
+export function cardSulcoDinamico(listaPneus) {
   let critico = 0; // ≤ 4mm
   let alerta = 0; // 5 a 7mm
   let bom = 0; // ≥ 8mm
@@ -110,9 +112,7 @@ export function calcularDadosSulcoDinamico(listaPneus) {
   ];
 }
 
-//pegando o quantitativo de cada status para colocar no card - temporario
-
-export function contador(dados) {
+export function cardPneuDinamico(dados) {
   let emCarro = 0;
   let borracharia = 0;
   let almoxarifado = 0;
@@ -121,23 +121,15 @@ export function contador(dados) {
 
   dados.forEach((pneu) => {
     if (pneu.status.toLowerCase() == "em carro") {
-      return emCarro++;
-    }
-
-    if (pneu.status.toLowerCase() == "borracharia") {
-      return borracharia++;
-    }
-
-    if (pneu.status.toLowerCase() == "almoxarifado") {
-      return almoxarifado++;
-    }
-
-    if (pneu.status.toLowerCase() == "recapadora") {
-      return recapadora++;
-    }
-
-    if (pneu.status.toLowerCase() == "sucata") {
-      return sucateado++;
+      emCarro++;
+    } else if (pneu.status.toLowerCase() == "borracharia") {
+      borracharia++;
+    } else if (pneu.status.toLowerCase() == "almoxarifado") {
+      almoxarifado++;
+    } else if (pneu.status.toLowerCase() == "recapadora") {
+      recapadora++;
+    } else if (pneu.status.toLowerCase() == "sucata") {
+      sucateado++;
     }
   });
 
@@ -147,6 +139,50 @@ export function contador(dados) {
     { titulo: "Almoxarifado", resultado: almoxarifado, cor: "#16a34a" },
     { titulo: "Recapadora", resultado: recapadora, cor: "#2563eb" },
     { titulo: "Sucata", resultado: sucateado, cor: "#dc2626" },
+  ];
+}
+
+export function cardVeiculosAtivoDinamico(dados) {
+  let itaquera = 0;
+  let juizdeFora = 0;
+  let limeira = 0;
+
+  dados.forEach((carro) => {
+    if (carro.garagem.toLowerCase() == "itaquera" && carro.status == "ativo") {
+      itaquera++;
+    } else if (carro.garagem.toLowerCase() == "juiz de fora" && carro.status == "ativo") {
+      juizdeFora++;
+    } else if (carro.garagem.toLowerCase() == "limeira" && carro.status == "ativo") {
+      limeira++;
+    }
+  });
+
+  return [
+    { titulo: "Itaquera", resultado: itaquera, cor: "#16a34a" },
+    { titulo: "Juiz de Fora", resultado: juizdeFora, cor: "#dc2626" },
+    { titulo: "Limeira", resultado: limeira, cor: "#2563eb" },
+  ];
+}
+
+export function cardVeiculosGnsDinamico(dados) {
+  let itaquera = 0;
+  let juizdeFora = 0;
+  let limeira = 0;
+
+  dados.forEach((carro) => {
+    if (carro.garagem.toLowerCase() == "itaquera" && carro.status == "gns") {
+      itaquera++;
+    } else if (carro.garagem.toLowerCase() == "juiz de fora" && carro.status == "gns") {
+      juizdeFora++;
+    } else if (carro.garagem.toLowerCase() == "limeira" && carro.status == "gns") {
+      limeira++;
+    }
+  });
+
+  return [
+    { titulo: "Itaquera", resultado: itaquera, cor: "#16a34a" },
+    { titulo: "Juiz de Fora", resultado: juizdeFora, cor: "#dc2626" },
+    { titulo: "Limeira", resultado: limeira, cor: "#2563eb" },
   ];
 }
 

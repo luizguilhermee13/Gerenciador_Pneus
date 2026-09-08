@@ -19,8 +19,6 @@ estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);
 // 1. Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
 
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosVeiculos, "#metricaVeiculos");
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosVeiculosGNS, "#metricaGns");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosMovimentacao, "#indicadoresMovimentacao");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosEstoque, "#metricaEstoqueF");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosEstoque, "#metricaEstoqueD");
@@ -33,15 +31,21 @@ cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferire, "#conferirEs
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosSulcos, "#metricaSucateado");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosIndicadorSulco, "#indicadorSucateado");
 
-//Renderizando os cards de Sulcos calculados dinamicamente com base no objeto listaPneus.
-const dadosSulcosDinamicos = cardsEstatisticos.calcularDadosSulcoDinamico(dados.listaPneus);
+//Renderizando os cards calculados dinamicamente com base no objeto listaPneus.
+const dadosSulcosDinamicos = cardsEstatisticos.cardSulcoDinamico(dados.listaPneus);
 cardsEstatisticos.renderizarCards(dadosSulcosDinamicos, "#IndicadorSulco");
 
-const dadosPneusDinamicos = cardsEstatisticos.contador(dados.listaPneus);
+const dadosPneusDinamicos = cardsEstatisticos.cardPneuDinamico(dados.listaPneus);
 cardsEstatisticos.renderizarCards(dadosPneusDinamicos, "#indicadoresPneus");
 
-//para evitar erros estou deixando os nomes da garagem em minusculo para filtrar certo em pneu.garagem no objeto listaPneus
+const dadosVeiculosAtivosDinamicos = cardsEstatisticos.cardVeiculosAtivoDinamico(dados.listaCarros);
+cardsEstatisticos.renderizarCards(dadosVeiculosAtivosDinamicos, "#metricaVeiculos");
 
+const dadosVeiculosGnsDinamicos = cardsEstatisticos.cardVeiculosGnsDinamico(dados.listaCarros);
+cardsEstatisticos.renderizarCards(dadosVeiculosGnsDinamicos, "#metricaGns");
+
+//renderizando os graficos
+//para evitar erros estou deixando os nomes da garagem em minusculo para filtrar certo em pneu.garagem no objeto listaPneus
 const pneusItaquera = dados.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase() === "itaquera");
 const pneusLimeira = dados.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase() === "limeira");
 const pneusJuizDeFora = dados.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase().includes("juiz"));
