@@ -8,17 +8,34 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode";
   line-height: 1.5;
   font-size: 0.8rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.formulario .form-header {
+.formulario .form-titulo-container {
   display: flex;
   margin-bottom: 1rem;
   justify-content: space-between;
 }
 
-.formulario form {
+/*grid para quantidade de input em colums em 1 formulario*/
+.formulario .form-grid-1 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.formulario .form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.formulario .form-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
 }
 
@@ -49,15 +66,7 @@
   color: black;
 }
 
-.shadow {
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(0.5px);
-  -webkit-backdrop-filter: blur(0.5px);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.form-header-button button,
+.form-titulo-button button,
 .buttonColeta {
   padding: 0.4rem 1rem;
   background: var(--ring);

@@ -47,12 +47,124 @@
       </section>
 
       <main class="containerPrincipal" id="containerPrincipal">
+        <!-- Pagina Estoque seção estoque Fisico  -->
         <section class="estoqueFisico">
           <div class="containerIndicadores" id="metricaEstoqueF"></div>
+
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h2>Registrar Contagem Física</h2>
+                <p>Informe a medida e situação dos pneus em estoque</p>
+              </div>
+              <div class="form-titulo-button"><button>+ Adicionar Pneu</button></div>
+            </div>
+
+            <form action="" method="post" id="formularioQtdFisico" name="formularioQtdFisico" class="form-grid-4">
+              <div class="form-input">
+                <label for="medida">Medida *</label
+                ><select name="medida" id="medida">
+                  <option value="" disabled selected>Selecione uma opção...</option>
+                  <option value="valor1">275/80R22.5</option>
+                  <option value="valor2">215/75R17.5</option>
+                  <option value="valor3">Outros</option>
+                </select>
+              </div>
+
+              <div class="form-input">
+                <label for="vida">Situação Atual</label>
+                <select name="vida" id="vida">
+                  <option value="" disabled selected>Vida Atual</option>
+                  <option value="valor1">N</option>
+                  <option value="valor2">R1</option>
+                  <option value="valor3">R2</option>
+                  <option value="valor3">R3</option>
+                  <option value="valor3">R4</option>
+                  <option value="valor3">R5</option>
+                  <option value="valor3">R6</option>
+                  <option value="valor3">R7</option>
+                  <option value="valor3">R8</option>
+                  <option value="valor3">R9</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="qtdPneusFisico">Quantidade</label
+                ><input type="number" placeholder="0" name="qtdPneusFisico" id="qtdPneusFisico" />
+              </div>
+
+              <div class="form-input">
+                <label for="dateEntrada">Data de Entrada *</label><input type="date" name="dateEntrada" id="dateEntrada" />
+              </div>
+            </form>
+          </div>
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h3>Quantitativo Físico por Medida</h3>
+                <p>Contagem do dia 24/08/2026</p>
+              </div>
+              <div class="form-titulo-button"><button>refresh</button></div>
+            </div>
+            <div class="table-container">
+              <table id="catalagoContagemF" class="table-container-contagemF">
+                <thead>
+                  <tr>
+                    <th scope="col">Deletar</th>
+                    <th scope="col">Medida</th>
+                    <th scope="col">Novo</th>
+                    <th scope="col">Reformado</th>
+                    <th scope="col">Meia Vida</th>
+                    <th scope="col">C. Interno</th>
+                    <th scope="col">P/ Reforma</th>
+                    <th scope="col">Sucateado</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
         </section>
+
+        <!-- Pagina Estoque seção estoque Digital  -->
         <section class="estoqueDigital">
-          <div class="containerIndicadores" id="metricaEstoqueD"></div>
+          <div class="containerIndicadores" id="indicadoresPneus"></div>
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h2>Estoque Digital</h2>
+                <p>Dados do relatório do sistema de gestão</p>
+              </div>
+              <div class="form-titulo-button"><button>Importar CSV</button></div>
+            </div>
+
+            <div class="formulario">
+              <div class="table-container table-container-contagemD">
+                <div class="searchPneus">
+                  <input type="text" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
+                </div>
+                <table id="catalagoPneus">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nr. Fogo</th>
+                      <th scope="col">Medida</th>
+                      <th scope="col">Marca</th>
+                      <th scope="col">Vida</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Garagem</th>
+                      <th scope="col">Posição</th>
+                      <th scope="col">Sulco</th>
+                      <th scope="col">Km</th>
+                    </tr>
+                  </thead>
+                  <tbody id="conteudoCatalago"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </section>
+
+        <!-- Pagina Estoque seção estoque Fisico x Digital -->
         <section class="Divergencias">
           <div class="containerIndicadores" id="metricaDivergencia"></div>
         </section>

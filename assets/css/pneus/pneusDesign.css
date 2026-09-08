@@ -40,14 +40,24 @@
   padding: 0.4rem;
 }
 
-.layout-catalogo #catalagoPneus {
+.table-container-contagemD {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0.4rem;
+}
+
+.layout-catalogo #catalagoPneus,
+.table-container-contagemF,
+.table-container-contagemD {
   width: 100%;
   border-collapse: collapse;
   white-space: nowrap;
   margin: 0;
 }
 
-.table-container {
+.table-container,
+.table-container-contagemF,
+.table-container-contagemD {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -56,29 +66,42 @@
   background: var(--card, #ffffff);
 }
 
-.layout-catalogo thead {
+.layout-catalogo thead,
+.table-container-contagemF thead,
+.table-container-contagemD thead {
   background: var(--ring);
   color: #ffffff;
 }
 
-.layout-catalogo tbody {
+.layout-catalogo tbody,
+.table-container-contagemF tbody,
+.table-container-contagemD tbody {
   text-align: center;
 }
 
-.layout-catalogo tbody tr {
+.layout-catalogo tbody tr,
+.table-container-contagemF tbody tr,
+.table-container-contagemD tbody tr {
   cursor: pointer;
   background: var(--card, #ffffff);
   border-radius: 0.5rem;
 }
 
-.layout-catalogo tbody tr:nth-child(even) {
+.layout-catalogo tbody tr:hover,
+.table-container-contagemF tbody tr:hover,
+.table-container-contagemD tbody tr:hover {
+  background: var(--bg-orange-50);
+}
+
+.layout-catalogo tbody tr:nth-child(even),
+.table-container-contagemF tbody tr:nth-child(odd),
+.table-container-contagemD tbody tr:nth-child(even) {
   background: var(--bg-green-50);
 }
 
-.layout-catalogo tbody tr:hover {
-  background: var(--bg-orange-50);
-}
-.layout-catalogo tbody td {
+.layout-catalogo tbody td,
+.table-container-contagemF tbody td,
+.table-container-contagemD tbody td {
   padding: 0.5rem 0.2rem;
 }
 
@@ -150,4 +173,8 @@
   border: none;
   background: var(--background);
   font-size: large;
+}
+
+.estoqueDigital .searchPneus {
+  grid-template-columns: 1fr;
 }
