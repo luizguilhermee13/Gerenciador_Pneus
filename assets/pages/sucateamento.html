@@ -87,7 +87,55 @@
         </section>
 
         <!-- Pagina Sucatas - informar sucateamenteo -->
-        <section class="infoSucateamento"></section>
+        <section class="infoSucateamento">
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h3>Registrar Pneu Sucateado</h3>
+                <p>Pneus recusados pela reformadora ou com laudo técnico de descarte</p>
+              </div>
+              <div class="form-titulo-button"><button>&#128465 Registrar Sucata</button></div>
+            </div>
+
+            <form action="" method="post" id="formularioCadastro" name="formularioCadastro" class="form-grid-3">
+              <div class="form-input">
+                <label for="nrFogo">Nr. Fogo / Código *</label><input type="text" placeholder="Numero Fogo" name="nrFogo" id="nrFogo" />
+              </div>
+
+              <div class="form-input">
+                <label for="sulco">Sulco Final (mm)</label><input type="number" placeholder="0" name="sulcoFinal" id="sulcoFinal" />
+              </div>
+              <div class="form-input">
+                <label for="kmRodadoFinal">Km Final</label><input type="number" placeholder="..." name="kmRodadoFinal" id="kmRodadoFinal" />
+              </div>
+              <div class="form-input">
+                <label for="dateFinal">Data Sucateamento *</label
+                ><input type="date"  name="dateFinal" id="dateFinal" />
+              </div>
+       
+              <div class="form-input">
+                <label for="motivoRecusa">motivo da Recusa</label>
+                <select name="motivoRecusa" id="motivoRecusa">
+                  <option value="" disabled selected> -</option>
+                  <option value="MBR 01">Rodou com baixa pressão</option>
+                  <option value="MBR 03">Acidente na banda de rodagem</option>
+                  <option value="MBR 19">Acidente no flanco</option>
+                  <option value="MT 01">Desgaste natural</option>
+                  <option value="MT 00">Outros</option>
+                </select>
+              </div>
+
+              <div class="form-input">
+                <label for="responsavelLaudo">Responsavel pelo Laudo </label
+                ><input type="text" placeholder="Digite o Nome" name="responsavelLaudo" id="responsavelLaudo" />
+              </div>
+
+              <div class="form-input image">
+                <label for="temp">Temporario</label><input type="text" placeholder="temp" name="temp" id="temp" />
+              </div>
+            </form>
+          </div>
+        </section>
 
         <!-- Pagina Sucatas - base motivo das sucatas -->
         <section class="baseMotivos">
