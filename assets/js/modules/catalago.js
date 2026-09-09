@@ -164,3 +164,41 @@ export function renderizarCatalagoSucatas(baseRecusada) {
     tbodyBaseSucatas.appendChild(tr);
   });
 }
+
+const tbodyConferencia = document.getElementById("catalagoConferencia1");
+const tbodyConferencia2 = document.getElementById("catalagoConferencia2");
+
+export function renderizarCatalagoConferencia(conferenciaSulco) {
+  if (!tbodyConferencia) return;
+  if (!tbodyConferencia2) return;
+
+  tbodyConferencia.innerHTML = "";
+  tbodyConferencia2.innerHTML = "";
+
+  conferenciaSulco.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.setAttribute("id", item.nrPneu);
+
+    tr.innerHTML = `
+       <td>${item.dataConferencia}</td>
+       <td>${item.nrPneu}</td>
+       <td>${item.veiculo}</td>
+       <td>${item.garagem}</td>
+       <td>${item.posicao}</td>
+       <td>${item.vida}</td>
+       <td>${item.marca}</td>
+       <td>${item.medida}</td>
+       <td>${item.sulco}</td>
+       <td>${item.situacao}</td>`;
+
+    tr.addEventListener("click", () => {
+      alert("teste");
+    });
+
+    if (item.veiculo != null) {
+      tbodyConferencia.appendChild(tr);
+    } else if (item.status == null) {
+      tbodyConferencia2.appendChild(tr);
+    }
+  });
+}

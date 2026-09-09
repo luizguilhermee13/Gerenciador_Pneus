@@ -17,6 +17,7 @@ catalago.renderizarPainel(dados.listaPneus[0]);
 catalago.renderizarCatalagoCarros(dados.listaCarros);
 catalago.renderizarHistoricoSucatas(dados.listaPneus);
 catalago.renderizarCatalagoSucatas(dados.baseRecusada);
+catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
 
 coleta.addPneuColeta(dados.listaPneus);
 estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);
