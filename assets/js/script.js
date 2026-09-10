@@ -20,6 +20,7 @@ catalago.renderizarCatalagoSucatas(dados.baseRecusada);
 catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
 
 coleta.addPneuColeta(dados.listaPneus);
+coleta.statusColeta(dados.listaColetas);
 estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);
 //Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
