@@ -153,7 +153,28 @@
             <div class="searchPneus grid-1">
               <input type="text" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
             </div>
-            <div id="infoEntrega"></div>
+            <div id="catalagoContagemI" class="table-container-infoRef">
+              <table class="table-container">
+                <thead>
+                  <tr>
+                    <th>Selecionar</th>
+                    <th>Coleta</th>
+                    <th>Reformadora</th>
+                    <th>Nr. Fogo</th>
+                    <th>Medida</th>
+                    <th>Marca</th>
+                    <th>Vida</th>
+                    <th>Status</th>
+                    <th>Garagem</th>
+                    <th>Serviço</th>
+                    <th>Valor</th>
+                  </tr>
+                </thead>
+                <tbody id="conteudoReformadora">
+                  <!-- Os dados entram aqui via JavaScript -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
         <!-- Pagina status reformadora x garagem -->
@@ -163,13 +184,73 @@
         </section>
 
         <!-- Pagina historico de envio e recebimento dos Pneus -->
-        <section class="historicoColeta"></section>
+        <section class="historicoColeta">
+          <div class="formulario">
+            <div class="searchPneus grid-1">
+              <input type="text" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
+            </div>
+            <div id="catalagoContagemI" class="table-container-infoRef">
+              <table class="table-container">
+                <thead>
+                  <tr>
+                    <th>Selecionar</th>
+                    <th>Coleta</th>
+                    <th>Reformadora</th>
+                    <th>Nr. Fogo</th>
+                    <th>Medida</th>
+                    <th>Marca</th>
+                    <th>Vida</th>
+                    <th>Status</th>
+                    <th>Garagem</th>
+                    <th>Serviço</th>
+                    <th>Valor</th>
+                  </tr>
+                </thead>
+                <tbody id="conteudoEntregue"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
         <!-- Pagina indicadores recapagem -->
         <section class="indicadoresRecapagem">
           <div class="containerIndicadores" id="indicadoresRecapagem"></div>
         </section>
         <!-- Pagina sobre as reformadoras -->
-        <section class="dadosRecapagem"></section>
+        <section class="dadosRecapagem">
+          <div class="fornecedoresRef"></div>
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h3>Garagens Atendidas</h3>
+                <p>3 garagens na frota</p>
+              </div>
+            </div>
+            <div class="garagemAtendidas">
+              <div class="card-dados-topo garagemA">
+                <div class="card-icon">
+                  <span class="icon">11</span>
+                  <h4>JBQ Pneus</h4>
+                  <span>itaquera</span>
+                </div>
+              </div>
+              <div class="card-dados-topo garagemA">
+                <div class="card-icon">
+                  <span class="icon">11</span>
+                  <h4>JBQ Pneus</h4>
+                  <span>itaquera</span>
+                </div>
+              </div>
+              <div class="card-dados-topo garagemA">
+                <div class="card-icon">
+                  <span class="icon">11</span>
+                  <h4>JBQ Pneus</h4>
+                  <span>itaquera</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="garagensAtendidas"></div>
+        </section>
       </main>
     </div>
     <script type="module" src="../js/script.js"></script>

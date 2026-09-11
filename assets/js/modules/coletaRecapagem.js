@@ -107,71 +107,72 @@ export function statusColeta(coletasFeitas) {
   });
 }
 
-const infoEntrega = document.querySelector("#infoEntrega");
+const tbodyReformadora = document.querySelector("#conteudoReformadora");
+const tbodyEntregue = document.querySelector("#conteudoEntregue");
 
-export function informarEntrega(listaColetas) {
-  if (!infoEntrega) return;
+export function renderizarPneusReformadora(listaPneus) {
+  if (!tbodyReformadora || !tbodyEntregue) return;
+  tbodyReformadora.innerHTML = "";
+  tbodyEntregue.innerHTML = "";
 
-  infoEntrega.innerHTML = "";
+  listaPneus.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.setAttribute("id", item.nrFogo);
 
-  listaColetas.forEach((coleta) => {
-    const blocoColeta = document.createElement("div");
-    blocoColeta.classList.add("bloco-coleta-item");
-
-    blocoColeta.innerHTML = `
-      <div class="formulario statusColeta">
-        <div class="form-titulo-container">
-          <div class="form-titulo">
-            <h3>Coleta: ${coleta.numeroColeta}</h3>
-            <p>${coleta.reformadora} &bull; ${coleta.garagem} &bull; ${coleta.dataColeta}</p>
-          </div>
-          <div class="form-titulo-button">${coleta.pneusColetados.length} pneus</div>
-        </div>
-      </div>
-
-      <table class="tabela-coleta">
-        <thead>
-          <tr>
-            <th>nrFogo</th>
-            <th>garagem</th>
-            <th>medida</th>
-            <th>marca</th>
-            <th>vida</th>
-            <th>sulco</th>
-            <th>servico</th>
-            <th>valor</th>
-          </tr>
-        </thead>
-        <tbody id="corpo-coleta-${coleta.numeroColeta}"></tbody>
-      </table>
+    tr.innerHTML = `
+      <td><input type="checkbox" class="checkbox-selecao" value="${item.medida}"></td>
+      <td>${item.coleta}</td>
+      <td>${item.reformadora}</td>
+      <td><strong>${item.nrFogo}</strong></td>
+      <td>${item.medida}</td>
+      <td>${item.marca}</td>
+      <td>${item.vida}</td>
+      <td><li class="badge-status">${item.status}</span></td>
+      <td>${item.garagem}</td>
+      <td>${item.servico}</td>
+      <td>R$ ${item.valor.toFixed(2)}</td>
     `;
 
-    infoEntrega.appendChild(blocoColeta);
-
-    const tbody = document.querySelector(`#corpo-coleta-${coleta.numeroColeta}`);
-
-    coleta.pneusColetados.forEach((item) => {
-      const tr = document.createElement("tr");
-      tr.setAttribute("id", item.nrFogo);
-
-      tr.innerHTML = `
-        <td><strong>${item.nrFogo}</strong></td>
-        <td>${item.garagem}</td>
-        <td>${item.medida}</td>
-        <td>${item.marca}</td>
-        <td>${item.vida}</td>
-        <td>${item.sulco} mm</td>
-        <td>${item.servico}</td>
-        <td>R$ ${item.valor.toFixed(2)}</td>
-      `;
-
-      tr.addEventListener("click", () => {
-        if (typeof renderizarPainel === "function") {
-          renderizarPainel(item);
-        }
-      });
-
-      tbody.appendChild(tr);
+    tr.addEventListener("click", () => {
+      if (typeof renderizarPainel === "function") {
+        renderizarPainel(item);
+      }
     });
+
+    if (item.status.toLowerCase() === "na reformadora") {
+      tbodyReformadora.appendChild(tr);
+    } else if (item.status.toLowerCase() === "entregue") {
+      tbodyEntregue.appendChild(tr);
+    }
+  });
+}
+
+const dadosRef = document.querySelector(".fornecedoresRef");
+
+export function renderizarFornecedores(fornecedores) {
+  if (!dadosRef) return;
+
+  dadosRef.innerHTML = "";
+
+  fornecedores.forEach((recapadora, id) => {
+    const teste = `
+      <div class="card-dados">
+      <div class="card-dados-topo">
+      <div class="card-icon">
+      <span class="icon">&#128295;</span>
+      <h3>${recapadora.nome}</h3>
+      <span>${recapadora.cidadeEstado}</span>
+      </div>
+      <span>${recapadora.descricao}</span>
+      </div>
+      <ul class="card-dados-body">
+      <li>Contato<span>${recapadora.contato}</span></li>
+      <li>Recapagem<span>${recapadora.recapagem}</span></li>
+      <li>Conserto<span>${recapadora.conserto}</span></li>
+      <li>Prazo médio<span>${recapadora.prazoMedio}</span></li>
+      </ul>
+      </div>`;
+
+    dadosRef.innerHTML += teste;
   });
 }

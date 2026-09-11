@@ -68,6 +68,7 @@
 .table-container,
 .table-container-contagemF,
 .table-container-contagemD,
+.table-container-infoRef,
 #catalagoSucateados,
 #catalagoCarros {
   width: 100%;
@@ -81,6 +82,7 @@
 .layout-catalogo thead,
 .table-container-contagemF thead,
 .table-container-contagemD thead,
+.table-container-infoRef thead,
 #catalagoCarros thead,
 #catalagoSucateados thead {
   background: var(--ring);
@@ -90,6 +92,7 @@
 .layout-catalogo tbody,
 .table-container-contagemF tbody,
 .table-container-contagemD tbody,
+.table-container-infoRef tbody,
 #catalagoCarros tbody,
 #catalagoSucateados tbody {
   text-align: center;
@@ -98,6 +101,7 @@
 .layout-catalogo tbody tr,
 .table-container-contagemF tbody tr,
 .table-container-contagemD tbody tr,
+.table-container-infoRef tbody tr,
 #catalagoCarros tbody tr,
 #catalagoSucateados tbody tr {
   cursor: pointer;
@@ -108,6 +112,7 @@
 .layout-catalogo tbody td,
 .table-container-contagemF tbody td,
 .table-container-contagemD tbody td,
+.table-container-infoRef tbody td,
 #catalagoCarros tbody td,
 #catalagoSucateados tbody td {
   padding: 0.5rem 0.2rem;
@@ -116,6 +121,7 @@
 .layout-catalogo tbody tr:hover,
 .table-container-contagemF tbody tr:hover,
 .table-container-contagemD tbody tr:hover,
+.table-container-infoRef tbody tr:hover,
 #catalagoCarros tbody tr:hover,
 #catalagoSucateados tbody tr:hover {
   background: var(--bg-orange-50);
@@ -124,6 +130,7 @@
 .layout-catalogo tbody tr:nth-child(even),
 .table-container-contagemF tbody tr:nth-child(odd),
 .table-container-contagemD tbody tr:nth-child(even),
+.table-container-infoRef tbody tr:nth-child(odd),
 #catalagoCarros tbody tr:nth-child(odd),
 #catalagoSucateados tbody tr:nth-child(even) {
   background: var(--bg-green-50);

@@ -21,7 +21,8 @@ catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
 
 coleta.addPneuColeta(dados.listaPneus);
 coleta.statusColeta(dados.listaColetas);
-coleta.informarEntrega(dados.listaColetas);
+coleta.renderizarPneusReformadora(dados.pneusNaReformadora);
+coleta.renderizarFornecedores(dados.fornecedoresRecapagem);
 
 estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);
 //Renderiza os cards estáticos normais
