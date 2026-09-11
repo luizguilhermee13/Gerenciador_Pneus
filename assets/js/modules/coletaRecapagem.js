@@ -42,7 +42,6 @@ export function addPneuColeta(dadosPneus) {
 const containerStatus = document.querySelector("#statusfeitas");
 
 export function statusColeta(coletasFeitas) {
-  console.log(coletasFeitas);
   if (!containerStatus) return;
 
   containerStatus.innerHTML = "";
@@ -104,6 +103,75 @@ export function statusColeta(coletasFeitas) {
       });
 
       tbodyColeta.appendChild(tr);
+    });
+  });
+}
+
+const infoEntrega = document.querySelector("#infoEntrega");
+
+export function informarEntrega(listaColetas) {
+  if (!infoEntrega) return;
+
+  infoEntrega.innerHTML = "";
+
+  listaColetas.forEach((coleta) => {
+    const blocoColeta = document.createElement("div");
+    blocoColeta.classList.add("bloco-coleta-item");
+
+    blocoColeta.innerHTML = `
+      <div class="formulario statusColeta">
+        <div class="form-titulo-container">
+          <div class="form-titulo">
+            <h3>Coleta: ${coleta.numeroColeta}</h3>
+            <p>${coleta.reformadora} &bull; ${coleta.garagem} &bull; ${coleta.dataColeta}</p>
+          </div>
+          <div class="form-titulo-button">${coleta.pneusColetados.length} pneus</div>
+        </div>
+      </div>
+
+      <table class="tabela-coleta">
+        <thead>
+          <tr>
+            <th>nrFogo</th>
+            <th>garagem</th>
+            <th>medida</th>
+            <th>marca</th>
+            <th>vida</th>
+            <th>sulco</th>
+            <th>servico</th>
+            <th>valor</th>
+          </tr>
+        </thead>
+        <tbody id="corpo-coleta-${coleta.numeroColeta}"></tbody>
+      </table>
+    `;
+
+    infoEntrega.appendChild(blocoColeta);
+
+    const tbody = document.querySelector(`#corpo-coleta-${coleta.numeroColeta}`);
+
+    coleta.pneusColetados.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.setAttribute("id", item.nrFogo);
+
+      tr.innerHTML = `
+        <td><strong>${item.nrFogo}</strong></td>
+        <td>${item.garagem}</td>
+        <td>${item.medida}</td>
+        <td>${item.marca}</td>
+        <td>${item.vida}</td>
+        <td>${item.sulco} mm</td>
+        <td>${item.servico}</td>
+        <td>R$ ${item.valor.toFixed(2)}</td>
+      `;
+
+      tr.addEventListener("click", () => {
+        if (typeof renderizarPainel === "function") {
+          renderizarPainel(item);
+        }
+      });
+
+      tbody.appendChild(tr);
     });
   });
 }

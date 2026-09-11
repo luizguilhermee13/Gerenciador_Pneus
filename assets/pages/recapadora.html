@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-input">
                   <label for="id_dataColeta">Data da Coleta</label>
-                  <input type="date" placeholder="DD/MM/AAAA" id="id_dataColeta" name="id_dataColeta" />
+                  <input type="garagem" placeholder="DD/MM/AAAA" id="id_dataColeta" name="id_dataColeta" />
                 </div>
                 <div class="form-input">
                   <label for="id_garagemColeta">Garagem</label>
@@ -125,6 +125,36 @@
         <!-- Pagina informar Entrega de pneus coletados -->
         <section class="informarEntrega">
           <div class="containerIndicadores" id="metricaEntrega"></div>
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h3>RETORNO DE COLETA</h3>
+                <p>13 pneus aguardando retorno</p>
+              </div>
+
+              <div class="form-titulo-button-entrega">
+                <div class="form-input">
+                  <label for="dateEntrega">Data da Entrega*</label><input type="date" name="dateEntrega" id="dateEntrega" />
+                </div>
+                <div class="form-input">
+                  <label for="garagemEntrega">Garagem / Localização *</label>
+                  <select name="garagemEntrega" id="garagemEntrega">
+                    <option value="" disabled selected>selecione a unidade</option>
+                    <option value="valor1">Itaquera</option>
+                    <option value="valor2">Limeira</option>
+                    <option value="valor3">Tatuapé</option>
+                  </select>
+                </div>
+
+                <button class="buttonColeta">Receber</button>
+              </div>
+            </div>
+
+            <div class="searchPneus grid-1">
+              <input type="text" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
+            </div>
+            <div id="infoEntrega"></div>
+          </div>
         </section>
         <!-- Pagina status reformadora x garagem -->
         <section class="statusColeta">
