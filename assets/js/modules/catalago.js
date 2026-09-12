@@ -202,3 +202,108 @@ export function renderizarCatalagoConferencia(conferenciaSulco) {
     }
   });
 }
+
+// --- MOVIMENTAÇÕES catalagos ---
+
+const sectionEstoque = document.querySelector(".movimentacaoEstoque");
+const sectionCarro = document.querySelector(".historicoMoviCarro");
+
+export function renderizarMovimentacoes(listaMovimentacoes) {
+  if (!sectionEstoque || !sectionCarro) return;
+
+  // Limpa as seções antes de preencher
+  sectionEstoque.innerHTML = "";
+  sectionCarro.innerHTML = "";
+
+  // Monta a estrutura da tabela de Estoque
+  const wrapperEstoque = document.createElement("div");
+  wrapperEstoque.innerHTML = `
+  <div class="formulario">
+    <h3>Movimentações de Estoque</h3>
+    <table class="tabela-coleta">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Nr. Fogo</th>
+          <th>Medida</th>
+          <th>Marca</th>
+          <th>Movimentação / Rota</th>
+          <th>Motivo / Ação</th>
+          <th>Garagem</th>
+          <th>Sulco</th>
+        </tr>
+      </thead>
+      <tbody id="corpoMovEstoque"></tbody>
+    </table>
+    </div>
+  `;
+  sectionEstoque.appendChild(wrapperEstoque);
+
+  // Monta a estrutura da tabela de Carro
+  const wrapperCarro = document.createElement("div");
+  wrapperCarro.innerHTML = `
+  <div class="formulario">
+    <h3>Movimentações em Carro</h3>
+    <table class="tabela-coleta">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Veículo</th>
+          <th>Nr. Fogo</th>
+          <th>Medida</th>
+          <th>Marca</th>
+          <th>Posição</th>
+          <th>Motivo Troca</th>
+          <th>Sulco</th>
+          <th>Km</th>
+        </tr>
+      </thead>
+      <tbody id="corpoMovCarro"></tbody>
+    </table>
+    </div>
+  `;
+  sectionCarro.appendChild(wrapperCarro);
+
+  const tbodyEstoque = document.querySelector("#corpoMovEstoque");
+  const tbodyCarro = document.querySelector("#corpoMovCarro");
+
+  // Itera sobre o array e separa de acordo com o 'tipo'
+  listaMovimentacoes.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.setAttribute("id", item.nrFogo);
+
+    if (item.tipo.toLowerCase() === "estoque") {
+      tr.innerHTML = `
+        <td>${item.dataMovimentacao}</td>
+        <td><strong>${item.nrFogo}</strong></td>
+        <td>${item.medida}</td>
+        <td>${item.marca}</td>
+        <td>${item.origemDestino}</td>
+        <td><span class="badge-motivo">${item.motivo}</span></td>
+        <td>${item.garagem}</td>
+        <td>${item.sulco} mm</td>
+      `;
+      tbodyEstoque.appendChild(tr);
+    } else if (item.tipo.toLowerCase() === "carro") {
+      tr.innerHTML = `
+        <td>${item.dataMovimentacao}</td>
+        <td>${item.placaOuPrefixo}</td>
+        <td><strong>${item.nrFogo}</strong></td>
+        <td>${item.medida}</td>
+        <td>${item.marca}</td>
+        <td>${item.posicao}</td>
+        <td><span class="badge-motivo-${item.motivo}">${item.motivo}</span></td>
+        <td>${item.sulco} mm</td>
+        <td>${item.km.toLocaleString("pt-BR")} km</td>
+      `;
+      tbodyCarro.appendChild(tr);
+    }
+
+    // Evento de clique opcional para abrir painel de detalhes do pneu
+    tr.addEventListener("click", () => {
+      if (typeof renderizarPainel === "function") {
+        renderizarPainel(item);
+      }
+    });
+  });
+}

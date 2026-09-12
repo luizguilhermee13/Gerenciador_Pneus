@@ -42,17 +42,64 @@
 
       <section class="sub-menu" id="sub-menu">
         <ul>
-          <li>Movimentação/Carro</li>
-          <li>Movimentação/Estoque</li>
-          <li>Histórico</li>
+          <li>Registrar Movimentação</li>
+          <li>Histórico/Estoque</li>
+          <li>Histórico/Carro</li>
           <li>Indicadores</li>
         </ul>
       </section>
-
+      <!-- Section Movimentação dos Pneus - Estoque -->
       <main class="containerPrincipal" id="containerPrincipal">
-        <section class="movimentarCarro"></section>
-        <section class="movimentarEstoque"></section>
-        <section class="historicoMovimentacao"></section>
+        <section class="RegistrarMovEstoque">
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h2>Registrar Movimentação</h2>
+                <p>Toda movimentação física de pneu deve ser registrada</p>
+              </div>
+              <div class="form-titulo-button"><button>Enviar</button></div>
+            </div>
+
+            <form action="" method="post" id="formularioCadastro" name="formularioCadastro" class="form-grid-3">
+              <div class="form-input">
+                <label for="nrFogo">Nr. Fogo / Código *</label><input type="text" placeholder="Numero Fogo" name="nrFogo" id="nrFogo" />
+              </div>
+
+              <div class="form-input">
+                <label for="motivo">Motivo *</label
+                ><select name="motivo" id="motivo">
+                  <option value="" disabled selected>Selecione uma opção...</option>
+                  <option value="valor1">Transferência</option>
+                  <option value="valor2">Emergencial</option>
+                  <option value="valor3">Outros</option>
+                </select>
+              </div>
+
+              <div class="form-input">
+                <label for="garagem">Garagem / Destino *</label>
+                <select name="garagem" id="garagem">
+                  <option value="" disabled selected>selecione a unidade</option>
+                  <option value="valor1">Itaquera</option>
+                  <option value="valor2">Limeira</option>
+                  <option value="valor3">Tatuapé</option>
+                  <option value="valor3">Outras Unidades</option>
+                </select>
+              </div>
+
+              <div class="form-input">
+                <label for="dateEntrada">Data da Movimentação *</label
+                ><input type="date" placeholder="Cod. Numero" name="dateEntrada" id="dateEntrada" />
+              </div>
+
+              <div class="form-input">
+                <label for="responsavel">Responsavel pela Movimentação </label
+                ><input type="text" placeholder="Responsavel" name="responsavel" id="responsavel" />
+              </div>
+            </form>
+          </div>
+        </section>
+        <section class="movimentacaoEstoque"></section>
+        <section class="historicoMoviCarro"></section>
         <section class="indicadoresMovimentacao">
           <div class="containerIndicadores" id="indicadoresMovimentacao"></div>
         </section>

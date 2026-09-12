@@ -18,6 +18,7 @@ catalago.renderizarCatalagoCarros(dados.listaCarros);
 catalago.renderizarHistoricoSucatas(dados.listaPneus);
 catalago.renderizarCatalagoSucatas(dados.baseRecusada);
 catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
+catalago.renderizarMovimentacoes(dados.movimentacoesPneus);
 
 coleta.addPneuColeta(dados.listaPneus);
 coleta.statusColeta(dados.listaColetas);
@@ -25,6 +26,7 @@ coleta.renderizarPneusReformadora(dados.pneusNaReformadora);
 coleta.renderizarFornecedores(dados.fornecedoresRecapagem);
 
 estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);
+
 //Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
 
