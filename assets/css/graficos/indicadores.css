@@ -39,3 +39,33 @@
   gap: 0.2rem;
   width: 100%;
 }
+
+/* sucata graficos */
+.indicadoresSucata {
+  width: 100%;
+}
+
+#indicadorSucateado {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.graficoSucata {
+  width: calc(50% - 10px);
+  min-width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.graficoSucata h3 {
+  margin-bottom: 20px;
+}
+
+.areaGrafico {
+  position: relative;
+  width: 100%;
+  height: 350px;
+}
