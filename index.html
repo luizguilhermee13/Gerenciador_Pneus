@@ -39,10 +39,48 @@
         </ul>
       </nav>
 
-      <main class="containerPrincipal" id="containerPrincipal">
+      <main class="containerPrincipal dashboardPrincipal" id="containerPrincipal">
         <div class="containerIndicadores" id="metricaDashBoard"></div>
+        <div class="containerDashboard">
+          <div class="dash-row-1">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h3>Ultimas 3 contagem</h3>
+              </div>
+            </div>
+            <div class="table-container">
+              <table id="catalagoContagemF" class="table-container-contagemF">
+                <thead>
+                  <tr>
+                    <th scope="col">Deletar</th>
+                    <th scope="col">Medida</th>
+                    <th scope="col">Novo</th>
+                    <th scope="col">Reformado</th>
+                    <th scope="col">Meia Vida</th>
+                    <th scope="col">C. Interno</th>
+                    <th scope="col">P/ Reforma</th>
+                    <th scope="col">Sucateado</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="dash-row-2">
+            <div><div class="localizacaoSistema"></div></div>
+            <div><div class="lastMovimentacoes"></div></div>
+          </div>
+          <div class="dash-row-3">
+            <div><canvas class="graphSulcoTotal"></canvas></div>
+            <div><canvas class="graphSulGaragem-3"></canvas></div>
+            <div><canvas class="graphSulcoVida"></canvas></div>
+          </div>
+          <div class="dash-row-4"></div>
+        </div>
       </main>
     </div>
     <script type="module" src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>

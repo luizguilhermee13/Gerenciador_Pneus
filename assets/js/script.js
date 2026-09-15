@@ -69,3 +69,7 @@ indicador.criarGraficoPneus(dados.listaPneus, ".graphSulcoTotal", "sulco", "Sulc
 indicador.criarGraficoPneus(dados.listaPneus, ".graphSulcoVida", "status", "Quantidade de Pneus por Status");
 
 indicador.criarGraficosSucata(dados.listaPneus);
+
+//dashboard principal
+catalago.renderizarUltimasMovimentacoes(dados.movimentacoesPneus, ".lastMovimentacoes");
+catalago.renderizarLocalizacaoSistema(dados.listaPneus, ".localizacaoSistema");

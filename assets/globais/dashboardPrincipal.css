@@ -1,0 +1,380 @@
+.containerDashboard {
+  background: var(--card);
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode";
+  line-height: 1.1;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+/* Regra unificada para todos os canvas dentro dos grids */
+.containerDashboard [class*="dash-row-"] canvas {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Grids individuais definindo apenas o número de colunas e espaçamentos */
+.containerDashboard .dash-row-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.containerDashboard .dash-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+.containerDashboard .dash-row-2 > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.containerDashboard .dash-row-2 > div > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+.containerDashboard .dash-row-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+.containerDashboard .form-titulo-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.containerDashboard .form-titulo-container h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* --- Estilos para o Card de Movimentações (COMPACTO) --- */
+.card-mov-ultimas {
+  background: var(--card, #ffffff);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem; /* Reduzido de 1.5rem */
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem; /* Corrigido de "0 5rem" e reduzido */
+  height: 100%;
+}
+
+.card-mov-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.6rem; /* Reduzido de 1rem */
+}
+
+.card-mov-title h3 {
+  font-size: 0.95rem; /* Reduzido de 1.1rem */
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.card-mov-title p {
+  font-size: 0.75rem; /* Reduzido de 0.85rem */
+  color: #64748b;
+  margin: 0.1rem 0 0 0;
+}
+
+.card-mov-link {
+  font-size: 0.8rem; /* Reduzido de 0.85rem */
+  color: #008080;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.card-mov-link:hover {
+  text-decoration: underline;
+}
+
+.card-mov-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem; /* Reduzido de 0.8rem */
+}
+
+.mov-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.5rem; /* Reduzido de 0.8rem */
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.mov-status-dot {
+  width: 8px; /* Reduzido de 10px */
+  height: 8px; /* Reduzido de 10px */
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.mov-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+}
+
+.mov-header-info {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.mov-badge {
+  padding: 0.15rem 0.4rem; /* Reduzido de 0.2rem 0.6rem */
+  border-radius: 4px;
+  font-size: 0.7rem; /* Reduzido de 0.75rem */
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.mov-fogo {
+  font-weight: 700;
+  color: #008080;
+  font-size: 0.75rem; /* Reduzido de 0.85rem */
+}
+
+.mov-info {
+  color: #64748b;
+  font-size: 0.75rem; /* Reduzido de 0.85rem */
+}
+
+.mov-meta {
+  font-size: 0.7rem; /* Reduzido de 0.8rem */
+  color: #64748b;
+}
+
+/* Cores Dinâmicas mantidas iguais */
+.badge-blue-dot {
+  background-color: #0ea5e9;
+}
+.badge-blue-bg {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.badge-green-dot {
+  background-color: #10b981;
+}
+.badge-green-bg {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.badge-orange-dot {
+  background-color: #f59e0b;
+}
+.badge-orange-bg {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.badge-red-dot {
+  background-color: #ef4444;
+}
+.badge-red-bg {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Rodapé Delta */
+.card-mov-footer {
+  margin-top: auto;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 0.6rem; /* Reduzido de 1rem */
+}
+
+.card-mov-footer h4 {
+  font-size: 0.7rem; /* Reduzido de 0.75rem */
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.delta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem; /* Reduzido de 0.85rem */
+  color: #475569;
+  margin-bottom: 0.3rem;
+}
+
+.text-red {
+  color: #ef4444;
+  font-weight: 700;
+  margin-left: 0.5rem;
+}
+
+/* --- Estilos para o Card de Localização no Sistema --- */
+.card-loc {
+  background: var(--card, #ffffff);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.card-loc-header {
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.6rem;
+}
+
+.card-loc-header h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.card-loc-header p {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0.1rem 0 0 0;
+}
+
+/* Grid das 4 caixas superiores */
+.card-loc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.loc-box {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.8rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loc-box-title {
+  font-size: 0.75rem;
+  color: #475569;
+  margin-bottom: 0.2rem;
+}
+
+.loc-box-num {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.loc-box-sub {
+  font-size: 0.65rem;
+  color: #94a3b8;
+}
+
+/* Cores das fontes (numerais) */
+.text-teal {
+  color: #008080;
+}
+.text-purple {
+  color: #8b5cf6;
+}
+.text-blue {
+  color: #3b82f6;
+}
+.text-green {
+  color: #10b981;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-red {
+  color: #ef4444 !important;
+  font-weight: 600;
+}
+
+/* Tabela de Sucatas */
+.card-loc-table-wrapper {
+  margin-top: auto;
+}
+
+.loc-table-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.loc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  color: #334155;
+  border-radius: 6px;
+  overflow: hidden; /* Mantém os cantos redondos no header/footer */
+  border: 1px solid #e2e8f0;
+}
+
+.loc-table thead th {
+  background-color: #008080; /* Teal do cabeçalho */
+  color: #ffffff;
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.loc-table tbody td {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.loc-table tfoot td {
+  background-color: #e6f2f2; /* Fundo claro da mesma cor base do teal */
+  color: #008080;
+  font-weight: 700;
+  padding: 0.4rem 0.6rem;
+}
+
+@media (max-width: 550px) {
+  .containerDashboard .dash-row-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .containerDashboard .dash-row-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}

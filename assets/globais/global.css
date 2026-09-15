@@ -3,19 +3,10 @@
   grid-template-columns: 1fr 4.5fr;
   grid-template-rows: 80px 50px 1fr;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
   box-sizing: border-box;
-}
-
-.notification {
-  grid-column: 2;
-  background: var(--card);
-}
-
-.menu {
-  background: var(--card);
-  grid-row: 1 /-1;
+  overflow: hidden;
 }
 
 .containerPrincipal {
@@ -31,6 +22,16 @@
   margin-top: 1rem;
 }
 
+.notification {
+  grid-column: 2;
+  background: var(--card);
+}
+
+.menu {
+  background: var(--card);
+  grid-row: 1 /-1;
+}
+
 .containerPrincipal section {
   display: none;
   flex: 1;
@@ -42,6 +43,14 @@
   gap: 1rem;
   animation: show 0.5s forwards;
   padding-bottom: 2rem;
+}
+
+.dashboardPrincipal {
+  grid-row: 2 / -1;
+  grid-template-rows: auto;
+  align-content: start;
+  padding-top: 1rem;
+  margin-top: 0;
 }
 
 @media (max-width: 768px) {

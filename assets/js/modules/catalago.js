@@ -307,3 +307,179 @@ export function renderizarMovimentacoes(listaMovimentacoes) {
     });
   });
 }
+
+export function renderizarUltimasMovimentacoes(listaMovimentacoes, identificador) {
+  const container = document.querySelector(identificador);
+  if (!container) return;
+
+  // Pega apenas os 5 registros mais recentes
+  const ultimosRegistros = listaMovimentacoes.slice(0, 5);
+
+  // Mapeia o array para criar os itens da lista em HTML
+  const htmlList = ultimosRegistros
+    .map((mov) => {
+      let corBadge = "badge-blue"; // cor padrão
+      const motivo = mov.motivo.toLowerCase();
+
+      if (motivo.includes("avaria") || motivo.includes("envio")) corBadge = "badge-orange";
+      if (motivo.includes("furado") || motivo.includes("liso")) corBadge = "badge-red";
+      if (motivo.includes("retorno") || motivo.includes("transferência")) corBadge = "badge-green";
+
+      const infoExtra = mov.tipo === "Carro" ? `${mov.placaOuPrefixo} / ${mov.posicao}` : mov.origemDestino;
+
+      return `
+      <li class="mov-item">
+        <div class="mov-status-dot ${corBadge}-dot"></div>
+        <div class="mov-content">
+          <div class="mov-header-info">
+            <span class="mov-badge ${corBadge}-bg">${mov.motivo}</span>
+            <span class="mov-fogo">${mov.nrFogo}</span>
+            <span class="mov-info">${infoExtra}</span>
+          </div>
+          <div class="mov-meta">
+            ${mov.garagem} &middot; ${mov.dataMovimentacao}
+          </div>
+        </div>
+      </li>
+    `;
+    })
+    .join("");
+
+  // Monta o Card completo com Cabeçalho, Lista e Rodapé (Delta)
+  const cardHTML = `
+    <div class="card-mov-ultimas">
+      <div class="card-mov-header">
+        <div class="card-mov-title">
+          <h3>Últimas Movimentações</h3>
+          <p>${ultimosRegistros.length} registros mais recentes</p>
+        </div>
+        <a href="#" class="card-mov-link">Ver todos &rarr;</a>
+      </div>
+      
+      <ul class="card-mov-list">
+        ${htmlList}
+      </ul>
+
+      <div class="card-mov-footer">
+        <h4>FÍSICO &times; SISTEMA (DELTA)</h4>
+        <div class="delta-row">
+          <span>Borracharia</span> 
+          <span>1179 sis / 35 fís <b class="text-red">+1144</b></span>
+        </div>
+        <div class="delta-row">
+          <span>Almoxarifado</span> 
+          <span>0 sis / 279 fís <b class="text-red">-279</b></span>
+        </div>
+        <div class="delta-row">
+          <span>Recapagem</span> 
+          <span>691 sis / 167 fís <b class="text-red">+524</b></span>
+        </div>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = cardHTML;
+}
+
+export function renderizarLocalizacaoSistema(listaPneus, identificador) {
+  const container = document.querySelector(identificador);
+  if (!container) return;
+
+  const qtd = { borracharia: 0, almoxarifado: 0, recapagem: 0, carros: 0 };
+  const sucatas = { borracharia: 0, almoxarifado: 0, recapagem: 0, total: 0 };
+
+  listaPneus.forEach((pneu) => {
+    const status = pneu.status ? pneu.status.toLowerCase() : "";
+    const garagem = pneu.garagem ? pneu.garagem.toLowerCase() : "";
+
+    // Contagem geral
+    if (status.includes("carro")) {
+      qtd.carros++;
+    } else if (status.includes("recapagem")) {
+      qtd.recapagem++;
+    } else if (garagem.includes("almoxarifado")) {
+      qtd.almoxarifado++;
+    } else if (status.includes("estoque") || status.includes("borracharia") || !status.includes("sucata")) {
+      qtd.borracharia++;
+    }
+
+    // Contagem específica para as Sucatas
+    if (status.includes("sucata")) {
+      sucatas.total++;
+      if (garagem.includes("recapagem")) {
+        sucatas.recapagem++;
+      } else if (garagem.includes("almoxarifado")) {
+        sucatas.almoxarifado++;
+      } else {
+        sucatas.borracharia++;
+      }
+    }
+  });
+
+  // Monta a estrutura HTML do Card
+  const cardHTML = `
+    <div class="card-loc">
+      <div class="card-loc-header">
+        <h3>Localização no Sistema</h3>
+        <p>Pneus por local — dados do sistema</p>
+      </div>
+
+      <div class="card-loc-grid">
+        <div class="loc-box">
+          <span class="loc-box-title">Borracharia</span>
+          <span class="loc-box-num text-teal">${qtd.borracharia}</span>
+          <span class="loc-box-sub">077 + 028 + 027</span>
+        </div>
+        <div class="loc-box">
+          <span class="loc-box-title">Almoxarifado</span>
+          <span class="loc-box-num text-purple">${qtd.almoxarifado}</span>
+          <span class="loc-box-sub">não contabilizado</span>
+        </div>
+        <div class="loc-box">
+          <span class="loc-box-title">Recapagem</span>
+          <span class="loc-box-num text-blue">${qtd.recapagem}</span>
+          <span class="loc-box-sub">externo — JBQ</span>
+        </div>
+        <div class="loc-box">
+          <span class="loc-box-title">Carros</span>
+          <span class="loc-box-num text-green">${qtd.carros}</span>
+          <span class="loc-box-sub">em operação</span>
+        </div>
+      </div>
+
+      <div class="card-loc-table-wrapper">
+        <h4 class="loc-table-title">PNEUS PARA BAIXA COMO SUCATA</h4>
+        <table class="loc-table">
+          <thead>
+            <tr>
+              <th>Localização</th>
+              <th class="text-right">Qtd</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Almoxarifado</td>
+              <td class="text-right">${sucatas.almoxarifado}</td>
+            </tr>
+            <tr>
+              <td>Borracharia</td>
+              <td class="text-right">${sucatas.borracharia}</td>
+            </tr>
+            <tr>
+              <td>Recapagem</td>
+              <td class="text-right ${sucatas.recapagem > 0 ? "text-red" : ""}">${sucatas.recapagem}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Total</td>
+              <td class="text-right">${sucatas.total}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = cardHTML;
+}

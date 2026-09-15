@@ -1,64 +1,81 @@
-# Gerenciador de Pneus - Frota
+# 🛞 Gerenciador de Pneus - Frota
 
-Sistema web em fase de construção para o controle e gestão de pneus de frotas de ônibus urbano.
+Sistema web voltado para o controle, gestão e rastreabilidade de pneus de frotas de ônibus urbano.
 
-O projeto está sendo desenvolvido com base na minha experiência prática anterior como auxiliar administrativo, aplicando regras e necessidades reais do dia a dia da operação.
+O projeto está sendo desenvolvido com base em vivência prática operacional real no setor de manutenção/borracharia (regras de sulco, rodízio, controle de vida útil R1/N, e divergências Físico vs Sistema / Delta).
 
-🌐 **Acesse a aplicação online:** [Gerenciador de Pneus no GitHub Pages](https://luizguilhermee13.github.io/Gerenciador_Pneus/)
-
+🌐 **Acesse a aplicação online:** [Gerenciador de Pneus no GitHub Pages](https://luizguilhermee13.github.io/Gerenciador_Pneus/)  
 📄 **Documentação:** [Levantamento de Requisitos](docs/levantamento-requisitos.md)
 
 ---
 
 ## 📌 Status do Projeto
 
-⚠️ **Em Desenvolvimento Ativo**  
-📍 **Etapa Atual:** Finalizando o levantamento de requisitos e estrutura do layout para iniciar a modelagem e implementação do banco de dados (SQLite).
+🟡 **Em Desenvolvimento Ativo**  
+📍 **Etapa Atual:** **Etapa 2** — Refinamento de layout/cards analíticos do Dashboard, contabilidade de frotas/borracharia e estruturação do esquema de banco de dados (SQLite).
 
 ---
 
 ## 🗺️ Roadmap de Desenvolvimento (Etapas)
 
-O projeto está estruturado nas seguintes etapas progressivas de desenvolvimento:
+### 🟢 Etapa 1: Prototipagem e Levantamento de Requisitos _(Concluída)_
 
-### 🟢 Etapa 1: Prototipagem e Levantamento de Requisitos *(Concluída / Em andamento)*
-* Levantamento de requisitos funcionais e regras de negócio com base na vivência operacional.
-* Desenvolvimento do layout inicial (HTML, CSS e JavaScript puro).
-* Utilização de cards e catálogos dinâmicos consumindo dados fictícios (Arrays de Objetos) para simular o fluxo da aplicação.
-* Estruturação inicial da lógica para futura modelagem de dados.
+- [x] Levantamento de requisitos funcionais e regras de negócio operacionais.
+- [x] Desenvolvimento do layout inicial (HTML, CSS e JavaScript puro).
+- [x] Simulação de fluxo com dados mockados (Arrays de Objetos de pneus e movimentações).
+- [x] Estruturação conceitual da lógica de sulco, vida útil (`N`, `R1`) e status.
 
-### 🟡 Etapa 2: Refatoração, Dashboard e Estruturação do Banco *(Próxima Fase)*
-* Refatoração do layout da aplicação para design responsivo e moderno utilizando **Tailwind CSS**.
-* Implementação de dashboards visuais e gráficos operacionais com **Chart.js** (desgaste, vida útil, substituições).
-* Criação das tabelas e esquemas de dados relacionais com **SQLite**.
+### 🟡 Etapa 2: Refinamento Híbrido, Dashboard Analítico & Modelagem SQLite _(Em Andamento)_
 
-### 🟠 Etapa 3: Integração com Banco de Dados & API
-* Conexão definitiva do front-end com o banco de dados **SQLite**.
-* Criação de uma API RESTful para realizar o CRUD completo da frota de pneus.
-* Implementação dos métodos HTTP (`GET`, `POST`, `PUT`, `DELETE`) para gestão em tempo real.
+- [x] Integração do Tailwind CSS para estruturação de grids e layouts flexíveis/responsivos.
+- [x] Cards analíticos compactos (`Localização no Sistema`, `Últimas Movimentações`) com layout utilitário.
+- [x] Contabilidade de frotas (`Borracharia`, `Almoxarifado`, `Recapagem`, `Carros`) e tabela de baixa como sucata (Delta Físico vs Sistema).
+- [ ] Integração de gráficos operacionais com **Chart.js**.
+- [ ] Modelagem relacional e criação de esquemas de tabelas com **SQLite**.
 
-### 🔴 Etapa 4: Publicação e Ajustes Finais
-* Testes de uso e refinamentos de performance.
-* Hospedagem e deploy da versão final da aplicação.
-* Documentação final e guias de uso.
+### 🟠 Etapa 3: Integração Front-to-Back & API RESTful _(Próxima Fase)_
+
+- [ ] Conexão da interface com banco de dados **SQLite**.
+- [ ] Desenvolvimento de API RESTful para CRUD completo de pneus, veículos e movimentações.
+- [ ] Implementação de métodos HTTP (`GET`, `POST`, `PUT`, `DELETE`) em tempo real.
+
+### 🔴 Etapa 4: Testes, Ajustes Finais & Deploy _(Planejado)_
+
+- [ ] Testes de validação de regras de negócio e usabilidade em campo.
+- [ ] Refinamentos de performance, responsividade avançada e acessibilidade.
+- [ ] Publicação da versão final integrada.
 
 ---
 
 ## 🛠️ Tecnologias e Ferramentas
 
-* **Front-end:** HTML5, CSS3, JavaScript (ES6+), Tailwind CSS
-* **Visualização de Dados:** Chart.js
-* **Banco de Dados:** SQLite
-* **Documentação & Requisitos:** Notion
-* **Hospedagem / Versionamento:** GitHub Pages, Git e GitHub
+- **Front-end Híbrido:** HTML5, CSS3 (variáveis customizadas e ajustes finos de canvas/grid), **Tailwind CSS** (layout utilitário e responsividade)
+- **Visualização de Dados:** Chart.js
+- **Banco de Dados (Modelagem):** SQLite
+- **Documentação & Requisitos:** Markdown / Notion
+- **Hospedagem / Versionamento:** GitHub Pages, Git e GitHub
 
 ---
 
-## 🎯 Principais Funcionalidades (Planejadas)
+## 🎯 Principais Funcionalidades & Módulos
 
-- [x] Catálogo e listagem visual de pneus por status (Novos, Recapados, Descartados).
-- [ ] Cadastro, edição e remoção de pneus da frota.
-- [ ] Histórico de movimentações (rodízio entre eixos/veículos).
-- [ ] Gráficos intuitivos de controle de vida útil e quilometragem rodada.
-- [ ] Relatórios operacionais para tomada de decisão no setor de manutenção/suprimentos.
+- [x] Catálogo e listagem visual de pneus por status (`Em carro`, `Sucata`, `Borracharia`).
+- [x] Dashboard analítico de localização e inventário distribuído.
+- [x] Painel de alerta e contagem segmentada para baixa de pneus como sucata.
+- [x] Histórico de últimas movimentações com rastreio de fogo/veículo e cálculo de divergência (Delta Físico vs. Sistema).
+- [ ] Cadastro, edição e remoção dinâmica de pneus (UI ligada ao CRUD).
+- [ ] Histórico detalhado de rodízio entre eixos/veículos.
+- [ ] Gráficos analíticos de quilometragem rodada e desgaste de sulco (Chart.js).
 
+---
+
+## 📁 Estrutura de Layout / Componentes (Etapa 2)
+
+```text
+Gerenciador_Pneus/
+├── index.html
+├── style.css          # Estilização compacta (dash-row-2, card-loc, card-mov)
+├── script.js          # Lógica de renderização de arrays, contagem e delta
+└── docs/
+    └── levantamento-requisitos.md
+```

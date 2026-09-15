@@ -116,10 +116,7 @@ export function criarGraficosSucata(listaPneus) {
   const container = document.querySelector("#indicadorSucateado");
 
   // 2. Se não encontrar o container, para a execução
-  if (!container) {
-    console.warn("Container #indicadorSucateado não encontrado.");
-    return;
-  }
+  if (!container) return;
 
   // 3. Verificamos se o Chart.js foi carregado
   const ChartJS = window.Chart;
