@@ -30,7 +30,7 @@ header {
   grid-row: 2;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 440px) {
   .header-logo {
     grid-template-columns: 1fr;
     padding-left: 1rem;
@@ -40,6 +40,13 @@ header {
   }
   .header-buttons button:last-child {
     display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .header-logo {
+    padding-left: 0;
+    gap: 0;
   }
 }
 
