@@ -4,6 +4,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   box-sizing: border-box;
+  background: #fff;
 }
 
 .menu .logo {

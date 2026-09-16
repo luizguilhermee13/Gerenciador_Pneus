@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* ================================
+   TEMA
+================================ */
+
 @theme {
   /* Cores Azuis */
   --color-blue-custom-700: oklch(48.8% 0.243 264.376);
@@ -11,18 +15,53 @@
   --color-orange-custom-50: oklch(98% 0.016 73.684);
   --color-orange-custom-200: oklch(90.1% 0.076 70.697);
 
-  /* Cor Verde */
+  /* Verde */
   --color-green-custom-50: oklch(94.935% 0.02934 191.642 / 0.896);
 
-  /* Cor button verdde */
+  /* Botões */
   --color-custom-button: #009999;
   --color-custom-button-hover: #006666;
 
-  /* Sistema / Inputs / Foco */
+  /* Sistema */
   --color-pneu-input: #f0f2f5;
   --color-pneu-menus: #dde1e7;
 
-  /* cores textos */
+  /* Textos */
   --color-black-russian: #1a202c;
   --color-cinza-claro: #6b7280;
+}
+
+/* ================================
+   BOTÕES
+================================ */
+
+.btn {
+  @apply flex items-center justify-center rounded-lg transition-colors cursor-pointer;
+}
+
+.btn-primary {
+  @apply w-24 h-8;
+  background-color: var(--color-custom-button);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-custom-button-hover);
+  color: white;
+}
+
+/* ================================
+   INPUTS
+================================ */
+
+.input-pneu {
+  @apply rounded-lg border-none outline-none;
+  background-color: var(--color-pneu-input);
+}
+
+/* ================================
+   MENUS
+================================ */
+
+.menu-pneu {
+  background-color: var(--color-pneu-menus);
 }
