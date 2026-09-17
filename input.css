@@ -1,210 +1,450 @@
 @import "tailwindcss";
 
-/* ================================
-   TEMA
-================================ */
-
 @theme {
-  /* ==============================
-     STATUS / INDICADORES
-  ============================== */
-
-  /* Excelente */
+  /* Status */
   --color-status-excellent: #009999;
   --color-status-excellent-soft: #e6f7f7;
   --color-status-excellent-dark: #006666;
-
-  /* Bom */
   --color-status-good: #16a34a;
   --color-status-good-soft: #ecfdf3;
   --color-status-good-dark: #15803d;
-
-  /* Neutro / Informação */
   --color-status-neutral: #2563eb;
   --color-status-neutral-soft: #eff6ff;
   --color-status-neutral-dark: #1d4ed8;
-
-  /* Alerta */
   --color-status-warning: #d97706;
   --color-status-warning-soft: #fff7ed;
   --color-status-warning-dark: #b45309;
-
-  /* Crítico */
   --color-status-critical: #dc2626;
   --color-status-critical-soft: #fef2f2;
   --color-status-critical-dark: #b91c1c;
 
-  /* ==============================
-     AZUIS AUXILIARES
-  ============================== */
-
+  /* Auxiliares */
   --color-blue-custom-700: oklch(48.8% 0.243 264.376);
   --color-blue-custom-50: oklch(97% 0.014 254.604);
   --color-blue-custom-200: oklch(88.2% 0.059 254.128);
-
-  /* ==============================
-     LARANJAS AUXILIARES
-  ============================== */
-
   --color-orange-custom-700: oklch(55.3% 0.195 38.402);
   --color-orange-custom-50: oklch(98% 0.016 73.684);
   --color-orange-custom-200: oklch(90.1% 0.076 70.697);
 
-  /* ==============================
-     SISTEMA / SUPERFÍCIES
-  ============================== */
-
+  /* Sistema */
   --color-page: #f0f2f5;
   --color-surface: #ffffff;
-
   --color-pneu-input: #f0f2f5;
   --color-pneu-menus: #dde1e7;
   --color-system-border: #dde1e7;
 
-  /* ==============================
-     BOTÕES
-  ============================== */
-
+  /* Botões */
   --color-custom-button: #009999;
   --color-custom-button-hover: #006666;
 
-  /* ==============================
-     TEXTOS
-  ============================== */
-
+  /* Texto / tipografia */
   --color-black-russian: #1a202c;
   --color-cinza-claro: #6b7280;
-
   --color-text-primary: #1a202c;
   --color-text-secondary: #6b7280;
   --color-text-muted: #94a3b8;
-
-  /* ==============================
-     TIPOGRAFIA
-  ============================== */
-
   --font-sans: "Inter", Arial, sans-serif;
-
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
+
+  /* Sombras */
+  --shadow-card: 0 4px 30px rgb(0 0 0 / 0.1);
+  --shadow-table: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
-/* ================================
-   BOTÕES
-================================ */
+/* ================================ COMPONENTES GERAIS ================================ */
 
 .btn {
   @apply flex items-center justify-center rounded-lg transition-colors cursor-pointer;
 }
-
 .btn-primary {
   @apply w-24 h-8 bg-custom-button;
 }
-
 .btn-primary:hover {
   @apply bg-custom-button-hover text-white;
 }
-
-/* ================================
-   INPUTS
-================================ */
+.btn-form-action {
+  width: auto !important;
+  height: auto;
+  min-height: 2rem;
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
 
 .input-pneu {
   @apply rounded-lg border-none outline-none bg-pneu-input;
 }
-
-/* ================================
-   MENUS
-================================ */
-
 .menu-pneu {
   @apply bg-pneu-menus;
 }
 
-/* ================================
-   CARDS / COMPONENTES
-================================ */
-
-.card-system {
-  @apply bg-surface rounded-lg;
-}
-
-.card-bordered {
-  @apply bg-surface rounded-lg border border-system-border;
-}
-
-.section-title {
-  @apply text-lg font-semibold text-text-primary;
-}
-
-.section-description {
-  @apply text-sm text-text-secondary;
-}
-
-/* ================================
-   STATUS
-================================ */
-
-.status-excellent {
-  @apply text-status-excellent;
-}
-
-.status-good {
-  @apply text-status-good;
-}
-
-.status-neutral {
-  @apply text-status-neutral;
-}
-
-.status-warning {
-  @apply text-status-warning;
-}
-
-.status-critical {
-  @apply text-status-critical;
-}
-
-/* ================================
-   STATUS COM FUNDO
-================================ */
-
-.status-excellent-soft {
-  @apply text-status-excellent-dark bg-status-excellent-soft;
-}
-
-.status-good-soft {
-  @apply text-status-good-dark bg-status-good-soft;
-}
-
-.status-neutral-soft {
-  @apply text-status-neutral-dark bg-status-neutral-soft;
-}
-
-.status-warning-soft {
-  @apply text-status-warning-dark bg-status-warning-soft;
-}
-
-.status-critical-soft {
-  @apply text-status-critical-dark bg-status-critical-soft;
-}
-
-/* ================================
-   INDICADORES
-================================ */
-
 .indicator-card {
   @apply bg-surface rounded-lg flex flex-col items-center justify-center text-center;
 }
-
 .indicator-label {
   @apply text-sm font-medium;
 }
-
 .indicator-value {
   @apply text-3xl font-medium;
+}
+
+.responsive-scroll {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.chart-responsive {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+.chart-responsive canvas {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* ==================================== SUBMENU ==================================== */
+
+.sub-menu {
+  @apply flex items-center w-full min-w-0 px-4 pt-2 bg-page;
+}
+.sub-menu ul {
+  @apply flex items-center gap-5 list-none w-max h-full px-2 py-1 bg-surface border border-system-border rounded-lg;
+}
+.sub-menu ul li {
+  @apply text-base px-2 py-2 text-text-secondary cursor-pointer rounded-lg transition-colors;
+}
+.sub-menu ul li.sub-menu-selecionado {
+  @apply bg-status-excellent text-white px-3 py-2 rounded-lg;
+}
+
+/* ================================== FORMULÁRIOS ================================== */
+
+.formulario {
+  @apply w-full p-4 bg-surface rounded-lg border border-white/5 shadow-card text-sm;
+  line-height: 1.5;
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+}
+.form-titulo-container {
+  @apply flex justify-between gap-4 mb-4;
+}
+.form-titulo {
+  @apply min-w-0;
+}
+.form-titulo h2,
+.form-titulo h3 {
+  @apply text-lg font-semibold text-text-primary;
+}
+.form-titulo p,
+.form-titulo span {
+  @apply text-sm text-text-secondary;
+}
+
+.form-input {
+  @apply flex flex-col min-w-0;
+}
+.form-input label {
+  @apply text-sm font-medium text-text-primary;
+}
+.form-input input,
+.form-input select {
+  @apply w-full h-9 px-3 mt-1 bg-page border border-system-border rounded-md text-base text-text-primary outline-none transition-colors;
+}
+.form-input input::placeholder {
+  @apply text-text-secondary;
+}
+.form-input input:focus,
+.form-input select:focus {
+  @apply border-status-excellent ring-2 ring-status-excellent-soft;
+}
+
+.form-titulo-button button,
+.buttonColeta {
+  @apply px-4 py-2 bg-custom-button text-white rounded-lg border-0 cursor-pointer transition-colors;
+}
+.form-titulo-button button:hover,
+.buttonColeta:hover {
+  @apply bg-custom-button-hover;
+}
+
+/* Descrições */
+.descriptionPage {
+  @apply p-4 mb-4 rounded-lg;
+}
+.descriptionPage span {
+  @apply font-bold underline uppercase;
+}
+.cadastroIndividual .descriptionPage {
+  @apply bg-blue-custom-50 border border-blue-custom-200;
+}
+.cadastroIndividual .descriptionPage h5 {
+  @apply text-blue-custom-700;
+}
+.cadastroQuantidade .descriptionPage {
+  @apply bg-orange-custom-50 border border-orange-custom-200;
+}
+.cadastroQuantidade .descriptionPage h5 {
+  @apply text-orange-custom-700;
+}
+
+/* Grid interno de formulários */
+.formulario .form-grid-1 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+}
+.formulario .form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.formulario .form-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.formulario .form-input.image {
+  grid-column: span 3;
+}
+
+/* ==================================== TABELAS ==================================== */
+
+.table-container,
+.table-container-infoRef {
+  @apply w-full max-w-full overflow-x-auto bg-surface rounded-lg shadow-table;
+  -webkit-overflow-scrolling: touch;
+}
+.table-system {
+  @apply w-full whitespace-nowrap;
+  border-collapse: collapse;
+}
+.table-system thead {
+  @apply bg-status-excellent text-white;
+}
+.table-system tbody {
+  @apply text-center;
+}
+.table-system tbody tr {
+  @apply bg-surface cursor-pointer transition-colors;
+}
+.table-system tbody tr:nth-child(even) {
+  @apply bg-status-excellent-soft;
+}
+.table-system tbody tr:hover {
+  @apply bg-status-warning-soft;
+}
+.table-system tbody td {
+  @apply px-1 py-2;
+}
+
+/* ==================================== PESQUISA ==================================== */
+
+.searchPneus {
+  @apply w-full max-w-full min-w-0 bg-surface px-2 py-4 rounded-lg;
+}
+.searchSelect {
+  @apply flex w-full min-w-0 gap-2;
+}
+.searchPneus input,
+.searchPneus select {
+  @apply w-full min-w-0 max-w-full p-2 bg-page border-0 rounded-lg text-base text-text-primary outline-none;
+}
+.searchSelect select {
+  @apply flex-1 basis-0 min-w-0;
+}
+.searchPneus input:focus,
+.searchPneus select:focus {
+  @apply ring-2 ring-status-excellent-soft;
+}
+
+/* =================================== RECAPADORA =================================== */
+
+.imageColeta {
+  @apply flex flex-col items-center justify-center gap-1 min-w-0 p-4 bg-surface border-2 border-dashed border-system-border rounded-lg text-text-secondary;
+}
+.imageColeta label {
+  @apply text-sm font-medium text-text-primary;
+}
+.imageColeta input[type="file"] {
+  @apply w-full max-w-full p-2 bg-page rounded-lg text-sm cursor-pointer;
+}
+
+.form-footer {
+  @apply w-full min-w-0;
+}
+.form-footer table {
+  @apply w-full bg-surface border border-system-border rounded-lg shadow-table;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+.form-footer table thead {
+  @apply bg-status-excellent text-white;
+}
+.form-footer table th,
+.form-footer table td {
+  @apply text-center text-sm;
+}
+.form-footer table td input,
+.form-footer table td select {
+  @apply w-full min-w-0 px-2 py-1 bg-page border border-system-border rounded-md text-sm text-text-primary outline-none;
+}
+.form-footer table td input:focus,
+.form-footer table td select:focus {
+  @apply border-status-excellent ring-2 ring-status-excellent-soft;
+}
+.form-footer table tfoot td {
+  @apply w-full;
+}
+.form-footer table tfoot button {
+  @apply w-full px-4 py-2 bg-custom-button text-white rounded-lg border-0 cursor-pointer transition-colors;
+}
+.form-footer table tfoot button:hover {
+  @apply bg-custom-button-hover;
+}
+
+.bloco-coleta-item {
+  @apply w-full mb-5 bg-surface border border-system-border rounded-lg shadow-table;
+  min-width: 0;
+}
+.bloco-coleta-item .formulario {
+  @apply p-4 bg-surface border-b border-system-border;
+}
+.bloco-coleta-item .form-titulo h3 {
+  @apply text-status-excellent text-base font-semibold;
+}
+.bloco-coleta-item .form-titulo p {
+  @apply mt-1 text-sm text-text-secondary;
+}
+.bloco-coleta-item .form-titulo-button {
+  @apply px-3 py-1 bg-status-excellent-soft text-status-excellent-dark border border-status-excellent rounded-full text-xs font-semibold;
+}
+
+.tabela-coleta {
+  @apply w-full bg-surface text-left text-sm;
+  border-collapse: collapse;
+}
+.tabela-coleta thead {
+  @apply bg-status-excellent text-white;
+}
+.tabela-coleta th {
+  @apply px-4 py-3 text-xs font-semibold uppercase;
+}
+.tabela-coleta td {
+  @apply px-4 py-3 text-text-primary border-b border-system-border;
+}
+.tabela-coleta tbody tr {
+  @apply transition-colors;
+}
+.tabela-coleta tbody tr:hover {
+  @apply bg-status-excellent-soft cursor-pointer;
+}
+
+.form-titulo-button-entrega {
+  @apply flex flex-wrap items-end gap-4 p-3 bg-surface border border-system-border rounded-lg;
+}
+.form-titulo-button-entrega .form-input {
+  @apply min-w-40 flex-1;
+}
+
+.card-dados {
+  @apply w-full h-full flex flex-col justify-center gap-4 p-4 bg-surface border border-system-border rounded-lg shadow-table;
+}
+.card-dados-topo {
+  @apply flex flex-col gap-4 pb-2;
+}
+.card-dados-body {
+  @apply pt-2 border-t border-system-border list-none;
+}
+.card-dados-body li {
+  @apply flex justify-between gap-4 mt-1 text-sm text-text-secondary;
+}
+.card-icon h3,
+.card-icon h4 {
+  @apply text-base font-semibold text-text-primary;
+}
+.card-icon span {
+  @apply text-sm text-text-secondary;
+}
+.card-icon .icon {
+  @apply flex items-center justify-center w-12 h-12 bg-status-excellent text-white rounded-full text-xl font-semibold;
+}
+.garagemA {
+  @apply p-3 bg-surface border border-system-border rounded-lg text-base;
+}
+.garagemA .icon {
+  @apply flex items-center justify-center p-2 bg-status-excellent text-white rounded-lg text-lg;
+}
+
+/* ================================= RESPONSIVIDADE ================================= */
+
+@media (max-width: 970px) {
+  .formulario .form-grid-3,
+  .formulario .form-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .formulario .form-input.image {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .sub-menu {
+    @apply px-2 pt-2;
+  }
+  .sub-menu ul {
+    @apply grid w-full h-auto gap-1 p-1.5;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
+  .sub-menu ul li {
+    @apply flex items-center justify-center w-full min-w-0 min-h-10 px-2 py-2 text-sm text-center leading-tight;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-titulo-button-entrega {
+    @apply flex-col items-stretch w-full;
+  }
+  .form-titulo-button-entrega .form-input {
+    width: 100%;
+    min-width: 0;
+  }
+  .form-titulo-button-entrega .btn {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .formulario .form-grid-3,
+  .formulario .form-grid-4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .formulario .form-input.image {
+    grid-column: span 1;
+  }
+  .form-titulo-container {
+    @apply flex-col items-stretch;
+  }
+  .btn-form-action {
+    width: 100% !important;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchSelect {
+    @apply flex-col;
+  }
 }

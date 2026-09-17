@@ -43,12 +43,21 @@
 /* sucata graficos */
 .indicadoresSucata {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
-#indicadorSucateado {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+.indicadoresSucata #indicadorSucateado {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.indicadoresSucata canvas {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 .graficoSucata {

@@ -3,56 +3,104 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Dashboard Pneus</title>
+
     <link rel="stylesheet" href="../css/style.css" />
     <link href="../../output.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
+
   <body>
     <div id="container-layout" class="sidebar-open overflow-hidden layout-com-submenu">
+      <!-- =========================
+           HEADER
+      ========================== -->
+
       <header class="w-full !px-14 flex justify-between items-center">
-        <div class="header-logo text-xl font-serif">
+        <div class="header-logo text-xl font-sans">
           <span class="emoji">&#128202;</span>
-          <p class="text-black-russian font-black">Dashboard</p>
-          <span class="text-cinza-claro">Visão geral da frota</span>
+
+          <p class="text-black-russian font-bold">Dashboard</p>
+
+          <span class="text-cinza-claro"> Visão geral da frota </span>
         </div>
 
-        <div class="header-buttons flex items-center gap-4 font-serif">
-          <button
-            id="btn-atualizar"
-            class="flex items-center justify-center w-24 h-8 bg-custom-button rounded-lg hover:bg-custom-button-hover hover:text-white transition-colors cursor-pointer"
-          >
-            Atualizar
-          </button>
+        <div class="header-buttons flex items-center gap-4 font-sans">
+          <button id="btn-atualizar" type="button" class="btn btn-primary">Atualizar</button>
 
           <button
-            class="flex items-center justify-center p-12 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            id="btn-notificacoes"
+            type="button"
+            class="flex items-center justify-center p-2 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            aria-label="Notificações"
           >
             &#128276;
           </button>
         </div>
       </header>
 
-      <button id="btn-hamburguer" class="btn-hamburguer">
+      <!-- =========================
+           HAMBÚRGUER
+      ========================== -->
+
+      <button id="btn-hamburguer" class="btn-hamburguer" type="button" aria-label="Abrir menu">
         <i class="fa-solid fa-bars"></i>
       </button>
+
+      <!-- =========================
+           MENU LATERAL
+      ========================== -->
 
       <nav class="menu" id="menu">
         <div class="logo">
           <i class="fa-solid fa-car" style="color: white"></i>
-          <p>Departamento de Pneus <span>Gestao e Qualidade</span></p>
+
+          <p>
+            Departamento de Pneus
+            <span>Gestao e Qualidade</span>
+          </p>
         </div>
+
         <ul>
-          <li><a href="../../index.html">Dashboard</a></li>
-          <li><a href="pneus.html">Pneus</a></li>
-          <li><a href="veiculos.html">Veículos</a></li>
-          <li><a href="movimentacao.html">Movimentações</a></li>
-          <li><a href="estoque.html">Estoque</a></li>
-          <li><a href="recapadora.html">Recapadora</a></li>
-          <li><a href="sulco.html">Sulcos</a></li>
-          <li><a href="sucateamento.html">Sucatas</a></li>
+          <li>
+            <a href="../../index.html">Dashboard</a>
+          </li>
+
+          <li>
+            <a href="pneus.html">Pneus</a>
+          </li>
+
+          <li>
+            <a href="veiculos.html">Veículos</a>
+          </li>
+
+          <li>
+            <a href="movimentacao.html">Movimentações</a>
+          </li>
+
+          <li>
+            <a href="estoque.html">Estoque</a>
+          </li>
+
+          <li>
+            <a href="recapadora.html">Recapadora</a>
+          </li>
+
+          <li>
+            <a href="sulco.html">Sulcos</a>
+          </li>
+
+          <li>
+            <a href="sucateamento.html">Sucatas</a>
+          </li>
         </ul>
       </nav>
+
+      <!-- =========================
+           SUBMENU
+      ========================== -->
 
       <section class="sub-menu" id="sub-menu">
         <ul>
@@ -62,48 +110,90 @@
         </ul>
       </section>
 
+      <!-- =========================
+           CONTEÚDO PRINCIPAL
+      ========================== -->
+
       <main class="containerPrincipal" id="containerPrincipal">
+        <!-- ===================================
+             GRÁFICOS E INDICADORES
+        ==================================== -->
+
         <section class="IndicadoresSulco">
           <div class="containerIndicadores" id="IndicadorSulco"></div>
-          <div class="indicadores-container">
-            <!-- graficos sulco por qtd x garagem-->
-            <div class="grafico-grid-3">
-              <div><canvas class="graphSulGaragem-1"></canvas></div>
-              <div><canvas class="graphSulGaragem-2"></canvas></div>
-              <div><canvas class="graphSulGaragem-3"></canvas></div>
-            </div>
-            <!-- grafico sulco por qtd -->
-            <div class="grafico-grid-1"><canvas class="graphSulcoTotal"></canvas></div>
 
-            <!-- grafico sulco por qtd x vida -->
+          <div class="indicadores-container">
+            <!-- Sulco por quantidade x garagem -->
+
+            <div class="grafico-grid-3">
+              <div>
+                <canvas id="graphSulGaragem1" class="graphSulGaragem-1"></canvas>
+              </div>
+
+              <div>
+                <canvas id="graphSulGaragem2" class="graphSulGaragem-2"></canvas>
+              </div>
+
+              <div>
+                <canvas id="graphSulGaragem3" class="graphSulGaragem-3"></canvas>
+              </div>
+            </div>
+
+            <!-- Sulco por quantidade -->
+
             <div class="grafico-grid-1">
-              <canvas class="graphSulcoVida"></canvas>
+              <canvas id="graphSulcoTotal" class="graphSulcoTotal"></canvas>
+            </div>
+
+            <!-- Sulco por quantidade x vida -->
+
+            <div class="grafico-grid-1">
+              <canvas id="graphSulcoVida" class="graphSulcoVida"></canvas>
             </div>
           </div>
         </section>
 
+        <!-- ===================================
+             CONFERÊNCIA NOS CARROS
+        ==================================== -->
+
         <section class="ConferenciaCarros">
           <div class="containerIndicadores" id="conferirCarros"></div>
+
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
-                <h3>Conferência do Estoque</h3>
-                <p>Status dos pneus em estoque físico (borracharia / almoxarifado)</p>
+                <h3>Conferência nos Carros</h3>
+
+                <p>Status dos pneus montados nos veículos</p>
               </div>
-              <div class="form-titulo-button"><button>&#00012; Upload Relatório</button></div>
+
+              <button id="btnUploadCarros" type="button" class="btn btn-primary !w-auto px-4 gap-2">
+                <i class="fa-solid fa-upload"></i>
+                Upload Relatório
+              </button>
             </div>
+
+            <!-- Pesquisa -->
 
             <div class="searchPneus grid-1">
-              <input type="text" placeholder="Buscar por Nr. Fogo ou motivo" />
+              <input
+                type="text"
+                id="buscaConferenciaCarros"
+                name="buscaConferenciaCarros"
+                placeholder="Buscar por Nr. Fogo, veículo ou garagem"
+              />
             </div>
 
+            <!-- Tabela -->
+
             <div class="table-container">
-              <table id="catalagoSucateados">
+              <table id="tabelaConferenciaCarros" class="table-system">
                 <thead>
                   <tr>
                     <th scope="col">Data</th>
                     <th scope="col">Nr. Fogo</th>
-                    <th scope="col">Veiculo</th>
+                    <th scope="col">Veículo</th>
                     <th scope="col">Garagem</th>
                     <th scope="col">Posição</th>
                     <th scope="col">Marca</th>
@@ -113,34 +203,54 @@
                     <th scope="col">Situação</th>
                   </tr>
                 </thead>
+
                 <tbody id="catalagoConferencia1"></tbody>
               </table>
             </div>
           </div>
         </section>
 
+        <!-- ===================================
+             CONFERÊNCIA DO ESTOQUE
+        ==================================== -->
+
         <section class="ConferenciaEstoque">
           <div class="containerIndicadores" id="conferirEstoque"></div>
+
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
-                <h3>Conferência nos Carros</h3>
-                <p>Status dos pneus montados nos veículos</p>
+                <h3>Conferência do Estoque</h3>
+
+                <p>Status dos pneus em estoque físico (borracharia / almoxarifado)</p>
               </div>
-              <div class="form-titulo-button"><button>&#00012; Upload Relatório</button></div>
+
+              <button id="btnUploadEstoque" type="button" class="btn btn-primary !w-auto px-4 gap-2">
+                <i class="fa-solid fa-upload"></i>
+                Upload Relatório
+              </button>
             </div>
+
+            <!-- Pesquisa -->
 
             <div class="searchPneus grid-1">
-              <input type="text" placeholder="Buscar por Nr. Fogo ou motivo" />
+              <input
+                type="text"
+                id="buscaConferenciaEstoque"
+                name="buscaConferenciaEstoque"
+                placeholder="Buscar por Nr. Fogo, medida ou garagem"
+              />
             </div>
 
+            <!-- Tabela -->
+
             <div class="table-container">
-              <table id="catalagoSucateados">
+              <table id="tabelaConferenciaEstoque" class="table-system">
                 <thead>
                   <tr>
                     <th scope="col">Data</th>
                     <th scope="col">Nr. Fogo</th>
-                    <th scope="col">Veiculo</th>
+                    <th scope="col">Veículo</th>
                     <th scope="col">Garagem</th>
                     <th scope="col">Posição</th>
                     <th scope="col">Marca</th>
@@ -150,6 +260,7 @@
                     <th scope="col">Situação</th>
                   </tr>
                 </thead>
+
                 <tbody id="catalagoConferencia2"></tbody>
               </table>
             </div>
@@ -157,7 +268,9 @@
         </section>
       </main>
     </div>
+
     <script type="module" src="../js/script.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>

@@ -3,187 +3,290 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Dashboard Pneus</title>
+
     <link rel="stylesheet" href="../css/style.css" />
     <link href="../../output.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
+
   <body>
     <div id="container-layout" class="sidebar-open overflow-hidden layout-com-submenu">
+      <!-- =========================
+           HEADER
+      ========================== -->
+
       <header class="w-full !px-14 flex justify-between items-center">
-        <div class="header-logo text-xl font-serif">
+        <div class="header-logo text-xl font-sans">
           <span class="emoji">&#128202;</span>
-          <p class="text-black-russian font-black">Dashboard</p>
-          <span class="text-cinza-claro">Visão geral da frota</span>
+
+          <p class="text-black-russian font-bold">Dashboard</p>
+
+          <span class="text-cinza-claro"> Visão geral da frota </span>
         </div>
 
-        <div class="header-buttons flex items-center gap-4 font-serif">
-          <button
-            id="btn-atualizar"
-            class="flex items-center justify-center w-24 h-8 bg-custom-button rounded-lg hover:bg-custom-button-hover hover:text-white transition-colors cursor-pointer"
-          >
-            Atualizar
-          </button>
+        <div class="header-buttons flex items-center gap-4 font-sans">
+          <button id="btn-atualizar" type="button" class="btn btn-primary">Atualizar</button>
 
           <button
-            class="flex items-center justify-center p-12 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            id="btn-notificacoes"
+            type="button"
+            class="flex items-center justify-center p-2 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            aria-label="Notificações"
           >
             &#128276;
           </button>
         </div>
       </header>
 
-      <button id="btn-hamburguer" class="btn-hamburguer">
+      <!-- =========================
+           HAMBÚRGUER
+      ========================== -->
+
+      <button id="btn-hamburguer" class="btn-hamburguer" type="button" aria-label="Abrir menu">
         <i class="fa-solid fa-bars"></i>
       </button>
+
+      <!-- =========================
+           MENU LATERAL
+      ========================== -->
 
       <nav class="menu" id="menu">
         <div class="logo">
           <i class="fa-solid fa-car" style="color: white"></i>
-          <p>Departamento de Pneus <span>Gestao e Qualidade</span></p>
+
+          <p>
+            Departamento de Pneus
+            <span>Gestao e Qualidade</span>
+          </p>
         </div>
+
         <ul>
-          <li><a href="../../index.html">Dashboard</a></li>
-          <li><a href="pneus.html">Pneus</a></li>
-          <li><a href="veiculos.html">Veículos</a></li>
-          <li><a href="movimentacao.html">Movimentações</a></li>
-          <li><a href="estoque.html">Estoque</a></li>
-          <li><a href="recapadora.html">Recapadora</a></li>
-          <li><a href="sulco.html">Sulcos</a></li>
-          <li><a href="sucateamento.html">Sucatas</a></li>
+          <li>
+            <a href="../../index.html"> Dashboard </a>
+          </li>
+
+          <li>
+            <a href="pneus.html"> Pneus </a>
+          </li>
+
+          <li>
+            <a href="veiculos.html"> Veículos </a>
+          </li>
+
+          <li>
+            <a href="movimentacao.html"> Movimentações </a>
+          </li>
+
+          <li>
+            <a href="estoque.html"> Estoque </a>
+          </li>
+
+          <li>
+            <a href="recapadora.html"> Recapadora </a>
+          </li>
+
+          <li>
+            <a href="sulco.html"> Sulcos </a>
+          </li>
+
+          <li>
+            <a href="sucateamento.html"> Sucatas </a>
+          </li>
         </ul>
       </nav>
+
+      <!-- =========================
+           SUBMENU
+      ========================== -->
 
       <section class="sub-menu" id="sub-menu">
         <ul>
           <li>Cadastrar Coleta</li>
           <li>Informar Entrega</li>
           <li>Status Coletas</li>
-          <li>Historico Coleta</li>
+          <li>Histórico Coleta</li>
           <li>Indicadores</li>
           <li>Dados Recapadoras</li>
         </ul>
       </section>
 
+      <!-- =========================
+           CONTEÚDO PRINCIPAL
+      ========================== -->
+
       <main class="containerPrincipal" id="containerPrincipal">
-        <!-- Pagina Cadastrar Coletas -->
+        <!-- ===================================
+             CADASTRAR COLETA
+        ==================================== -->
+
         <section class="cadastrarColeta">
-          <form action="" method="post" class="formulario">
-            <fieldset class="form-titulo-container">
-              <div>
+          <form action="" method="post" id="formCadastrarColeta" name="formCadastrarColeta" class="formulario">
+            <!-- Cabeçalho -->
+
+            <div class="form-titulo-container">
+              <div class="form-titulo">
                 <h2>Cadastrar Coleta</h2>
-                <span>Registre os pneus coletados pela reformadora com foto da nota</span>
+
+                <p>Registre os pneus coletados pela reformadora com foto da nota</p>
               </div>
-              <button class="buttonColeta">+ Lançar Coleta</button>
-            </fieldset>
+
+              <button id="btnLancarColeta" type="submit" class="btn btn-primary btn-form-action">+ Lançar Coleta</button>
+            </div>
+
+            <!-- Dados da coleta -->
+
             <fieldset class="form-body">
               <div class="dadosColeta">
                 <div class="form-input">
-                  <label for="id_coleta">Numero da Coleta</label>
-                  <input type="number" placeholder="6 digitos" id="id_coleta" name="id_coleta" />
+                  <label for="id_coleta"> Número da Coleta </label>
+
+                  <input type="number" id="id_coleta" name="id_coleta" placeholder="6 dígitos" />
                 </div>
+
                 <div class="form-input">
-                  <label for="id_recapadora">Reformadora</label>
-                  <select name="id_recapadora" id="id_recapadora">
+                  <label for="id_recapadora"> Reformadora </label>
+
+                  <select id="id_recapadora" name="id_recapadora">
                     <option value="" disabled selected>Selecionar Reformadora</option>
-                    <option value="">JBQ Pneus</option>
-                    <option value="">Jacar Pneus</option>
+
+                    <option value="jbq">JBQ Pneus</option>
+
+                    <option value="jacar">Jacar Pneus</option>
                   </select>
                 </div>
+
                 <div class="form-input">
-                  <label for="id_dataColeta">Data da Coleta</label>
-                  <input type="garagem" placeholder="DD/MM/AAAA" id="id_dataColeta" name="id_dataColeta" />
+                  <label for="id_dataColeta"> Data da Coleta </label>
+
+                  <input type="date" id="id_dataColeta" name="id_dataColeta" />
                 </div>
+
                 <div class="form-input">
-                  <label for="id_garagemColeta">Garagem</label>
-                  <select name="id_garagemColeta" id="id_garagemColeta">
+                  <label for="id_garagemColeta"> Garagem </label>
+
+                  <select id="id_garagemColeta" name="id_garagemColeta">
                     <option value="" disabled selected>Selecionar Garagem</option>
-                    <option value="">Itaquera</option>
-                    <option value="">Limeira</option>
-                    <option value="">Juiz de Fora</option>
+
+                    <option value="itaquera">Itaquera</option>
+
+                    <option value="limeira">Limeira</option>
+
+                    <option value="juizDeFora">Juiz de Fora</option>
                   </select>
                 </div>
               </div>
+
+              <!-- Foto -->
+
               <div class="imageColeta">
-                <label for="EnviarFoto">Enviar Foto</label>
-                <input type="file" name="EnviarFoto" id="EnviarFoto" placeholder="EnviarFoto" />
+                <label for="EnviarFoto"> Enviar Foto </label>
+
+                <input type="file" id="EnviarFoto" name="EnviarFoto" accept="image/*" />
               </div>
             </fieldset>
 
+            <!-- Pneus da coleta -->
+
             <fieldset class="form-footer">
-              <table id="addPneu">
-                <thead>
-                  <tr>
-                    <th scope="col">Nr. Fogo</th>
-                    <th scope="col">Garagem</th>
-                    <th scope="col">Medida</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Vida</th>
-                    <th scope="col">Sulco</th>
-                    <th scope="col">Serviço</th>
-                    <th scope="col">Valor</th>
-                  </tr>
-                </thead>
-                <tbody id="addPneuList"></tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="8">
-                      <button id="addManualmente" type="button">Adicionar Pneus</button>
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
+              <div class="table-container">
+                <table id="addPneu">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nr. Fogo</th>
+                      <th scope="col">Garagem</th>
+                      <th scope="col">Medida</th>
+                      <th scope="col">Marca</th>
+                      <th scope="col">Vida</th>
+                      <th scope="col">Sulco</th>
+                      <th scope="col">Serviço</th>
+                      <th scope="col">Valor</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="addPneuList"></tbody>
+
+                  <tfoot>
+                    <tr>
+                      <td colspan="8">
+                        <button id="addManualmente" type="button" class="btn btn-primary btn-form-action">Adicionar Pneus</button>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
             </fieldset>
           </form>
         </section>
-        <!-- Pagina informar Entrega de pneus coletados -->
+
+        <!-- ===================================
+             INFORMAR ENTREGA
+        ==================================== -->
+
         <section class="informarEntrega">
           <div class="containerIndicadores" id="metricaEntrega"></div>
+
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
-                <h3>RETORNO DE COLETA</h3>
+                <h3>Retorno de Coleta</h3>
+
                 <p>13 pneus aguardando retorno</p>
               </div>
 
               <div class="form-titulo-button-entrega">
                 <div class="form-input">
-                  <label for="dateEntrega">Data da Entrega*</label><input type="date" name="dateEntrega" id="dateEntrega" />
+                  <label for="dateEntrega"> Data da Entrega * </label>
+
+                  <input type="date" id="dateEntrega" name="dateEntrega" />
                 </div>
+
                 <div class="form-input">
-                  <label for="garagemEntrega">Garagem / Localização *</label>
-                  <select name="garagemEntrega" id="garagemEntrega">
-                    <option value="" disabled selected>selecione a unidade</option>
-                    <option value="valor1">Itaquera</option>
-                    <option value="valor2">Limeira</option>
-                    <option value="valor3">Tatuapé</option>
+                  <label for="garagemEntrega"> Garagem / Localização * </label>
+
+                  <select id="garagemEntrega" name="garagemEntrega">
+                    <option value="" disabled selected>Selecione a unidade</option>
+
+                    <option value="itaquera">Itaquera</option>
+
+                    <option value="limeira">Limeira</option>
+
+                    <option value="tatuape">Tatuapé</option>
                   </select>
                 </div>
 
-                <button class="buttonColeta">Receber</button>
+                <button id="btnReceberColeta" type="button" class="btn btn-primary">Receber</button>
               </div>
             </div>
 
+            <!-- Pesquisa -->
+
             <div class="searchPneus grid-1">
-              <input type="text" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
+              <input type="text" id="buscaRetornoColeta" name="buscaRetornoColeta" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
             </div>
-            <div id="catalagoContagemI" class="table-container-infoRef">
-              <table class="table-container">
+
+            <!-- Tabela -->
+
+            <div id="catalagoContagemRecebimento" class="table-container-infoRef">
+              <table id="tabelaRetornoColeta" class="table-system">
                 <thead>
                   <tr>
-                    <th>Selecionar</th>
-                    <th>Coleta</th>
-                    <th>Reformadora</th>
-                    <th>Nr. Fogo</th>
-                    <th>Medida</th>
-                    <th>Marca</th>
-                    <th>Vida</th>
-                    <th>Status</th>
-                    <th>Garagem</th>
-                    <th>Serviço</th>
-                    <th>Valor</th>
+                    <th scope="col">Selecionar</th>
+                    <th scope="col">Coleta</th>
+                    <th scope="col">Reformadora</th>
+                    <th scope="col">Nr. Fogo</th>
+                    <th scope="col">Medida</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Vida</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Garagem</th>
+                    <th scope="col">Serviço</th>
+                    <th scope="col">Valor</th>
                   </tr>
                 </thead>
+
                 <tbody id="conteudoReformadora">
                   <!-- Os dados entram aqui via JavaScript -->
                 </tbody>
@@ -191,82 +294,122 @@
             </div>
           </div>
         </section>
-        <!-- Pagina status reformadora x garagem -->
+
+        <!-- ===================================
+             STATUS DAS COLETAS
+        ==================================== -->
+
         <section class="statusColeta">
           <div class="containerIndicadores" id="metricaStatus"></div>
-          <div id="statusfeitas"></div>
+
+          <div id="statusfeitas" class="responsive-scroll"></div>
         </section>
 
-        <!-- Pagina historico de envio e recebimento dos Pneus -->
+        <!-- ===================================
+             HISTÓRICO DAS COLETAS
+        ==================================== -->
+
         <section class="historicoColeta">
           <div class="formulario">
+            <!-- Pesquisa -->
+
             <div class="searchPneus grid-1">
-              <input type="text" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
+              <input
+                type="text"
+                id="buscaHistoricoColeta"
+                name="buscaHistoricoColeta"
+                placeholder="Buscar por Nr. Fogo, marca ou veículo..."
+              />
             </div>
-            <div id="catalagoContagemI" class="table-container-infoRef">
-              <table class="table-container">
+
+            <!-- Tabela -->
+
+            <div id="catalagoContagemHistorico" class="table-container-infoRef">
+              <table id="tabelaHistoricoColeta" class="table-system">
                 <thead>
                   <tr>
-                    <th>Selecionar</th>
-                    <th>Coleta</th>
-                    <th>Reformadora</th>
-                    <th>Nr. Fogo</th>
-                    <th>Medida</th>
-                    <th>Marca</th>
-                    <th>Vida</th>
-                    <th>Status</th>
-                    <th>Garagem</th>
-                    <th>Serviço</th>
-                    <th>Valor</th>
+                    <th scope="col">Selecionar</th>
+                    <th scope="col">Coleta</th>
+                    <th scope="col">Reformadora</th>
+                    <th scope="col">Nr. Fogo</th>
+                    <th scope="col">Medida</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Vida</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Garagem</th>
+                    <th scope="col">Serviço</th>
+                    <th scope="col">Valor</th>
                   </tr>
                 </thead>
+
                 <tbody id="conteudoEntregue"></tbody>
               </table>
             </div>
           </div>
         </section>
-        <!-- Pagina indicadores recapagem -->
+
+        <!-- ===================================
+             INDICADORES
+        ==================================== -->
+
         <section class="indicadoresRecapagem">
           <div class="containerIndicadores" id="indicadoresRecapagem"></div>
         </section>
-        <!-- Pagina sobre as reformadoras -->
+
+        <!-- ===================================
+             DADOS DAS RECAPADORAS
+        ==================================== -->
+
         <section class="dadosRecapagem">
           <div class="fornecedoresRef"></div>
+
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h3>Garagens Atendidas</h3>
+
                 <p>3 garagens na frota</p>
               </div>
             </div>
+
             <div class="garagemAtendidas">
               <div class="card-dados-topo garagemA">
                 <div class="card-icon">
                   <span class="icon">11</span>
+
                   <h4>JBQ Pneus</h4>
-                  <span>itaquera</span>
+
+                  <span> Itaquera </span>
                 </div>
               </div>
+
               <div class="card-dados-topo garagemA">
                 <div class="card-icon">
                   <span class="icon">11</span>
+
                   <h4>JBQ Pneus</h4>
-                  <span>itaquera</span>
+
+                  <span> Itaquera </span>
                 </div>
               </div>
+
               <div class="card-dados-topo garagemA">
                 <div class="card-icon">
                   <span class="icon">11</span>
+
                   <h4>JBQ Pneus</h4>
-                  <span>itaquera</span>
+
+                  <span> Itaquera </span>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="garagensAtendidas"></div>
         </section>
       </main>
     </div>
+
     <script type="module" src="../js/script.js"></script>
   </body>
 </html>

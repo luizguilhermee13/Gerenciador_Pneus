@@ -1,380 +1,593 @@
+/* ===================================
+   CONTAINER DO DASHBOARD
+=================================== */
+
 .containerDashboard {
-  background: var(--card);
   width: 100%;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode";
-  line-height: 1.1;
-  font-size: 0.8rem;
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 2rem;
-  box-sizing: border-box;
 }
 
-/* Regra unificada para todos os canvas dentro dos grids */
+/* ===================================
+   CANVAS
+=================================== */
+
 .containerDashboard [class*="dash-row-"] canvas {
   width: 100% !important;
   max-width: 100% !important;
   height: auto !important;
 }
 
-/* Grids individuais definindo apenas o número de colunas e espaçamentos */
+/* ===================================
+   PRIMEIRA LINHA
+=================================== */
+
 .containerDashboard .dash-row-1 {
   display: grid;
-  grid-template-columns: 1fr;
+
+  grid-template-columns: minmax(0, 1fr);
+
   width: 100%;
+  min-width: 0;
 }
+
+/* ===================================
+   SEGUNDA LINHA
+=================================== */
 
 .containerDashboard .dash-row-2 {
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 1rem;
+
   width: 100%;
+  min-width: 0;
+
   align-items: stretch;
 }
 
-.containerDashboard .dash-row-2 > div {
-  display: flex;
-  flex-direction: column;
+.containerDashboard .dash-row-2 > * {
+  min-width: 0;
   height: 100%;
 }
 
-.containerDashboard .dash-row-2 > div > div {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+/* Containers preenchidos pelo JS */
+
+.localizacaoSistema,
+.lastMovimentacoes {
+  width: 100%;
+  min-width: 0;
   height: 100%;
 }
+
+/* ===================================
+   TERCEIRA LINHA
+=================================== */
 
 .containerDashboard .dash-row-3 {
   display: grid;
+
   grid-template-columns: repeat(3, minmax(0, 1fr));
+
   gap: 0.8rem;
+
   width: 100%;
+  min-width: 0;
+
   align-items: stretch;
 }
 
-.containerDashboard .form-titulo-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+.dashboard-chart {
+  min-width: 0;
 
-.containerDashboard .form-titulo-container h3 {
-  margin-bottom: 0.5rem;
-}
-
-/* --- Estilos para o Card de Movimentações (COMPACTO) --- */
-.card-mov-ultimas {
-  background: var(--card, #ffffff);
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 1rem; /* Reduzido de 1.5rem */
-  font-family: inherit;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem; /* Corrigido de "0 5rem" e reduzido */
-  height: 100%;
-}
-
-.card-mov-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 1px solid #f1f5f9;
-  padding-bottom: 0.6rem; /* Reduzido de 1rem */
-}
-
-.card-mov-title h3 {
-  font-size: 0.95rem; /* Reduzido de 1.1rem */
-  font-weight: 600;
-  color: #1e293b;
-  margin: 0;
-}
-
-.card-mov-title p {
-  font-size: 0.75rem; /* Reduzido de 0.85rem */
-  color: #64748b;
-  margin: 0.1rem 0 0 0;
-}
-
-.card-mov-link {
-  font-size: 0.8rem; /* Reduzido de 0.85rem */
-  color: #008080;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.card-mov-link:hover {
-  text-decoration: underline;
-}
-
-.card-mov-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem; /* Reduzido de 0.8rem */
-}
-
-.mov-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  padding: 0.5rem; /* Reduzido de 0.8rem */
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-}
-
-.mov-status-dot {
-  width: 8px; /* Reduzido de 10px */
-  height: 8px; /* Reduzido de 10px */
-  border-radius: 50%;
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-
-.mov-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  width: 100%;
-}
-
-.mov-header-info {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.mov-badge {
-  padding: 0.15rem 0.4rem; /* Reduzido de 0.2rem 0.6rem */
-  border-radius: 4px;
-  font-size: 0.7rem; /* Reduzido de 0.75rem */
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
-.mov-fogo {
-  font-weight: 700;
-  color: #008080;
-  font-size: 0.75rem; /* Reduzido de 0.85rem */
-}
-
-.mov-info {
-  color: #64748b;
-  font-size: 0.75rem; /* Reduzido de 0.85rem */
-}
-
-.mov-meta {
-  font-size: 0.7rem; /* Reduzido de 0.8rem */
-  color: #64748b;
-}
-
-/* Cores Dinâmicas mantidas iguais */
-.badge-blue-dot {
-  background-color: #0ea5e9;
-}
-.badge-blue-bg {
-  background-color: #e0f2fe;
-  color: #0284c7;
-}
-
-.badge-green-dot {
-  background-color: #10b981;
-}
-.badge-green-bg {
-  background-color: #d1fae5;
-  color: #059669;
-}
-
-.badge-orange-dot {
-  background-color: #f59e0b;
-}
-.badge-orange-bg {
-  background-color: #fef3c7;
-  color: #d97706;
-}
-
-.badge-red-dot {
-  background-color: #ef4444;
-}
-.badge-red-bg {
-  background-color: #fee2e2;
-  color: #b91c1c;
-}
-
-/* Rodapé Delta */
-.card-mov-footer {
-  margin-top: auto;
-  border-top: 1px solid #e2e8f0;
-  padding-top: 0.6rem; /* Reduzido de 1rem */
-}
-
-.card-mov-footer h4 {
-  font-size: 0.7rem; /* Reduzido de 0.75rem */
-  font-weight: 700;
-  color: #64748b;
-  margin-bottom: 0.5rem;
-}
-
-.delta-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.75rem; /* Reduzido de 0.85rem */
-  color: #475569;
-  margin-bottom: 0.3rem;
-}
-
-.text-red {
-  color: #ef4444;
-  font-weight: 700;
-  margin-left: 0.5rem;
-}
-
-/* --- Estilos para o Card de Localização no Sistema --- */
-.card-loc {
-  background: var(--card, #ffffff);
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
   padding: 1rem;
-  font-family: inherit;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-system-border);
+  border-radius: 0.5rem;
+
+  box-shadow: var(--shadow-table);
+}
+
+/* ===================================
+   TÍTULO DA CONTAGEM
+=================================== */
+
+.containerDashboard > .dash-row-1 .form-titulo-container {
+  justify-content: center;
+}
+
+.containerDashboard > .dash-row-1 .form-titulo-container h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* ===================================
+   CARD - LOCALIZAÇÃO NO SISTEMA
+=================================== */
+
+.card-loc {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 1rem;
-  height: 100%;
-  box-sizing: border-box;
+
+  padding: 1rem;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-system-border);
+  border-radius: 0.5rem;
+
+  box-shadow: var(--shadow-table);
 }
+
+/* ===================================
+   CABEÇALHO - LOCALIZAÇÃO
+=================================== */
 
 .card-loc-header {
-  border-bottom: 1px solid #f1f5f9;
   padding-bottom: 0.6rem;
+
+  border-bottom: 1px solid var(--color-system-border);
 }
 
 .card-loc-header h3 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #1e293b;
   margin: 0;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  color: var(--color-text-primary);
 }
 
 .card-loc-header p {
+  margin-top: 0.1rem;
+
   font-size: 0.75rem;
-  color: #64748b;
-  margin: 0.1rem 0 0 0;
+
+  color: var(--color-text-secondary);
 }
 
-/* Grid das 4 caixas superiores */
+/* ===================================
+   GRID DE LOCALIZAÇÕES
+=================================== */
+
 .card-loc-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 0.6rem;
 }
 
 .loc-box {
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 0.8rem 0.5rem;
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
+
+  padding: 0.8rem 0.5rem;
+
   text-align: center;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-system-border);
+  border-radius: 0.5rem;
 }
 
 .loc-box-title {
-  font-size: 0.75rem;
-  color: #475569;
   margin-bottom: 0.2rem;
+
+  font-size: 0.75rem;
+
+  color: var(--color-text-secondary);
 }
 
 .loc-box-num {
+  margin-bottom: 0.2rem;
+
   font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.2rem;
 }
 
 .loc-box-sub {
   font-size: 0.65rem;
-  color: #94a3b8;
+
+  color: var(--color-text-muted);
 }
 
-/* Cores das fontes (numerais) */
+/* ===================================
+   CORES DOS NÚMEROS
+=================================== */
+
 .text-teal {
-  color: #008080;
-}
-.text-purple {
-  color: #8b5cf6;
-}
-.text-blue {
-  color: #3b82f6;
-}
-.text-green {
-  color: #10b981;
-}
-.text-right {
-  text-align: right !important;
-}
-.text-red {
-  color: #ef4444 !important;
-  font-weight: 600;
+  color: var(--color-status-excellent);
 }
 
-/* Tabela de Sucatas */
+.text-green {
+  color: var(--color-status-good);
+}
+
+.text-blue {
+  color: var(--color-status-neutral);
+}
+
+.text-orange {
+  color: var(--color-status-warning);
+}
+
+.text-red {
+  color: var(--color-status-critical);
+}
+
+/* ===================================
+   TABELA - PNEUS PARA BAIXA
+=================================== */
+
 .card-loc-table-wrapper {
   margin-top: auto;
 }
 
 .loc-table-title {
+  margin-bottom: 0.5rem;
+
   font-size: 0.7rem;
   font-weight: 700;
-  color: #64748b;
-  margin-bottom: 0.5rem;
+
+  color: var(--color-text-secondary);
+
   text-transform: uppercase;
 }
 
 .loc-table {
   width: 100%;
+
   border-collapse: collapse;
+
+  overflow: hidden;
+
   font-size: 0.75rem;
-  color: #334155;
-  border-radius: 6px;
-  overflow: hidden; /* Mantém os cantos redondos no header/footer */
-  border: 1px solid #e2e8f0;
+
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-system-border);
+  border-radius: 0.5rem;
 }
 
 .loc-table thead th {
-  background-color: #008080; /* Teal do cabeçalho */
-  color: #ffffff;
   padding: 0.4rem 0.6rem;
+
+  background: var(--color-status-excellent);
+
+  color: white;
+
   text-align: left;
   font-weight: 600;
 }
 
 .loc-table tbody td {
   padding: 0.4rem 0.6rem;
-  border-bottom: 1px solid #f1f5f9;
+
+  border-bottom: 1px solid var(--color-system-border);
 }
 
 .loc-table tfoot td {
-  background-color: #e6f2f2; /* Fundo claro da mesma cor base do teal */
-  color: #008080;
-  font-weight: 700;
   padding: 0.4rem 0.6rem;
+
+  background: var(--color-status-excellent-soft);
+
+  color: var(--color-status-excellent-dark);
+
+  font-weight: 700;
 }
 
-@media (max-width: 550px) {
-  .containerDashboard .dash-row-2 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+/* ===================================
+   CARD - ÚLTIMAS MOVIMENTAÇÕES
+=================================== */
+
+.card-mov-ultimas {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.8rem;
+
+  padding: 1rem;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-system-border);
+  border-radius: 0.5rem;
+
+  box-shadow: var(--shadow-table);
+}
+
+/* ===================================
+   CABEÇALHO - MOVIMENTAÇÕES
+=================================== */
+
+.card-mov-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 1rem;
+
+  padding-bottom: 0.6rem;
+
+  border-bottom: 1px solid var(--color-system-border);
+}
+
+.card-mov-title h3 {
+  margin: 0;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  color: var(--color-text-primary);
+}
+
+.card-mov-title p {
+  margin-top: 0.1rem;
+
+  font-size: 0.75rem;
+
+  color: var(--color-text-secondary);
+}
+
+.card-mov-link {
+  flex-shrink: 0;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  color: var(--color-status-excellent);
+
+  text-decoration: none;
+}
+
+.card-mov-link:hover {
+  text-decoration: underline;
+}
+
+/* ===================================
+   LISTA DE MOVIMENTAÇÕES
+=================================== */
+
+.card-mov-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.4rem;
+
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.mov-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.6rem;
+
+  min-width: 0;
+
+  padding: 0.5rem;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-system-border);
+  border-radius: 0.4rem;
+}
+
+.mov-status-dot {
+  width: 8px;
+  height: 8px;
+
+  margin-top: 4px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+}
+
+.mov-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.2rem;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.mov-header-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  flex-wrap: wrap;
+}
+
+.mov-badge {
+  padding: 0.15rem 0.4rem;
+
+  border-radius: 0.25rem;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+.mov-fogo {
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  color: var(--color-status-excellent);
+}
+
+.mov-info {
+  font-size: 0.75rem;
+
+  color: var(--color-text-secondary);
+}
+
+.mov-meta {
+  font-size: 0.7rem;
+
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   BADGES
+=================================== */
+
+/* Azul */
+
+.badge-blue-dot {
+  background: var(--color-status-neutral);
+}
+
+.badge-blue-bg {
+  background: var(--color-status-neutral-soft);
+
+  color: var(--color-status-neutral-dark);
+}
+
+/* Verde */
+
+.badge-green-dot {
+  background: var(--color-status-good);
+}
+
+.badge-green-bg {
+  background: var(--color-status-good-soft);
+
+  color: var(--color-status-good-dark);
+}
+
+/* Laranja */
+
+.badge-orange-dot {
+  background: var(--color-status-warning);
+}
+
+.badge-orange-bg {
+  background: var(--color-status-warning-soft);
+
+  color: var(--color-status-warning-dark);
+}
+
+/* Vermelho */
+
+.badge-red-dot {
+  background: var(--color-status-critical);
+}
+
+.badge-red-bg {
+  background: var(--color-status-critical-soft);
+
+  color: var(--color-status-critical-dark);
+}
+
+/* ===================================
+   DELTA FÍSICO X SISTEMA
+=================================== */
+
+.card-mov-footer {
+  margin-top: auto;
+
+  padding-top: 0.6rem;
+
+  border-top: 1px solid var(--color-system-border);
+}
+
+.card-mov-footer h4 {
+  margin-bottom: 0.5rem;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  color: var(--color-text-secondary);
+}
+
+.delta-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 0.3rem;
+
+  font-size: 0.75rem;
+
+  color: var(--color-text-primary);
+}
+
+.delta-row .text-red {
+  margin-left: 0.5rem;
+
+  color: var(--color-status-critical);
+
+  font-weight: 700;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* ===================================
+   RESPONSIVIDADE
+=================================== */
+
+@media (max-width: 900px) {
+  .containerDashboard .dash-row-3 {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-@media (max-width: 550px) {
-  .containerDashboard .dash-row-3 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1rem;
+@media (max-width: 768px) {
+  .containerDashboard .dash-row-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .card-loc-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card-mov-header {
+    flex-direction: column;
+  }
+
+  .delta-row {
+    flex-wrap: wrap;
   }
 }

@@ -1,167 +1,79 @@
-.descriptionPage {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-}
-
-.descriptionPage span {
-  font-weight: 900;
-  text-decoration: underline;
-  text-transform: uppercase;
-}
-
-/*cores da descrição da seção cadastro individual*/
-.cadastroIndividual .descriptionPage {
-  background: var(--bg-blue-50);
-  border: 1px solid var(--border-blue-200);
-}
-
-.cadastroIndividual .descriptionPage h5 {
-  color: var(--text-blue-700);
-}
-
-/*cores da descrição da seção cadastro por quantidade*/
-.cadastroQuantidade .descriptionPage {
-  background: var(--bg-orange-50);
-  border: 1px solid var(--border-orange-200);
-}
-
-.cadastroQuantidade h5 {
-  color: var(--text-orange-700);
-}
-
-/*Estilizano section catalago de pneus*/
+/* ===================================
+   LAYOUT DO CATÁLOGO
+=================================== */
 
 .layout-catalogo {
   display: grid;
-  grid-template-columns: 2.3fr 1fr;
+
+  grid-template-columns:
+    minmax(0, 2.3fr)
+    minmax(0, 1fr);
+
   gap: 0.5rem;
+
   padding: 0.4rem;
 }
+
+/* Veículos não possuem painel lateral */
 
 .veiculoPage > .layout-catalogo,
 .veiculoGns > .layout-catalogo {
   display: grid;
-  grid-template-columns: 1fr;
+
+  grid-template-columns: minmax(0, 1fr);
+
   gap: 0.5rem;
+
   padding: 0.4rem;
 }
+
+/* Mantido porque esse componente utiliza Grid */
 
 .table-container-contagemD {
   display: grid;
-  grid-template-columns: 1fr;
+
+  grid-template-columns: minmax(0, 1fr);
+
   padding: 0.4rem;
 }
 
-.layout-catalogo #catalagoPneus,
-#catalagoCarros,
-#catalagoSucateados,
-.table-container-contagemF,
-.table-container-contagemD {
-  width: 100%;
-  border-collapse: collapse;
-  white-space: nowrap;
-  margin: 0;
-}
-
-.table-container,
-.table-container-contagemF,
-.table-container-contagemD,
-.table-container-infoRef,
-#catalagoSucateados,
-#catalagoCarros {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
-  background: var(--card, #ffffff);
-}
-
-.layout-catalogo thead,
-.table-container-contagemF thead,
-.table-container-contagemD thead,
-.table-container-infoRef thead,
-#catalagoCarros thead,
-#catalagoSucateados thead {
-  background: var(--ring);
-  color: #ffffff;
-}
-
-.layout-catalogo tbody,
-.table-container-contagemF tbody,
-.table-container-contagemD tbody,
-.table-container-infoRef tbody,
-#catalagoCarros tbody,
-#catalagoSucateados tbody {
-  text-align: center;
-}
-
-.layout-catalogo tbody tr,
-.table-container-contagemF tbody tr,
-.table-container-contagemD tbody tr,
-.table-container-infoRef tbody tr,
-#catalagoCarros tbody tr,
-#catalagoSucateados tbody tr {
-  cursor: pointer;
-  background: var(--card, #ffffff);
-  border-radius: 0.5rem;
-}
-
-.layout-catalogo tbody td,
-.table-container-contagemF tbody td,
-.table-container-contagemD tbody td,
-.table-container-infoRef tbody td,
-#catalagoCarros tbody td,
-#catalagoSucateados tbody td {
-  padding: 0.5rem 0.2rem;
-}
-
-.layout-catalogo tbody tr:hover,
-.table-container-contagemF tbody tr:hover,
-.table-container-contagemD tbody tr:hover,
-.table-container-infoRef tbody tr:hover,
-#catalagoCarros tbody tr:hover,
-#catalagoSucateados tbody tr:hover {
-  background: var(--bg-orange-50);
-}
-
-.layout-catalogo tbody tr:nth-child(even),
-.table-container-contagemF tbody tr:nth-child(odd),
-.table-container-contagemD tbody tr:nth-child(even),
-.table-container-infoRef tbody tr:nth-child(odd),
-#catalagoCarros tbody tr:nth-child(odd),
-#catalagoSucateados tbody tr:nth-child(even) {
-  background: var(--bg-green-50);
-}
-
-/*Estilizano o painel do catalago de pneus*/
+/* ===================================
+   PAINEL DO PNEU
+   Componente específico desta tela
+=================================== */
 
 .painelPneus {
-  background: var(--card, #ffffff);
-  border: 1px solid var(--border, #e2e8f0);
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-system-border);
   border-radius: 0.5rem;
+
   padding: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+  box-shadow: var(--shadow-table);
 }
 
 .painelPneus .painel-header {
   display: flex;
+
   justify-content: space-between;
-  padding: 0 0.5rem 0.5rem 0.5rem;
   align-items: center;
+
+  padding: 0 0.5rem 0.5rem;
 }
 
 .painelPneus .painel-header p {
-  color: var(--muted-foreground);
+  color: var(--color-text-secondary);
 }
 
 .painelPneus .painel-header .painel-vida {
-  background: var(--ring);
-  border-radius: 50%;
-  padding: 3px;
+  background: var(--color-status-excellent);
+
   color: #ffffff;
+
+  border-radius: 50%;
+
+  padding: 3px;
 }
 
 .painelPneus .painel-corpo {
@@ -170,46 +82,79 @@
 
 .painelPneus .painel-linha {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--switch-background);
+
+  border-bottom: 1px solid var(--color-system-border);
+
   margin-bottom: 0.5rem;
 }
 
+/* ===================================
+   RESPONSIVIDADE DO CATÁLOGO
+=================================== */
+
 @media (max-width: 1350px) {
   .layout-catalogo {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-/*Estilizano a barra de pesquisa dos pneus*/
+/* ===================================
+   GRID DA PESQUISA
+=================================== */
+
 .searchPneus {
   display: grid;
-  grid-template-columns: 1fr;
+
+  grid-template-columns: minmax(0, 1fr);
+
   gap: 0.5rem;
-  background: var(--card);
-  padding: 1rem 0.5rem;
-  border-radius: 0.5rem;
 }
 
 .grid-1 {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .grid-2 {
-  grid-template-columns: 10fr 2fr;
+  grid-template-columns:
+    minmax(0, 2fr)
+    minmax(260px, 1fr);
 }
 
-.searchSelect {
-  display: flex;
-  justify-content: space-around;
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
-.searchPneus input,
-.searchPneus select {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: none;
-  background: var(--background);
-  font-size: large;
+/* ===================================
+   Movimentações HISTÓRICOS - RESPONSIVIDADE
+=================================== */
+
+.movimentacaoEstoque,
+.historicoMoviCarro {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.movimentacaoEstoque > *,
+.historicoMoviCarro > * {
+  min-width: 0;
+}
+
+/*
+  Se o conteúdo gerado pelo JS for tabela,
+  garante largura mínima suficiente
+*/
+
+.movimentacaoEstoque table,
+.historicoMoviCarro table {
+  width: 100%;
+
+  min-width: 700px;
+
+  border-collapse: collapse;
 }

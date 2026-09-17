@@ -3,56 +3,104 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Dashboard Pneus</title>
+
     <link rel="stylesheet" href="../css/style.css" />
     <link href="../../output.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
+
   <body>
     <div id="container-layout" class="sidebar-open overflow-hidden layout-com-submenu">
-          <header class="w-full !px-14 flex justify-between items-center">
-        <div class="header-logo text-xl font-serif">
+      <!-- =========================
+           HEADER
+      ========================== -->
+
+      <header class="w-full !px-14 flex justify-between items-center">
+        <div class="header-logo text-xl font-sans">
           <span class="emoji">&#128202;</span>
-          <p class="text-black-russian font-black">Dashboard</p>
-          <span class="text-cinza-claro">Visão geral da frota</span>
+
+          <p class="text-black-russian font-bold">Dashboard</p>
+
+          <span class="text-cinza-claro"> Visão geral da frota </span>
         </div>
 
-        <div class="header-buttons flex items-center gap-4 font-serif">
-          <button
-            id="btn-atualizar"
-            class="flex items-center justify-center w-24 h-8 bg-custom-button rounded-lg hover:bg-custom-button-hover hover:text-white transition-colors cursor-pointer"
-          >
-            Atualizar
-          </button>
+        <div class="header-buttons flex items-center gap-4 font-sans">
+          <button id="btn-atualizar" type="button" class="btn btn-primary">Atualizar</button>
 
           <button
-            class="flex items-center justify-center p-12 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            id="btn-notificacoes"
+            type="button"
+            class="flex items-center justify-center p-2 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            aria-label="Notificações"
           >
             &#128276;
           </button>
         </div>
       </header>
 
-      <button id="btn-hamburguer" class="btn-hamburguer">
+      <!-- =========================
+           HAMBÚRGUER
+      ========================== -->
+
+      <button id="btn-hamburguer" class="btn-hamburguer" type="button" aria-label="Abrir menu">
         <i class="fa-solid fa-bars"></i>
       </button>
+
+      <!-- =========================
+           MENU LATERAL
+      ========================== -->
 
       <nav class="menu" id="menu">
         <div class="logo">
           <i class="fa-solid fa-car" style="color: white"></i>
-          <p>Departamento de Pneus <span>Gestao e Qualidade</span></p>
+
+          <p>
+            Departamento de Pneus
+            <span>Gestao e Qualidade</span>
+          </p>
         </div>
+
         <ul>
-          <li><a href="../../index.html">Dashboard</a></li>
-          <li><a href="pneus.html">Pneus</a></li>
-          <li><a href="veiculos.html">Veículos</a></li>
-          <li><a href="movimentacao.html">Movimentações</a></li>
-          <li><a href="estoque.html">Estoque</a></li>
-          <li><a href="recapadora.html">Recapadora</a></li>
-          <li><a href="sulco.html">Sulcos</a></li>
-          <li><a href="sucateamento.html">Sucatas</a></li>
+          <li>
+            <a href="../../index.html"> Dashboard </a>
+          </li>
+
+          <li>
+            <a href="pneus.html"> Pneus </a>
+          </li>
+
+          <li>
+            <a href="veiculos.html"> Veículos </a>
+          </li>
+
+          <li>
+            <a href="movimentacao.html"> Movimentações </a>
+          </li>
+
+          <li>
+            <a href="estoque.html"> Estoque </a>
+          </li>
+
+          <li>
+            <a href="recapadora.html"> Recapadora </a>
+          </li>
+
+          <li>
+            <a href="sulco.html"> Sulcos </a>
+          </li>
+
+          <li>
+            <a href="sucateamento.html"> Sucatas </a>
+          </li>
         </ul>
       </nav>
+
+      <!-- =========================
+           SUBMENU
+      ========================== -->
 
       <section class="sub-menu" id="sub-menu">
         <ul>
@@ -63,25 +111,41 @@
         </ul>
       </section>
 
+      <!-- =========================
+           CONTEÚDO PRINCIPAL
+      ========================== -->
+
       <main class="containerPrincipal" id="containerPrincipal">
-        <!-- Pagina Sucatas - historico das sucatas -->
+        <!-- ===================================
+             HISTÓRICO DE SUCATAS
+        ==================================== -->
+
         <section class="historicoSucatas">
+          <!-- Indicadores -->
+
           <div class="containerIndicadores" id="metricaSucateado"></div>
+
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h3>Histórico de Sucateamentos</h3>
+
                 <p>10 registros mais recentes</p>
               </div>
-              <div class="form-titulo-button"><button>+ Novo Registro</button></div>
+
+              <button id="btnNovoRegistroSucata" type="button"  class="btn btn-primary btn-form-action"+ Novo Registro</button>
             </div>
+
+            <!-- Pesquisa -->
 
             <div class="searchPneus grid-1">
-              <input type="text" placeholder="Buscar por Nr. Fogo ou motivo" />
+              <input type="text" id="buscaSucatas" name="buscaSucatas" placeholder="Buscar por Nr. Fogo ou motivo" />
             </div>
 
+            <!-- Tabela -->
+
             <div class="table-container">
-              <table id="catalagoSucateados">
+              <table id="catalagoSucateados" class="table-system">
                 <thead>
                   <tr>
                     <th scope="col">Nr. Fogo</th>
@@ -94,98 +158,148 @@
                     <th scope="col">Data</th>
                   </tr>
                 </thead>
+
                 <tbody id="catalagoSucatas"></tbody>
               </table>
             </div>
           </div>
         </section>
 
-        <!-- Pagina Sucatas - informar sucateamenteo -->
+        <!-- ===================================
+             INFORMAR SUCATEAMENTO
+        ==================================== -->
+
         <section class="infoSucateamento">
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h3>Registrar Pneu Sucateado</h3>
+
                 <p>Pneus recusados pela reformadora ou com laudo técnico de descarte</p>
               </div>
-              <div class="form-titulo-button"><button>&#128465 Registrar Sucata</button></div>
+
+               <button id="btnRegistrarSucata" type="submit" form="formularioSucateamento" class="btn btn-primary !w-auto px-4">
+                &#128465; Registrar Sucata
+              </button>
             </div>
 
-            <form action="" method="post" id="formularioCadastro" name="formularioCadastro" class="form-grid-3">
-              <div class="form-input">
-                <label for="nrFogo">Nr. Fogo / Código *</label><input type="text" placeholder="Numero Fogo" name="nrFogo" id="nrFogo" />
-              </div>
+            <form action="" method="post" id="formularioSucateamento" name="formularioSucateamento" class="form-grid-3">
+              <!-- Número de fogo -->
 
               <div class="form-input">
-                <label for="sulco">Sulco Final (mm)</label><input type="number" placeholder="0" name="sulcoFinal" id="sulcoFinal" />
+                <label for="nrFogoSucata"> Nr. Fogo / Código * </label>
+
+                <input type="text" id="nrFogoSucata" name="nrFogo" placeholder="Número Fogo" />
               </div>
+
+              <!-- Sulco final -->
+
               <div class="form-input">
-                <label for="kmRodadoFinal">Km Final</label><input type="number" placeholder="..." name="kmRodadoFinal" id="kmRodadoFinal" />
+                <label for="sulcoFinal"> Sulco Final (mm) </label>
+
+                <input type="number" id="sulcoFinal" name="sulcoFinal" placeholder="0" />
               </div>
+
+              <!-- Km final -->
+
               <div class="form-input">
-                <label for="dateFinal">Data Sucateamento *</label
-                ><input type="date"  name="dateFinal" id="dateFinal" />
+                <label for="kmRodadoFinal"> Km Final </label>
+
+                <input type="number" id="kmRodadoFinal" name="kmRodadoFinal" placeholder="..." />
               </div>
-       
+
+              <!-- Data -->
+
               <div class="form-input">
-                <label for="motivoRecusa">motivo da Recusa</label>
-                <select name="motivoRecusa" id="motivoRecusa">
-                  <option value="" disabled selected> -</option>
+                <label for="dateFinal"> Data Sucateamento * </label>
+
+                <input type="date" id="dateFinal" name="dateFinal" />
+              </div>
+
+              <!-- Motivo -->
+
+              <div class="form-input">
+                <label for="motivoRecusa"> Motivo da Recusa </label>
+
+                <select id="motivoRecusa" name="motivoRecusa">
+                  <option value="" disabled selected>Selecione um motivo...</option>
+
                   <option value="MBR 01">Rodou com baixa pressão</option>
+
                   <option value="MBR 03">Acidente na banda de rodagem</option>
+
                   <option value="MBR 19">Acidente no flanco</option>
+
                   <option value="MT 01">Desgaste natural</option>
+
                   <option value="MT 00">Outros</option>
                 </select>
               </div>
 
+              <!-- Responsável -->
+
               <div class="form-input">
-                <label for="responsavelLaudo">Responsavel pelo Laudo </label
-                ><input type="text" placeholder="Digite o Nome" name="responsavelLaudo" id="responsavelLaudo" />
+                <label for="responsavelLaudo"> Responsável pelo Laudo </label>
+
+                <input type="text" id="responsavelLaudo" name="responsavelLaudo" placeholder="Digite o Nome" />
               </div>
 
+              <!-- Temporário -->
+
               <div class="form-input image">
-                <label for="temp">Temporario</label><input type="text" placeholder="temp" name="temp" id="temp" />
+                <label for="tempSucata"> Temporário </label>
+
+                <input type="text" id="tempSucata" name="temp" placeholder="temp" />
               </div>
             </form>
           </div>
         </section>
 
-        <!-- Pagina Sucatas - base motivo das sucatas -->
+        <!-- ===================================
+             BASE DE MOTIVOS
+        ==================================== -->
+
         <section class="baseMotivos">
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h3>Base de Motivos de Sucata</h3>
+
                 <p>Códigos internos utilizados no registro de descarte</p>
               </div>
-              <div class="form-titulo-button"><button>Adicionar Motivo</button></div>
+
+              <button id="btnAdicionarMotivo" type="button"  class="btn btn-primary btn-form-action">Adicionar Motivo</button>
             </div>
 
             <div class="table-container">
-              <table id="catalagoSucateados">
+              <table id="catalagoMotivosSucata" class="table-system">
                 <thead>
                   <tr>
-                    <th scope="col">Codigo</th>
+                    <th scope="col">Código</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Grupo</th>
-                    <th scope="col">local</th>
+                    <th scope="col">Local</th>
                   </tr>
                 </thead>
+
                 <tbody id="catalagoSucatasB"></tbody>
               </table>
             </div>
           </div>
         </section>
 
-        <!-- Pagina Sucatas - indicadores das sucatas -->
+        <!-- ===================================
+             INDICADORES
+        ==================================== -->
+
         <section class="indicadoresSucata">
-          <div class="containerIndicadores" id="indicadorSucateado"></div>
+          <div class="containerIndicadores chart-responsive" id="indicadorSucateado"></div>
         </section>
       </main>
     </div>
-    <script type="module" src="../js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script type="module" src="../js/script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>

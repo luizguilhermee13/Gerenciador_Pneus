@@ -3,56 +3,104 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Dashboard Pneus</title>
+
     <link rel="stylesheet" href="../css/style.css" />
     <link href="../../output.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
+
   <body>
     <div id="container-layout" class="sidebar-open overflow-hidden layout-com-submenu">
+      <!-- =========================
+           HEADER
+      ========================== -->
+
       <header class="w-full !px-14 flex justify-between items-center">
-        <div class="header-logo text-xl font-serif">
+        <div class="header-logo text-xl font-sans">
           <span class="emoji">&#128202;</span>
-          <p class="text-black-russian font-black">Dashboard</p>
-          <span class="text-cinza-claro">Visão geral da frota</span>
+
+          <p class="text-black-russian font-bold">Dashboard</p>
+
+          <span class="text-cinza-claro"> Visão geral da frota </span>
         </div>
 
-        <div class="header-buttons flex items-center gap-4 font-serif">
-          <button
-            id="btn-atualizar"
-            class="flex items-center justify-center w-24 h-8 bg-custom-button rounded-lg hover:bg-custom-button-hover hover:text-white transition-colors cursor-pointer"
-          >
-            Atualizar
-          </button>
+        <div class="header-buttons flex items-center gap-4 font-sans">
+          <button id="btn-atualizar" type="button" class="btn btn-primary">Atualizar</button>
 
           <button
-            class="flex items-center justify-center p-12 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            id="btn-notificacoes"
+            type="button"
+            class="flex items-center justify-center p-2 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            aria-label="Notificações"
           >
             &#128276;
           </button>
         </div>
       </header>
 
-      <button id="btn-hamburguer" class="btn-hamburguer">
+      <!-- =========================
+           HAMBÚRGUER
+      ========================== -->
+
+      <button id="btn-hamburguer" class="btn-hamburguer" type="button" aria-label="Abrir menu">
         <i class="fa-solid fa-bars"></i>
       </button>
+
+      <!-- =========================
+           MENU LATERAL
+      ========================== -->
 
       <nav class="menu" id="menu">
         <div class="logo">
           <i class="fa-solid fa-car" style="color: white"></i>
-          <p>Departamento de Pneus <span>Gestao e Qualidade</span></p>
+
+          <p>
+            Departamento de Pneus
+            <span>Gestao e Qualidade</span>
+          </p>
         </div>
+
         <ul>
-          <li><a href="../../index.html">Dashboard</a></li>
-          <li><a href="pneus.html">Pneus</a></li>
-          <li><a href="veiculos.html">Veículos</a></li>
-          <li><a href="movimentacao.html">Movimentações</a></li>
-          <li><a href="estoque.html">Estoque</a></li>
-          <li><a href="recapadora.html">Recapadora</a></li>
-          <li><a href="sulco.html">Sulcos</a></li>
-          <li><a href="sucateamento.html">Sucatas</a></li>
+          <li>
+            <a href="../../index.html"> Dashboard </a>
+          </li>
+
+          <li>
+            <a href="pneus.html"> Pneus </a>
+          </li>
+
+          <li>
+            <a href="veiculos.html"> Veículos </a>
+          </li>
+
+          <li>
+            <a href="movimentacao.html"> Movimentações </a>
+          </li>
+
+          <li>
+            <a href="estoque.html"> Estoque </a>
+          </li>
+
+          <li>
+            <a href="recapadora.html"> Recapadora </a>
+          </li>
+
+          <li>
+            <a href="sulco.html"> Sulcos </a>
+          </li>
+
+          <li>
+            <a href="sucateamento.html"> Sucatas </a>
+          </li>
         </ul>
       </nav>
+
+      <!-- =========================
+           SUBMENU
+      ========================== -->
 
       <section class="sub-menu" id="sub-menu">
         <ul>
@@ -62,38 +110,62 @@
         </ul>
       </section>
 
+      <!-- =========================
+           CONTEÚDO PRINCIPAL
+      ========================== -->
+
       <main class="containerPrincipal" id="containerPrincipal">
-        <!-- Pagina Catalago Pneus -->
+        <!-- ===================================
+             CATÁLOGO DE PNEUS
+        ==================================== -->
+
         <section class="catalagoPneus">
+          <!-- Indicadores -->
+
           <div class="containerIndicadores" id="indicadoresPneus"></div>
-          <!-- metricas -->
+
+          <!-- Pesquisa -->
+
           <div class="searchPneus grid-2">
-            <input type="text" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
+            <input type="text" id="buscaCatalogoPneus" name="buscaCatalogoPneus" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
+
             <div class="searchSelect">
-              <select name="garagem" id="garagem">
+              <select name="garagemFiltroPneus" id="garagemFiltroPneus">
                 <option value="" disabled selected>Garagem</option>
+
                 <option value="itaquera">Itaquera</option>
+
                 <option value="limeira">Limeira</option>
-                <option value="juizdeFora">Juiz de Fora</option>
+
+                <option value="juizDeFora">Juiz de Fora</option>
               </select>
-              <select name="vidaSearch" id="garagem">
+
+              <select name="vidaFiltroPneus" id="vidaFiltroPneus">
                 <option value="" disabled selected>Vida</option>
-                <option value="valor1">N</option>
-                <option value="valor2">R1</option>
-                <option value="valor3">R2</option>
-                <option value="valor3">R3</option>
-                <option value="valor3">R4</option>
-                <option value="valor3">R5</option>
-                <option value="valor3">R6</option>
-                <option value="valor3">R7</option>
-                <option value="valor3">R8</option>
-                <option value="valor3">R9</option>
+
+                <option value="N">N</option>
+                <option value="R1">R1</option>
+                <option value="R2">R2</option>
+                <option value="R3">R3</option>
+                <option value="R4">R4</option>
+                <option value="R5">R5</option>
+                <option value="R6">R6</option>
+                <option value="R7">R7</option>
+                <option value="R8">R8</option>
+                <option value="R9">R9</option>
               </select>
             </div>
           </div>
+
+          <!-- ===================================
+               TABELA + PAINEL LATERAL
+          ==================================== -->
+
           <div class="layout-catalogo">
+            <!-- Tabela -->
+
             <div class="table-container">
-              <table id="catalagoPneus">
+              <table id="catalagoPneus" class="table-system">
                 <thead>
                   <tr>
                     <th scope="col">Nr. Fogo</th>
@@ -107,233 +179,394 @@
                     <th scope="col">Km</th>
                   </tr>
                 </thead>
+
                 <tbody id="conteudoCatalago"></tbody>
               </table>
             </div>
-            <div class="painelPneus" id="painel-lateral"></div>
+
+            <!-- Painel lateral do pneu -->
+
+            <aside class="painelPneus" id="painel-lateral" aria-label="Detalhes do pneu selecionado"></aside>
           </div>
         </section>
 
-        <!-- Pagina Cadastro Individual -->
+        <!-- ===================================
+             CADASTRO INDIVIDUAL
+        ==================================== -->
+
         <section class="cadastroIndividual" id="cadastroIndividual">
+          <!-- Descrição -->
+
           <div class="descriptionPage">
             <h5>
-              <span>Cadastro Individual</span> — use para registrar <span>1 único pneu</span> com código de fogo próprio, vinculação a
-              veículo e dados completos.
+              <span>Cadastro Individual</span>
+              — use para registrar
+              <span>1 único pneu</span>
+              com código de fogo próprio, vinculação a veículo e dados completos.
             </h5>
           </div>
+
+          <!-- Formulário -->
 
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h2>Cadastrar Pneu Individual</h2>
+
                 <p>Registre a entrada de um pneu com todas as informações individuais</p>
               </div>
-              <div class="form-titulo-button"><button>+ Cadastrar Pneu</button></div>
+
+              <button id="btnCadastrarPneuIndividual" type="submit" form="formularioCadastro" class="btn btn-primary !w-auto px-4">
+                Cadastrar Pneu
+              </button>
             </div>
 
             <form action="" method="post" id="formularioCadastro" name="formularioCadastro" class="form-grid-3">
+              <!-- Número de fogo -->
+
               <div class="form-input">
-                <label for="nrFogo">Nr. Fogo / Código *</label><input type="text" placeholder="Numero Fogo" name="nrFogo" id="nrFogo" />
+                <label for="nrFogo"> Nr. Fogo / Código * </label>
+
+                <input type="text" id="nrFogo" name="nrFogo" placeholder="Número Fogo" />
               </div>
+
+              <!-- Marca -->
+
               <div class="form-input">
-                <label for="marca">Marca *</label>
-                <select name="marca" id="marca">
+                <label for="marca"> Marca * </label>
+
+                <select id="marca" name="marca">
                   <option value="" disabled selected>Selecionar...</option>
-                  <option value="valor1">Goodyear</option>
-                  <option value="valor2">Michellin</option>
-                  <option value="valor3">Continental</option>
-                  <option value="valor3">Pirelli</option>
-                  <option value="valor3">Bridgestone</option>
-                </select>
-              </div>
-              <div class="form-input">
-                <label for="medida">Medida *</label
-                ><select name="medida" id="medida">
-                  <option value="" disabled selected>Selecione uma opção...</option>
-                  <option value="valor1">275/80R22.5</option>
-                  <option value="valor2">215/75R17.5</option>
-                  <option value="valor3">Outros</option>
-                </select>
-              </div>
-              <div class="form-input">
-                <label for="vida">Vida *</label>
-                <select name="vida" id="vida">
-                  <option value="" disabled selected>Vida Atual</option>
-                  <option value="valor1">N</option>
-                  <option value="valor2">R1</option>
-                  <option value="valor3">R2</option>
-                  <option value="valor3">R3</option>
-                  <option value="valor3">R4</option>
-                  <option value="valor3">R5</option>
-                  <option value="valor3">R6</option>
-                  <option value="valor3">R7</option>
-                  <option value="valor3">R8</option>
-                  <option value="valor3">R9</option>
-                </select>
-              </div>
-              <div class="form-input">
-                <label for="garagem">Garagem / Localização *</label>
-                <select name="garagem" id="garagem">
-                  <option value="" disabled selected>selecione a unidade</option>
-                  <option value="valor1">Itaquera</option>
-                  <option value="valor2">Limeira</option>
-                  <option value="valor3">Tatuapé</option>
-                </select>
-              </div>
-              <div class="form-input">
-                <label for="dot">Nr. DOT / Fabricação</label><input type="text" placeholder="Dot" name="dot" id="dot" />
-              </div>
-              <div class="form-input">
-                <label for="sulco">Sulco Atual (mm)</label><input type="number" placeholder="0" name="sulco" id="sulco" />
-              </div>
-              <div class="form-input">
-                <label for="kmRodado">Km Acumulado</label><input type="number" placeholder="..." name="kmRodado" id="kmRodado" />
-              </div>
-              <div class="form-input">
-                <label for="dateEntrada">Data de Entrada *</label
-                ><input type="date" placeholder="Cod. Numero" name="dateEntrada" id="dateEntrada" />
-              </div>
-              <div class="form-input">
-                <label for="veiculo">Veículo (se já montado)</label>
-                <select name="veiculo" id="veiculo">
-                  <option value="" disabled selected>se montado</option>
-                  <option value="valor1">001</option>
-                  <option value="valor2">002</option>
-                  <option value="valor3">003</option>
-                  <option value="valor3">...</option>
-                </select>
-              </div>
-              <div class="form-input">
-                <label for="posicao">Posição</label>
-                <select name="posicao" id="posicao">
-                  <option value="" disabled selected>se montado</option>
-                  <option value="valor1">DD</option>
-                  <option value="valor2">DE</option>
-                  <option value="valor3">TDE</option>
-                  <option value="valor3">TDI</option>
-                  <option value="valor3">TEE</option>
-                  <option value="valor3">TEI</option>
+
+                  <option value="goodyear">Goodyear</option>
+
+                  <option value="michelin">Michelin</option>
+
+                  <option value="continental">Continental</option>
+
+                  <option value="pirelli">Pirelli</option>
+
+                  <option value="bridgestone">Bridgestone</option>
                 </select>
               </div>
 
+              <!-- Medida -->
+
               <div class="form-input">
-                <label for="responsavel">Responsavel pelo Lançamento </label
-                ><input type="text" placeholder="Responsavel" name="responsavel" id="responsavel" />
+                <label for="medida"> Medida * </label>
+
+                <select id="medida" name="medida">
+                  <option value="" disabled selected>Selecione uma opção...</option>
+
+                  <option value="275/80R22.5">275/80R22.5</option>
+
+                  <option value="215/75R17.5">215/75R17.5</option>
+
+                  <option value="outros">Outros</option>
+                </select>
               </div>
+
+              <!-- Vida -->
+
+              <div class="form-input">
+                <label for="vida"> Vida * </label>
+
+                <select id="vida" name="vida">
+                  <option value="" disabled selected>Vida Atual</option>
+
+                  <option value="N">N</option>
+                  <option value="R1">R1</option>
+                  <option value="R2">R2</option>
+                  <option value="R3">R3</option>
+                  <option value="R4">R4</option>
+                  <option value="R5">R5</option>
+                  <option value="R6">R6</option>
+                  <option value="R7">R7</option>
+                  <option value="R8">R8</option>
+                  <option value="R9">R9</option>
+                </select>
+              </div>
+
+              <!-- Garagem -->
+
+              <div class="form-input">
+                <label for="garagemCadastro"> Garagem / Localização * </label>
+
+                <select id="garagemCadastro" name="garagem">
+                  <option value="" disabled selected>Selecione a unidade</option>
+
+                  <option value="itaquera">Itaquera</option>
+
+                  <option value="limeira">Limeira</option>
+
+                  <option value="tatuape">Tatuapé</option>
+                </select>
+              </div>
+
+              <!-- DOT -->
+
+              <div class="form-input">
+                <label for="dot"> Nr. DOT / Fabricação </label>
+
+                <input type="text" id="dot" name="dot" placeholder="DOT" />
+              </div>
+
+              <!-- Sulco -->
+
+              <div class="form-input">
+                <label for="sulco"> Sulco Atual (mm) </label>
+
+                <input type="number" id="sulco" name="sulco" placeholder="0" />
+              </div>
+
+              <!-- KM -->
+
+              <div class="form-input">
+                <label for="kmRodado"> Km Acumulado </label>
+
+                <input type="number" id="kmRodado" name="kmRodado" placeholder="0" />
+              </div>
+
+              <!-- Data -->
+
+              <div class="form-input">
+                <label for="dateEntrada"> Data de Entrada * </label>
+
+                <input type="date" id="dateEntrada" name="dateEntrada" />
+              </div>
+
+              <!-- Veículo -->
+
+              <div class="form-input">
+                <label for="veiculo"> Veículo (se já montado) </label>
+
+                <select id="veiculo" name="veiculo">
+                  <option value="" disabled selected>Se montado</option>
+
+                  <option value="001">001</option>
+                  <option value="002">002</option>
+                  <option value="003">003</option>
+                </select>
+              </div>
+
+              <!-- Posição -->
+
+              <div class="form-input">
+                <label for="posicao"> Posição </label>
+
+                <select id="posicao" name="posicao">
+                  <option value="" disabled selected>Se montado</option>
+
+                  <option value="DD">DD</option>
+                  <option value="DE">DE</option>
+                  <option value="TDE">TDE</option>
+                  <option value="TDI">TDI</option>
+                  <option value="TEE">TEE</option>
+                  <option value="TEI">TEI</option>
+                </select>
+              </div>
+
+              <!-- Responsável -->
+
+              <div class="form-input">
+                <label for="responsavel"> Responsável pelo Lançamento </label>
+
+                <input type="text" id="responsavel" name="responsavel" placeholder="Responsável" />
+              </div>
+
+              <!-- Temporário -->
 
               <div class="form-input image">
-                <label for="temp">Temporario</label><input type="text" placeholder="temp" name="temp" id="temp" />
+                <label for="temp"> Temporário </label>
+
+                <input type="text" id="temp" name="temp" placeholder="temp" />
               </div>
             </form>
           </div>
         </section>
 
-        <!-- Pagina Cadastro por Quantidade -->
+        <!-- ===================================
+             CADASTRO POR QUANTIDADE
+        ==================================== -->
+
         <section class="cadastroQuantidade" id="cadastroQuantitativo">
+          <!-- Descrição -->
+
           <div class="descriptionPage">
             <h5>
-              <span>Cadastro por Quantidade</span> — use para registrar um <span>lote de pneus da mesma especificação.</span> Os códigos de
-              fogo serão gerados automaticamente com prefixo sequencial.
+              <span>Cadastro por Quantidade</span>
+              — use para registrar um
+              <span>lote de pneus da mesma especificação.</span>
+              Os códigos de fogo serão gerados automaticamente com prefixo sequencial.
             </h5>
           </div>
+
+          <!-- Formulário -->
 
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h2>Cadastrar Lote de Pneus</h2>
+
                 <p>Informe as especificações e a quantidade — os Nr. Fogo são gerados automaticamente</p>
               </div>
-              <div class="form-titulo-button"><button>+ Cadastrar Pneu</button></div>
+
+              <button id="btnCadastrarLotePneus" type="submit" form="formCadastroLote" class="btn btn-primary !w-auto px-4">
+                Cadastrar Pneu
+              </button>
             </div>
 
             <form action="" method="post" id="formCadastroLote" name="formCadastroLote" class="form-grid-3">
+              <!-- Número inicial -->
+
               <div class="form-input">
-                <label for="nrFogoLote">Nr. Fogo / Código *</label
-                ><input type="text" placeholder="Sequencia Fogo" name="nrFogoLote" id="nrFogoLote" />
+                <label for="nrFogoLote"> Nr. Fogo / Código * </label>
+
+                <input type="text" id="nrFogoLote" name="nrFogoLote" placeholder="Sequência Fogo" />
               </div>
+
+              <!-- Quantidade -->
+
               <div class="form-input">
-                <label for="qtdPneus">Quantidade de Pneus *</label><input type="number" placeholder="0" name="qtdPneus" id="qtdPneus" />
+                <label for="qtdPneus"> Quantidade de Pneus * </label>
+
+                <input type="number" id="qtdPneus" name="qtdPneus" placeholder="0" min="1" />
               </div>
+
+              <!-- Marca -->
+
               <div class="form-input">
-                <label for="marcaLote">Marca *</label>
-                <select name="marcaLote" id="marcaLote">
+                <label for="marcaLote"> Marca * </label>
+
+                <select id="marcaLote" name="marcaLote">
                   <option value="" disabled selected>Selecionar...</option>
-                  <option value="valor1">Goodyear</option>
-                  <option value="valor2">Michellin</option>
-                  <option value="valor3">Continental</option>
-                  <option value="valor3">Pirelli</option>
-                  <option value="valor3">Bridgestone</option>
+
+                  <option value="goodyear">Goodyear</option>
+
+                  <option value="michelin">Michelin</option>
+
+                  <option value="continental">Continental</option>
+
+                  <option value="pirelli">Pirelli</option>
+
+                  <option value="bridgestone">Bridgestone</option>
                 </select>
               </div>
+
+              <!-- Medida -->
+
               <div class="form-input">
-                <label for="medidaLote">Medida *</label
-                ><select name="medidaLote" id="medidaLote">
+                <label for="medidaLote"> Medida * </label>
+
+                <select id="medidaLote" name="medidaLote">
                   <option value="" disabled selected>Selecione uma opção...</option>
-                  <option value="valor1">275/80R22.5</option>
-                  <option value="valor2">215/75R17.5</option>
-                  <option value="valor3">Outros</option>
+
+                  <option value="275/80R22.5">275/80R22.5</option>
+
+                  <option value="215/75R17.5">215/75R17.5</option>
+
+                  <option value="outros">Outros</option>
                 </select>
               </div>
+
+              <!-- Vida -->
+
               <div class="form-input">
-                <label for="vidaLote">Vida *</label>
-                <select name="vidaLote" id="vidaLote">
+                <label for="vidaLote"> Vida * </label>
+
+                <select id="vidaLote" name="vidaLote">
                   <option value="" disabled selected>Vida Atual</option>
-                  <option value="valor1">N</option>
-                  <option value="valor2">R1</option>
-                  <option value="valor3">R2</option>
-                  <option value="valor3">R3</option>
-                  <option value="valor3">R4</option>
-                  <option value="valor3">R5</option>
-                  <option value="valor3">R6</option>
-                  <option value="valor3">R7</option>
-                  <option value="valor3">R8</option>
-                  <option value="valor3">R9</option>
+
+                  <option value="N">N</option>
+                  <option value="R1">R1</option>
+                  <option value="R2">R2</option>
+                  <option value="R3">R3</option>
+                  <option value="R4">R4</option>
+                  <option value="R5">R5</option>
+                  <option value="R6">R6</option>
+                  <option value="R7">R7</option>
+                  <option value="R8">R8</option>
+                  <option value="R9">R9</option>
                 </select>
               </div>
+
+              <!-- Garagem -->
+
               <div class="form-input">
-                <label for="garagemLote">Garagem / Localização *</label>
-                <select name="garagemLote" id="garagemLote">
-                  <option value="" disabled selected>selecione a unidade</option>
-                  <option value="valor1">Itaquera</option>
-                  <option value="valor2">Limeira</option>
-                  <option value="valor3">Tatuapé</option>
+                <label for="garagemLote"> Garagem / Localização * </label>
+
+                <select id="garagemLote" name="garagemLote">
+                  <option value="" disabled selected>Selecione a unidade</option>
+
+                  <option value="itaquera">Itaquera</option>
+
+                  <option value="limeira">Limeira</option>
+
+                  <option value="tatuape">Tatuapé</option>
                 </select>
               </div>
-              <div class="form-input">
-                <label for="dotLote">Nr. DOT / Fabricação</label><input type="text" placeholder="Dot" name="dotLote" id="dotLote" />
-              </div>
-              <div class="form-input">
-                <label for="sulcoLote">Sulco Atual (mm)</label><input type="number" placeholder="0" name="sulcoLote" id="sulcoLote" />
-              </div>
-              <div class="form-input">
-                <label for="kmRodadoLote">Km Acumulado</label
-                ><input type="number" placeholder="..." name="kmRodadoLote" id="kmRodadoLote" />
-              </div>
+
+              <!-- DOT -->
 
               <div class="form-input">
-                <label for="dateEntradaLote">Data de Entrada *</label
-                ><input type="date" placeholder="Cod. Numero" name="dateEntradaLote" id="dateEntradaLote" />
+                <label for="dotLote"> Nr. DOT / Fabricação </label>
+
+                <input type="text" id="dotLote" name="dotLote" placeholder="DOT" />
               </div>
 
-              <div class="form-input">
-                <label for="responsavelLote">Responsavel pelo Lançamento </label
-                ><input type="text" placeholder="Responsavel" name="responsavelLote" id="responsavelLote" />
-              </div>
+              <!-- Sulco -->
 
               <div class="form-input">
-                <label for="fornecedorLote">Fornecedor</label
-                ><input type="text" placeholder="Fornecedor" name="fornecedorLote" id="fornecedorLote" />
+                <label for="sulcoLote"> Sulco Atual (mm) </label>
+
+                <input type="number" id="sulcoLote" name="sulcoLote" placeholder="0" />
               </div>
+
+              <!-- KM -->
+
+              <div class="form-input">
+                <label for="kmRodadoLote"> Km Acumulado </label>
+
+                <input type="number" id="kmRodadoLote" name="kmRodadoLote" placeholder="0" />
+              </div>
+
+              <!-- Data -->
+
+              <div class="form-input">
+                <label for="dateEntradaLote"> Data de Entrada * </label>
+
+                <input type="date" id="dateEntradaLote" name="dateEntradaLote" />
+              </div>
+
+              <!-- Responsável -->
+
+              <div class="form-input">
+                <label for="responsavelLote"> Responsável pelo Lançamento </label>
+
+                <input type="text" id="responsavelLote" name="responsavelLote" placeholder="Responsável" />
+              </div>
+
+              <!-- Fornecedor -->
+
+              <div class="form-input">
+                <label for="fornecedorLote"> Fornecedor </label>
+
+                <input type="text" id="fornecedorLote" name="fornecedorLote" placeholder="Fornecedor" />
+              </div>
+
+              <!-- Temporário -->
 
               <div class="form-input image">
-                <label for="tempLote">Temporario</label><input type="text" placeholder="temp" name="tempLote" id="tempLote" />
+                <label for="tempLote"> Temporário </label>
+
+                <input type="text" id="tempLote" name="tempLote" placeholder="temp" />
               </div>
             </form>
           </div>
         </section>
       </main>
     </div>
+
     <script type="module" src="../js/script.js"></script>
   </body>
 </html>

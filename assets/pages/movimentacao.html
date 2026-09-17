@@ -3,56 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Dashboard Pneus</title>
+
     <link rel="stylesheet" href="../css/style.css" />
     <link href="../../output.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
+
   <body>
     <div id="container-layout" class="sidebar-open overflow-hidden layout-com-submenu">
+      <!-- =========================
+           HEADER
+      ========================== -->
+
       <header class="w-full !px-14 flex justify-between items-center">
-        <div class="header-logo text-xl font-serif">
+        <div class="header-logo text-xl font-sans">
           <span class="emoji">&#128202;</span>
-          <p class="text-black-russian font-black">Dashboard</p>
-          <span class="text-cinza-claro">Visão geral da frota</span>
+
+          <p class="text-black-russian font-bold">Dashboard</p>
+
+          <span class="text-cinza-claro"> Visão geral da frota </span>
         </div>
 
-        <div class="header-buttons flex items-center gap-4 font-serif">
-          <button
-            id="btn-atualizar"
-            class="flex items-center justify-center w-24 h-8 bg-custom-button rounded-lg hover:bg-custom-button-hover hover:text-white transition-colors cursor-pointer"
-          >
-            Atualizar
-          </button>
+        <div class="header-buttons flex items-center gap-4 font-sans">
+          <button id="btn-atualizar" type="button" class="btn btn-primary">Atualizar</button>
 
           <button
-            class="flex items-center justify-center p-12 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            type="button"
+            class="flex items-center justify-center p-2 w-8 h-8 rounded-lg border-2 border-gray-50 hover:border-amber-100 hover:bg-amber-100 cursor-pointer"
+            aria-label="Notificações"
           >
             &#128276;
           </button>
         </div>
       </header>
 
-      <button id="btn-hamburguer" class="btn-hamburguer">
+      <!-- =========================
+           HAMBÚRGUER
+      ========================== -->
+
+      <button id="btn-hamburguer" class="btn-hamburguer" type="button" aria-label="Abrir menu">
         <i class="fa-solid fa-bars"></i>
       </button>
+
+      <!-- =========================
+           MENU LATERAL
+      ========================== -->
 
       <nav class="menu" id="menu">
         <div class="logo">
           <i class="fa-solid fa-car" style="color: white"></i>
-          <p>Departamento de Pneus <span>Gestao e Qualidade</span></p>
+
+          <p>
+            Departamento de Pneus
+            <span>Gestao e Qualidade</span>
+          </p>
         </div>
+
         <ul>
-          <li><a href="../../index.html">Dashboard</a></li>
-          <li><a href="pneus.html">Pneus</a></li>
-          <li><a href="veiculos.html">Veículos</a></li>
-          <li><a href="movimentacao.html">Movimentações</a></li>
-          <li><a href="estoque.html">Estoque</a></li>
-          <li><a href="recapadora.html">Recapadora</a></li>
-          <li><a href="sulco.html">Sulcos</a></li>
-          <li><a href="sucateamento.html">Sucatas</a></li>
+          <li>
+            <a href="../../index.html"> Dashboard </a>
+          </li>
+
+          <li>
+            <a href="pneus.html"> Pneus </a>
+          </li>
+
+          <li>
+            <a href="veiculos.html"> Veículos </a>
+          </li>
+
+          <li>
+            <a href="movimentacao.html"> Movimentações </a>
+          </li>
+
+          <li>
+            <a href="estoque.html"> Estoque </a>
+          </li>
+
+          <li>
+            <a href="recapadora.html"> Recapadora </a>
+          </li>
+
+          <li>
+            <a href="sulco.html"> Sulcos </a>
+          </li>
+
+          <li>
+            <a href="sucateamento.html"> Sucatas </a>
+          </li>
         </ul>
       </nav>
+
+      <!-- =========================
+           SUBMENU
+      ========================== -->
 
       <section class="sub-menu" id="sub-menu">
         <ul>
@@ -62,63 +109,112 @@
           <li>Indicadores</li>
         </ul>
       </section>
-      <!-- Section Movimentação dos Pneus - Estoque -->
+
+      <!-- =========================
+           CONTEÚDO PRINCIPAL
+      ========================== -->
+
       <main class="containerPrincipal" id="containerPrincipal">
+        <!-- ===================================
+             REGISTRAR MOVIMENTAÇÃO
+        ==================================== -->
+
         <section class="RegistrarMovEstoque">
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h2>Registrar Movimentação</h2>
+
                 <p>Toda movimentação física de pneu deve ser registrada</p>
               </div>
-              <div class="form-titulo-button"><button>Enviar</button></div>
+
+              <button type="submit" form="formularioCadastro" class="btn btn-primary">Enviar</button>
             </div>
 
             <form action="" method="post" id="formularioCadastro" name="formularioCadastro" class="form-grid-3">
-              <div class="form-input">
-                <label for="nrFogo">Nr. Fogo / Código *</label><input type="text" placeholder="Numero Fogo" name="nrFogo" id="nrFogo" />
-              </div>
+              <!-- Número de fogo -->
 
               <div class="form-input">
-                <label for="motivo">Motivo *</label
-                ><select name="motivo" id="motivo">
+                <label for="nrFogo"> Nr. Fogo / Código * </label>
+
+                <input type="text" placeholder="Número Fogo" name="nrFogo" id="nrFogo" />
+              </div>
+
+              <!-- Motivo -->
+
+              <div class="form-input">
+                <label for="motivo"> Motivo * </label>
+
+                <select name="motivo" id="motivo">
                   <option value="" disabled selected>Selecione uma opção...</option>
-                  <option value="valor1">Transferência</option>
-                  <option value="valor2">Emergencial</option>
-                  <option value="valor3">Outros</option>
+
+                  <option value="transferencia">Transferência</option>
+
+                  <option value="emergencial">Emergencial</option>
+
+                  <option value="outros">Outros</option>
                 </select>
               </div>
 
+              <!-- Garagem -->
+
               <div class="form-input">
-                <label for="garagem">Garagem / Destino *</label>
+                <label for="garagem"> Garagem / Destino * </label>
+
                 <select name="garagem" id="garagem">
-                  <option value="" disabled selected>selecione a unidade</option>
-                  <option value="valor1">Itaquera</option>
-                  <option value="valor2">Limeira</option>
-                  <option value="valor3">Tatuapé</option>
-                  <option value="valor3">Outras Unidades</option>
+                  <option value="" disabled selected>Selecione a unidade</option>
+
+                  <option value="itaquera">Itaquera</option>
+
+                  <option value="limeira">Limeira</option>
+
+                  <option value="tatuape">Tatuapé</option>
+
+                  <option value="outras">Outras Unidades</option>
                 </select>
               </div>
 
-              <div class="form-input">
-                <label for="dateEntrada">Data da Movimentação *</label
-                ><input type="date" placeholder="Cod. Numero" name="dateEntrada" id="dateEntrada" />
-              </div>
+              <!-- Data -->
 
               <div class="form-input">
-                <label for="responsavel">Responsavel pela Movimentação </label
-                ><input type="text" placeholder="Responsavel" name="responsavel" id="responsavel" />
+                <label for="dateEntrada"> Data da Movimentação * </label>
+
+                <input type="date" name="dateEntrada" id="dateEntrada" />
+              </div>
+
+              <!-- Responsável -->
+
+              <div class="form-input">
+                <label for="responsavel"> Responsável pela Movimentação </label>
+
+                <input type="text" placeholder="Responsável" name="responsavel" id="responsavel" />
               </div>
             </form>
           </div>
         </section>
-        <section class="movimentacaoEstoque"></section>
-        <section class="historicoMoviCarro"></section>
+
+        <!-- ===================================
+             HISTÓRICO / ESTOQUE
+        ==================================== -->
+
+        <section class="movimentacaoEstoque responsive-scroll"></section>
+
+        <!-- ===================================
+             HISTÓRICO / CARRO
+        ==================================== -->
+
+        <section class="historicoMoviCarro responsive-scroll"></section>
+
+        <!-- ===================================
+             INDICADORES
+        ==================================== -->
+
         <section class="indicadoresMovimentacao">
           <div class="containerIndicadores" id="indicadoresMovimentacao"></div>
         </section>
       </main>
     </div>
+
     <script type="module" src="../js/script.js"></script>
   </body>
 </html>
