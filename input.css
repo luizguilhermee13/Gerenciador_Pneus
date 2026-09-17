@@ -5,30 +5,92 @@
 ================================ */
 
 @theme {
-  /* Cores Azuis */
+  /* ==============================
+     STATUS / INDICADORES
+  ============================== */
+
+  /* Excelente */
+  --color-status-excellent: #009999;
+  --color-status-excellent-soft: #e6f7f7;
+  --color-status-excellent-dark: #006666;
+
+  /* Bom */
+  --color-status-good: #16a34a;
+  --color-status-good-soft: #ecfdf3;
+  --color-status-good-dark: #15803d;
+
+  /* Neutro / Informação */
+  --color-status-neutral: #2563eb;
+  --color-status-neutral-soft: #eff6ff;
+  --color-status-neutral-dark: #1d4ed8;
+
+  /* Alerta */
+  --color-status-warning: #d97706;
+  --color-status-warning-soft: #fff7ed;
+  --color-status-warning-dark: #b45309;
+
+  /* Crítico */
+  --color-status-critical: #dc2626;
+  --color-status-critical-soft: #fef2f2;
+  --color-status-critical-dark: #b91c1c;
+
+  /* ==============================
+     AZUIS AUXILIARES
+  ============================== */
+
   --color-blue-custom-700: oklch(48.8% 0.243 264.376);
   --color-blue-custom-50: oklch(97% 0.014 254.604);
   --color-blue-custom-200: oklch(88.2% 0.059 254.128);
 
-  /* Cores Laranjas */
+  /* ==============================
+     LARANJAS AUXILIARES
+  ============================== */
+
   --color-orange-custom-700: oklch(55.3% 0.195 38.402);
   --color-orange-custom-50: oklch(98% 0.016 73.684);
   --color-orange-custom-200: oklch(90.1% 0.076 70.697);
 
-  /* Verde */
-  --color-green-custom-50: oklch(94.935% 0.02934 191.642 / 0.896);
+  /* ==============================
+     SISTEMA / SUPERFÍCIES
+  ============================== */
 
-  /* Botões */
+  --color-page: #f0f2f5;
+  --color-surface: #ffffff;
+
+  --color-pneu-input: #f0f2f5;
+  --color-pneu-menus: #dde1e7;
+  --color-system-border: #dde1e7;
+
+  /* ==============================
+     BOTÕES
+  ============================== */
+
   --color-custom-button: #009999;
   --color-custom-button-hover: #006666;
 
-  /* Sistema */
-  --color-pneu-input: #f0f2f5;
-  --color-pneu-menus: #dde1e7;
+  /* ==============================
+     TEXTOS
+  ============================== */
 
-  /* Textos */
   --color-black-russian: #1a202c;
   --color-cinza-claro: #6b7280;
+
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #94a3b8;
+
+  /* ==============================
+     TIPOGRAFIA
+  ============================== */
+
+  --font-sans: "Inter", Arial, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
 }
 
 /* ================================
@@ -40,13 +102,11 @@
 }
 
 .btn-primary {
-  @apply w-24 h-8;
-  background-color: var(--color-custom-button);
+  @apply w-24 h-8 bg-custom-button;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-custom-button-hover);
-  color: white;
+  @apply bg-custom-button-hover text-white;
 }
 
 /* ================================
@@ -54,8 +114,7 @@
 ================================ */
 
 .input-pneu {
-  @apply rounded-lg border-none outline-none;
-  background-color: var(--color-pneu-input);
+  @apply rounded-lg border-none outline-none bg-pneu-input;
 }
 
 /* ================================
@@ -63,5 +122,89 @@
 ================================ */
 
 .menu-pneu {
-  background-color: var(--color-pneu-menus);
+  @apply bg-pneu-menus;
+}
+
+/* ================================
+   CARDS / COMPONENTES
+================================ */
+
+.card-system {
+  @apply bg-surface rounded-lg;
+}
+
+.card-bordered {
+  @apply bg-surface rounded-lg border border-system-border;
+}
+
+.section-title {
+  @apply text-lg font-semibold text-text-primary;
+}
+
+.section-description {
+  @apply text-sm text-text-secondary;
+}
+
+/* ================================
+   STATUS
+================================ */
+
+.status-excellent {
+  @apply text-status-excellent;
+}
+
+.status-good {
+  @apply text-status-good;
+}
+
+.status-neutral {
+  @apply text-status-neutral;
+}
+
+.status-warning {
+  @apply text-status-warning;
+}
+
+.status-critical {
+  @apply text-status-critical;
+}
+
+/* ================================
+   STATUS COM FUNDO
+================================ */
+
+.status-excellent-soft {
+  @apply text-status-excellent-dark bg-status-excellent-soft;
+}
+
+.status-good-soft {
+  @apply text-status-good-dark bg-status-good-soft;
+}
+
+.status-neutral-soft {
+  @apply text-status-neutral-dark bg-status-neutral-soft;
+}
+
+.status-warning-soft {
+  @apply text-status-warning-dark bg-status-warning-soft;
+}
+
+.status-critical-soft {
+  @apply text-status-critical-dark bg-status-critical-soft;
+}
+
+/* ================================
+   INDICADORES
+================================ */
+
+.indicator-card {
+  @apply bg-surface rounded-lg flex flex-col items-center justify-center text-center;
+}
+
+.indicator-label {
+  @apply text-sm font-medium;
+}
+
+.indicator-value {
+  @apply text-3xl font-medium;
 }

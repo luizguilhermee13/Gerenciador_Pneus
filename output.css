@@ -3,9 +3,7 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-      "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol", "Noto Color Emoji";
+    --font-sans: "Inter", Arial, sans-serif;
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
@@ -14,23 +12,48 @@
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-white: #fff;
     --spacing: 0.25rem;
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
-    --text-2xl: 1.5rem;
-    --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
     --font-weight-black: 900;
     --radius-lg: 0.5rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --color-status-excellent: #009999;
+    --color-status-excellent-soft: #e6f7f7;
+    --color-status-excellent-dark: #006666;
+    --color-status-good: #16a34a;
+    --color-status-good-soft: #ecfdf3;
+    --color-status-good-dark: #15803d;
+    --color-status-neutral: #2563eb;
+    --color-status-neutral-soft: #eff6ff;
+    --color-status-neutral-dark: #1d4ed8;
+    --color-status-warning: #d97706;
+    --color-status-warning-soft: #fff7ed;
+    --color-status-warning-dark: #b45309;
+    --color-status-critical: #dc2626;
+    --color-status-critical-soft: #fef2f2;
+    --color-status-critical-dark: #b91c1c;
     --color-blue-custom-700: oklch(48.8% 0.243 264.376);
-    --color-custom-button: #009999;
-    --color-custom-button-hover: #006666;
+    --color-surface: #ffffff;
     --color-pneu-input: #f0f2f5;
     --color-pneu-menus: #dde1e7;
+    --color-system-border: #dde1e7;
+    --color-custom-button: #009999;
+    --color-custom-button-hover: #006666;
     --color-black-russian: #1a202c;
     --color-cinza-claro: #6b7280;
+    --color-text-primary: #1a202c;
+    --color-text-secondary: #6b7280;
   }
 }
 @layer base {
@@ -203,9 +226,6 @@
   .flex {
     display: flex;
   }
-  .table {
-    display: table;
-  }
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
@@ -218,14 +238,8 @@
   .w-full {
     width: 100%;
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .resize {
-    resize: both;
   }
   .items-center {
     align-items: center;
@@ -262,15 +276,6 @@
   .p-12 {
     padding: calc(var(--spacing) * 12);
   }
-  .\!px-4 {
-    padding-inline: calc(var(--spacing) * 4) !important;
-  }
-  .\!px-8 {
-    padding-inline: calc(var(--spacing) * 8) !important;
-  }
-  .\!px-12 {
-    padding-inline: calc(var(--spacing) * 12) !important;
-  }
   .\!px-14 {
     padding-inline: calc(var(--spacing) * 14) !important;
   }
@@ -294,24 +299,9 @@
   .text-cinza-claro {
     color: var(--color-cinza-claro);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
-  }
   .blur {
     --tw-blur: blur(8px);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-  }
-  .filter {
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-  }
-  .transition {
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .transition-colors {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
@@ -350,18 +340,97 @@
 }
 .btn-primary:hover {
   background-color: var(--color-custom-button-hover);
-  color: white;
+  color: var(--color-white);
 }
 .input-pneu {
   border-radius: var(--radius-lg);
   --tw-border-style: none;
   border-style: none;
+  background-color: var(--color-pneu-input);
   --tw-outline-style: none;
   outline-style: none;
-  background-color: var(--color-pneu-input);
 }
 .menu-pneu {
   background-color: var(--color-pneu-menus);
+}
+.card-system {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+}
+.card-bordered {
+  border-radius: var(--radius-lg);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-system-border);
+  background-color: var(--color-surface);
+}
+.section-title {
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
+  --tw-font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+.section-description {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  color: var(--color-text-secondary);
+}
+.status-excellent {
+  color: var(--color-status-excellent);
+}
+.status-good {
+  color: var(--color-status-good);
+}
+.status-neutral {
+  color: var(--color-status-neutral);
+}
+.status-warning {
+  color: var(--color-status-warning);
+}
+.status-critical {
+  color: var(--color-status-critical);
+}
+.status-excellent-soft {
+  background-color: var(--color-status-excellent-soft);
+  color: var(--color-status-excellent-dark);
+}
+.status-good-soft {
+  background-color: var(--color-status-good-soft);
+  color: var(--color-status-good-dark);
+}
+.status-neutral-soft {
+  background-color: var(--color-status-neutral-soft);
+  color: var(--color-status-neutral-dark);
+}
+.status-warning-soft {
+  background-color: var(--color-status-warning-soft);
+  color: var(--color-status-warning-dark);
+}
+.status-critical-soft {
+  background-color: var(--color-status-critical-soft);
+  color: var(--color-status-critical-dark);
+}
+.indicator-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  text-align: center;
+}
+.indicator-label {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
+}
+.indicator-value {
+  font-size: var(--text-3xl);
+  line-height: var(--tw-leading, var(--text-3xl--line-height));
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
 }
 @property --tw-border-style {
   syntax: "*";
@@ -371,11 +440,6 @@
 @property --tw-font-weight {
   syntax: "*";
   inherits: false;
-}
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
 }
 @property --tw-blur {
   syntax: "*";
@@ -435,7 +499,6 @@
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;
