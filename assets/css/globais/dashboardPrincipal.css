@@ -1,20 +1,14 @@
-/* ===================================
-   CONTAINER DO DASHBOARD
-=================================== */
+/* Container do dashboard */
 
 .containerDashboard {
-  width: 100%;
-  min-width: 0;
-
   display: flex;
   flex-direction: column;
-
   gap: 2rem;
+  width: 100%;
+  min-width: 0;
 }
 
-/* ===================================
-   CANVAS
-=================================== */
+/* Canvas */
 
 .containerDashboard [class*="dash-row-"] canvas {
   width: 100% !important;
@@ -22,33 +16,30 @@
   height: auto !important;
 }
 
-/* ===================================
-   PRIMEIRA LINHA
-=================================== */
+/* Linhas do dashboard */
 
-.containerDashboard .dash-row-1 {
+.containerDashboard .dash-row-1,
+.containerDashboard .dash-row-2,
+.containerDashboard .dash-row-3 {
   display: grid;
-
-  grid-template-columns: minmax(0, 1fr);
-
   width: 100%;
   min-width: 0;
 }
 
-/* ===================================
-   SEGUNDA LINHA
-=================================== */
+.containerDashboard .dash-row-1 {
+  grid-template-columns: minmax(0, 1fr);
+  background: var(--color-surface);
+}
 
 .containerDashboard .dash-row-2 {
-  display: grid;
-
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: 1rem;
+  align-items: stretch;
+}
 
-  width: 100%;
-  min-width: 0;
-
+.containerDashboard .dash-row-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
   align-items: stretch;
 }
 
@@ -62,158 +53,126 @@
 .localizacaoSistema,
 .lastMovimentacoes {
   width: 100%;
-  min-width: 0;
   height: 100%;
-}
-
-/* ===================================
-   TERCEIRA LINHA
-=================================== */
-
-.containerDashboard .dash-row-3 {
-  display: grid;
-
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: 0.8rem;
-
-  width: 100%;
   min-width: 0;
-
-  align-items: stretch;
 }
+
+/* Gráficos */
 
 .dashboard-chart {
   min-width: 0;
-
   padding: 1rem;
-
   background: var(--color-surface);
-
   border: 1px solid var(--color-system-border);
   border-radius: 0.5rem;
-
   box-shadow: var(--shadow-table);
 }
 
-/* ===================================
-   TÍTULO DA CONTAGEM
-=================================== */
+/* Título da contagem */
 
 .containerDashboard > .dash-row-1 .form-titulo-container {
+  align-items: center;
   justify-content: center;
+  margin-bottom: 0;
 }
 
 .containerDashboard > .dash-row-1 .form-titulo-container h3 {
-  margin-bottom: 0.5rem;
+  color: var(--color-custom-button);
 }
 
-/* ===================================
-   CARD - LOCALIZAÇÃO NO SISTEMA
-=================================== */
+/* Cards principais */
 
-.card-loc {
+.card-loc,
+.card-mov-ultimas {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   min-width: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 1rem;
-
   padding: 1rem;
-
   background: var(--color-surface);
-
   border: 1px solid var(--color-system-border);
   border-radius: 0.5rem;
-
   box-shadow: var(--shadow-table);
 }
 
-/* ===================================
-   CABEÇALHO - LOCALIZAÇÃO
-=================================== */
+.card-loc {
+  gap: 1rem;
+}
 
-.card-loc-header {
+.card-mov-ultimas {
+  gap: 0.8rem;
+}
+
+/* Cabeçalhos dos cards */
+
+.card-loc-header,
+.card-mov-header {
   padding-bottom: 0.6rem;
-
   border-bottom: 1px solid var(--color-system-border);
 }
 
-.card-loc-header h3 {
-  margin: 0;
+.card-mov-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
 
+.card-loc-header h3,
+.card-mov-title h3 {
+  margin: 0;
   font-size: 1rem;
   font-weight: 600;
-
   color: var(--color-text-primary);
 }
 
-.card-loc-header p {
+.card-loc-header p,
+.card-mov-title p {
   margin-top: 0.1rem;
-
   font-size: 0.75rem;
-
   color: var(--color-text-secondary);
 }
 
-/* ===================================
-   GRID DE LOCALIZAÇÕES
-=================================== */
+/* Grid de localização */
 
 .card-loc-grid {
   display: grid;
-
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: 0.6rem;
 }
 
 .loc-box {
-  min-width: 0;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
+  min-width: 0;
   padding: 0.8rem 0.5rem;
-
-  text-align: center;
-
   background: var(--color-surface);
-
   border: 1px solid var(--color-system-border);
   border-radius: 0.5rem;
+  text-align: center;
 }
 
 .loc-box-title {
   margin-bottom: 0.2rem;
-
   font-size: 0.75rem;
-
   color: var(--color-text-secondary);
 }
 
 .loc-box-num {
   margin-bottom: 0.2rem;
-
   font-size: 1.25rem;
   font-weight: 700;
 }
 
 .loc-box-sub {
   font-size: 0.65rem;
-
   color: var(--color-text-muted);
 }
 
-/* ===================================
-   CORES DOS NÚMEROS
-=================================== */
+/* Cores auxiliares */
 
 .text-teal {
   color: var(--color-status-excellent);
@@ -235,9 +194,7 @@
   color: var(--color-status-critical);
 }
 
-/* ===================================
-   TABELA - PNEUS PARA BAIXA
-=================================== */
+/* Tabela de pneus para baixa */
 
 .card-loc-table-wrapper {
   margin-top: auto;
@@ -245,123 +202,52 @@
 
 .loc-table-title {
   margin-bottom: 0.5rem;
-
   font-size: 0.7rem;
   font-weight: 700;
-
   color: var(--color-text-secondary);
-
   text-transform: uppercase;
 }
 
 .loc-table {
   width: 100%;
-
-  border-collapse: collapse;
-
   overflow: hidden;
-
-  font-size: 0.75rem;
-
-  color: var(--color-text-primary);
-
   border: 1px solid var(--color-system-border);
   border-radius: 0.5rem;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  color: var(--color-text-primary);
+}
+
+.loc-table thead th,
+.loc-table tbody td,
+.loc-table tfoot td {
+  padding: 0.4rem 0.6rem;
 }
 
 .loc-table thead th {
-  padding: 0.4rem 0.6rem;
-
   background: var(--color-status-excellent);
-
-  color: white;
-
+  color: #fff;
   text-align: left;
   font-weight: 600;
 }
 
 .loc-table tbody td {
-  padding: 0.4rem 0.6rem;
-
   border-bottom: 1px solid var(--color-system-border);
 }
 
 .loc-table tfoot td {
-  padding: 0.4rem 0.6rem;
-
   background: var(--color-status-excellent-soft);
-
   color: var(--color-status-excellent-dark);
-
   font-weight: 700;
 }
 
-/* ===================================
-   CARD - ÚLTIMAS MOVIMENTAÇÕES
-=================================== */
-
-.card-mov-ultimas {
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 0.8rem;
-
-  padding: 1rem;
-
-  background: var(--color-surface);
-
-  border: 1px solid var(--color-system-border);
-  border-radius: 0.5rem;
-
-  box-shadow: var(--shadow-table);
-}
-
-/* ===================================
-   CABEÇALHO - MOVIMENTAÇÕES
-=================================== */
-
-.card-mov-header {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: flex-start;
-
-  gap: 1rem;
-
-  padding-bottom: 0.6rem;
-
-  border-bottom: 1px solid var(--color-system-border);
-}
-
-.card-mov-title h3 {
-  margin: 0;
-
-  font-size: 1rem;
-  font-weight: 600;
-
-  color: var(--color-text-primary);
-}
-
-.card-mov-title p {
-  margin-top: 0.1rem;
-
-  font-size: 0.75rem;
-
-  color: var(--color-text-secondary);
-}
+/* Últimas movimentações */
 
 .card-mov-link {
   flex-shrink: 0;
-
   font-size: 0.8rem;
   font-weight: 500;
-
   color: var(--color-status-excellent);
-
   text-decoration: none;
 }
 
@@ -369,35 +255,22 @@
   text-decoration: underline;
 }
 
-/* ===================================
-   LISTA DE MOVIMENTAÇÕES
-=================================== */
-
 .card-mov-list {
   display: flex;
   flex-direction: column;
-
   gap: 0.4rem;
-
   padding: 0;
   margin: 0;
-
   list-style: none;
 }
 
 .mov-item {
   display: flex;
-
   align-items: flex-start;
-
   gap: 0.6rem;
-
   min-width: 0;
-
   padding: 0.5rem;
-
   background: var(--color-surface);
-
   border: 1px solid var(--color-system-border);
   border-radius: 0.4rem;
 }
@@ -405,69 +278,51 @@
 .mov-status-dot {
   width: 8px;
   height: 8px;
-
   margin-top: 4px;
-
   flex-shrink: 0;
-
   border-radius: 50%;
 }
 
 .mov-content {
   display: flex;
   flex-direction: column;
-
   gap: 0.2rem;
-
   width: 100%;
   min-width: 0;
 }
 
 .mov-header-info {
   display: flex;
-
   align-items: center;
-
-  gap: 0.4rem;
-
   flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
 .mov-badge {
   padding: 0.15rem 0.4rem;
-
   border-radius: 0.25rem;
-
   font-size: 0.7rem;
   font-weight: 600;
-
   text-transform: capitalize;
 }
 
 .mov-fogo {
   font-size: 0.75rem;
   font-weight: 700;
-
   color: var(--color-status-excellent);
 }
 
 .mov-info {
   font-size: 0.75rem;
-
   color: var(--color-text-secondary);
 }
 
 .mov-meta {
   font-size: 0.7rem;
-
   color: var(--color-text-secondary);
 }
 
-/* ===================================
-   BADGES
-=================================== */
-
-/* Azul */
+/* Badges */
 
 .badge-blue-dot {
   background: var(--color-status-neutral);
@@ -475,11 +330,8 @@
 
 .badge-blue-bg {
   background: var(--color-status-neutral-soft);
-
   color: var(--color-status-neutral-dark);
 }
-
-/* Verde */
 
 .badge-green-dot {
   background: var(--color-status-good);
@@ -487,11 +339,8 @@
 
 .badge-green-bg {
   background: var(--color-status-good-soft);
-
   color: var(--color-status-good-dark);
 }
-
-/* Laranja */
 
 .badge-orange-dot {
   background: var(--color-status-warning);
@@ -499,11 +348,8 @@
 
 .badge-orange-bg {
   background: var(--color-status-warning-soft);
-
   color: var(--color-status-warning-dark);
 }
-
-/* Vermelho */
 
 .badge-red-dot {
   background: var(--color-status-critical);
@@ -511,50 +357,35 @@
 
 .badge-red-bg {
   background: var(--color-status-critical-soft);
-
   color: var(--color-status-critical-dark);
 }
 
-/* ===================================
-   DELTA FÍSICO X SISTEMA
-=================================== */
+/* Delta físico x sistema */
 
 .card-mov-footer {
   margin-top: auto;
-
   padding-top: 0.6rem;
-
   border-top: 1px solid var(--color-system-border);
 }
 
 .card-mov-footer h4 {
   margin-bottom: 0.5rem;
-
   font-size: 0.7rem;
   font-weight: 700;
-
   color: var(--color-text-secondary);
 }
 
 .delta-row {
   display: flex;
-
   justify-content: space-between;
-
   gap: 1rem;
-
   margin-bottom: 0.3rem;
-
   font-size: 0.75rem;
-
   color: var(--color-text-primary);
 }
 
 .delta-row .text-red {
   margin-left: 0.5rem;
-
-  color: var(--color-status-critical);
-
   font-weight: 700;
 }
 
@@ -562,9 +393,7 @@
   text-align: right;
 }
 
-/* ===================================
-   RESPONSIVIDADE
-=================================== */
+/* Responsividade */
 
 @media (max-width: 900px) {
   .containerDashboard .dash-row-3 {

@@ -54,6 +54,7 @@
     --color-orange-custom-700: oklch(55.3% 0.195 38.402);
     --color-orange-custom-50: oklch(98% 0.016 73.684);
     --color-orange-custom-200: oklch(90.1% 0.076 70.697);
+    --color-table-stripe: #f2faf8;
     --color-page: #f0f2f5;
     --color-surface: #ffffff;
     --color-pneu-input: #f0f2f5;
@@ -623,7 +624,7 @@
   transition-duration: var(--tw-duration, var(--default-transition-duration));
 }
 .table-system tbody tr:nth-child(even) {
-  background-color: var(--color-status-excellent-soft);
+  background-color: var(--color-table-stripe);
 }
 .table-system tbody tr:hover {
   background-color: var(--color-status-warning-soft);
@@ -1016,14 +1017,6 @@
   }
   .formulario .form-input.image {
     grid-column: span 1;
-  }
-  .form-titulo-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .btn-form-action {
-    width: 100% !important;
-    white-space: normal;
   }
 }
 @media (max-width: 480px) {

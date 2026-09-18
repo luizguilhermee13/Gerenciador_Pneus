@@ -1,44 +1,30 @@
-/* ===================================
-   GRID DOS FORMULÁRIOS
-=================================== */
+/* Grid dos formulários */
+
+.formulario :is(.form-grid-1, .form-grid-3, .form-grid-4) {
+  display: grid;
+  gap: 0.5rem;
+}
 
 .formulario .form-grid-1 {
-  display: grid;
-
   grid-template-columns: minmax(0, 1fr);
-
-  gap: 0.5rem;
 }
 
 .formulario .form-grid-3 {
-  display: grid;
-
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: 0.5rem;
 }
 
 .formulario .form-grid-4 {
-  display: grid;
-
   grid-template-columns: repeat(4, minmax(0, 1fr));
-
-  gap: 0.5rem;
 }
-
-/* Input que ocupa múltiplas colunas */
 
 .formulario .form-input.image {
   grid-column: span 3;
 }
 
-/* ===================================
-   RESPONSIVIDADE
-=================================== */
+/* Responsividade */
 
 @media (max-width: 970px) {
-  .formulario .form-grid-3,
-  .formulario .form-grid-4 {
+  .formulario :is(.form-grid-3, .form-grid-4) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -48,8 +34,7 @@
 }
 
 @media (max-width: 560px) {
-  .formulario .form-grid-3,
-  .formulario .form-grid-4 {
+  .formulario :is(.form-grid-3, .form-grid-4) {
     grid-template-columns: minmax(0, 1fr);
   }
 

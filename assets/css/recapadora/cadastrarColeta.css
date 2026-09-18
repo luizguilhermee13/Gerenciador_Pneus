@@ -1,49 +1,30 @@
-/* ===================================
-   RESET LOCAL
-=================================== */
+/* Estrutura da coleta */
 
 .cadastrarColeta fieldset {
-  border: none;
+  border: 0;
 }
-
-/* ===================================
-   FORMULÁRIO DA COLETA
-=================================== */
 
 .form-body {
   display: grid;
-
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: 1rem;
-
   margin-bottom: 1.5rem;
 }
 
 .form-body .dadosColeta {
   display: grid;
-
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: 0.5rem;
-
   min-width: 0;
 }
 
-/* ===================================
-   TABELA DE ADIÇÃO DE PNEUS
-=================================== */
+/* Tabela de adição de pneus */
 
-.form-footer table thead tr,
-.form-footer table tbody tr {
+.form-footer table :is(thead, tbody) tr {
   display: grid;
-
   grid-template-columns: repeat(8, minmax(0, 1fr));
-
-  gap: 0.2rem;
-
   align-items: center;
-
+  gap: 0.2rem;
   padding: 0.2rem;
 }
 
@@ -53,74 +34,50 @@
 
 .form-footer table tfoot tr {
   display: flex;
-
   justify-content: center;
-
   padding: 0.8rem 0.4rem;
 }
 
-/* ===================================
-   DADOS DAS RECAPADORAS
-=================================== */
+/* Recapadoras e garagens */
 
-.dadosRecapagem .fornecedoresRef {
+.dadosRecapagem .fornecedoresRef,
+.garagemAtendidas {
   display: grid;
-
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   gap: 1rem;
 }
 
-/* ===================================
-   ÍCONE / IDENTIFICAÇÃO
-=================================== */
+.garagemAtendidas {
+  align-items: center;
+  padding: 0.8rem;
+}
+
+/* Ícones dos cards */
 
 .card-icon {
   display: grid;
-
   grid-template-columns: auto minmax(0, 1fr);
-
   align-items: center;
-
   gap: 0.25rem;
 }
 
-.card-icon h3,
-.card-icon h4,
-.card-icon span {
+.card-icon :is(h3, h4, span) {
   grid-column: 2;
 }
 
 .card-icon .icon {
   grid-column: 1;
-
   grid-row: 1 / 3;
 }
 
-/* ===================================
-   GARAGENS ATENDIDAS
-=================================== */
-
-.garagemAtendidas {
-  display: grid;
-
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: 1rem;
-
-  align-items: center;
-
-  padding: 0.8rem;
-}
-
-/* ===================================
-   RESPONSIVIDADE
-=================================== */
+/* Status das coletas */
 
 #statusfeitas {
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 #statusfeitas .bloco-coleta-item {
@@ -130,9 +87,18 @@
 
 #statusfeitas .tabela-coleta {
   width: 100%;
-
   min-width: 720px;
 }
+
+#catalagoSucatas tbody tr:nth-child(odd) {
+  background: #f2faf8;
+}
+
+#catalagoSucatas tbody tr:nth-child(even) {
+  background: #ffffff;
+}
+
+/* Responsividade */
 
 @media (max-width: 1000px) {
   .dadosRecapagem .fornecedoresRef,
@@ -148,28 +114,9 @@
 }
 
 @media (max-width: 600px) {
-  .form-body .dadosColeta {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
+  .form-body .dadosColeta,
   .dadosRecapagem .fornecedoresRef,
   .garagemAtendidas {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .form-titulo-button-entrega {
-    flex-direction: column;
-    align-items: stretch;
-
-    width: 100%;
-  }
-
-  .form-titulo-button-entrega .form-input {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .form-titulo-button-entrega .btn {
-    width: 100% !important;
   }
 }

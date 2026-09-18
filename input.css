@@ -25,6 +25,7 @@
   --color-orange-custom-700: oklch(55.3% 0.195 38.402);
   --color-orange-custom-50: oklch(98% 0.016 73.684);
   --color-orange-custom-200: oklch(90.1% 0.076 70.697);
+  --color-table-stripe: #f2faf8;
 
   /* Sistema */
   --color-page: #f0f2f5;
@@ -240,7 +241,7 @@
   @apply bg-surface cursor-pointer transition-colors;
 }
 .table-system tbody tr:nth-child(even) {
-  @apply bg-status-excellent-soft;
+  @apply bg-table-stripe;
 }
 .table-system tbody tr:hover {
   @apply bg-status-warning-soft;
@@ -433,13 +434,6 @@
   }
   .formulario .form-input.image {
     grid-column: span 1;
-  }
-  .form-titulo-container {
-    @apply flex-col items-stretch;
-  }
-  .btn-form-action {
-    width: 100% !important;
-    white-space: normal;
   }
 }
 

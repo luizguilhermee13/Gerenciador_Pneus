@@ -1,64 +1,51 @@
-/* ===================================
-   LAYOUT DO CATÁLOGO
-=================================== */
+/* Layout do catálogo */
 
 .layout-catalogo {
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 2.3fr)
-    minmax(0, 1fr);
-
+  grid-template-columns: minmax(0, 2.3fr) minmax(0, 1fr);
   gap: 0.5rem;
-
+  width: 100%;
+  min-width: 0;
   padding: 0.4rem;
+}
+
+.layout-catalogo > * {
+  min-width: 0;
 }
 
 /* Veículos não possuem painel lateral */
 
-.veiculoPage > .layout-catalogo,
-.veiculoGns > .layout-catalogo {
-  display: grid;
-
+:is(.veiculoPage, .veiculoGns) > .layout-catalogo {
   grid-template-columns: minmax(0, 1fr);
-
-  gap: 0.5rem;
-
-  padding: 0.4rem;
 }
 
-/* Mantido porque esse componente utiliza Grid */
+/* Contagem */
 
 .table-container-contagemD {
   display: grid;
-
   grid-template-columns: minmax(0, 1fr);
-
+  width: 100%;
+  min-width: 0;
   padding: 0.4rem;
 }
 
-/* ===================================
-   PAINEL DO PNEU
-   Componente específico desta tela
-=================================== */
+/* Painel do pneu */
 
 .painelPneus {
+  width: 100%;
+  min-width: 0;
+  padding: 1rem;
   background: var(--color-surface);
-
   border: 1px solid var(--color-system-border);
   border-radius: 0.5rem;
-
-  padding: 1rem;
-
   box-shadow: var(--shadow-table);
 }
 
 .painelPneus .painel-header {
   display: flex;
-
-  justify-content: space-between;
   align-items: center;
-
+  justify-content: space-between;
+  gap: 0.5rem;
   padding: 0 0.5rem 0.5rem;
 }
 
@@ -66,14 +53,11 @@
   color: var(--color-text-secondary);
 }
 
-.painelPneus .painel-header .painel-vida {
-  background: var(--color-status-excellent);
-
-  color: #ffffff;
-
-  border-radius: 50%;
-
+.painelPneus .painel-vida {
   padding: 3px;
+  background: var(--color-status-excellent);
+  color: #fff;
+  border-radius: 50%;
 }
 
 .painelPneus .painel-corpo {
@@ -82,35 +66,21 @@
 
 .painelPneus .painel-linha {
   display: flex;
-
-  justify-content: space-between;
   align-items: center;
-
-  border-bottom: 1px solid var(--color-system-border);
-
+  justify-content: space-between;
+  gap: 1rem;
   margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-system-border);
 }
 
-/* ===================================
-   RESPONSIVIDADE DO CATÁLOGO
-=================================== */
-
-@media (max-width: 1350px) {
-  .layout-catalogo {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-/* ===================================
-   GRID DA PESQUISA
-=================================== */
+/* Pesquisa */
 
 .searchPneus {
   display: grid;
-
   grid-template-columns: minmax(0, 1fr);
-
   gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .grid-1 {
@@ -118,43 +88,107 @@
 }
 
 .grid-2 {
-  grid-template-columns:
-    minmax(0, 2fr)
-    minmax(260px, 1fr);
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+}
+
+/* Histórico de movimentações */
+
+:is(.movimentacaoEstoque, .historicoMoviCarro) {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+:is(.movimentacaoEstoque, .historicoMoviCarro) > * {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+:is(.movimentacaoEstoque, .historicoMoviCarro) .formulario {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Scroll das tabelas de movimentação */
+
+:is(.movimentacaoEstoque, .historicoMoviCarro) :is(.table-container, .table-container-infoRef) {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Tabelas de movimentação */
+
+:is(.movimentacaoEstoque, .historicoMoviCarro) table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+}
+
+:is(.movimentacaoEstoque, .historicoMoviCarro) th {
+  white-space: nowrap;
+}
+
+:is(.movimentacaoEstoque, .historicoMoviCarro) td {
+  vertical-align: middle;
+}
+
+/* Colunas maiores */
+
+.movimentacaoEstoque :is(th, td):nth-child(5) {
+  min-width: 190px;
+  white-space: normal;
+}
+
+.movimentacaoEstoque :is(th, td):nth-child(6) {
+  min-width: 130px;
+  white-space: normal;
+}
+
+.historicoMoviCarro :is(th, td):nth-child(7) {
+  min-width: 150px;
+  white-space: normal;
+}
+
+/* Responsividade */
+
+@media (max-width: 1350px) {
+  .layout-catalogo {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
   .grid-2 {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .painelPneus {
+    padding: 0.8rem;
+  }
+
+  .painelPneus .painel-header {
+    align-items: flex-start;
+  }
 }
 
-/* ===================================
-   Movimentações HISTÓRICOS - RESPONSIVIDADE
-=================================== */
+@media (max-width: 480px) {
+  .layout-catalogo {
+    padding: 0;
+  }
 
-.movimentacaoEstoque,
-.historicoMoviCarro {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-}
+  .painelPneus .painel-header {
+    flex-wrap: wrap;
+  }
 
-.movimentacaoEstoque > *,
-.historicoMoviCarro > * {
-  min-width: 0;
-}
-
-/*
-  Se o conteúdo gerado pelo JS for tabela,
-  garante largura mínima suficiente
-*/
-
-.movimentacaoEstoque table,
-.historicoMoviCarro table {
-  width: 100%;
-
-  min-width: 700px;
-
-  border-collapse: collapse;
+  .painelPneus .painel-linha {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 }
