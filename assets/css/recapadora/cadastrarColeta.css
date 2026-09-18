@@ -72,22 +72,49 @@
 
 /* Status das coletas */
 
+.statusColeta,
 #statusfeitas {
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 #statusfeitas .bloco-coleta-item {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#statusfeitas .bloco-coleta-item .formulario {
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
 }
 
+/* A tabela é a única parte que pode rolar */
+
 #statusfeitas .tabela-coleta {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mantém a tabela larga para não esmagar as colunas */
+
+#statusfeitas .tabela-coleta thead,
+#statusfeitas .tabela-coleta tbody {
+  display: table;
+  width: 720px;
   min-width: 720px;
+  table-layout: fixed;
+}
+
+#statusfeitas .tabela-coleta tbody {
+  border-collapse: collapse;
 }
 
 #catalagoSucatas tbody tr:nth-child(odd) {
