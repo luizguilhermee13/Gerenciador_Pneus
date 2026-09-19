@@ -35,18 +35,6 @@ export const dadosDashboard = [
   },
 ];
 
-export const dadosVeiculos = [
-  { titulo: "São Francisco", resultado: 224, cor: "#009999" },
-  { titulo: "Vitorino", resultado: 202, cor: "#dc2626" },
-  { titulo: "Bandeirantes", resultado: 145, cor: "#2563eb" },
-];
-
-export const dadosVeiculosGNS = [
-  { titulo: "São Francisco", resultado: 20, cor: "#009999" },
-  { titulo: "Vitorino", resultado: 15, cor: "#dc2626" },
-  { titulo: "Bandeirantes", resultado: 4, cor: "#2563eb" },
-];
-
 export const dadosMovimentacao = [
   { titulo: "Total Movimentações", resultado: 40, cor: "#009999" },
   { titulo: "Montagens (Ago/26)", resultado: 13, cor: "#dc2626" },
@@ -171,50 +159,6 @@ export function cardPneuDinamico(dados) {
   ];
 }
 
-export function cardVeiculosAtivoDinamico(dados) {
-  let itaquera = 0;
-  let juizdeFora = 0;
-  let limeira = 0;
-
-  dados.forEach((carro) => {
-    if (carro.garagem.toLowerCase() == "itaquera" && carro.status == "ativo") {
-      itaquera++;
-    } else if (carro.garagem.toLowerCase() == "juiz de fora" && carro.status == "ativo") {
-      juizdeFora++;
-    } else if (carro.garagem.toLowerCase() == "limeira" && carro.status == "ativo") {
-      limeira++;
-    }
-  });
-
-  return [
-    { titulo: "Itaquera", resultado: itaquera, cor: "#16a34a" },
-    { titulo: "Juiz de Fora", resultado: juizdeFora, cor: "#dc2626" },
-    { titulo: "Limeira", resultado: limeira, cor: "#2563eb" },
-  ];
-}
-
-export function cardVeiculosGnsDinamico(dados) {
-  let itaquera = 0;
-  let juizdeFora = 0;
-  let limeira = 0;
-
-  dados.forEach((carro) => {
-    if (carro.garagem.toLowerCase() == "itaquera" && carro.status == "gns") {
-      itaquera++;
-    } else if (carro.garagem.toLowerCase() == "juiz de fora" && carro.status == "gns") {
-      juizdeFora++;
-    } else if (carro.garagem.toLowerCase() == "limeira" && carro.status == "gns") {
-      limeira++;
-    }
-  });
-
-  return [
-    { titulo: "Itaquera", resultado: itaquera, cor: "#16a34a" },
-    { titulo: "Juiz de Fora", resultado: juizdeFora, cor: "#dc2626" },
-    { titulo: "Limeira", resultado: limeira, cor: "#2563eb" },
-  ];
-}
-
 // Função genérica para renderizar os cards na tela
 export function renderizarCards(dados, containerPage) {
   const cards = document.querySelector(containerPage);
@@ -233,4 +177,37 @@ export function renderizarCards(dados, containerPage) {
 
     cards.innerHTML += cardHTML;
   });
+}
+
+export async function cardVeiculosStatusDinamico(identificador, statusVeiculo) {
+  try {
+    const resposta = await fetch(`http://localhost:3000/api/veiculos/status/${statusVeiculo}`);
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar dados dos veículos");
+    }
+
+    const status = await resposta.json();
+
+    const cards = document.querySelector(identificador);
+
+    if (!cards) return;
+
+    cards.innerHTML = "";
+
+    status.forEach((item) => {
+      const cardHTML = `
+        <div class="card" id="garagem-${item.id}">
+          <p>${item.titulo}</p>
+          <span style="color: ${item.cor}">
+            ${item.resultado}
+          </span>
+        </div>
+      `;
+
+      cards.innerHTML += cardHTML;
+    });
+  } catch (erro) {
+    console.error("Erro ao carregar cards:", erro);
+  }
 }

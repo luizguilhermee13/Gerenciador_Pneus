@@ -14,7 +14,6 @@ sidebar.pageSelecionada();
 //renderizar catalagos
 catalago.renderizarCatalago(dados.listaPneus);
 catalago.renderizarPainel(dados.listaPneus[0]);
-catalago.renderizarCatalagoCarros(dados.listaCarros);
 catalago.renderizarHistoricoSucatas(dados.listaPneus);
 catalago.renderizarCatalagoSucatas(dados.baseRecusada);
 catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
@@ -29,7 +28,6 @@ estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);
 
 //Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
-
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosMovimentacao, "#indicadoresMovimentacao");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosEstoque, "#metricaEstoqueF");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosEstoque, "#metricaEstoqueD");
@@ -49,12 +47,6 @@ cardsEstatisticos.renderizarCards(dadosSulcosDinamicos, "#IndicadorSulco");
 const dadosPneusDinamicos = cardsEstatisticos.cardPneuDinamico(dados.listaPneus);
 cardsEstatisticos.renderizarCards(dadosPneusDinamicos, "#indicadoresPneus");
 
-const dadosVeiculosAtivosDinamicos = cardsEstatisticos.cardVeiculosAtivoDinamico(dados.listaCarros);
-cardsEstatisticos.renderizarCards(dadosVeiculosAtivosDinamicos, "#metricaVeiculos");
-
-const dadosVeiculosGnsDinamicos = cardsEstatisticos.cardVeiculosGnsDinamico(dados.listaCarros);
-cardsEstatisticos.renderizarCards(dadosVeiculosGnsDinamicos, "#metricaGns");
-
 //renderizando os graficos
 //para evitar erros estou deixando os nomes da garagem em minusculo para filtrar certo em pneu.garagem no objeto listaPneus
 const pneusItaquera = dados.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase() === "itaquera");
@@ -73,3 +65,8 @@ indicador.criarGraficosSucata(dados.listaPneus);
 //dashboard principal
 catalago.renderizarUltimasMovimentacoes(dados.movimentacoesPneus, ".lastMovimentacoes");
 catalago.renderizarLocalizacaoSistema(dados.listaPneus, ".localizacaoSistema");
+
+/* funções do arquivo veiculos.html com BD conectado */
+catalago.renderizarCatalagoCarros(); // com bd
+cardsEstatisticos.cardVeiculosStatusDinamico("#metricaVeiculos", "ativo");
+cardsEstatisticos.cardVeiculosStatusDinamico("#metricaGns", "gns");

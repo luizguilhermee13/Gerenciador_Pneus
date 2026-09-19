@@ -3,21 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Dashboard Pneus</title>
-
     <link rel="stylesheet" href="../css/style.css" />
     <link href="../../output.css" rel="stylesheet" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
 
   <body>
     <div id="container-layout" class="sidebar-open overflow-hidden layout-com-submenu">
-      <!-- =========================
-           HEADER
-      ========================== -->
-
       <header class="w-full !px-14 flex justify-between items-center">
         <div class="header-logo text-xl font-sans">
           <span class="emoji">&#128202;</span>
@@ -40,17 +33,13 @@
         </div>
       </header>
 
-      <!-- =========================
-           HAMBÚRGUER
-      ========================== -->
+      <!--  MENU MOBILE -->
 
       <button id="btn-hamburguer" class="btn-hamburguer" type="button" aria-label="Abrir menu">
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <!-- =========================
-           MENU LATERAL
-      ========================== -->
+      <!--  MENU MIN 768px -->
 
       <nav class="menu" id="menu">
         <div class="logo">
@@ -63,43 +52,18 @@
         </div>
 
         <ul>
-          <li>
-            <a href="../../index.html"> Dashboard </a>
-          </li>
-
-          <li>
-            <a href="pneus.html"> Pneus </a>
-          </li>
-
-          <li>
-            <a href="veiculos.html"> Veículos </a>
-          </li>
-
-          <li>
-            <a href="movimentacao.html"> Movimentações </a>
-          </li>
-
-          <li>
-            <a href="estoque.html"> Estoque </a>
-          </li>
-
-          <li>
-            <a href="recapadora.html"> Recapadora </a>
-          </li>
-
-          <li>
-            <a href="sulco.html"> Sulcos </a>
-          </li>
-
-          <li>
-            <a href="sucateamento.html"> Sucatas </a>
-          </li>
+          <li><a href="../../index.html"> Dashboard </a></li>
+          <li><a href="pneus.html"> Pneus </a></li>
+          <li><a href="veiculos.html"> Veículos </a></li>
+          <li><a href="movimentacao.html"> Movimentações </a></li>
+          <li><a href="estoque.html"> Estoque </a></li>
+          <li><a href="recapadora.html"> Recapadora </a></li>
+          <li><a href="sulco.html"> Sulcos </a></li>
+          <li><a href="sucateamento.html"> Sucatas </a></li>
         </ul>
       </nav>
 
-      <!-- =========================
-           SUBMENU
-      ========================== -->
+      <!--  SUBMENU -> SECTIONS -->
 
       <section class="sub-menu" id="sub-menu">
         <ul>
@@ -113,12 +77,10 @@
       ========================== -->
 
       <main class="containerPrincipal" id="containerPrincipal">
-        <!-- ===================================
-             VEÍCULOS ATIVOS
-        ==================================== -->
+        <!--  VEÍCULOS ATIVOS -->
 
         <section class="veiculoPage">
-          <!-- Indicadores -->
+          <!-- Indicadores Metricos -->
 
           <div class="containerIndicadores" id="metricaVeiculos"></div>
 
@@ -167,7 +129,7 @@
                     <th scope="col">Tamanho</th>
                     <th scope="col">Cor</th>
                     <th scope="col">Ano</th>
-                    <th scope="col">Posição</th>
+                    <th scope="col">Placa</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
@@ -178,12 +140,10 @@
           </div>
         </section>
 
-        <!-- ===================================
-             VEÍCULOS GNS
-        ==================================== -->
+        <!--  VEÍCULOS GNS-->
 
         <section class="veiculoGns">
-          <!-- Indicadores -->
+          <!-- Indicadores Metricos -->
 
           <div class="containerIndicadores" id="metricaGns"></div>
 
@@ -232,7 +192,7 @@
                     <th scope="col">Tamanho</th>
                     <th scope="col">Cor</th>
                     <th scope="col">Ano</th>
-                    <th scope="col">Posição</th>
+                    <th scope="col">Placa</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>

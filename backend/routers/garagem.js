@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 
 //teste filtrando
 router.get("/:id", (req, res) => {
-  const garagem = db.prepare("SELECT * FROM garagem WHERE id_garagem = 2").all();
+  const garagem = db.prepare("SELECT * FROM garagem WHERE id_garagem = ?").get(req.params.id);
 
   res.json(garagem);
 });

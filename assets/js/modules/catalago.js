@@ -74,39 +74,50 @@ export function renderizarCatalago(listaPneus) {
   });
 }
 
-//catalago de carros no sistema
-const tbodyCarros = document.getElementById("CatalagoCarros");
-const tbodyCarros2 = document.getElementById("CatalagoCarros2");
+/* catalago VEÍCULOS GNS  */
+export async function renderizarCatalagoCarros() {
+  try {
+    const resposta = await fetch("http://localhost:3000/api/veiculos");
 
-export function renderizarCatalagoCarros(listaCarros) {
-  if (!tbodyCarros || !tbodyCarros2) return;
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar dados dos veículos");
+    }
 
-  tbodyCarros.innerHTML = "";
-  tbodyCarros2.innerHTML = "";
+    const carros = await resposta.json();
 
-  listaCarros.forEach((item) => {
-    const tr = document.createElement("tr");
-    tr.setAttribute("id", item.prefixo);
+    const tbodyCarros = document.getElementById("CatalagoCarros");
+    const tbodyCarros2 = document.getElementById("CatalagoCarros2");
 
-    tr.innerHTML = `
-      <td>${item.prefixo}</td>
+    if (!tbodyCarros || !tbodyCarros2) return;
+    tbodyCarros.innerHTML = "";
+    tbodyCarros2.innerHTML = "";
+
+    carros.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.setAttribute("id", item.numeroCarro);
+
+      tr.innerHTML = `
+      <td>${item.numeroCarro}</td>
       <td>${item.garagem}</td>
       <td>${item.tamanho}</td>
       <td>${item.cor}</td>
-      <td>${item.ano}</td>
-      <td>${item.posicao}</td>
+      <td>${item.anoCarroceria}</td>
+      <td>${item.placa}</td>
       <td>${item.status}</td>`;
 
-    tr.addEventListener("click", () => {
-      alert("teste");
-    });
+      tr.addEventListener("click", () => {
+        alert(`numero do carro é ${item.numeroCarro}`);
+      });
 
-    if (item.status == "ativo") {
-      tbodyCarros.appendChild(tr);
-    } else if (item.status == "gns") {
-      tbodyCarros2.appendChild(tr);
-    }
-  });
+      if (item.status.toLowerCase() === "ativo") {
+        tbodyCarros.appendChild(tr);
+      } else if (item.status.toLowerCase() === "gns") {
+        tbodyCarros2.appendChild(tr);
+      }
+    });
+  } catch (erro) {
+    console.error("Erro ao carregar cards:", erro);
+  }
 }
 
 //catalago de Sucateados no sistema
