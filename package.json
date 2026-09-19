@@ -1,6 +1,14 @@
 {
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node --watch backend/server.js"
+  },
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
     "tailwindcss": "^4.3.3"
   }
 }

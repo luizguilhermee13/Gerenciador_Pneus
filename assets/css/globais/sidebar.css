@@ -101,35 +101,35 @@
 }
 
 .menu ul li:nth-child(1) a::before {
-  background-image: url("../img/icons/grip-vertical-solid-full.svg");
+  background-image: url("../../img/icons/grip-vertical-solid-full.svg");
 }
 
 .menu ul li:nth-child(2) a::before {
-  background-image: url("../img/icons/circle-dot-regular-full.svg");
+  background-image: url("../../img/icons/circle-dot-regular-full.svg");
 }
 
 .menu ul li:nth-child(3) a::before {
-  background-image: url("../img/icons/truck-solid-full.svg");
+  background-image: url("../../img/icons/truck-solid-full.svg");
 }
 
 .menu ul li:nth-child(4) a::before {
-  background-image: url("../img/icons/arrows-left-right-solid-full.svg");
+  background-image: url("../../img/icons/arrows-left-right-solid-full.svg");
 }
 
 .menu ul li:nth-child(5) a::before {
-  background-image: url("../img/icons/box-open-solid-full.svg");
+  background-image: url("../../img/icons/box-open-solid-full.svg");
 }
 
 .menu ul li:nth-child(6) a::before {
-  background-image: url("../img/icons/wrench-solid-full.svg");
+  background-image: url("../../img/icons/wrench-solid-full.svg");
 }
 
 .menu ul li:nth-child(7) a::before {
-  background-image: url("../img/icons/gauge-simple-solid-full.svg");
+  background-image: url("../../img/icons/gauge-simple-solid-full.svg");
 }
 
 .menu ul li:nth-child(8) a::before {
-  background-image: url("../img/icons/trash-can-solid-full.svg");
+  background-image: url("../../img/icons/trash-can-solid-full.svg");
 }
 
 /* Hambúrguer */
