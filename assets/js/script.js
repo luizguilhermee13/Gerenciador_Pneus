@@ -6,14 +6,14 @@ import * as coleta from "./modules/coletaRecapagem.js";
 import * as indicador from "./modules/indicadores.js";
 import * as dados from "./modules/dadosFicticios.js";
 import * as estoque from "./modules/estoque.js";
+import * as cadastro from "./modules/cadastrar.js";
 
 navegacaoTab.navegacaoTabs();
 sidebar.sidebar();
 sidebar.pageSelecionada();
 
 //renderizar catalagos
-catalago.renderizarCatalago(dados.listaPneus);
-catalago.renderizarPainel(dados.listaPneus[0]);
+
 catalago.renderizarHistoricoSucatas(dados.listaPneus);
 catalago.renderizarCatalagoSucatas(dados.baseRecusada);
 catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
@@ -66,7 +66,18 @@ indicador.criarGraficosSucata(dados.listaPneus);
 catalago.renderizarUltimasMovimentacoes(dados.movimentacoesPneus, ".lastMovimentacoes");
 catalago.renderizarLocalizacaoSistema(dados.listaPneus, ".localizacaoSistema");
 
-/* funções do arquivo veiculos.html com BD conectado */
-catalago.renderizarCatalagoCarros(); // com bd
+/* ===================================
+      FUNÇÕES COM DADOS DO BANCO 
+==================================== */
+
+// funções do arquivo veiculos.html
+catalago.renderizarCatalagoCarros();
 cardsEstatisticos.cardVeiculosStatusDinamico("#metricaVeiculos", "ativo");
 cardsEstatisticos.cardVeiculosStatusDinamico("#metricaGns", "gns");
+
+// funções do arquivo pneus.html
+cadastro.cadastrarPneus();
+cadastro.popularSelectVeiculos();
+
+catalago.renderizarCatalago();
+catalago.renderizarPainel(dados.listaPneus[0]);

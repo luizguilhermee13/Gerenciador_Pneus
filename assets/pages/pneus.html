@@ -111,28 +111,22 @@
 
         <section class="catalagoPneus">
           <!-- Indicadores Metricos -->
-
           <div class="containerIndicadores" id="indicadoresPneus"></div>
 
           <!-- Pesquisa -->
-
           <div class="searchPneus grid-2">
             <input type="text" id="buscaCatalogoPneus" name="buscaCatalogoPneus" placeholder="Buscar por Nr. Fogo, marca ou veículo..." />
 
             <div class="searchSelect">
               <select name="garagemFiltroPneus" id="garagemFiltroPneus">
                 <option value="" disabled selected>Garagem</option>
-
-                <option value="itaquera">Itaquera</option>
-
-                <option value="limeira">Limeira</option>
-
-                <option value="juizDeFora">Juiz de Fora</option>
+                <option value="1">Itaquera</option>
+                <option value="2">Limeira</option>
+                <option value="3">Juiz de Fora</option>
               </select>
 
               <select name="vidaFiltroPneus" id="vidaFiltroPneus">
                 <option value="" disabled selected>Vida</option>
-
                 <option value="N">N</option>
                 <option value="R1">R1</option>
                 <option value="R2">R2</option>
@@ -148,25 +142,26 @@
           </div>
 
           <!-- ===================================
-               TABELA + PAINEL LATERAL
-          ==================================== -->
-
+       TABELA + PAINEL LATERAL
+  ==================================== -->
           <div class="layout-catalogo">
             <!-- Tabela -->
-
             <div class="table-container">
               <table id="catalagoPneus" class="table-system">
                 <thead>
                   <tr>
                     <th scope="col">Nr. Fogo</th>
                     <th scope="col">Medida</th>
-                    <th scope="col">Marca</th>
+                    <th scope="col">Dot</th>
                     <th scope="col">Vida</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Garagem</th>
-                    <th scope="col">Posição</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Desenho</th>
                     <th scope="col">Sulco</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Posição</th>
                     <th scope="col">Km</th>
+                    <th scope="col">Garagem</th>
+                    <th scope="col">Veículo</th>
                   </tr>
                 </thead>
 
@@ -175,7 +170,6 @@
             </div>
 
             <!-- Painel lateral do pneu -->
-
             <aside class="painelPneus" id="painel-lateral" aria-label="Detalhes do pneu selecionado"></aside>
           </div>
         </section>
@@ -211,7 +205,7 @@
               </button>
             </div>
 
-            <form action="" method="post" id="formularioCadastro" name="formularioCadastro" class="form-grid-3">
+            <form action="" method="POST" id="formularioCadastro" name="formularioCadastro" class="form-grid-3">
               <!-- Número de fogo -->
 
               <div class="form-input">
@@ -256,6 +250,13 @@
                 </select>
               </div>
 
+              <!-- Desenho -->
+
+              <div class="form-input">
+                <label for="desenho"> Desenho </label>
+                <input type="text" id="desenho" name="desenho" placeholder="Ex: Kmax Extreme" />
+              </div>
+
               <!-- Vida -->
 
               <div class="form-input">
@@ -285,11 +286,11 @@
                 <select id="garagemCadastro" name="garagem">
                   <option value="" disabled selected>Selecione a unidade</option>
 
-                  <option value="itaquera">Itaquera</option>
+                  <option value="1">Itaquera</option>
 
-                  <option value="limeira">Limeira</option>
+                  <option value="2">Limeira</option>
 
-                  <option value="tatuape">Tatuapé</option>
+                  <option value="3">Juiz de Fora</option>
                 </select>
               </div>
 
@@ -332,10 +333,6 @@
 
                 <select id="veiculo" name="veiculo">
                   <option value="" disabled selected>Se montado</option>
-
-                  <option value="001">001</option>
-                  <option value="002">002</option>
-                  <option value="003">003</option>
                 </select>
               </div>
 
@@ -362,14 +359,6 @@
                 <label for="responsavel"> Responsável pelo Lançamento </label>
 
                 <input type="text" id="responsavel" name="responsavel" placeholder="Responsável" />
-              </div>
-
-              <!-- Temporário -->
-
-              <div class="form-input image">
-                <label for="temp"> Temporário </label>
-
-                <input type="text" id="temp" name="temp" placeholder="temp" />
               </div>
             </form>
           </div>
