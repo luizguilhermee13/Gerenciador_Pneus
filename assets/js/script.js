@@ -59,7 +59,6 @@ indicador.criarGraficoPneus(pneusJuizDeFora, ".graphSulGaragem-3", "sulco", "Sul
 
 indicador.criarGraficoPneus(dados.listaPneus, ".graphSulcoTotal", "sulco", "Sulcos por Quantidade Total");
 indicador.criarGraficoPneus(dados.listaPneus, ".graphSulcoVida", "status", "Quantidade de Pneus por Status");
-
 indicador.criarGraficosSucata(dados.listaPneus);
 
 //dashboard principal
@@ -77,7 +76,10 @@ cardsEstatisticos.cardVeiculosStatusDinamico("#metricaGns", "gns");
 
 // funções do arquivo pneus.html
 cadastro.cadastrarPneus();
+cadastro.cadastrarLotePneus();
 cadastro.popularSelectVeiculos();
 
 catalago.renderizarCatalago();
 catalago.renderizarPainel(dados.listaPneus[0]);
+
+cardsEstatisticos.cardPneusDinamico("#indicadoresPneus");

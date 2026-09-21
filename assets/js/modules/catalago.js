@@ -425,7 +425,7 @@ export function renderizarPainel(pneu) {
     <div class="painel-card">
       <div class="painel-header">
       <div class="painel-titulo">
-        <h2>${pneu.nrFogo}</h2>
+        <h2>${pneu.id_nrFogo}</h2>
         <p>${pneu.marca} · ${pneu.medida}</p>
       </div>
         <span class="painel-vida">${pneu.vida}</span>
@@ -441,7 +441,7 @@ export function renderizarPainel(pneu) {
         </div>
         <div class="painel-linha">
           <span class="painel-label">Posição</span>
-          <span class="painel-valor">${pneu.posicao}</span>
+          <span class="painel-valor">${pneu.veiculo} - ${pneu.posicao}</span>
         </div>
         <div class="painel-linha">
           <span class="painel-label">Sulco atual</span>
@@ -453,11 +453,11 @@ export function renderizarPainel(pneu) {
         </div>
         <div class="painel-linha">
           <span class="painel-label">Medida</span>
-          <span class="painel-valor">${pneu.medida} km</span>
+          <span class="painel-valor">${pneu.medida}</span>
         </div>
         <div class="painel-linha ultima">
           <span class="painel-label">Data de Entrada</span>
-          <span class="painel-valor">${pneu.entrada}</span>
+          <span class="painel-valor">${pneu.dataCadastro}</span>
         </div>
       </div>
     </div>

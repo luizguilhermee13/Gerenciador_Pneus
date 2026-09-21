@@ -24,6 +24,7 @@ router.get("/", (req, res) => {
   res.json(veiculos);
 });
 
+//get para filtrar por status e colocar nos cards
 router.get("/status/:status", (req, res) => {
   const { status } = req.params;
 
