@@ -72,6 +72,7 @@ router.post("/lote", (req, res) => {
       nrFogoLote,
       qtdPneus,
       marcaLote,
+      desenhoLote,
       medidaLote,
       vidaLote,
       dotLote,
@@ -93,8 +94,8 @@ router.post("/lote", (req, res) => {
     const dataCadastro = dateEntradaLote || new Date().toISOString();
 
     const stmt = db.prepare(`
-      INSERT INTO pneus (id_nrFogo, medida, dot, vida, marca, sulco, status, id_garagemAtual, km, responsavel, fornecedor, dataCadastro)
-      VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+      INSERT INTO pneus (id_nrFogo, medida, dot, vida, marca,desenho , sulco, status, id_garagemAtual, km, responsavel, fornecedor, dataCadastro)
+      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
     `);
 
     const inserirLote = db.transaction((qtd) => {
@@ -102,6 +103,7 @@ router.post("/lote", (req, res) => {
         stmt.run(
           inicio + i,
           medidaLote,
+          desenhoLote,
           dotLote,
           vidaLote,
           marcaLote,
@@ -124,6 +126,7 @@ router.post("/lote", (req, res) => {
   }
 });
 
+//rota para filtrar por status e colocar nos cards
 router.get("/status", (req, res) => {
   const dados = db
     .prepare(

@@ -1,60 +1,3 @@
-//catalago de Sucateados no sistema
-const tbodySucatas = document.getElementById("catalagoSucatas");
-
-export function renderizarHistoricoSucatas(listaPneus) {
-  if (!tbodySucatas) return;
-
-  tbodySucatas.innerHTML = "";
-
-  listaPneus.forEach((item) => {
-    if (item.motivoRecusa != null) return;
-
-    const tr = document.createElement("tr");
-    tr.setAttribute("id", item.nrFogo);
-
-    tr.innerHTML = `
-       <td>${item.nrFogo}</td>
-      <td>${item.medida}</td>
-      <td>${item.marca}</td>
-      <td>${item.vida}</td>
-      <td>${item.motivoRecusa}</td>
-      <td>${item.garagem}</td>
-      <td>${item.posicao}</td>
-      <td>${item.dataRecusa}</td>`;
-
-    tr.addEventListener("click", () => {
-      alert("teste");
-    });
-
-    tbodySucatas.appendChild(tr);
-  });
-}
-
-const tbodyBaseSucatas = document.getElementById("catalagoSucatasB");
-
-export function renderizarCatalagoSucatas(baseRecusada) {
-  if (!tbodyBaseSucatas) return;
-
-  tbodyBaseSucatas.innerHTML = "";
-
-  baseRecusada.forEach((item) => {
-    const tr = document.createElement("tr");
-    tr.setAttribute("id", item.codigoRecusa);
-
-    tr.innerHTML = `
-       <td>${item.codigoRecusa}</td>
-       <td>${item.motivo}</td>
-       <td>${item.motivoSistema}</td>
-       <td>${item.local}</td>`;
-
-    tr.addEventListener("click", () => {
-      alert("teste");
-    });
-
-    tbodyBaseSucatas.appendChild(tr);
-  });
-}
-
 const tbodyConferencia = document.getElementById("catalagoConferencia1");
 const tbodyConferencia2 = document.getElementById("catalagoConferencia2");
 
@@ -465,7 +408,6 @@ export function renderizarPainel(pneu) {
 }
 
 //catalago de pneus no sistema
-//pegando os dados do objeto listaPneus -> criando os tr e td e jogando dentro do tbody/tela
 export async function renderizarCatalago() {
   if (!tbody) return;
   tbody.innerHTML = "";
@@ -479,7 +421,6 @@ export async function renderizarCatalago() {
 
     const pneus = await resposta.json();
 
-    console.log(pneus);
     pneus.forEach((pneus) => {
       const tr = document.createElement("tr");
       tr.setAttribute("id", pneus.id_nrFogo);
@@ -493,7 +434,7 @@ export async function renderizarCatalago() {
   <td>${pneus.desenho}</td>
   <td>${pneus.sulco}</td>
   <td>${pneus.status}</td>
-  <td>${pneus.posicao}</td>
+  <td>${pneus.posicao ?? "—"}</td>
   <td>${pneus.km}</td>
   <td>${pneus.garagem ?? "—"}</td>
   <td>${pneus.veiculo ?? "—"}</td>`;
@@ -509,7 +450,6 @@ export async function renderizarCatalago() {
   }
 }
 
-/* catalago VEÍCULOS GNS  */
 export async function renderizarCatalagoCarros() {
   try {
     const resposta = await fetch("http://localhost:3000/api/veiculos");
@@ -552,5 +492,68 @@ export async function renderizarCatalagoCarros() {
     });
   } catch (erro) {
     console.error("Erro ao carregar cards:", erro);
+  }
+}
+
+/* catalago sucatas   */
+
+export async function renderizarHistoricoSucatas() {
+  const tbody = document.getElementById("catalagoSucatas");
+  if (!tbody) return;
+
+  try {
+    const resposta = await fetch("http://localhost:3000/api/sucatas");
+    if (!resposta.ok) throw new Error("Erro ao buscar histórico de sucatas");
+
+    const sucatas = await resposta.json();
+    tbody.innerHTML = "";
+
+    sucatas.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.id_nrFogo}</td>
+        <td>${item.medida}</td>
+        <td>${item.marca}</td>
+        <td>${item.vida}</td>
+        <td>${item.motivo ?? "—"}</td>
+        <td>${item.garagem ?? "—"}</td>
+        <td>${item.sulco}</td>
+        <td>${item.data ?? "—"}</td>`;
+      tbody.appendChild(tr);
+    });
+  } catch (error) {
+    console.error("Erro ao carregar histórico de sucatas:", error);
+  }
+}
+
+export async function renderizarCatalagoSucatas() {
+  const tbody = document.getElementById("catalagoSucatasB");
+  if (!tbody) return;
+
+  try {
+    const resposta = await fetch("http://localhost:3000/api/sucatas/motivos");
+    if (!resposta.ok) throw new Error("Erro ao buscar base de motivos");
+
+    const motivos = await resposta.json();
+    tbody.innerHTML = "";
+
+    motivos.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.setAttribute("id", item.codigo);
+
+      tr.innerHTML = `
+        <td>${item.codigo}</td>
+        <td>${item.descricao}</td>
+        <td>${item.grupo}</td>
+        <td>${item.local}</td>`;
+
+      tr.addEventListener("click", () => {
+        alert("teste");
+      });
+
+      tbody.appendChild(tr);
+    });
+  } catch (error) {
+    console.error("Erro ao carregar base de motivos:", error);
   }
 }
