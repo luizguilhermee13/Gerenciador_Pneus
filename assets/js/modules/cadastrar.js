@@ -78,3 +78,52 @@ export async function popularSelectVeiculos() {
     console.error("Erro ao carregar options:", error);
   }
 }
+
+export function registrarSucata() {
+  const form = document.getElementById("formularioSucateamento");
+  if (!form) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    try {
+      const dados = Object.fromEntries(new FormData(form));
+
+      const resposta = await fetch("http://localhost:3000/api/sucatas", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      });
+
+      if (!resposta.ok) {
+        const erro = await resposta.json();
+        throw new Error(erro.mensagem);
+      }
+
+      form.reset();
+    } catch (error) {
+      console.error("Erro ao registrar sucata:", error);
+    }
+  });
+}
+
+export async function popularSelectMotivos() {
+  const select = document.getElementById("motivoRecusa");
+  if (!select) return;
+
+  try {
+    const resposta = await fetch("http://localhost:3000/api/sucatas/motivos");
+    if (!resposta.ok) throw new Error("Erro ao buscar motivos de sucateamento");
+
+    const motivos = await resposta.json();
+
+    motivos.forEach((m) => {
+      const option = document.createElement("option");
+      option.value = m.codigo;
+      option.textContent = `${m.codigo} - ${m.descricao}`;
+      select.appendChild(option);
+    });
+  } catch (error) {
+    console.error("Erro ao carregar motivos:", error);
+  }
+}

@@ -68,7 +68,6 @@ export const baseRecusada = [
   { codigoRecusa: "MT 03", local: "Talão", motivo: "Talão queimado (baquelizado)", motivoSistema: "Deslocamento do Talão" },
   { codigoRecusa: "MT 05", local: "Talão", motivo: "Talão deformado", motivoSistema: "Deslocamento do Talão" },
   { codigoRecusa: "MT 06", local: "Avaria", motivo: "avarias acidentais", motivoSistema: "avarias no geral" },
-  { codigoRecusa: "CD 01", local: "Recuperado", motivo: "Pneu em condição de uso", motivoSistema: "Pneu avaliado e aprovado" },
 ];
 
 export const listaPneus = [

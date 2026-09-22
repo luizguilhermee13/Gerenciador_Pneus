@@ -164,7 +164,6 @@
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h3>Registrar Pneu Sucateado</h3>
-
                 <p>Pneus recusados pela reformadora ou com laudo técnico de descarte</p>
               </div>
 
@@ -174,72 +173,37 @@
             </div>
 
             <form action="" method="post" id="formularioSucateamento" name="formularioSucateamento" class="form-grid-3">
-              <!-- Número de fogo -->
-
               <div class="form-input">
                 <label for="nrFogoSucata"> Nr. Fogo / Código * </label>
-
-                <input type="text" id="nrFogoSucata" name="nrFogo" placeholder="Número Fogo" />
+                <input type="text" id="nrFogoSucata" name="nrFogo" placeholder="Número Fogo" required />
               </div>
-
-              <!-- Sulco final -->
 
               <div class="form-input">
                 <label for="sulcoFinal"> Sulco Final (mm) </label>
-
                 <input type="number" id="sulcoFinal" name="sulcoFinal" placeholder="0" />
               </div>
 
-              <!-- Km final -->
-
               <div class="form-input">
                 <label for="kmRodadoFinal"> Km Final </label>
-
                 <input type="number" id="kmRodadoFinal" name="kmRodadoFinal" placeholder="..." />
               </div>
 
-              <!-- Data -->
-
               <div class="form-input">
                 <label for="dateFinal"> Data Sucateamento * </label>
-
                 <input type="date" id="dateFinal" name="dateFinal" />
               </div>
 
-              <!-- Motivo -->
-
               <div class="form-input">
                 <label for="motivoRecusa"> Motivo da Recusa </label>
-
                 <select id="motivoRecusa" name="motivoRecusa">
                   <option value="" disabled selected>Selecione um motivo...</option>
-
-                  <option value="MBR 01">Rodou com baixa pressão</option>
-
-                  <option value="MBR 03">Acidente na banda de rodagem</option>
-
-                  <option value="MBR 19">Acidente no flanco</option>
-
-                  <option value="MT 01">Desgaste natural</option>
-
-                  <option value="MT 00">Outros</option>
+                  <!-- opções entram via fetch em motivosSucateamento -->
                 </select>
               </div>
 
-              <!-- Responsável -->
-
               <div class="form-input">
                 <label for="responsavelLaudo"> Responsável pelo Laudo </label>
-
                 <input type="text" id="responsavelLaudo" name="responsavelLaudo" placeholder="Digite o Nome" />
-              </div>
-
-              <!-- Temporário -->
-
-              <div class="form-input image">
-                <label for="tempSucata"> Temporário </label>
-
-                <input type="text" id="tempSucata" name="temp" placeholder="temp" />
               </div>
             </form>
           </div>

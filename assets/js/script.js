@@ -14,8 +14,6 @@ sidebar.pageSelecionada();
 
 //renderizar catalagos
 
-catalago.renderizarHistoricoSucatas(dados.listaPneus);
-catalago.renderizarCatalagoSucatas(dados.baseRecusada);
 catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
 catalago.renderizarMovimentacoes(dados.movimentacoesPneus);
 
@@ -83,3 +81,16 @@ catalago.renderizarCatalago();
 catalago.renderizarPainel(dados.listaPneus[0]);
 
 cardsEstatisticos.cardPneusDinamico("#indicadoresPneus");
+
+// funções do arquivo sucateamento.html
+cadastro.registrarSucata();
+cadastro.popularSelectMotivos();
+
+catalago.renderizarHistoricoSucatas();
+catalago.renderizarCatalagoSucatas();
+
+const btnAtualizar = document.getElementById("btn-atualizar");
+
+btnAtualizar.addEventListener("click", () => {
+  location.reload();
+});
