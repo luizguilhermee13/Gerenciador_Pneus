@@ -25,7 +25,7 @@ coleta.renderizarFornecedores(dados.fornecedoresRecapagem);
 //Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosMovimentacao, "#indicadoresMovimentacao");
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosEstoque, "#metricaEstoqueF");
+
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosEstoque, "#metricaEstoqueD");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosEstoqueDivergente, "#metricaDivergencia");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosInfo, "#metricaEntrega");
@@ -97,3 +97,5 @@ btnAtualizar.addEventListener("click", () => {
 estoque.registrarContagemFisica();
 estoque.renderizarTabelaContagemFisica();
 estoque.configurarAtualizarContagem();
+
+cardsEstatisticos.cardEstoqueFDinamico("#metricaEstoqueF");

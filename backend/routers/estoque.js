@@ -27,6 +27,45 @@ router.get("/", (req, res) => {
   res.json(contagens);
 });
 
+//rota para filtrar por status e colocar nos cards
+router.get("/status", (req, res) => {
+  const linha = db
+    .prepare(
+      `WITH ultimas AS (
+        SELECT *,
+          ROW_NUMBER() OVER (PARTITION BY id_garagem, medida ORDER BY dataContagem DESC) AS rn
+        FROM estoque
+      )
+      SELECT
+        SUM(qtdNovo) AS Novo,
+        SUM(qtdMeiaVida) AS "Meia Vida",
+        SUM(qtdReformado) AS Reformado,
+        SUM(qtdParaReforma) AS "P/ Reforma",
+        SUM(qtdParaConserto) AS "P/ Conserto",
+        SUM(qtdSucateado) AS Sucateado
+      FROM ultimas
+      WHERE rn = 1`,
+    )
+    .get();
+
+  const cores = {
+    Novo: "#16a34a",
+    "Meia Vida": "#2563eb",
+    Reformado: "#0891b2",
+    "P/ Reforma": "#d97706",
+    "P/ Conserto": "#ca8a04",
+    Sucateado: "#dc2626",
+  };
+
+  const resultado = Object.entries(linha).map(([titulo, valor]) => ({
+    titulo,
+    resultado: valor ?? 0,
+    cor: cores[titulo] ?? "#6b7280",
+  }));
+
+  res.json(resultado);
+});
+
 router.post("/", (req, res) => {
   try {
     const { dataContagem, medida, ...resto } = req.body;

@@ -42,15 +42,6 @@ export const dadosMovimentacao = [
   { titulo: "Descartes", resultado: 2, cor: "#2563eb" },
 ];
 
-export const dadosEstoque = [
-  { titulo: "Novo", resultado: 7, cor: "#009999" },
-  { titulo: "Reformado", resultado: 24, cor: "#2563eb" },
-  { titulo: "Meia Vida", resultado: 18, cor: "#f59e0b" },
-  { titulo: "C.Interno", resultado: 3, cor: "#ea580c" },
-  { titulo: "P/Reforma", resultado: 15, cor: "#9333ea" },
-  { titulo: "Sucateado", resultado: 2, cor: "#dc2626" },
-];
-
 export const dadosEstoqueDivergente = [
   { titulo: "Total Divergências", resultado: 2, cor: "" },
   { titulo: "Medidas Afetadas", resultado: 3, cor: "#ea580c" },
@@ -217,6 +208,39 @@ export async function cardVeiculosStatusDinamico(identificador, statusVeiculo) {
 export async function cardPneusDinamico(identificador) {
   try {
     const resposta = await fetch(`http://localhost:3000/api/pneus/status/`);
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar dados dos veículos");
+    }
+
+    const status = await resposta.json();
+
+    const cards = document.querySelector(identificador);
+
+    if (!cards) return;
+
+    cards.innerHTML = "";
+
+    status.forEach((item) => {
+      const cardHTML = `
+        <div class="card" id="garagem-${item.id}">
+          <p>${item.titulo}</p>
+          <span style="color: ${item.cor}">
+            ${item.resultado}
+          </span>
+        </div>
+      `;
+
+      cards.innerHTML += cardHTML;
+    });
+  } catch (erro) {
+    console.error("Erro ao carregar cards:", erro);
+  }
+}
+
+export async function cardEstoqueFDinamico(identificador) {
+  try {
+    const resposta = await fetch("http://localhost:3000/api/estoque/status");
 
     if (!resposta.ok) {
       throw new Error("Erro ao buscar dados dos veículos");
