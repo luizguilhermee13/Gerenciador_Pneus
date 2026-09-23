@@ -1,3 +1,4 @@
+//Cadastrando individualmente e por lote e populando o select carro
 export function cadastrarPneus() {
   const form = document.getElementById("formularioCadastro");
 
@@ -79,6 +80,8 @@ export async function popularSelectVeiculos() {
   }
 }
 
+//registrando sucata e pupulando o select motivo
+//altero o status do pneu para sucata
 export function registrarSucata() {
   const form = document.getElementById("formularioSucateamento");
   if (!form) return;

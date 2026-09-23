@@ -1,27 +1,73 @@
-export function renderizarTabelaContagemFisica(dadosContagem) {
-  const tbody = document.querySelector("#catalagoContagemF tbody");
+export function registrarContagemFisica() {
+  const form = document.getElementById("formularioQtdFisico");
+  if (!form) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    try {
+      const dados = Object.fromEntries(new FormData(form));
+
+      const resposta = await fetch("http://localhost:3000/api/estoque", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      });
+
+      if (!resposta.ok) {
+        const erro = await resposta.json();
+        throw new Error(erro.mensagem);
+      }
+
+      form.reset();
+    } catch (error) {
+      console.error("Erro ao registrar contagem:", error);
+    }
+  });
+}
+
+export async function renderizarTabelaContagemFisica() {
+  const tbody = document.getElementById("conteudoContagemFisica");
   if (!tbody) return;
 
-  tbody.innerHTML = "";
+  try {
+    const resposta = await fetch("http://localhost:3000/api/estoque");
+    if (!resposta.ok) throw new Error("Erro ao buscar contagens");
 
-  dadosContagem.forEach((item) => {
-    const totalGeral =
-      (item.novo || 0) + (item.reformado || 0) + (item.meiaVida || 0) + (item.cInterno || 0) + (item.pReforma || 0) + (item.sucateado || 0);
+    const contagens = await resposta.json();
+    tbody.innerHTML = "";
 
-    const tr = document.createElement("tr");
+    contagens.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><button type="button" data-id="${item.id_estoque}" class="btnDeletarContagem">🗑️</button></td>
+        <td>${item.dataContagem}</td>
+        <td>${item.garagem ?? "—"}</td>
+        <td>${item.medida}</td>
+        <td>${item.qtdNovo}</td>
+        <td>${item.qtdMeiaVida}</td>
+        <td>${item.qtdReformado}</td>
+        <td>${item.qtdParaReforma}</td>
+        <td>${item.qtdParaConserto}</td>
+        <td>${item.qtdSucateado}</td>
+        <td>${item.total}</td>`;
+      tbody.appendChild(tr);
+    });
 
-    tr.innerHTML = `
-      <td><input type="checkbox" class="checkbox-selecao" value="${item.medida}"></td>
-      <td>${item.medida}</td>
-      <td>${item.novo}</td>
-      <td>${item.reformado}</td>
-      <td>${item.meiaVida}</td>
-      <td>${item.cInterno}</td>
-      <td>${item.pReforma}</td>
-      <td>${item.sucateado}</td>
-      <td><strong>${totalGeral}</strong></td>
-    `;
+    tbody.querySelectorAll(".btnDeletarContagem").forEach((botao) => {
+      botao.addEventListener("click", async () => {
+        await fetch(`http://localhost:3000/api/estoque/${botao.dataset.id}`, { method: "DELETE" });
+        renderizarTabelaContagemFisica();
+      });
+    });
+  } catch (error) {
+    console.error("Erro ao carregar contagens:", error);
+  }
+}
 
-    tbody.appendChild(tr);
-  });
+export function configurarAtualizarContagem() {
+  const botao = document.getElementById("btnAtualizarContagemFisica");
+  if (!botao) return;
+
+  botao.addEventListener("click", () => renderizarTabelaContagemFisica());
 }

@@ -192,3 +192,64 @@
     gap: 0.5rem;
   }
 }
+
+/* Contagem física por garagem */
+.contagem-garagens {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contagem-garagem {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--color-system-border);
+  border-radius: 0.5rem;
+}
+
+.contagem-garagem-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-system-border);
+}
+
+.contagem-garagem-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.contagem-garagem-header span {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.garagem-indicador {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.garagem-itaquera .garagem-indicador {
+  background: var(--color-status-good);
+}
+
+.garagem-limeira .garagem-indicador {
+  background: var(--color-status-neutral);
+}
+
+.garagem-juiz-fora .garagem-indicador {
+  background: var(--color-status-critical);
+}
+
+@media (max-width: 1200px) {
+  .contagem-garagens {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
