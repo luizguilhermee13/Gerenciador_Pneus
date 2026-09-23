@@ -557,3 +557,5 @@ export async function renderizarCatalagoSucatas() {
     console.error("Erro ao carregar base de motivos:", error);
   }
 }
+
+//catalagos estoque

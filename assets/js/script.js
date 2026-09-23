@@ -22,8 +22,6 @@ coleta.statusColeta(dados.listaColetas);
 coleta.renderizarPneusReformadora(dados.pneusNaReformadora);
 coleta.renderizarFornecedores(dados.fornecedoresRecapagem);
 
-estoque.renderizarTabelaContagemFisica(dados.listaContagemFisica);
-
 //Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosMovimentacao, "#indicadoresMovimentacao");
@@ -94,3 +92,8 @@ const btnAtualizar = document.getElementById("btn-atualizar");
 btnAtualizar.addEventListener("click", () => {
   location.reload();
 });
+
+//funcoes da tela estoque
+estoque.registrarContagemFisica();
+estoque.renderizarTabelaContagemFisica();
+estoque.configurarAtualizarContagem();

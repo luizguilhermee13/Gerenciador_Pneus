@@ -112,77 +112,188 @@
           <div class="containerIndicadores" id="metricaEstoqueF"></div>
 
           <!-- Registrar contagem física -->
-
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h2>Registrar Contagem Física</h2>
-
-                <p>Informe a medida e situação dos pneus em estoque</p>
+                <p>Informe a quantidade física dos pneus por medida, garagem e situação</p>
               </div>
 
-              <button type="button" class="btn btn-primary">Adicionar Pneu</button>
+              <button type="submit" form="formularioQtdFisico" class="btn btn-primary btn-form-action">Registrar Contagem</button>
             </div>
 
-            <form action="" method="post" id="formularioQtdFisico" name="formularioQtdFisico" class="form-grid-4">
-              <div class="form-input">
-                <label for="medida"> Medida * </label>
+            <form action="" method="post" id="formularioQtdFisico" name="formularioQtdFisico">
+              <!-- Dados gerais -->
+              <div class="form-grid-4">
+                <div class="form-input">
+                  <label for="dataContagem">Data da Contagem *</label>
+                  <input type="date" name="dataContagem" id="dataContagem" required />
+                </div>
 
-                <select name="medida" id="medida">
-                  <option value="" disabled selected>Selecione uma opção...</option>
+                <div class="form-input">
+                  <label for="medidaContagem">Medida *</label>
+                  <select name="medida" id="medidaContagem" required>
+                    <option value="" disabled selected>Selecione uma opção...</option>
 
-                  <option value="275/80R22.5">275/80R22.5</option>
-
-                  <option value="215/75R17.5">215/75R17.5</option>
-
-                  <option value="outros">Outros</option>
-                </select>
+                    <option value="275/80R22.5">275/80R22.5</option>
+                    <option value="215/75R17.5">215/75R17.5</option>
+                    <option value="outros">Outros</option>
+                  </select>
+                </div>
               </div>
 
-              <div class="form-input">
-                <label for="vida"> Situação Atual </label>
+              <!-- Garagens -->
+              <div class="contagem-garagens">
+                <!-- Itaquera -->
+                <fieldset class="contagem-garagem garagem-itaquera">
+                  <input type="hidden" name="idGaragem_1" value="1" />
 
-                <select name="vida" id="vida">
-                  <option value="" disabled selected>Vida Atual</option>
+                  <div class="contagem-garagem-header">
+                    <div>
+                      <h3>Itaquera</h3>
+                      <span>Garagem 01</span>
+                    </div>
 
-                  <option value="N">N</option>
-                  <option value="R1">R1</option>
-                  <option value="R2">R2</option>
-                  <option value="R3">R3</option>
-                  <option value="R4">R4</option>
-                  <option value="R5">R5</option>
-                  <option value="R6">R6</option>
-                  <option value="R7">R7</option>
-                  <option value="R8">R8</option>
-                  <option value="R9">R9</option>
-                </select>
-              </div>
+                    <span class="garagem-indicador"></span>
+                  </div>
 
-              <div class="form-input">
-                <label for="qtdPneusFisico"> Quantidade </label>
+                  <div class="form-grid-3">
+                    <div class="form-input">
+                      <label for="qtdNovo_1">Novos</label>
+                      <input type="number" name="qtdNovo_1" id="qtdNovo_1" value="0" min="0" />
+                    </div>
 
-                <input type="number" placeholder="0" name="qtdPneusFisico" id="qtdPneusFisico" min="0" />
-              </div>
+                    <div class="form-input">
+                      <label for="qtdMeiaVida_1">Meia Vida</label>
+                      <input type="number" name="qtdMeiaVida_1" id="qtdMeiaVida_1" value="0" min="0" />
+                    </div>
 
-              <div class="form-input">
-                <label for="dateEntrada"> Data de Entrada * </label>
+                    <div class="form-input">
+                      <label for="qtdReformado_1">Reformados</label>
+                      <input type="number" name="qtdReformado_1" id="qtdReformado_1" value="0" min="0" />
+                    </div>
 
-                <input type="date" name="dateEntrada" id="dateEntrada" />
+                    <div class="form-input">
+                      <label for="qtdParaReforma_1">P/ Reforma</label>
+                      <input type="number" name="qtdParaReforma_1" id="qtdParaReforma_1" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdParaConserto_1">P/ Conserto</label>
+                      <input type="number" name="qtdParaConserto_1" id="qtdParaConserto_1" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdSucateado_1">Sucateados</label>
+                      <input type="number" name="qtdSucateado_1" id="qtdSucateado_1" value="0" min="0" />
+                    </div>
+                  </div>
+                </fieldset>
+
+                <!-- Limeira -->
+                <fieldset class="contagem-garagem garagem-limeira">
+                  <input type="hidden" name="idGaragem_2" value="2" />
+
+                  <div class="contagem-garagem-header">
+                    <div>
+                      <h3>Limeira</h3>
+                      <span>Garagem 02</span>
+                    </div>
+
+                    <span class="garagem-indicador"></span>
+                  </div>
+
+                  <div class="form-grid-3">
+                    <div class="form-input">
+                      <label for="qtdNovo_2">Novos</label>
+                      <input type="number" name="qtdNovo_2" id="qtdNovo_2" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdMeiaVida_2">Meia Vida</label>
+                      <input type="number" name="qtdMeiaVida_2" id="qtdMeiaVida_2" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdReformado_2">Reformados</label>
+                      <input type="number" name="qtdReformado_2" id="qtdReformado_2" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdParaReforma_2">P/ Reforma</label>
+                      <input type="number" name="qtdParaReforma_2" id="qtdParaReforma_2" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdParaConserto_2">P/ Conserto</label>
+                      <input type="number" name="qtdParaConserto_2" id="qtdParaConserto_2" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdSucateado_2">Sucateados</label>
+                      <input type="number" name="qtdSucateado_2" id="qtdSucateado_2" value="0" min="0" />
+                    </div>
+                  </div>
+                </fieldset>
+
+                <!-- Juiz de Fora -->
+                <fieldset class="contagem-garagem garagem-juiz-fora">
+                  <input type="hidden" name="idGaragem_3" value="3" />
+
+                  <div class="contagem-garagem-header">
+                    <div>
+                      <h3>Juiz de Fora</h3>
+                      <span>Garagem 03</span>
+                    </div>
+
+                    <span class="garagem-indicador"></span>
+                  </div>
+
+                  <div class="form-grid-3">
+                    <div class="form-input">
+                      <label for="qtdNovo_3">Novos</label>
+                      <input type="number" name="qtdNovo_3" id="qtdNovo_3" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdMeiaVida_3">Meia Vida</label>
+                      <input type="number" name="qtdMeiaVida_3" id="qtdMeiaVida_3" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdReformado_3">Reformados</label>
+                      <input type="number" name="qtdReformado_3" id="qtdReformado_3" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdParaReforma_3">P/ Reforma</label>
+                      <input type="number" name="qtdParaReforma_3" id="qtdParaReforma_3" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdParaConserto_3">P/ Conserto</label>
+                      <input type="number" name="qtdParaConserto_3" id="qtdParaConserto_3" value="0" min="0" />
+                    </div>
+
+                    <div class="form-input">
+                      <label for="qtdSucateado_3">Sucateados</label>
+                      <input type="number" name="qtdSucateado_3" id="qtdSucateado_3" value="0" min="0" />
+                    </div>
+                  </div>
+                </fieldset>
               </div>
             </form>
           </div>
 
           <!-- Quantitativo físico -->
-
           <div class="formulario">
             <div class="form-titulo-container">
               <div class="form-titulo">
                 <h3>Quantitativo Físico por Medida</h3>
-
-                <p>Contagem do dia 24/08/2026</p>
+                <p>Histórico das contagens físicas realizadas</p>
               </div>
 
-              <button type="button" class="btn btn-primary">Atualizar</button>
+              <button type="button" id="btnAtualizarContagemFisica" class="btn btn-primary">Atualizar</button>
             </div>
 
             <div class="table-container">
@@ -190,18 +301,20 @@
                 <thead>
                   <tr>
                     <th scope="col">Deletar</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Garagem</th>
                     <th scope="col">Medida</th>
                     <th scope="col">Novo</th>
-                    <th scope="col">Reformado</th>
                     <th scope="col">Meia Vida</th>
-                    <th scope="col">C. Interno</th>
+                    <th scope="col">Reformado</th>
                     <th scope="col">P/ Reforma</th>
+                    <th scope="col">P/ Conserto</th>
                     <th scope="col">Sucateado</th>
                     <th scope="col">Total</th>
                   </tr>
                 </thead>
 
-                <tbody></tbody>
+                <tbody id="conteudoContagemFisica"></tbody>
               </table>
             </div>
           </div>
