@@ -1,97 +1,134 @@
 # 🛞 Gerenciador de Pneus - Frota
 
-Sistema web voltado para o controle, gestão e rastreabilidade de pneus de frotas de ônibus urbano.
+Sistema web voltado para o **controle, gestão e rastreabilidade de pneus de frotas de ônibus urbano**.
 
-O projeto está sendo desenvolvido com base em vivência prática operacional no setor de manutenção/borracharia (regras de sulco, rodízio, controle de vida útil N/R1...R9, e divergências entre estoque físico e sistema).
+O projeto está sendo desenvolvido com base em vivência prática operacional no setor de manutenção/borracharia, considerando regras como controle de sulco, vida útil dos pneus (`N`, `R1`...`R9`), movimentações, sucateamento, recapagem e divergências entre estoque físico e sistema.
 
-🌐 **Acesse a aplicação online:** [Gerenciador de Pneus no GitHub Pages](https://luizguilhermee13.github.io/Gerenciador_Pneus/)
-📄 **Documentação:** [Levantamento de Requisitos](docs/levantamento-requisitos.md)
+🌐 **Aplicação online:**  
+https://gerenciador-pneus.web.app
+
+📄 **Documentação:**  
+[Levantamento de Requisitos](docs/levantamento-requisitos.md)
 
 ---
 
 ## 📌 Status do Projeto
 
 🟡 **Em Desenvolvimento Ativo**
-📍 **Etapa Atual:** **Etapa 3** — Backend com Node.js/Express e SQLite: rotas de leitura e cadastro (individual e em lote) já funcionando para pneus, veículos e garagens.
+
+📍 **Etapa Atual:** desenvolvimento e integração do backend com **Node.js, Express e PostgreSQL/Supabase**.
+
+Parte das funcionalidades já utiliza dados reais através da API, enquanto outros módulos ainda utilizam dados simulados durante o desenvolvimento.
 
 ---
 
-## 🗺️ Roadmap de Desenvolvimento (Etapas)
+## 🗺️ Roadmap de Desenvolvimento
 
 ### 🟢 Etapa 1: Prototipagem e Levantamento de Requisitos _(Concluída)_
 
-- [x] Estrutura e layout inicial em HTML, CSS e JavaScript puro.
-- [x] Levantamento de requisitos funcionais e regras de negócio operacionais.
-- [x] Simulação de fluxo com arrays de objetos, para representar o que viria do banco.
-- [x] Estruturação conceitual da lógica de sulco, vida útil (N, R1...R9) e status.
+- [x] Estrutura e layout inicial em HTML, CSS e JavaScript.
+- [x] Levantamento de requisitos funcionais e regras de negócio.
+- [x] Simulação inicial de dados utilizando arrays de objetos.
+- [x] Estruturação da lógica de sulco, vida útil (`N`, `R1...R9`) e status dos pneus.
 
-### 🟢 Etapa 2: Refatoração com Tailwind, Gráficos e Modelagem SQLite _(Concluída)_
+### 🟢 Etapa 2: Interface, Gráficos e Modelagem de Dados _(Concluída)_
 
-- [x] Migração do CSS para Tailwind (grids e layouts responsivos).
-- [x] Modelagem relacional completa e criação das tabelas no SQLite.
-- [x] Gráficos operacionais (sulco por garagem, status dos pneus) com Chart.js.
+- [x] Refatoração da interface utilizando Tailwind CSS.
+- [x] Estruturação de layouts responsivos.
+- [x] Criação de gráficos operacionais com Chart.js.
+- [x] Modelagem relacional inicial utilizando SQLite.
+- [x] Estruturação das principais tabelas e relacionamentos do sistema.
 
-### 🟡 Etapa 3: Backend com Node.js e Integração SQLite _(Em Andamento)_
+### 🟡 Etapa 3: Backend e Integração com Banco de Dados _(Em Andamento)_
 
-- [x] Servidor Node.js/Express com conexão real ao banco SQLite.
-- [x] Rotas de consulta (garagens, veículos e catálogo de pneus, com joins entre tabelas).
-- [x] Cadastro de pneu individual e em lote, gravando direto no banco.
-- [ ] Rotas de atualização (mudança de status: sucateamento, envio para recapagem, movimentações).
-- [ ] Migração completa das demais telas (hoje ainda usando dados fictícios) para consumir a API.
-- [ ] Escolha e configuração da hospedagem definitiva.
+- [x] Criação da API com Node.js e Express.
+- [x] Migração do banco SQLite para PostgreSQL utilizando Supabase.
+- [x] Integração do backend com PostgreSQL.
+- [x] Consulta de garagens, veículos e pneus.
+- [x] Cadastro individual de pneus.
+- [x] Cadastro de pneus em lote.
+- [x] Controle e consulta de estoque físico.
+- [x] Registro de sucateamento e consulta dos motivos.
+- [x] Integração parcial do front-end com a API.
+- [ ] Implementação completa das movimentações de pneus.
+- [ ] Implementação completa do fluxo de recapagem.
+- [ ] Migração das telas que ainda utilizam dados simulados para dados reais da API.
 
-### 🔴 Etapa 4: Refino de Código e Ajustes Finais _(Planejada)_
+### 🟢 Etapa 4: Hospedagem e Deploy _(Concluída parcialmente)_
 
-- [ ] Refatoração do JavaScript do front-end (organização dos módulos, tratamento de erros consistente).
-- [ ] Testes de validação de regras de negócio e usabilidade.
-- [ ] Ajustes finais de layout, responsividade e acessibilidade.
+- [x] Front-end publicado no Firebase Hosting.
+- [x] Backend publicado no Render.
+- [x] Banco PostgreSQL hospedado no Supabase.
+- [x] Configuração de ambientes local e produção.
+- [x] Integração Firebase → Render → Supabase.
+
+### 🔴 Etapa 5: Refino e Ajustes Finais _(Planejada)_
+
+- [ ] Refatoração e organização dos módulos JavaScript.
+- [ ] Padronização do tratamento de erros da API.
+- [ ] Validação das regras de negócio.
+- [ ] Testes de usabilidade.
+- [ ] Ajustes finais de responsividade e acessibilidade.
+- [ ] Substituição completa dos dados fictícios por dados persistidos.
 
 ---
 
 ## 🛠️ Tecnologias e Ferramentas
 
-- **Front-end:** HTML5, CSS3, Tailwind CSS
-- **Back-end:** Node.js, Express
-- **Banco de Dados:** SQLite
-- **Visualização de Dados:** Chart.js
-- **Documentação:** Markdown
-- **Versionamento:** Git e GitHub
+### Front-end
+
+- HTML5
+- CSS3
+- JavaScript
+- Tailwind CSS
+- Chart.js
+
+### Back-end
+
+- Node.js
+- Express
+- API REST
+- CORS
+
+### Banco de Dados
+
+- PostgreSQL
+- Supabase
+
+> SQLite foi utilizado durante as etapas iniciais de modelagem e desenvolvimento local antes da migração para PostgreSQL.
+
+### Hospedagem
+
+- **Firebase Hosting** — Front-end
+- **Render** — API Node.js / Express
+- **Supabase** — PostgreSQL
+
+### Desenvolvimento
+
+- Git
+- GitHub
+- npm
+- VS Code
+- Postman
+- Beekeeper Studio
 
 ---
 
-## 🌐 Hospedagem
+## 🌐 Arquitetura Atual
 
-Atualmente, apenas o front-end está publicado, via **GitHub Pages** (não hospeda o backend/banco). Com o backend em desenvolvimento, a hospedagem completa ainda está em avaliação — as opções em consideração no momento são **Firebase** e **Render**.
-
----
-
-## 🎯 Principais Funcionalidades
-
-- [x] Cadastro de pneu individual e em lote, gravando no banco SQLite.
-- [x] Catálogo de pneus com busca e filtro, consumindo a API.
-- [x] Catálogo de veículos por garagem, com contagem dinâmica por status.
-- [x] Gráficos de sulco por garagem e por status.
-- [ ] Fluxo completo de sucateamento (atualização de status + motivo).
-- [ ] Fluxo completo de coleta/entrega em recapadoras.
-- [ ] Histórico de movimentações consumindo o banco (hoje ainda fictício).
-
----
-
-## 📁 Estrutura do Projeto
-
-\`\`\`text
-Gerenciador_Pneus/
-├── index.html
-├── assets/
-│ ├── css/
-│ └── js/
-│ └── modules/
-├── backend/
-│ ├── server.js
-│ ├── db.js
-│ └── routers/
-├── database/
-│ └── db.sqlite
-└── docs/
-└── levantamento-requisitos.md
-\`\`\`
+```text
+Frontend
+Firebase Hosting
+      │
+      │ HTTP / Fetch API
+      ▼
+Backend
+Node.js + Express
+Render
+      │
+      │ SQL
+      ▼
+Banco de Dados
+PostgreSQL
+Supabase
+```
