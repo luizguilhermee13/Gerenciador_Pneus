@@ -3,29 +3,37 @@ import db from "../db.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  const garagem = db.prepare("SELECT * FROM garagem").all();
+router.get("/", async (req, res) => {
+  const resultado = await db.query(`
+    SELECT *
+    FROM garagem
+  `);
 
-  res.json(garagem);
+  res.json(resultado.rows);
 });
 
-//teste filtrando
-router.get("/:id", (req, res) => {
-  const garagem = db.prepare("SELECT * FROM garagem WHERE id_garagem = ?").get(req.params.id);
+// teste filtrando
+router.get("/:id", async (req, res) => {
+  const resultado = await db.query(
+    `
+      SELECT *
+      FROM garagem
+      WHERE id_garagem = $1
+    `,
+    [req.params.id],
+  );
 
-  res.json(garagem);
+  res.json(resultado.rows[0]);
 });
 
-router.post("/", (req, res) => {
-  const stmt = db.prepare(`
-  INSERT INTO garagem (nome)
-  VALUES (?)
-`);
-
-  //cadastrando as garagem
-  //stmt.run("Itaquera");
-  //stmt.run("Limeira");
-  stmt.run("Juiz de Fora");
+router.post("/", async (req, res) => {
+  await db.query(
+    `
+      INSERT INTO garagem (nome)
+      VALUES ($1)
+    `,
+    ["Juiz de Fora"],
+  );
 
   res.status(201).json({
     mensagem: "Garagem cadastrada com sucesso",

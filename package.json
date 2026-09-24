@@ -1,14 +1,15 @@
 {
   "type": "module",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "node --watch backend/server.js"
+    "start": "node --env-file-if-exists=.env backend/server.js",
+    "dev": "node --env-file-if-exists=.env --watch backend/server.js"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "better-sqlite3": "^13.0.3",
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "pg": "^8.23.0",
     "tailwindcss": "^4.3.3"
   }
 }

@@ -1,3 +1,5 @@
+import { API_URL } from "../config/api.js";
+
 const tbodyConferencia = document.getElementById("catalagoConferencia1");
 const tbodyConferencia2 = document.getElementById("catalagoConferencia2");
 
@@ -413,7 +415,7 @@ export async function renderizarCatalago() {
   tbody.innerHTML = "";
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/pneus");
+    const resposta = await fetch(`${API_URL}/api/pneus`);
 
     if (!resposta.ok) {
       throw new Error("Erro ao buscar dados dos veículos");
@@ -452,7 +454,7 @@ export async function renderizarCatalago() {
 
 export async function renderizarCatalagoCarros() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/veiculos");
+    const resposta = await fetch(`${API_URL}/api/veiculos`);
 
     if (!resposta.ok) {
       throw new Error("Erro ao buscar dados dos veículos");
@@ -502,7 +504,7 @@ export async function renderizarHistoricoSucatas() {
   if (!tbody) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/sucatas");
+    const resposta = await fetch(`${API_URL}/api/sucatas`);
     if (!resposta.ok) throw new Error("Erro ao buscar histórico de sucatas");
 
     const sucatas = await resposta.json();
@@ -531,7 +533,7 @@ export async function renderizarCatalagoSucatas() {
   if (!tbody) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/sucatas/motivos");
+    const resposta = await fetch(`${API_URL}/api/sucatas/motivos`);
     if (!resposta.ok) throw new Error("Erro ao buscar base de motivos");
 
     const motivos = await resposta.json();

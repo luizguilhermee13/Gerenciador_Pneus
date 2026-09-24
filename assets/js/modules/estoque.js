@@ -1,3 +1,5 @@
+import { API_URL } from "../config/api.js";
+
 export function registrarContagemFisica() {
   const form = document.getElementById("formularioQtdFisico");
   if (!form) return;
@@ -8,7 +10,7 @@ export function registrarContagemFisica() {
     try {
       const dados = Object.fromEntries(new FormData(form));
 
-      const resposta = await fetch("http://localhost:3000/api/estoque", {
+      const resposta = await fetch(`${API_URL}/api/estoque`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dados),
@@ -31,7 +33,7 @@ export async function renderizarTabelaContagemFisica() {
   if (!tbody) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/estoque");
+    const resposta = await fetch(`${API_URL}/api/estoque`);
     if (!resposta.ok) throw new Error("Erro ao buscar contagens");
 
     const contagens = await resposta.json();

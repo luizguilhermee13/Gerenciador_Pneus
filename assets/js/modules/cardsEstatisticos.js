@@ -1,3 +1,5 @@
+import { API_URL } from "../config/api.js";
+
 export const dadosDashboard = [
   {
     titulo: "Total no Sistema",
@@ -174,7 +176,7 @@ export function renderizarCards(dados, containerPage) {
 
 export async function cardVeiculosStatusDinamico(identificador, statusVeiculo) {
   try {
-    const resposta = await fetch(`http://localhost:3000/api/veiculos/status/${statusVeiculo}`);
+    const resposta = await fetch(`${API_URL}/api/veiculos/status/${statusVeiculo}`);
 
     if (!resposta.ok) {
       throw new Error("Erro ao buscar dados dos veículos");
@@ -207,7 +209,7 @@ export async function cardVeiculosStatusDinamico(identificador, statusVeiculo) {
 
 export async function cardPneusDinamico(identificador) {
   try {
-    const resposta = await fetch(`http://localhost:3000/api/pneus/status/`);
+    const resposta = await fetch(`${API_URL}/api/pneus/status/`);
 
     if (!resposta.ok) {
       throw new Error("Erro ao buscar dados dos veículos");
@@ -240,7 +242,7 @@ export async function cardPneusDinamico(identificador) {
 
 export async function cardEstoqueFDinamico(identificador) {
   try {
-    const resposta = await fetch("http://localhost:3000/api/estoque/status");
+    const resposta = await fetch(`${API_URL}/api/estoque/status`);
 
     if (!resposta.ok) {
       throw new Error("Erro ao buscar dados dos veículos");

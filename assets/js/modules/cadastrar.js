@@ -1,3 +1,5 @@
+import { API_URL } from "../config/api.js";
+
 //Cadastrando individualmente e por lote e populando o select carro
 export function cadastrarPneus() {
   const form = document.getElementById("formularioCadastro");
@@ -10,7 +12,7 @@ export function cadastrarPneus() {
     try {
       const dados = Object.fromEntries(new FormData(form));
 
-      const resposta = await fetch("http://localhost:3000/api/pneus", {
+      const resposta = await fetch(`${API_URL}/api/pneus`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dados),
@@ -38,7 +40,7 @@ export function cadastrarLotePneus() {
     try {
       const dados = Object.fromEntries(new FormData(form));
 
-      const resposta = await fetch("http://localhost:3000/api/pneus/lote", {
+      const resposta = await fetch(`${API_URL}/api/pneus/lote`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dados),
@@ -61,7 +63,7 @@ export async function popularSelectVeiculos() {
   if (!select) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/veiculos");
+    const resposta = await fetch(`${API_URL}/api/veiculos`);
     if (!resposta.ok) {
       throw new Error("Erro ao buscar dados dos veículos");
     }
@@ -92,7 +94,7 @@ export function registrarSucata() {
     try {
       const dados = Object.fromEntries(new FormData(form));
 
-      const resposta = await fetch("http://localhost:3000/api/sucatas", {
+      const resposta = await fetch(`${API_URL}/api/sucatas`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dados),
@@ -115,7 +117,7 @@ export async function popularSelectMotivos() {
   if (!select) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/sucatas/motivos");
+    const resposta = await fetch(`${API_URL}/api/sucatas/motivos`);
     if (!resposta.ok) throw new Error("Erro ao buscar motivos de sucateamento");
 
     const motivos = await resposta.json();
