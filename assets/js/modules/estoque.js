@@ -58,7 +58,7 @@ export async function renderizarTabelaContagemFisica() {
 
     tbody.querySelectorAll(".btnDeletarContagem").forEach((botao) => {
       botao.addEventListener("click", async () => {
-        await fetch(`http://localhost:3000/api/estoque/${botao.dataset.id}`, { method: "DELETE" });
+        await fetch(`${API_URL}/api/estoque/${botao.dataset.id}`, { method: "DELETE" });
         renderizarTabelaContagemFisica();
       });
     });
@@ -72,4 +72,35 @@ export function configurarAtualizarContagem() {
   if (!botao) return;
 
   botao.addEventListener("click", () => renderizarTabelaContagemFisica());
+}
+
+//chamando estoque digital
+export async function renderizarTabelaEstoqueDigital() {
+  const tbody = document.getElementById("conteudoEstoqueDigital");
+  if (!tbody) return;
+
+  try {
+    const resposta = await fetch(`${API_URL}/api/estoque/digital`);
+    if (!resposta.ok) throw new Error("Erro ao buscar estoque digital");
+
+    const linhas = await resposta.json();
+    tbody.innerHTML = "";
+
+    linhas.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.garagem ?? "—"}</td>
+        <td>${item.medida}</td>
+        <td>${item.novo}</td>
+        <td>${item.meiaVida}</td>
+        <td>${item.reformado}</td>
+        <td>${item.paraReforma}</td>
+        <td>${item.paraConserto}</td>
+        <td>${item.sucateado}</td>
+        <td>${item.total}</td>`;
+      tbody.appendChild(tr);
+    });
+  } catch (error) {
+    console.error("Erro ao carregar tabela de estoque digital:", error);
+  }
 }

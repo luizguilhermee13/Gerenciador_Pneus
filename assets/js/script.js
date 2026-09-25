@@ -26,8 +26,6 @@ coleta.renderizarFornecedores(dados.fornecedoresRecapagem);
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosMovimentacao, "#indicadoresMovimentacao");
 
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosEstoque, "#metricaEstoqueD");
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosEstoqueDivergente, "#metricaDivergencia");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosInfo, "#metricaEntrega");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosStatus, "#metricaStatus");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosRecapagem, "#indicadoresRecapagem");
@@ -59,7 +57,6 @@ indicador.criarGraficosSucata(dados.listaPneus);
 
 //dashboard principal
 catalago.renderizarUltimasMovimentacoes(dados.movimentacoesPneus, ".lastMovimentacoes");
-catalago.renderizarLocalizacaoSistema(dados.listaPneus, ".localizacaoSistema");
 
 /* ===================================
       FUNÇÕES COM DADOS DO BANCO 
@@ -97,5 +94,8 @@ btnAtualizar.addEventListener("click", () => {
 estoque.registrarContagemFisica();
 estoque.renderizarTabelaContagemFisica();
 estoque.configurarAtualizarContagem();
+estoque.renderizarTabelaEstoqueDigital();
 
 cardsEstatisticos.cardEstoqueFDinamico("#metricaEstoqueF");
+cardsEstatisticos.cardEstoqueDDinamico("#metricaEstoqueD");
+cardsEstatisticos.cardDivergenciaDinamico("#metricaDivergencia");

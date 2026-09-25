@@ -44,12 +44,6 @@ export const dadosMovimentacao = [
   { titulo: "Descartes", resultado: 2, cor: "#2563eb" },
 ];
 
-export const dadosEstoqueDivergente = [
-  { titulo: "Total Divergências", resultado: 2, cor: "" },
-  { titulo: "Medidas Afetadas", resultado: 3, cor: "#ea580c" },
-  { titulo: "Medidas OK", resultado: 7, cor: "#009999" },
-];
-
 export const dadosInfo = [
   { titulo: "Reformados", resultado: 2, cor: "#009999" },
   { titulo: "Recusados", resultado: 3, cor: "#dc2626" },
@@ -270,5 +264,50 @@ export async function cardEstoqueFDinamico(identificador) {
     });
   } catch (erro) {
     console.error("Erro ao carregar cards:", erro);
+  }
+}
+
+export async function cardEstoqueDDinamico(identificador) {
+  try {
+    const resposta = await fetch(`${API_URL}/api/estoque/digital/status`);
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar dados do estoque digital");
+    }
+
+    const status = await resposta.json();
+
+    const cards = document.querySelector(identificador);
+
+    if (!cards) return;
+
+    cards.innerHTML = "";
+
+    status.forEach((item) => {
+      const cardHTML = `
+        <div class="card">
+          <p>${item.titulo}</p>
+          <span style="color: ${item.cor}">
+            ${item.resultado}
+          </span>
+        </div>
+      `;
+
+      cards.innerHTML += cardHTML;
+    });
+  } catch (erro) {
+    console.error("Erro ao carregar cards:", erro);
+  }
+}
+
+export async function cardDivergenciaDinamico(identificador) {
+  try {
+    const resposta = await fetch(`${API_URL}/api/estoque/divergencia`);
+    if (!resposta.ok) throw new Error("Erro ao buscar divergências");
+
+    const dados = await resposta.json();
+    renderizarCards(dados, identificador);
+  } catch (erro) {
+    console.error("Erro ao carregar divergências:", erro);
   }
 }
