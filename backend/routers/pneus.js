@@ -3,6 +3,79 @@ import db from "../db.js";
 
 const router = express.Router();
 
+// dados de localização dos pneus para o dashboard
+router.get("/dashboard/localizacao", async (req, res) => {
+  try {
+    // contagem por situação atual
+    const contagem = await db.query(`
+      SELECT
+        COUNT(*) FILTER (
+          WHERE LOWER(TRIM(status)) = 'estoque'
+        )::int AS estoque,
+
+        COUNT(*) FILTER (
+          WHERE LOWER(TRIM(status)) = 'em carro'
+        )::int AS "emCarro",
+
+        COUNT(*) FILTER (
+          WHERE LOWER(TRIM(status)) = 'na recapagem'
+        )::int AS recapagem,
+
+        COUNT(*) FILTER (
+          WHERE LOWER(TRIM(status)) = 'recusado'
+        )::int AS recusados
+
+      FROM pneus
+    `);
+
+    // pneus recusados agrupados por garagem
+    const recusadosPorGaragem = await db.query(`
+      SELECT
+        COALESCE(
+          g.nome,
+          'Sem garagem'
+        ) AS garagem,
+
+        COUNT(*)::int AS quantidade
+
+      FROM pneus p
+
+      LEFT JOIN garagem g
+        ON g.id_garagem = p.id_garagem_atual
+
+      WHERE LOWER(TRIM(p.status)) = 'recusado'
+
+      GROUP BY
+        g.id_garagem,
+        g.nome
+
+      ORDER BY
+        quantidade DESC,
+        garagem
+    `);
+
+    const dados = contagem.rows[0];
+
+    res.json({
+      estoque: dados.estoque,
+      emCarro: dados.emCarro,
+      recapagem: dados.recapagem,
+      recusados: dados.recusados,
+
+      aguardandoSucata: recusadosPorGaragem.rows,
+
+      totalAguardandoSucata: dados.recusados,
+    });
+  } catch (erro) {
+    console.error("Erro ao buscar localização dos pneus:", erro);
+
+    res.status(500).json({
+      mensagem: "Erro ao buscar localização dos pneus",
+      erro: erro.message,
+    });
+  }
+});
+
 // rota para pegar dados dos pneus cadastrados
 router.get("/", async (req, res) => {
   const resultado = await db.query(`

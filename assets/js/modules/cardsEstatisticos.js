@@ -44,25 +44,6 @@ export const dadosMovimentacao = [
   { titulo: "Descartes", resultado: 2, cor: "#2563eb" },
 ];
 
-export const dadosInfo = [
-  { titulo: "Reformados", resultado: 2, cor: "#009999" },
-  { titulo: "Recusados", resultado: 3, cor: "#dc2626" },
-  { titulo: "Total Retornado", resultado: 7, cor: "#000000" },
-];
-
-export const dadosStatus = [
-  { titulo: "Pendentes", resultado: 2, cor: "#ea580c" },
-  { titulo: "Concluídas", resultado: 3, cor: "#009999" },
-  { titulo: "Total", resultado: 7, cor: "#6b7280" },
-];
-
-export const dadosRecapagem = [
-  { titulo: "Meta Mensal", resultado: 2, cor: "#009999" },
-  { titulo: "Gasto Mai/26", resultado: 3, cor: "#ea580c" },
-  { titulo: "Saldo", resultado: 7, cor: "#16a34a" },
-  { titulo: "Tx. Recusa", resultado: 3, cor: "#dc2626" },
-];
-
 export const dadosConferirc = [
   { titulo: "Total Conferidos", resultado: 2, cor: "#009999" },
   { titulo: "Crítico (≤2mm)", resultado: 3, cor: "#dc2626" },
@@ -309,5 +290,110 @@ export async function cardDivergenciaDinamico(identificador) {
     renderizarCards(dados, identificador);
   } catch (erro) {
     console.error("Erro ao carregar divergências:", erro);
+  }
+}
+
+// cards da tela informar entrega
+export async function cardEntregaDinamico(identificador) {
+  try {
+    const resposta = await fetch(`${API_URL}/api/coleta/cards/entrega`);
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar dados das entregas");
+    }
+
+    const status = await resposta.json();
+
+    const cards = document.querySelector(identificador);
+
+    if (!cards) return;
+
+    cards.innerHTML = "";
+
+    status.forEach((item) => {
+      const cardHTML = `
+        <div class="card">
+          <p>${item.titulo}</p>
+
+          <span style="color: ${item.cor}">
+            ${item.resultado}
+          </span>
+        </div>
+      `;
+
+      cards.innerHTML += cardHTML;
+    });
+  } catch (erro) {
+    console.error("Erro ao carregar cards de entrega:", erro);
+  }
+}
+
+// cards da tela status das coletas
+export async function cardStatusColetaDinamico(identificador) {
+  try {
+    const resposta = await fetch(`${API_URL}/api/coleta/cards/status`);
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar status das coletas");
+    }
+
+    const status = await resposta.json();
+
+    const cards = document.querySelector(identificador);
+
+    if (!cards) return;
+
+    cards.innerHTML = "";
+
+    status.forEach((item) => {
+      const cardHTML = `
+        <div class="card">
+          <p>${item.titulo}</p>
+
+          <span style="color: ${item.cor}">
+            ${item.resultado}
+          </span>
+        </div>
+      `;
+
+      cards.innerHTML += cardHTML;
+    });
+  } catch (erro) {
+    console.error("Erro ao carregar cards de status:", erro);
+  }
+}
+
+// cards da tela indicadores de recapagem
+export async function cardRecapagemDinamico(identificador) {
+  try {
+    const resposta = await fetch(`${API_URL}/api/coleta/cards/recapagem`);
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar indicadores de recapagem");
+    }
+
+    const status = await resposta.json();
+
+    const cards = document.querySelector(identificador);
+
+    if (!cards) return;
+
+    cards.innerHTML = "";
+
+    status.forEach((item) => {
+      const cardHTML = `
+        <div class="card">
+          <p>${item.titulo}</p>
+
+          <span style="color: ${item.cor}">
+            ${item.resultado}
+          </span>
+        </div>
+      `;
+
+      cards.innerHTML += cardHTML;
+    });
+  } catch (erro) {
+    console.error("Erro ao carregar cards de recapagem:", erro);
   }
 }

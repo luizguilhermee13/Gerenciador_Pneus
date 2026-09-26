@@ -17,18 +17,10 @@ sidebar.pageSelecionada();
 catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
 catalago.renderizarMovimentacoes(dados.movimentacoesPneus);
 
-coleta.addPneuColeta(dados.listaPneus);
-coleta.statusColeta(dados.listaColetas);
-coleta.renderizarPneusReformadora(dados.pneusNaReformadora);
-coleta.renderizarFornecedores(dados.fornecedoresRecapagem);
-
 //Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosMovimentacao, "#indicadoresMovimentacao");
 
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosInfo, "#metricaEntrega");
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosStatus, "#metricaStatus");
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosRecapagem, "#indicadoresRecapagem");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferirc, "#conferirCarros");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferire, "#conferirEstoque");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosSulcos, "#metricaSucateado");
@@ -99,3 +91,34 @@ estoque.renderizarTabelaEstoqueDigital();
 cardsEstatisticos.cardEstoqueFDinamico("#metricaEstoqueF");
 cardsEstatisticos.cardEstoqueDDinamico("#metricaEstoqueD");
 cardsEstatisticos.cardDivergenciaDinamico("#metricaDivergencia");
+
+//funcoes da tela recapagem
+
+// cadastrar coleta
+coleta.addPneuColeta();
+coleta.popularRecapadoras();
+coleta.popularGaragensColeta();
+coleta.registrarColeta();
+
+// informar entrega
+coleta.carregarPneusReformadora();
+coleta.popularGaragensEntrega();
+coleta.registrarEntrega();
+
+// status das coletas
+coleta.carregarStatusColetas();
+
+// histórico
+coleta.carregarHistoricoColetas();
+coleta.pesquisarHistoricoColetas();
+
+// cards informar entrega
+cardsEstatisticos.cardEntregaDinamico("#metricaEntrega");
+
+// cards status das coletas
+cardsEstatisticos.cardStatusColetaDinamico("#metricaStatus");
+
+// cards indicadores recapagem
+cardsEstatisticos.cardRecapagemDinamico("#indicadoresRecapagem");
+
+catalago.renderizarLocalizacaoSistemaDinamico(".localizacaoSistema");

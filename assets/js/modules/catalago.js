@@ -457,4 +457,199 @@ export async function renderizarCatalagoSucatas() {
   }
 }
 
-//catalagos estoque
+//catalagos dashboard
+// localização atual dos pneus no sistema
+export async function renderizarLocalizacaoSistemaDinamico(identificador) {
+  const container = document.querySelector(identificador);
+
+  if (!container) return;
+
+  try {
+    const response = await fetch(`${API_URL}/api/pneus/dashboard/localizacao`);
+
+    const dados = await response.json();
+
+    if (!response.ok) {
+      throw new Error(dados.mensagem || "Erro ao buscar localização dos pneus");
+    }
+
+    // monta as linhas dos pneus recusados
+    let linhasSucata = "";
+
+    if (dados.aguardandoSucata.length === 0) {
+      linhasSucata = `
+        <tr>
+          <td>
+            Nenhum pneu aguardando sucata
+          </td>
+
+          <td class="text-right">
+            0
+          </td>
+        </tr>
+      `;
+    } else {
+      dados.aguardandoSucata.forEach((item) => {
+        linhasSucata += `
+            <tr>
+              <td>
+                ${item.garagem}
+              </td>
+
+              <td class="text-right">
+                ${item.quantidade}
+              </td>
+            </tr>
+          `;
+      });
+    }
+
+    const cardHTML = `
+      <div class="card-loc">
+
+        <div class="card-loc-header">
+          <h3>
+            Localização no Sistema
+          </h3>
+
+          <p>
+            Pneus por situação — dados do sistema
+          </p>
+        </div>
+
+        <div class="card-loc-grid">
+
+          <div class="loc-box">
+
+            <span class="loc-box-title">
+              Estoque
+            </span>
+
+            <span class="loc-box-num text-teal">
+              ${dados.estoque}
+            </span>
+
+            <span class="loc-box-sub">
+              disponíveis
+            </span>
+
+          </div>
+
+          <div class="loc-box">
+
+            <span class="loc-box-title">
+              Em Carros
+            </span>
+
+            <span class="loc-box-num text-green">
+              ${dados.emCarro}
+            </span>
+
+            <span class="loc-box-sub">
+              em operação
+            </span>
+
+          </div>
+
+          <div class="loc-box">
+
+            <span class="loc-box-title">
+              Recapagem
+            </span>
+
+            <span class="loc-box-num text-blue">
+              ${dados.recapagem}
+            </span>
+
+            <span class="loc-box-sub">
+              na reformadora
+            </span>
+
+          </div>
+
+          <div class="loc-box">
+
+            <span class="loc-box-title">
+              Recusados
+            </span>
+
+            <span class="loc-box-num text-red">
+              ${dados.recusados}
+            </span>
+
+            <span class="loc-box-sub">
+              aguardando sucata
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="card-loc-table-wrapper">
+
+          <h4 class="loc-table-title">
+            PNEUS RECUSADOS AGUARDANDO SUCATA
+          </h4>
+
+          <table class="loc-table">
+
+            <thead>
+              <tr>
+
+                <th>
+                  Garagem
+                </th>
+
+                <th class="text-right">
+                  Qtd
+                </th>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              ${linhasSucata}
+            </tbody>
+
+            <tfoot>
+              <tr>
+
+                <td>
+                  Total
+                </td>
+
+                <td class="text-right">
+                  ${dados.totalAguardandoSucata}
+                </td>
+
+              </tr>
+            </tfoot>
+
+          </table>
+
+        </div>
+
+      </div>
+    `;
+
+    container.innerHTML = cardHTML;
+  } catch (erro) {
+    console.error("Erro ao carregar localização dos pneus:", erro);
+
+    container.innerHTML = `
+      <div class="card-loc">
+
+        <div class="card-loc-header">
+          <h3>
+            Localização no Sistema
+          </h3>
+
+          <p>
+            Não foi possível carregar os dados
+          </p>
+        </div>
+
+      </div>
+    `;
+  }
+}

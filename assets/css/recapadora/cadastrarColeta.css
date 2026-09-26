@@ -1,149 +1,201 @@
-/* Estrutura da coleta */
+/* ===================================
+   CADASTRAR COLETA
+=================================== */
+
+.cadastrarColeta {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.cadastrarColeta .formulario {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* ===================================
+   FIELDSETS
+=================================== */
 
 .cadastrarColeta fieldset {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   border: 0;
 }
 
-.form-body {
+/* ===================================
+   DADOS DA COLETA
+=================================== */
+
+.cadastrarColeta .form-body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  width: 100%;
+  min-width: 0;
   margin-bottom: 1.5rem;
 }
 
-.form-body .dadosColeta {
+.cadastrarColeta .form-body .dadosColeta {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem;
+  align-content: start;
+  gap: 0.75rem;
   min-width: 0;
 }
 
-/* Tabela de adição de pneus */
+/* garante que inputs não estourem o grid */
 
-.form-footer table :is(thead, tbody) tr {
-  display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  align-items: center;
-  gap: 0.2rem;
-  padding: 0.2rem;
+.cadastrarColeta .form-body .form-input {
+  width: 100%;
+  min-width: 0;
 }
 
-.form-footer table tbody tr {
-  padding: 0.4rem 0.1rem;
+.cadastrarColeta .form-body .form-input input,
+.cadastrarColeta .form-body .form-input select {
+  width: 100%;
+  min-width: 0;
 }
 
-.form-footer table tfoot tr {
-  display: flex;
-  justify-content: center;
-  padding: 0.8rem 0.4rem;
+/* ===================================
+   FOTO DA COLETA
+=================================== */
+
+.cadastrarColeta .imageColeta {
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
 }
 
-/* Recapadoras e garagens */
-
-.dadosRecapagem .fornecedoresRef,
-.garagemAtendidas {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.garagemAtendidas {
-  align-items: center;
-  padding: 0.8rem;
-}
-
-/* Ícones dos cards */
-
-.card-icon {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.card-icon :is(h3, h4, span) {
-  grid-column: 2;
-}
-
-.card-icon .icon {
-  grid-column: 1;
-  grid-row: 1 / 3;
-}
-
-/* Status das coletas */
-
-.statusColeta,
-#statusfeitas {
+.cadastrarColeta .imageColeta input[type="file"] {
   width: 100%;
   max-width: 100%;
   min-width: 0;
 }
 
-#statusfeitas .bloco-coleta-item {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  overflow: hidden;
-}
+/* ===================================
+   TABELA DOS PNEUS
+=================================== */
 
-#statusfeitas .bloco-coleta-item .formulario {
+.cadastrarColeta .form-footer {
   width: 100%;
   max-width: 100%;
   min-width: 0;
 }
 
-/* A tabela é a única parte que pode rolar */
+/*
+  O container controla a rolagem.
+  A tabela continua larga para não
+  esmagar as 8 colunas.
+*/
 
-#statusfeitas .tabela-coleta {
-  display: block;
+.cadastrarColeta .form-footer .table-container {
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Mantém a tabela larga para não esmagar as colunas */
-
-#statusfeitas .tabela-coleta thead,
-#statusfeitas .tabela-coleta tbody {
-  display: table;
-  width: 720px;
-  min-width: 720px;
-  table-layout: fixed;
+.cadastrarColeta .form-footer table {
+  width: 100%;
+  min-width: 850px;
 }
 
-#statusfeitas .tabela-coleta tbody {
-  border-collapse: collapse;
+/* cabeçalho e linhas */
+
+.cadastrarColeta .form-footer table :is(thead, tbody) tr {
+  display: grid;
+
+  grid-template-columns:
+    1.15fr
+    1fr
+    1.15fr
+    1fr
+    0.65fr
+    0.65fr
+    1fr
+    0.9fr;
+
+  align-items: center;
+
+  gap: 0.35rem;
+
+  padding: 0.35rem;
 }
 
-#catalagoSucatas tbody tr:nth-child(odd) {
-  background: #f2faf8;
+/* cabeçalho */
+
+.cadastrarColeta .form-footer table thead tr {
+  min-height: 2.5rem;
 }
 
-#catalagoSucatas tbody tr:nth-child(even) {
-  background: #ffffff;
+/* linhas */
+
+.cadastrarColeta .form-footer table tbody tr {
+  min-height: 2.8rem;
+  padding: 0.45rem 0.35rem;
 }
 
-/* Responsividade */
+/* células */
 
-@media (max-width: 1000px) {
-  .dadosRecapagem .fornecedoresRef,
-  .garagemAtendidas {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.cadastrarColeta .form-footer table th,
+.cadastrarColeta .form-footer table td {
+  min-width: 0;
 }
 
-@media (max-width: 768px) {
-  .form-body {
+/* inputs da tabela */
+
+.cadastrarColeta .form-footer table td input,
+.cadastrarColeta .form-footer table td select {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ===================================
+   BOTÃO ADICIONAR PNEUS
+=================================== */
+
+.cadastrarColeta .form-footer table tfoot tr {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.8rem 0.4rem;
+}
+
+.cadastrarColeta .form-footer table tfoot td {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ===================================
+   RESPONSIVIDADE
+=================================== */
+
+@media (max-width: 900px) {
+  .cadastrarColeta .form-body {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cadastrarColeta .imageColeta {
+    min-height: auto;
   }
 }
 
 @media (max-width: 600px) {
-  .form-body .dadosColeta,
-  .dadosRecapagem .fornecedoresRef,
-  .garagemAtendidas {
+  .cadastrarColeta .form-body .dadosColeta {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cadastrarColeta .form-body {
+    gap: 0.75rem;
+  }
+
+  .cadastrarColeta .form-footer table {
+    min-width: 800px;
   }
 }
