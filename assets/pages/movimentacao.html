@@ -118,16 +118,16 @@
                 <p>Toda movimentação física de pneu deve ser registrada</p>
               </div>
 
-              <button type="submit" form="formularioCadastro" class="btn btn-primary">Enviar</button>
+              <button type="submit" form="formularioMovimentacao" class="btn btn-primary">Enviar</button>
             </div>
 
-            <form action="" method="post" id="formularioCadastro" name="formularioCadastro" class="form-grid-3">
+            <form action="" method="post" id="formularioMovimentacao" name="formularioMovimentacao" class="form-grid-3">
               <!-- Número de fogo -->
 
               <div class="form-input">
                 <label for="nrFogo"> Nr. Fogo / Código * </label>
 
-                <input type="text" placeholder="Número Fogo" name="nrFogo" id="nrFogo" />
+                <input type="text" placeholder="Número Fogo" name="nrFogo" id="nrFogo" required />
               </div>
 
               <!-- Motivo -->
@@ -135,14 +135,14 @@
               <div class="form-input">
                 <label for="motivo"> Motivo * </label>
 
-                <select name="motivo" id="motivo">
+                <select name="motivo" id="motivo" required>
                   <option value="" disabled selected>Selecione uma opção...</option>
 
-                  <option value="transferencia">Transferência</option>
+                  <option value="Transferência">Transferência</option>
 
-                  <option value="emergencial">Emergencial</option>
+                  <option value="Emergencial">Emergencial</option>
 
-                  <option value="outros">Outros</option>
+                  <option value="Outros">Outros</option>
                 </select>
               </div>
 
@@ -151,16 +151,14 @@
               <div class="form-input">
                 <label for="garagem"> Garagem / Destino * </label>
 
-                <select name="garagem" id="garagem">
+                <select name="garagem" id="garagem" required>
                   <option value="" disabled selected>Selecione a unidade</option>
 
-                  <option value="itaquera">Itaquera</option>
+                  <option value="1">Itaquera</option>
 
-                  <option value="limeira">Limeira</option>
+                  <option value="2">Limeira</option>
 
-                  <option value="tatuape">Tatuapé</option>
-
-                  <option value="outras">Outras Unidades</option>
+                  <option value="3">Juiz de Fora</option>
                 </select>
               </div>
 
@@ -169,7 +167,7 @@
               <div class="form-input">
                 <label for="dateEntrada"> Data da Movimentação * </label>
 
-                <input type="date" name="dateEntrada" id="dateEntrada" />
+                <input type="date" name="dateEntrada" id="dateEntrada" required />
               </div>
 
               <!-- Responsável -->
@@ -187,13 +185,68 @@
              HISTÓRICO / ESTOQUE
         ==================================== -->
 
-        <section class="movimentacaoEstoque"></section>
+        <section class="movimentacaoEstoque">
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h3>Movimentações de Estoque</h3>
+                <p>Histórico de movimentações realizadas no estoque</p>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="tabela-coleta tabela-movimentacao">
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Nr. Fogo</th>
+                    <th>Medida</th>
+                    <th>Marca</th>
+                    <th>Motivo</th>
+                    <th>Garagem Destino</th>
+                    <th>Sulco</th>
+                  </tr>
+                </thead>
+
+                <tbody id="corpoMovEstoque"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
 
         <!-- ===================================
              HISTÓRICO / CARRO
         ==================================== -->
 
-        <section class="historicoMoviCarro"></section>
+        <section class="historicoMoviCarro">
+          <div class="formulario">
+            <div class="form-titulo-container">
+              <div class="form-titulo">
+                <h3>Movimentações em Carro</h3>
+                <p>Histórico de movimentações realizadas nos veículos</p>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="tabela-coleta tabela-movimentacao">
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Veículo</th>
+                    <th>Nr. Fogo</th>
+                    <th>Medida</th>
+                    <th>Marca</th>
+                    <th>Posição</th>
+                    <th>Sulco</th>
+                    <th>Km</th>
+                  </tr>
+                </thead>
+
+                <tbody id="corpoMovCarro"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
 
         <!-- ===================================
              INDICADORES

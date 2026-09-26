@@ -15,11 +15,9 @@ sidebar.pageSelecionada();
 //renderizar catalagos
 
 catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
-catalago.renderizarMovimentacoes(dados.movimentacoesPneus);
 
 //Renderiza os cards estáticos normais
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosMovimentacao, "#indicadoresMovimentacao");
 
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferirc, "#conferirCarros");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferire, "#conferirEstoque");
@@ -122,3 +120,7 @@ cardsEstatisticos.cardStatusColetaDinamico("#metricaStatus");
 cardsEstatisticos.cardRecapagemDinamico("#indicadoresRecapagem");
 
 catalago.renderizarLocalizacaoSistemaDinamico(".localizacaoSistema");
+
+cadastro.registrarMovimentacaoEstoque();
+catalago.renderizarHistoricoMovEstoque();
+catalago.renderizarHistoricoMovCarro();

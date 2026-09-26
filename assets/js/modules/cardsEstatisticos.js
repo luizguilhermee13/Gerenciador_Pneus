@@ -37,13 +37,6 @@ export const dadosDashboard = [
   },
 ];
 
-export const dadosMovimentacao = [
-  { titulo: "Total Movimentações", resultado: 40, cor: "#009999" },
-  { titulo: "Montagens (Ago/26)", resultado: 13, cor: "#dc2626" },
-  { titulo: "Rodízios Realizados", resultado: 3, cor: "#9333ea" },
-  { titulo: "Descartes", resultado: 2, cor: "#2563eb" },
-];
-
 export const dadosConferirc = [
   { titulo: "Total Conferidos", resultado: 2, cor: "#009999" },
   { titulo: "Crítico (≤2mm)", resultado: 3, cor: "#dc2626" },

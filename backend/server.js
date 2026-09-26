@@ -5,6 +5,7 @@ import veiculosRouter from "./routers/veiculos.js";
 import sucatasRouter from "./routers/sucatas.js";
 import estoqueRouter from "./routers/estoque.js";
 import coletaRouter from "./routers/coleta.js";
+import movimentacoesRouter from "./routers/movimentacoes.js";
 
 import cors from "cors";
 
@@ -26,6 +27,7 @@ app.use("/api/veiculos", veiculosRouter);
 app.use("/api/sucatas", sucatasRouter);
 app.use("/api/estoque", estoqueRouter);
 app.use("/api/coleta", coletaRouter);
+app.use("/api/movimentacoes", movimentacoesRouter);
 
 const PORT = process.env.PORT || 3000;
 

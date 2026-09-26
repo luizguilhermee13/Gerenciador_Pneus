@@ -1,4 +1,5 @@
 import { API_URL } from "../config/api.js";
+import { renderizarHistoricoMovEstoque } from "./catalago.js";
 
 //Cadastrando individualmente e por lote e populando o select carro
 export function cadastrarPneus() {
@@ -19,8 +20,8 @@ export function cadastrarPneus() {
       });
 
       if (!resposta.ok) {
-        const erro = await resposta.json();
-        throw new Error(erro.mensagem);
+        const erroResposta = await resposta.json();
+        throw new Error(erroResposta.erro || erroResposta.mensagem);
       }
 
       form.reset();
@@ -47,8 +48,8 @@ export function cadastrarLotePneus() {
       });
 
       if (!resposta.ok) {
-        const erro = await resposta.json();
-        throw new Error(erro.mensagem);
+        const erroResposta = await resposta.json();
+        throw new Error(erroResposta.erro || erroResposta.mensagem);
       }
 
       form.reset();
@@ -69,7 +70,6 @@ export async function popularSelectVeiculos() {
     }
 
     const veiculos = await resposta.json();
-    const select = document.getElementById("veiculo");
 
     veiculos.forEach((v) => {
       const option = document.createElement("option");
@@ -101,8 +101,8 @@ export function registrarSucata() {
       });
 
       if (!resposta.ok) {
-        const erro = await resposta.json();
-        throw new Error(erro.mensagem);
+        const erroResposta = await resposta.json();
+        throw new Error(erroResposta.erro || erroResposta.mensagem);
       }
 
       form.reset();
@@ -131,4 +131,35 @@ export async function popularSelectMotivos() {
   } catch (error) {
     console.error("Erro ao carregar motivos:", error);
   }
+}
+
+//registrando movimentação de estoque (troca de garagem)
+//atualiza id_garagem_atual do pneu junto do histórico
+export function registrarMovimentacaoEstoque() {
+  const form = document.getElementById("formularioMovimentacao");
+  if (!form) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    try {
+      const dados = Object.fromEntries(new FormData(form));
+
+      const resposta = await fetch(`${API_URL}/api/movimentacoes/estoque`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      });
+
+      if (!resposta.ok) {
+        const erroResposta = await resposta.json();
+        throw new Error(erroResposta.erro || erroResposta.mensagem);
+      }
+
+      form.reset();
+      renderizarHistoricoMovEstoque();
+    } catch (error) {
+      console.error("Erro ao registrar movimentação:", error);
+    }
+  });
 }

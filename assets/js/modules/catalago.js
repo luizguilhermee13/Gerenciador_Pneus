@@ -38,161 +38,74 @@ export function renderizarCatalagoConferencia(conferenciaSulco) {
   });
 }
 
-// --- MOVIMENTAÇÕES catalagos ---
+// --- MOVIMENTAÇÕES — com banco ---
 
-const sectionEstoque = document.querySelector(".movimentacaoEstoque");
-const sectionCarro = document.querySelector(".historicoMoviCarro");
+export async function renderizarHistoricoMovEstoque() {
+  const tbody = document.getElementById("corpoMovEstoque");
+  if (!tbody) return;
 
-export function renderizarMovimentacoes(listaMovimentacoes) {
-  if (!sectionEstoque || !sectionCarro) return;
+  try {
+    const resposta = await fetch(`${API_URL}/api/movimentacoes/estoque`);
+    if (!resposta.ok) throw new Error("Erro ao buscar histórico de movimentações de estoque");
 
-  // Limpa as seções antes de renderizar novamente
-  sectionEstoque.innerHTML = "";
-  sectionCarro.innerHTML = "";
+    const dados = await resposta.json();
+    tbody.innerHTML = "";
 
-  // =========================================
-  // HISTÓRICO DE MOVIMENTAÇÕES DO ESTOQUE
-  // =========================================
-
-  sectionEstoque.innerHTML = `
-    <div class="formulario">
-      <div class="form-titulo-container">
-        <div class="form-titulo">
-          <h3>Movimentações de Estoque</h3>
-          <p>Histórico de movimentações realizadas no estoque</p>
-        </div>
-      </div>
-
-      <div class="table-container">
-        <table class="tabela-coleta tabela-movimentacao">
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Nr. Fogo</th>
-              <th>Medida</th>
-              <th>Marca</th>
-              <th>Movimentação / Rota</th>
-              <th>Motivo / Ação</th>
-              <th>Garagem</th>
-              <th>Sulco</th>
-            </tr>
-          </thead>
-
-          <tbody id="corpoMovEstoque"></tbody>
-        </table>
-      </div>
-    </div>
-  `;
-
-  // =========================================
-  // HISTÓRICO DE MOVIMENTAÇÕES DOS CARROS
-  // =========================================
-
-  sectionCarro.innerHTML = `
-    <div class="formulario">
-      <div class="form-titulo-container">
-        <div class="form-titulo">
-          <h3>Movimentações em Carro</h3>
-          <p>Histórico de movimentações realizadas nos veículos</p>
-        </div>
-      </div>
-
-      <div class="table-container">
-        <table class="tabela-coleta tabela-movimentacao">
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Veículo</th>
-              <th>Nr. Fogo</th>
-              <th>Medida</th>
-              <th>Marca</th>
-              <th>Posição</th>
-              <th>Motivo Troca</th>
-              <th>Sulco</th>
-              <th>Km</th>
-            </tr>
-          </thead>
-
-          <tbody id="corpoMovCarro"></tbody>
-        </table>
-      </div>
-    </div>
-  `;
-
-  const tbodyEstoque = document.querySelector("#corpoMovEstoque");
-  const tbodyCarro = document.querySelector("#corpoMovCarro");
-
-  listaMovimentacoes.forEach((item) => {
-    const tr = document.createElement("tr");
-
-    tr.id = item.nrFogo;
-
-    // =========================================
-    // MOVIMENTAÇÃO DE ESTOQUE
-    // =========================================
-
-    if (item.tipo.toLowerCase() === "estoque") {
+    dados.forEach((item) => {
+      const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${item.dataMovimentacao}</td>
-        <td><strong>${item.nrFogo}</strong></td>
+        <td><strong>${item.idNrFogo}</strong></td>
         <td>${item.medida}</td>
         <td>${item.marca}</td>
-        <td>${item.origemDestino}</td>
-        <td>
-          <span class="badge-motivo">
-            ${item.motivo}
-          </span>
-        </td>
-        <td>${item.garagem}</td>
-        <td>${item.sulco} mm</td>
-      `;
-
-      tbodyEstoque.appendChild(tr);
-    }
-
-    // =========================================
-    // MOVIMENTAÇÃO EM CARRO
-    // =========================================
-    else if (item.tipo.toLowerCase() === "carro") {
-      tr.innerHTML = `
-        <td>${item.dataMovimentacao}</td>
-        <td>${item.placaOuPrefixo}</td>
-        <td><strong>${item.nrFogo}</strong></td>
-        <td>${item.medida}</td>
-        <td>${item.marca}</td>
-        <td>${item.posicao}</td>
-        <td>
-          <span class="badge-motivo">
-            ${item.motivo}
-          </span>
-        </td>
-        <td>${item.sulco} mm</td>
-        <td>${item.km.toLocaleString("pt-BR")} km</td>
-      `;
-
-      tbodyCarro.appendChild(tr);
-    }
-
-    // Clique para abrir detalhes
-    tr.addEventListener("click", () => {
-      if (typeof renderizarPainel === "function") {
-        renderizarPainel(item);
-      }
+        <td><span class="badge-motivo">${item.motivo ?? "—"}</span></td>
+        <td>${item.garagem ?? "—"}</td>
+        <td>${item.sulco} mm</td>`;
+      tbody.appendChild(tr);
     });
-  });
+  } catch (error) {
+    console.error("Erro ao carregar histórico de movimentações de estoque:", error);
+  }
+}
+
+export async function renderizarHistoricoMovCarro() {
+  const tbody = document.getElementById("corpoMovCarro");
+  if (!tbody) return;
+
+  try {
+    const resposta = await fetch(`${API_URL}/api/movimentacoes/carro`);
+    if (!resposta.ok) throw new Error("Erro ao buscar histórico de movimentações de carro");
+
+    const dados = await resposta.json();
+    tbody.innerHTML = "";
+
+    dados.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.dataMovimentacao}</td>
+        <td>${item.numeroCarro ?? "—"}</td>
+        <td><strong>${item.idNrFogo}</strong></td>
+        <td>${item.medida}</td>
+        <td>${item.marca}</td>
+        <td>${item.posicao ?? "—"}</td>
+        <td>${item.sulco} mm</td>
+        <td>${item.km} km</td>`;
+      tbody.appendChild(tr);
+    });
+  } catch (error) {
+    console.error("Erro ao carregar histórico de movimentações de carro:", error);
+  }
 }
 
 export function renderizarUltimasMovimentacoes(listaMovimentacoes, identificador) {
   const container = document.querySelector(identificador);
   if (!container) return;
 
-  // Pega apenas os 5 registros mais recentes
   const ultimosRegistros = listaMovimentacoes.slice(0, 5);
 
-  // Mapeia o array para criar os itens da lista em HTML
   const htmlList = ultimosRegistros
     .map((mov) => {
-      let corBadge = "badge-blue"; // cor padrão
+      let corBadge = "badge-blue";
       const motivo = mov.motivo.toLowerCase();
 
       if (motivo.includes("avaria") || motivo.includes("envio")) corBadge = "badge-orange";
@@ -219,7 +132,6 @@ export function renderizarUltimasMovimentacoes(listaMovimentacoes, identificador
     })
     .join("");
 
-  // Monta o Card completo com Cabeçalho, Lista e Rodapé (Delta)
   const cardHTML = `
     <div class="card-mov-ultimas">
       <div class="card-mov-header">
@@ -229,7 +141,7 @@ export function renderizarUltimasMovimentacoes(listaMovimentacoes, identificador
         </div>
         <a href="#" class="card-mov-link">Ver todos &rarr;</a>
       </div>
-      
+
       <ul class="card-mov-list">
         ${htmlList}
       </ul>
@@ -237,15 +149,15 @@ export function renderizarUltimasMovimentacoes(listaMovimentacoes, identificador
       <div class="card-mov-footer">
         <h4>FÍSICO &times; SISTEMA (DELTA)</h4>
         <div class="delta-row">
-          <span>Borracharia</span> 
+          <span>Borracharia</span>
           <span>1179 sis / 35 fís <b class="text-red">+1144</b></span>
         </div>
         <div class="delta-row">
-          <span>Almoxarifado</span> 
+          <span>Almoxarifado</span>
           <span>0 sis / 279 fís <b class="text-red">-279</b></span>
         </div>
         <div class="delta-row">
-          <span>Recapagem</span> 
+          <span>Recapagem</span>
           <span>691 sis / 167 fís <b class="text-red">+524</b></span>
         </div>
       </div>
@@ -260,7 +172,6 @@ export function renderizarUltimasMovimentacoes(listaMovimentacoes, identificador
 const tbody = document.getElementById("conteudoCatalago");
 const painel = document.getElementById("painel-lateral");
 
-//usando o id de cada objeto como parametro, pega o objeto todo e joga dentro do painel lateral
 export function renderizarPainel(pneu) {
   if (!painel) return;
   painel.innerHTML = `
@@ -473,32 +384,21 @@ export async function renderizarLocalizacaoSistemaDinamico(identificador) {
       throw new Error(dados.mensagem || "Erro ao buscar localização dos pneus");
     }
 
-    // monta as linhas dos pneus recusados
     let linhasSucata = "";
 
     if (dados.aguardandoSucata.length === 0) {
       linhasSucata = `
         <tr>
-          <td>
-            Nenhum pneu aguardando sucata
-          </td>
-
-          <td class="text-right">
-            0
-          </td>
+          <td>Nenhum pneu aguardando sucata</td>
+          <td class="text-right">0</td>
         </tr>
       `;
     } else {
       dados.aguardandoSucata.forEach((item) => {
         linhasSucata += `
             <tr>
-              <td>
-                ${item.garagem}
-              </td>
-
-              <td class="text-right">
-                ${item.quantidade}
-              </td>
+              <td>${item.garagem}</td>
+              <td class="text-right">${item.quantidade}</td>
             </tr>
           `;
       });
@@ -506,104 +406,45 @@ export async function renderizarLocalizacaoSistemaDinamico(identificador) {
 
     const cardHTML = `
       <div class="card-loc">
-
         <div class="card-loc-header">
-          <h3>
-            Localização no Sistema
-          </h3>
-
-          <p>
-            Pneus por situação — dados do sistema
-          </p>
+          <h3>Localização no Sistema</h3>
+          <p>Pneus por situação — dados do sistema</p>
         </div>
 
         <div class="card-loc-grid">
-
           <div class="loc-box">
-
-            <span class="loc-box-title">
-              Estoque
-            </span>
-
-            <span class="loc-box-num text-teal">
-              ${dados.estoque}
-            </span>
-
-            <span class="loc-box-sub">
-              disponíveis
-            </span>
-
+            <span class="loc-box-title">Estoque</span>
+            <span class="loc-box-num text-teal">${dados.estoque}</span>
+            <span class="loc-box-sub">disponíveis</span>
           </div>
 
           <div class="loc-box">
-
-            <span class="loc-box-title">
-              Em Carros
-            </span>
-
-            <span class="loc-box-num text-green">
-              ${dados.emCarro}
-            </span>
-
-            <span class="loc-box-sub">
-              em operação
-            </span>
-
+            <span class="loc-box-title">Em Carros</span>
+            <span class="loc-box-num text-green">${dados.emCarro}</span>
+            <span class="loc-box-sub">em operação</span>
           </div>
 
           <div class="loc-box">
-
-            <span class="loc-box-title">
-              Recapagem
-            </span>
-
-            <span class="loc-box-num text-blue">
-              ${dados.recapagem}
-            </span>
-
-            <span class="loc-box-sub">
-              na reformadora
-            </span>
-
+            <span class="loc-box-title">Recapagem</span>
+            <span class="loc-box-num text-blue">${dados.recapagem}</span>
+            <span class="loc-box-sub">na reformadora</span>
           </div>
 
           <div class="loc-box">
-
-            <span class="loc-box-title">
-              Recusados
-            </span>
-
-            <span class="loc-box-num text-red">
-              ${dados.recusados}
-            </span>
-
-            <span class="loc-box-sub">
-              aguardando sucata
-            </span>
-
+            <span class="loc-box-title">Recusados</span>
+            <span class="loc-box-num text-red">${dados.recusados}</span>
+            <span class="loc-box-sub">aguardando sucata</span>
           </div>
-
         </div>
 
         <div class="card-loc-table-wrapper">
-
-          <h4 class="loc-table-title">
-            PNEUS RECUSADOS AGUARDANDO SUCATA
-          </h4>
+          <h4 class="loc-table-title">PNEUS RECUSADOS AGUARDANDO SUCATA</h4>
 
           <table class="loc-table">
-
             <thead>
               <tr>
-
-                <th>
-                  Garagem
-                </th>
-
-                <th class="text-right">
-                  Qtd
-                </th>
-
+                <th>Garagem</th>
+                <th class="text-right">Qtd</th>
               </tr>
             </thead>
 
@@ -613,22 +454,12 @@ export async function renderizarLocalizacaoSistemaDinamico(identificador) {
 
             <tfoot>
               <tr>
-
-                <td>
-                  Total
-                </td>
-
-                <td class="text-right">
-                  ${dados.totalAguardandoSucata}
-                </td>
-
+                <td>Total</td>
+                <td class="text-right">${dados.totalAguardandoSucata}</td>
               </tr>
             </tfoot>
-
           </table>
-
         </div>
-
       </div>
     `;
 
@@ -638,17 +469,10 @@ export async function renderizarLocalizacaoSistemaDinamico(identificador) {
 
     container.innerHTML = `
       <div class="card-loc">
-
         <div class="card-loc-header">
-          <h3>
-            Localização no Sistema
-          </h3>
-
-          <p>
-            Não foi possível carregar os dados
-          </p>
+          <h3>Localização no Sistema</h3>
+          <p>Não foi possível carregar os dados</p>
         </div>
-
       </div>
     `;
   }
