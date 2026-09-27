@@ -97,6 +97,7 @@
           <li>Catálogo de Pneus</li>
           <li>Cadastro Individual</li>
           <li>Cadastro por Quantidade</li>
+          <li>indicadores Pneus</li>
         </ul>
       </section>
 
@@ -497,9 +498,23 @@
             </form>
           </div>
         </section>
+
+        <section id="indicadores_pneus" class="indicadores-container">
+          <div class="grafico-grid-2">
+            <div class="grafico-card"><canvas id="graficoPneusVida"></canvas></div>
+            <div class="grafico-card"><canvas id="graficoPneusMarca"></canvas></div>
+          </div>
+
+          <div class="grafico-grid-3">
+            <div class="grafico-card"><canvas id="graficoGaragemItaquera"></canvas></div>
+            <div class="grafico-card"><canvas id="graficoGaragemLimeira"></canvas></div>
+            <div class="grafico-card"><canvas id="graficoGaragemJuizFora"></canvas></div>
+          </div>
+        </section>
       </main>
     </div>
 
     <script type="module" src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>

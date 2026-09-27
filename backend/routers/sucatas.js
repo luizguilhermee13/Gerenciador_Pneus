@@ -90,4 +90,36 @@ router.get("/", async (req, res) => {
   res.json(resultado.rows);
 });
 
+router.get("/indicadores/motivo", async (req, res) => {
+  const resultado = await db.query(`
+    SELECT motivos_sucateamento.grupo AS titulo, COUNT(*) AS quantidade
+    FROM sucatas
+    JOIN motivos_sucateamento ON sucatas.motivo = motivos_sucateamento.codigo
+    GROUP BY motivos_sucateamento.grupo
+    ORDER BY quantidade DESC
+  `);
+  res.json(resultado.rows);
+});
+
+router.get("/indicadores/garagem", async (req, res) => {
+  const resultado = await db.query(`
+    SELECT garagem.nome AS titulo, COUNT(*) AS quantidade
+    FROM sucatas
+    JOIN pneus ON sucatas.id_nr_fogo = pneus.id_nr_fogo
+    LEFT JOIN garagem ON pneus.id_garagem_atual = garagem.id_garagem
+    GROUP BY garagem.nome
+  `);
+  res.json(resultado.rows);
+});
+
+router.get("/indicadores/marca", async (req, res) => {
+  const resultado = await db.query(`
+    SELECT pneus.marca AS titulo, COUNT(*) AS quantidade
+    FROM sucatas
+    JOIN pneus ON sucatas.id_nr_fogo = pneus.id_nr_fogo
+    GROUP BY pneus.marca
+  `);
+  res.json(resultado.rows);
+});
+
 export default router;

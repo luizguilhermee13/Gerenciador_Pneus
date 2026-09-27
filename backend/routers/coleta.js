@@ -1144,4 +1144,36 @@ router.get("/cards/recapagem", async (req, res) => {
   }
 });
 
+router.get("/indicadores/status", async (req, res) => {
+  const resultado = await db.query(`
+    SELECT status AS titulo, COUNT(*) AS quantidade
+    FROM coletas_feitas
+    GROUP BY status
+  `);
+  res.json(resultado.rows);
+});
+
+router.get("/indicadores/custo", async (req, res) => {
+  const resultado = await db.query(`
+    SELECT
+      recapagem.nome_recapadora AS recapadora,
+      COALESCE(SUM(coletas_feitas.preco_cobrado), 0) AS custo
+    FROM coletas_feitas
+    JOIN recapagem ON coletas_feitas.id_recapadora = recapagem.id_recapadora
+    GROUP BY recapagem.nome_recapadora
+    ORDER BY custo DESC
+  `);
+  res.json(resultado.rows);
+});
+
+router.get("/indicadores/servico", async (req, res) => {
+  const resultado = await db.query(`
+    SELECT servico AS titulo, COUNT(*) AS quantidade
+    FROM coletas_feitas
+    WHERE servico IS NOT NULL
+    GROUP BY servico
+  `);
+  res.json(resultado.rows);
+});
+
 export default router;

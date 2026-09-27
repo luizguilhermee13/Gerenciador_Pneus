@@ -22,7 +22,6 @@ cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDas
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferirc, "#conferirCarros");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferire, "#conferirEstoque");
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosSulcos, "#metricaSucateado");
-cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosIndicadorSulco, "#indicadorSucateado");
 
 //Renderizando os cards calculados dinamicamente com base no objeto listaPneus.
 const dadosSulcosDinamicos = cardsEstatisticos.cardSulcoDinamico(dados.listaPneus);
@@ -31,19 +30,7 @@ cardsEstatisticos.renderizarCards(dadosSulcosDinamicos, "#IndicadorSulco");
 const dadosPneusDinamicos = cardsEstatisticos.cardPneuDinamico(dados.listaPneus);
 cardsEstatisticos.renderizarCards(dadosPneusDinamicos, "#indicadoresPneus");
 
-//renderizando os graficos
-//para evitar erros estou deixando os nomes da garagem em minusculo para filtrar certo em pneu.garagem no objeto listaPneus
-const pneusItaquera = dados.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase() === "itaquera");
-const pneusLimeira = dados.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase() === "limeira");
-const pneusJuizDeFora = dados.listaPneus.filter((pneu) => pneu.garagem && pneu.garagem.toLowerCase().includes("juiz"));
-
-indicador.criarGraficoPneus(pneusItaquera, ".graphSulGaragem-1", "sulco", "Sulcos - Itaquera");
-indicador.criarGraficoPneus(pneusLimeira, ".graphSulGaragem-2", "sulco", "Sulcos - Limeira");
-indicador.criarGraficoPneus(pneusJuizDeFora, ".graphSulGaragem-3", "sulco", "Sulcos - Juiz de Fora");
-
-indicador.criarGraficoPneus(dados.listaPneus, ".graphSulcoTotal", "sulco", "Sulcos por Quantidade Total");
-indicador.criarGraficoPneus(dados.listaPneus, ".graphSulcoVida", "status", "Quantidade de Pneus por Status");
-indicador.criarGraficosSucata(dados.listaPneus);
+// indicador.criarGraficosSucata(dados.listaPneus);
 
 //dashboard principal
 catalago.renderizarUltimasMovimentacoes(dados.movimentacoesPneus, ".lastMovimentacoes");
@@ -124,3 +111,10 @@ catalago.renderizarLocalizacaoSistemaDinamico(".localizacaoSistema");
 cadastro.registrarMovimentacaoEstoque();
 catalago.renderizarHistoricoMovEstoque();
 catalago.renderizarHistoricoMovCarro();
+
+//graficos com chart js
+indicador.renderizarIndicadoresPneus();
+indicador.renderizarIndicadoresRecapagem();
+indicador.renderizarIndicadoresSulco();
+indicador.renderizarIndicadoresSucata();
+indicador.renderizarGraficosDashboard();
