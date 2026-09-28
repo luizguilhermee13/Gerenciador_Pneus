@@ -21,7 +21,11 @@ router.put("/", async (req, res) => {
   const client = await db.connect();
 
   try {
-    const { nrFogo, motivo, sulcoFinal, kmRodadoFinal } = req.body;
+    const { nrFogo, motivoRecusa, sulcoFinal, kmRodadoFinal } = req.body;
+
+    if (!motivoRecusa) {
+      return res.status(400).json({ mensagem: "Selecione o motivo do sucateamento" });
+    }
 
     await client.query("BEGIN");
 
@@ -30,36 +34,27 @@ router.put("/", async (req, res) => {
         UPDATE pneus
         SET
           status = 'Sucateado',
-          sulco = $1,
-          km = $2
+          sulco = COALESCE($1, sulco),
+          km = COALESCE($2, km)
         WHERE id_nr_fogo = $3
       `,
-      [Number(sulcoFinal), Number(kmRodadoFinal), Number(nrFogo)],
+      [sulcoFinal ? Number(sulcoFinal) : null, kmRodadoFinal ? Number(kmRodadoFinal) : null, Number(nrFogo)],
     );
 
     await client.query(
       `
-        INSERT INTO sucatas (
-          id_nr_fogo,
-          motivo
-        )
+        INSERT INTO sucatas (id_nr_fogo, motivo)
         VALUES ($1, $2)
       `,
-      [Number(nrFogo), motivo],
+      [Number(nrFogo), motivoRecusa],
     );
 
     await client.query("COMMIT");
 
-    res.status(201).json({
-      mensagem: "Pneu sucateado com sucesso",
-    });
+    res.status(201).json({ mensagem: "Pneu sucateado com sucesso" });
   } catch (erro) {
     await client.query("ROLLBACK");
-
-    res.status(400).json({
-      mensagem: "Erro no sucateamento do pneu",
-      erro: erro.message,
-    });
+    res.status(400).json({ mensagem: "Erro no sucateamento do pneu", erro: erro.message });
   } finally {
     client.release();
   }
