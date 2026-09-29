@@ -416,21 +416,26 @@ function criarGraficoSulcoMedioPorVida(pneus, identificador) {
    sem repetir nenhum id usado em outras telas */
 export async function renderizarGraficosDashboard() {
   const temAlgumCanvas =
-    document.getElementById("dashGraficoPneusMarca") ||
-    document.getElementById("dashSulcoGaragem") ||
-    document.getElementById("dashSulcoVida");
+    document.getElementById("graficoPneusMarca") ||
+    document.getElementById("graphDashboardSulcoGaragem") ||
+    document.getElementById("graphDashboardSulcoVida");
 
   if (!temAlgumCanvas) return;
 
   try {
     const resposta = await fetch(`${API_URL}/api/pneus`);
-    if (!resposta.ok) throw new Error("Erro ao buscar pneus para o dashboard");
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar pneus para o dashboard");
+    }
 
     const pneus = await resposta.json();
 
-    criarGraficoPneus(pneus, "#dashGraficoPneusMarca", "marca", "Pneus por Marca", "doughnut");
-    criarGraficoMediaSulco(pneus, "#dashSulcoGaragem", "garagem", "Sulco Médio por Garagem");
-    criarGraficoMediaSulco(pneus, "#dashSulcoVida", "vida", "Sulco Médio por Vida");
+    criarGraficoPneus(pneus, "#graficoPneusMarca", "marca", "Pneus por Marca", "doughnut");
+
+    criarGraficoMediaSulco(pneus, "#graphDashboardSulcoGaragem", "garagem", "Sulco Médio por Garagem");
+
+    criarGraficoMediaSulco(pneus, "#graphDashboardSulcoVida", "vida", "Sulco Médio por Vida");
   } catch (error) {
     console.error("Erro ao carregar gráficos do dashboard:", error);
   }

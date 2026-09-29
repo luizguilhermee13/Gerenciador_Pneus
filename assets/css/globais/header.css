@@ -49,6 +49,8 @@ header {
 
   .header-logo p {
     grid-column: 1;
+    left: 1rem;
+    position: relative;
   }
 
   .header-buttons button:last-child {

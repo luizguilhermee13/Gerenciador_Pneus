@@ -180,6 +180,11 @@
   body:has(.menu.menu-mobile-ativo) .btn-hamburguer {
     box-shadow: none;
   }
+  .menu .logo p {
+    font-size: 1rem;
+    position: relative;
+    left: 3.5rem;
+  }
 }
 
 @media (max-width: 550px) {
