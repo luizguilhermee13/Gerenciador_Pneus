@@ -2,7 +2,7 @@
 
 Sistema web voltado para o **controle, gestão e rastreabilidade de pneus de frotas de ônibus urbano**.
 
-O projeto está sendo desenvolvido com base em vivência prática operacional no setor de manutenção/borracharia, considerando regras como controle de sulco, vida útil dos pneus (`N`, `R1`...`R9`), movimentações, sucateamento, recapagem e divergências entre estoque físico e sistema.
+O projeto foi desenvolvido com base em vivência prática operacional no setor de manutenção/borracharia, considerando regras como controle de sulco, vida útil dos pneus (`N`, `R1`...`R9`), movimentações, estoque, sucateamento, recapagem e divergências entre estoque físico e sistema.
 
 🌐 **Aplicação online:**  
 https://gerenciador-pneus.web.app
@@ -16,9 +16,19 @@ https://gerenciador-pneus.web.app
 
 🟡 **Em Desenvolvimento Ativo**
 
-📍 **Etapa Atual:** desenvolvimento e integração do backend com **Node.js, Express e PostgreSQL/Supabase**.
+📍 **Etapa Atual:** refatoração geral, organização e limpeza do código.
 
-Parte das funcionalidades já utiliza dados reais através da API, enquanto outros módulos ainda utilizam dados simulados durante o desenvolvimento.
+As principais funcionalidades já estão integradas ao backend utilizando **Node.js, Express e PostgreSQL/Supabase**.
+
+O projeto encontra-se atualmente em uma etapa de consolidação, com foco em:
+
+- refatoração dos módulos JavaScript;
+- organização e padronização do código;
+- remoção de código não utilizado;
+- redução de dados simulados;
+- revisão de CSS e responsividade;
+- utilização de ferramentas e plugins para análise e limpeza do projeto;
+- revisão das regras de negócio e fluxos existentes.
 
 ---
 
@@ -39,7 +49,7 @@ Parte das funcionalidades já utiliza dados reais através da API, enquanto outr
 - [x] Modelagem relacional inicial utilizando SQLite.
 - [x] Estruturação das principais tabelas e relacionamentos do sistema.
 
-### 🟡 Etapa 3: Backend e Integração com Banco de Dados _(Em Andamento)_
+### 🟢 Etapa 3: Backend e Integração com Banco de Dados _(Concluída em grande parte)_
 
 - [x] Criação da API com Node.js e Express.
 - [x] Migração do banco SQLite para PostgreSQL utilizando Supabase.
@@ -47,14 +57,16 @@ Parte das funcionalidades já utiliza dados reais através da API, enquanto outr
 - [x] Consulta de garagens, veículos e pneus.
 - [x] Cadastro individual de pneus.
 - [x] Cadastro de pneus em lote.
-- [x] Controle e consulta de estoque físico.
+- [x] Controle e consulta de estoque físico e digital.
 - [x] Registro de sucateamento e consulta dos motivos.
-- [x] Integração parcial do front-end com a API.
-- [ ] Implementação completa das movimentações de pneus.
-- [ ] Implementação completa do fluxo de recapagem.
-- [ ] Migração das telas que ainda utilizam dados simulados para dados reais da API.
+- [x] Integração das principais telas com a API.
+- [x] Implementação do fluxo de recapagem.
+- [x] Controle de envio e retorno de pneus da recapadora.
+- [x] Controle de pneus recusados pela recapadora.
+- [x] Indicadores e informações do dashboard utilizando dados do banco.
+- [ ] Substituição dos últimos dados simulados ainda existentes.
 
-### 🟢 Etapa 4: Hospedagem e Deploy _(Concluída parcialmente)_
+### 🟢 Etapa 4: Hospedagem e Deploy _(Concluída)_
 
 - [x] Front-end publicado no Firebase Hosting.
 - [x] Backend publicado no Render.
@@ -62,14 +74,40 @@ Parte das funcionalidades já utiliza dados reais através da API, enquanto outr
 - [x] Configuração de ambientes local e produção.
 - [x] Integração Firebase → Render → Supabase.
 
-### 🔴 Etapa 5: Refino e Ajustes Finais _(Planejada)_
+### 🟡 Etapa 5: Refatoração, Limpeza e Consolidação _(Em Andamento)_
 
-- [ ] Refatoração e organização dos módulos JavaScript.
+- [x] Separação do código em módulos JavaScript.
+- [x] Separação das responsabilidades entre front-end e API.
+- [x] Redução progressiva dos dados fictícios.
+- [ ] Refatoração geral dos módulos JavaScript.
+- [ ] Remoção de funções e trechos de código não utilizados.
+- [ ] Padronização de nomes de funções, variáveis e rotas.
 - [ ] Padronização do tratamento de erros da API.
-- [ ] Validação das regras de negócio.
-- [ ] Testes de usabilidade.
+- [ ] Organização e revisão dos arquivos CSS.
+- [ ] Utilização de ferramentas/plugins para análise e limpeza do código.
+- [ ] Revisão das regras de negócio.
+- [ ] Testes dos principais fluxos do sistema.
 - [ ] Ajustes finais de responsividade e acessibilidade.
-- [ ] Substituição completa dos dados fictícios por dados persistidos.
+- [ ] Remoção completa dos dados simulados restantes.
+
+---
+
+## ⚙️ Principais Funcionalidades
+
+- Cadastro individual de pneus.
+- Cadastro de pneus em lote.
+- Controle de estoque.
+- Controle de pneus instalados em veículos.
+- Controle de sulco.
+- Controle de vida útil do pneu.
+- Movimentações entre estoque, veículos e outros locais.
+- Envio de pneus para recapagem.
+- Retorno de pneus da recapadora.
+- Controle de pneus recusados.
+- Registro de sucateamento.
+- Histórico de operações.
+- Dashboard com indicadores e gráficos.
+- Controle de garagens e veículos.
 
 ---
 
