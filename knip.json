@@ -1,0 +1,5 @@
+{
+  "entry": ["assets/js/script.js", "backend/server.js"],
+
+  "project": ["assets/js/**/*.js", "backend/**/*.js"]
+}

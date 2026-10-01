@@ -38,42 +38,83 @@ export const dadosDashboard = [
 ];
 
 export const dadosConferirc = [
-  { titulo: "Total Conferidos", resultado: 2, cor: "#009999" },
-  { titulo: "Crítico (≤2mm)", resultado: 3, cor: "#dc2626" },
-  { titulo: "Atenção (3-4mm)", resultado: 7, cor: "#ea580c" },
-  { titulo: "Alerta (5-7mm)", resultado: 3, cor: "#f59e0b" },
+  {
+    titulo: "Total Conferidos",
+    resultado: 2,
+    cor: "#009999",
+  },
+  {
+    titulo: "Crítico (≤2mm)",
+    resultado: 3,
+    cor: "#dc2626",
+  },
+  {
+    titulo: "Atenção (3-4mm)",
+    resultado: 7,
+    cor: "#ea580c",
+  },
+  {
+    titulo: "Alerta (5-7mm)",
+    resultado: 3,
+    cor: "#f59e0b",
+  },
 ];
 
 export const dadosConferire = [
-  { titulo: "Em Estoque", resultado: 2, cor: "#009999" },
-  { titulo: "Novos (N)", resultado: 7, cor: "#16a34a" },
-  { titulo: "Sulco ≤7mm", resultado: 3, cor: "#ea580c" },
-  { titulo: "Reformados", resultado: 3, cor: "#2563eb" },
+  {
+    titulo: "Em Estoque",
+    resultado: 2,
+    cor: "#009999",
+  },
+  {
+    titulo: "Novos (N)",
+    resultado: 7,
+    cor: "#16a34a",
+  },
+  {
+    titulo: "Sulco ≤7mm",
+    resultado: 3,
+    cor: "#ea580c",
+  },
+  {
+    titulo: "Reformados",
+    resultado: 3,
+    cor: "#2563eb",
+  },
 ];
 
 export const dadosSulcos = [
-  { titulo: "Total", resultado: 2, cor: "#dc2626" },
-  { titulo: "Banda Rodagem", resultado: 7, cor: "#ea580c" },
-  { titulo: "Avaria", resultado: 3, cor: "#f59e0b" },
-  { titulo: "Talão", resultado: 3, cor: "#9333ea" },
+  {
+    titulo: "Total",
+    resultado: 2,
+    cor: "#dc2626",
+  },
+  {
+    titulo: "Banda Rodagem",
+    resultado: 7,
+    cor: "#ea580c",
+  },
+  {
+    titulo: "Avaria",
+    resultado: 3,
+    cor: "#f59e0b",
+  },
+  {
+    titulo: "Talão",
+    resultado: 3,
+    cor: "#9333ea",
+  },
 ];
 
-export const dadosIndicadorSulco = [
-  { titulo: "Total Sucatas", resultado: 2, cor: "#dc2626" },
-  { titulo: "Vida Média p/ Sucata", resultado: 7, cor: "#ea580c" },
-  { titulo: "Sulco Médio Final", resultado: 3, cor: "#f59e0b" },
-  { titulo: "Custo Estimado", resultado: 3, cor: "#9333ea" },
-];
-
-//pegando o quantitativo para colocar no card - temporario
-
+// Cards temporários calculados a partir de uma lista de pneus
 export function cardSulcoDinamico(listaPneus) {
-  let critico = 0; // ≤ 4mm
-  let alerta = 0; // 5 a 7mm
-  let bom = 0; // ≥ 8mm
+  let critico = 0;
+  let alerta = 0;
+  let bom = 0;
 
   listaPneus.forEach((item) => {
     const sulco = Math.round(item.sulco);
+
     if (sulco <= 4) {
       critico++;
     } else if (sulco >= 5 && sulco <= 7) {
@@ -84,9 +125,21 @@ export function cardSulcoDinamico(listaPneus) {
   });
 
   return [
-    { titulo: "Sulco ≤ 4mm (Crítico)", resultado: critico, cor: "#dc2626" },
-    { titulo: "Sulco 5–7mm (Alerta)", resultado: alerta, cor: "#ea580c" },
-    { titulo: "Sulco ≥ 8mm (Bom)", resultado: bom, cor: "#009999" },
+    {
+      titulo: "Sulco ≤ 4mm (Crítico)",
+      resultado: critico,
+      cor: "#dc2626",
+    },
+    {
+      titulo: "Sulco 5–7mm (Alerta)",
+      resultado: alerta,
+      cor: "#ea580c",
+    },
+    {
+      titulo: "Sulco ≥ 8mm (Bom)",
+      resultado: bom,
+      cor: "#009999",
+    },
   ];
 }
 
@@ -112,190 +165,71 @@ export function cardPneuDinamico(dados) {
   });
 
   return [
-    { titulo: "Em Carro", resultado: emCarro, cor: "#009999" },
-    { titulo: "Borracharia", resultado: borracharia, cor: "#d97706" },
-    { titulo: "Almoxarifado", resultado: almoxarifado, cor: "#16a34a" },
-    { titulo: "Recapadora", resultado: recapadora, cor: "#2563eb" },
-    { titulo: "Sucata", resultado: sucateado, cor: "#dc2626" },
+    {
+      titulo: "Em Carro",
+      resultado: emCarro,
+      cor: "#009999",
+    },
+    {
+      titulo: "Borracharia",
+      resultado: borracharia,
+      cor: "#d97706",
+    },
+    {
+      titulo: "Almoxarifado",
+      resultado: almoxarifado,
+      cor: "#16a34a",
+    },
+    {
+      titulo: "Recapadora",
+      resultado: recapadora,
+      cor: "#2563eb",
+    },
+    {
+      titulo: "Sucata",
+      resultado: sucateado,
+      cor: "#dc2626",
+    },
   ];
 }
 
-// Função genérica para renderizar os cards na tela
+// Renderiza cards a partir de um array local
 export function renderizarCards(dados, containerPage) {
   const cards = document.querySelector(containerPage);
+
   if (!cards) return;
 
   cards.innerHTML = "";
 
   dados.forEach((item) => {
-    const cardHTML = `<div class="card" id="${item.id}" style="color: ${item.cor}">
+    const cardHTML = `
+      <div
+        class="card"
+        id="${item.id || ""}"
+        style="color: ${item.cor}"
+      >
+        <p>${item.titulo}</p>
 
-           <p>${item.titulo}</p>
-
-           <span>${item.resultado}</span>
-
-        </div>`;
+        <span>
+          ${item.resultado}
+        </span>
+      </div>
+    `;
 
     cards.innerHTML += cardHTML;
   });
 }
 
-//cards dinamico conectado ao banco
-
-export async function cardVeiculosStatusDinamico(identificador, statusVeiculo) {
+// Renderiza cards dinâmicos vindos da API
+export async function cardDinamico(rota, identificador, usarIdGaragem = false) {
   try {
-    const resposta = await fetch(`${API_URL}/api/veiculos/status/${statusVeiculo}`);
+    const resposta = await fetch(`${API_URL}${rota}`);
 
     if (!resposta.ok) {
-      throw new Error("Erro ao buscar dados dos veículos");
+      throw new Error(`Erro ao buscar dados: ${rota}`);
     }
-
-    const status = await resposta.json();
-
-    const cards = document.querySelector(identificador);
-
-    if (!cards) return;
-
-    cards.innerHTML = "";
-
-    status.forEach((item) => {
-      const cardHTML = `
-        <div class="card" id="garagem-${item.id}">
-          <p>${item.titulo}</p>
-          <span style="color: ${item.cor}">
-            ${item.resultado}
-          </span>
-        </div>
-      `;
-
-      cards.innerHTML += cardHTML;
-    });
-  } catch (erro) {
-    console.error("Erro ao carregar cards:", erro);
-  }
-}
-
-export async function cardPneusDinamico(identificador) {
-  try {
-    const resposta = await fetch(`${API_URL}/api/pneus/status/`);
-
-    if (!resposta.ok) {
-      throw new Error("Erro ao buscar dados dos veículos");
-    }
-
-    const status = await resposta.json();
-
-    const cards = document.querySelector(identificador);
-
-    if (!cards) return;
-
-    cards.innerHTML = "";
-
-    status.forEach((item) => {
-      const cardHTML = `
-        <div class="card" id="garagem-${item.id}">
-          <p>${item.titulo}</p>
-          <span style="color: ${item.cor}">
-            ${item.resultado}
-          </span>
-        </div>
-      `;
-
-      cards.innerHTML += cardHTML;
-    });
-  } catch (erro) {
-    console.error("Erro ao carregar cards:", erro);
-  }
-}
-
-export async function cardEstoqueFDinamico(identificador) {
-  try {
-    const resposta = await fetch(`${API_URL}/api/estoque/status`);
-
-    if (!resposta.ok) {
-      throw new Error("Erro ao buscar dados dos veículos");
-    }
-
-    const status = await resposta.json();
-
-    const cards = document.querySelector(identificador);
-
-    if (!cards) return;
-
-    cards.innerHTML = "";
-
-    status.forEach((item) => {
-      const cardHTML = `
-        <div class="card" id="garagem-${item.id}">
-          <p>${item.titulo}</p>
-          <span style="color: ${item.cor}">
-            ${item.resultado}
-          </span>
-        </div>
-      `;
-
-      cards.innerHTML += cardHTML;
-    });
-  } catch (erro) {
-    console.error("Erro ao carregar cards:", erro);
-  }
-}
-
-export async function cardEstoqueDDinamico(identificador) {
-  try {
-    const resposta = await fetch(`${API_URL}/api/estoque/digital/status`);
-
-    if (!resposta.ok) {
-      throw new Error("Erro ao buscar dados do estoque digital");
-    }
-
-    const status = await resposta.json();
-
-    const cards = document.querySelector(identificador);
-
-    if (!cards) return;
-
-    cards.innerHTML = "";
-
-    status.forEach((item) => {
-      const cardHTML = `
-        <div class="card">
-          <p>${item.titulo}</p>
-          <span style="color: ${item.cor}">
-            ${item.resultado}
-          </span>
-        </div>
-      `;
-
-      cards.innerHTML += cardHTML;
-    });
-  } catch (erro) {
-    console.error("Erro ao carregar cards:", erro);
-  }
-}
-
-export async function cardDivergenciaDinamico(identificador) {
-  try {
-    const resposta = await fetch(`${API_URL}/api/estoque/divergencia`);
-    if (!resposta.ok) throw new Error("Erro ao buscar divergências");
 
     const dados = await resposta.json();
-    renderizarCards(dados, identificador);
-  } catch (erro) {
-    console.error("Erro ao carregar divergências:", erro);
-  }
-}
-
-// cards da tela informar entrega
-export async function cardEntregaDinamico(identificador) {
-  try {
-    const resposta = await fetch(`${API_URL}/api/coleta/cards/entrega`);
-
-    if (!resposta.ok) {
-      throw new Error("Erro ao buscar dados das entregas");
-    }
-
-    const status = await resposta.json();
 
     const cards = document.querySelector(identificador);
 
@@ -303,9 +237,11 @@ export async function cardEntregaDinamico(identificador) {
 
     cards.innerHTML = "";
 
-    status.forEach((item) => {
+    dados.forEach((item) => {
+      const idCard = usarIdGaragem && item.id ? `id="garagem-${item.id}"` : "";
+
       const cardHTML = `
-        <div class="card">
+        <div class="card" ${idCard}>
           <p>${item.titulo}</p>
 
           <span style="color: ${item.cor}">
@@ -317,76 +253,6 @@ export async function cardEntregaDinamico(identificador) {
       cards.innerHTML += cardHTML;
     });
   } catch (erro) {
-    console.error("Erro ao carregar cards de entrega:", erro);
-  }
-}
-
-// cards da tela status das coletas
-export async function cardStatusColetaDinamico(identificador) {
-  try {
-    const resposta = await fetch(`${API_URL}/api/coleta/cards/status`);
-
-    if (!resposta.ok) {
-      throw new Error("Erro ao buscar status das coletas");
-    }
-
-    const status = await resposta.json();
-
-    const cards = document.querySelector(identificador);
-
-    if (!cards) return;
-
-    cards.innerHTML = "";
-
-    status.forEach((item) => {
-      const cardHTML = `
-        <div class="card">
-          <p>${item.titulo}</p>
-
-          <span style="color: ${item.cor}">
-            ${item.resultado}
-          </span>
-        </div>
-      `;
-
-      cards.innerHTML += cardHTML;
-    });
-  } catch (erro) {
-    console.error("Erro ao carregar cards de status:", erro);
-  }
-}
-
-// cards da tela indicadores de recapagem
-export async function cardRecapagemDinamico(identificador) {
-  try {
-    const resposta = await fetch(`${API_URL}/api/coleta/cards/recapagem`);
-
-    if (!resposta.ok) {
-      throw new Error("Erro ao buscar indicadores de recapagem");
-    }
-
-    const status = await resposta.json();
-
-    const cards = document.querySelector(identificador);
-
-    if (!cards) return;
-
-    cards.innerHTML = "";
-
-    status.forEach((item) => {
-      const cardHTML = `
-        <div class="card">
-          <p>${item.titulo}</p>
-
-          <span style="color: ${item.cor}">
-            ${item.resultado}
-          </span>
-        </div>
-      `;
-
-      cards.innerHTML += cardHTML;
-    });
-  } catch (erro) {
-    console.error("Erro ao carregar cards de recapagem:", erro);
+    console.error(`Erro ao carregar cards ${rota}:`, erro);
   }
 }

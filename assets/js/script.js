@@ -8,43 +8,43 @@ import * as dados from "./modules/dadosFicticios.js";
 import * as estoque from "./modules/estoque.js";
 import * as cadastro from "./modules/cadastrar.js";
 
+// navegação e sidebar
 navegacaoTab.navegacaoTabs();
 sidebar.sidebar();
 sidebar.pageSelecionada();
 
-//renderizar catalagos
-
+// renderizar catálogos
 catalago.renderizarCatalagoConferencia(dados.conferenciaPneus);
 
-//Renderiza os cards estáticos normais
+// cards estáticos
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosDashboard, "#metricaDashBoard");
 
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferirc, "#conferirCarros");
+
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosConferire, "#conferirEstoque");
+
 cardsEstatisticos.renderizarCards(cardsEstatisticos.dadosSulcos, "#metricaSucateado");
 
-//Renderizando os cards calculados dinamicamente com base no objeto listaPneus.
+// cards calculados com dados fictícios
 const dadosSulcosDinamicos = cardsEstatisticos.cardSulcoDinamico(dados.listaPneus);
+
 cardsEstatisticos.renderizarCards(dadosSulcosDinamicos, "#IndicadorSulco");
 
-const dadosPneusDinamicos = cardsEstatisticos.cardPneuDinamico(dados.listaPneus);
-cardsEstatisticos.renderizarCards(dadosPneusDinamicos, "#indicadoresPneus");
-
-// indicador.criarGraficosSucata(dados.listaPneus);
-
-//dashboard principal
+// dashboard principal
 catalago.renderizarUltimasMovimentacoes(dados.movimentacoesPneus, ".lastMovimentacoes");
 
 /* ===================================
-      FUNÇÕES COM DADOS DO BANCO 
+     FUNÇÕES COM DADOS DO BANCO
 ==================================== */
 
-// funções do arquivo veiculos.html
+// funções da tela veículos
 catalago.renderizarCatalagoCarros();
-cardsEstatisticos.cardVeiculosStatusDinamico("#metricaVeiculos", "ativo");
-cardsEstatisticos.cardVeiculosStatusDinamico("#metricaGns", "gns");
 
-// funções do arquivo pneus.html
+cardsEstatisticos.cardDinamico("/api/veiculos/status/ativo", "#metricaVeiculos", true);
+
+cardsEstatisticos.cardDinamico("/api/veiculos/status/gns", "#metricaGns", true);
+
+// funções da tela pneus
 cadastro.cadastrarPneus();
 cadastro.cadastrarLotePneus();
 cadastro.popularSelectVeiculos();
@@ -52,32 +52,39 @@ cadastro.popularSelectVeiculos();
 catalago.renderizarCatalago();
 catalago.renderizarPainel(dados.listaPneus[0]);
 
-cardsEstatisticos.cardPneusDinamico("#indicadoresPneus");
+cardsEstatisticos.cardDinamico("/api/pneus/status", "#indicadoresPneus", true);
 
-// funções do arquivo sucateamento.html
+// funções da tela sucateamento
 cadastro.registrarSucata();
 cadastro.popularSelectMotivos();
 
 catalago.renderizarHistoricoSucatas();
 catalago.renderizarCatalagoSucatas();
 
+// botão atualizar
 const btnAtualizar = document.getElementById("btn-atualizar");
 
-btnAtualizar.addEventListener("click", () => {
-  location.reload();
-});
+if (btnAtualizar) {
+  btnAtualizar.addEventListener("click", () => {
+    location.reload();
+  });
+}
 
-//funcoes da tela estoque
+// funções da tela estoque
 estoque.registrarContagemFisica();
 estoque.renderizarTabelaContagemFisica();
 estoque.configurarAtualizarContagem();
 estoque.renderizarTabelaEstoqueDigital();
 
-cardsEstatisticos.cardEstoqueFDinamico("#metricaEstoqueF");
-cardsEstatisticos.cardEstoqueDDinamico("#metricaEstoqueD");
-cardsEstatisticos.cardDivergenciaDinamico("#metricaDivergencia");
+cardsEstatisticos.cardDinamico("/api/estoque/status", "#metricaEstoqueF", true);
 
-//funcoes da tela recapagem
+cardsEstatisticos.cardDinamico("/api/estoque/digital/status", "#metricaEstoqueD");
+
+cardsEstatisticos.cardDinamico("/api/estoque/divergencia", "#metricaDivergencia");
+
+/* ===================================
+              RECAPAGEM
+==================================== */
 
 // cadastrar coleta
 coleta.addPneuColeta();
@@ -98,21 +105,33 @@ coleta.carregarHistoricoColetas();
 coleta.pesquisarHistoricoColetas();
 
 // cards informar entrega
-cardsEstatisticos.cardEntregaDinamico("#metricaEntrega");
+cardsEstatisticos.cardDinamico("/api/coleta/cards/entrega", "#metricaEntrega");
 
 // cards status das coletas
-cardsEstatisticos.cardStatusColetaDinamico("#metricaStatus");
+cardsEstatisticos.cardDinamico("/api/coleta/cards/status", "#metricaStatus");
 
 // cards indicadores recapagem
-cardsEstatisticos.cardRecapagemDinamico("#indicadoresRecapagem");
+cardsEstatisticos.cardDinamico("/api/coleta/cards/recapagem", "#indicadoresRecapagem");
+
+/* ===================================
+              DASHBOARD
+==================================== */
 
 catalago.renderizarLocalizacaoSistemaDinamico(".localizacaoSistema");
 
+/* ===================================
+             MOVIMENTAÇÕES
+==================================== */
+
 cadastro.registrarMovimentacaoEstoque();
+
 catalago.renderizarHistoricoMovEstoque();
 catalago.renderizarHistoricoMovCarro();
 
-//graficos com chart js
+/* ===================================
+                GRÁFICOS
+==================================== */
+
 indicador.renderizarIndicadoresPneus();
 indicador.renderizarIndicadoresRecapagem();
 indicador.renderizarIndicadoresSulco();
