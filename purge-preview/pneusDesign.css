@@ -104,14 +104,6 @@
 
 /* Scroll das tabelas de movimentação */
 
-:is(.movimentacaoEstoque, .historicoMoviCarro) :is(.table-container, .table-container-infoRef) {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  overflow: auto hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
 /* Tabelas de movimentação */
 
 :is(.movimentacaoEstoque, .historicoMoviCarro) table {
