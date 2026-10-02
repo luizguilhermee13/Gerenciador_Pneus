@@ -16,19 +16,20 @@ https://gerenciador-pneus.web.app
 
 🟡 **Em Desenvolvimento Ativo**
 
-📍 **Etapa Atual:** refatoração geral, organização e limpeza do código.
+📍 **Etapa Atual:** consolidação, testes e ajustes finais.
 
 As principais funcionalidades já estão integradas ao backend utilizando **Node.js, Express e PostgreSQL/Supabase**.
 
-O projeto encontra-se atualmente em uma etapa de consolidação, com foco em:
+A etapa de refatoração e limpeza estrutural do código já foi realizada utilizando ferramentas de análise estática, detecção de duplicações e auditoria de CSS.
 
-- refatoração dos módulos JavaScript;
-- organização e padronização do código;
-- remoção de código não utilizado;
-- redução de dados simulados;
-- revisão de CSS e responsividade;
-- utilização de ferramentas e plugins para análise e limpeza do projeto;
-- revisão das regras de negócio e fluxos existentes.
+O desenvolvimento encontra-se atualmente focado em:
+
+- substituição dos últimos dados simulados;
+- revisão das regras de negócio;
+- padronização do tratamento de erros da API;
+- testes dos principais fluxos do sistema;
+- ajustes finais de responsividade e acessibilidade;
+- consolidação da versão atual do projeto.
 
 ---
 
@@ -79,12 +80,15 @@ O projeto encontra-se atualmente em uma etapa de consolidação, com foco em:
 - [x] Separação do código em módulos JavaScript.
 - [x] Separação das responsabilidades entre front-end e API.
 - [x] Redução progressiva dos dados fictícios.
-- [ ] Refatoração geral dos módulos JavaScript.
-- [ ] Remoção de funções e trechos de código não utilizados.
+- [x] Refatoração dos principais módulos JavaScript.
+- [x] Remoção de dependências, funções e trechos de código não utilizados.
+- [x] Redução de código duplicado.
+- [x] Organização e revisão dos arquivos CSS.
+- [x] Análise estática do JavaScript.
+- [x] Auditoria de estilos CSS não utilizados.
+- [x] Utilização de ferramentas de análise e limpeza do código.
 - [ ] Padronização de nomes de funções, variáveis e rotas.
 - [ ] Padronização do tratamento de erros da API.
-- [ ] Organização e revisão dos arquivos CSS.
-- [ ] Utilização de ferramentas/plugins para análise e limpeza do código.
 - [ ] Revisão das regras de negócio.
 - [ ] Testes dos principais fluxos do sistema.
 - [ ] Ajustes finais de responsividade e acessibilidade.
@@ -96,7 +100,7 @@ O projeto encontra-se atualmente em uma etapa de consolidação, com foco em:
 
 - Cadastro individual de pneus.
 - Cadastro de pneus em lote.
-- Controle de estoque.
+- Controle de estoque físico e digital.
 - Controle de pneus instalados em veículos.
 - Controle de sulco.
 - Controle de vida útil do pneu.
@@ -149,6 +153,16 @@ O projeto encontra-se atualmente em uma etapa de consolidação, com foco em:
 - VS Code
 - Postman
 - Beekeeper Studio
+
+### Qualidade e Refatoração
+
+- **Knip** — identificação de dependências e exports não utilizados.
+- **ESLint** — análise estática do JavaScript.
+- **jscpd** — identificação de código duplicado.
+- **Stylelint** — análise e padronização dos arquivos CSS.
+- **PurgeCSS** — auditoria de estilos CSS não utilizados.
+
+Durante a refatoração, a taxa de duplicação identificada pelo jscpd foi reduzida de **3,54% para 1,32%**, além da remoção de dependências antigas e estilos não utilizados.
 
 ---
 
