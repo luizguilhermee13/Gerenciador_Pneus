@@ -66,4 +66,42 @@ router.get("/carro", async (req, res) => {
   res.json(resultado.rows);
 });
 
+// últimas 5 movimentações (estoque + carro juntos) para o card do dashboard
+router.get("/ultimas", async (req, res) => {
+  const resultado = await db.query(`
+    SELECT * FROM (
+      SELECT
+        'Estoque' AS tipo,
+        me.data_movimentacao AS "dataMovimentacao",
+        me.id_nr_fogo AS "nrFogo",
+        COALESCE(me.motivo, 'Transferência') AS motivo,
+        g.nome AS garagem,
+        '→ ' || g.nome AS "origemDestino",
+        NULL::text AS "placaOuPrefixo",
+        NULL::text AS posicao
+      FROM movimentacoes_estoque me
+      LEFT JOIN garagem g ON me.id_garagem = g.id_garagem
+
+      UNION ALL
+
+      SELECT
+        'Carro' AS tipo,
+        mc.data_movimentacao,
+        mc.id_nr_fogo,
+        'Montagem em carro' AS motivo,
+        g.nome,
+        NULL::text,
+        v.numero_carro::text,
+        mc.posicao
+      FROM movimentacoes_carro mc
+      LEFT JOIN veiculos v ON mc.id_carro = v.id_carro
+      LEFT JOIN garagem g ON v.id_garagem = g.id_garagem
+    ) t
+    ORDER BY "dataMovimentacao" DESC
+    LIMIT 5
+  `);
+
+  res.json(resultado.rows);
+});
+
 export default router;
